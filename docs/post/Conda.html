@@ -10,65 +10,27 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="# 管理conda
+<meta name="description" content="# 管理环境
 
-## 获取版本号
-
-```bash
-conda --version
-```
-
-## 列出所有的环境
+## 创建环境
 
 ```bash
-conda env list
+conda create -n env-name [list of package]
 ```
+-n env-name是设置新建环境的名字
 
-## 查看conda当前环境下的包
-
-```bash
-conda list
-```
-
-## 查看环境管理的全部命令帮助
-
-```bash
-conda env -h
-```
-
-## conda升级
-
-我们可以在命令行中或者anaconda prompt中执行命令进行操作。">
+list of package是可选项，选择要为该环境安装的包。">
 <meta property="og:title" content="Conda">
-<meta property="og:description" content="# 管理conda
+<meta property="og:description" content="# 管理环境
 
-## 获取版本号
-
-```bash
-conda --version
-```
-
-## 列出所有的环境
+## 创建环境
 
 ```bash
-conda env list
+conda create -n env-name [list of package]
 ```
+-n env-name是设置新建环境的名字
 
-## 查看conda当前环境下的包
-
-```bash
-conda list
-```
-
-## 查看环境管理的全部命令帮助
-
-```bash
-conda env -h
-```
-
-## conda升级
-
-我们可以在命令行中或者anaconda prompt中执行命令进行操作。">
+list of package是可选项，选择要为该环境安装的包。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://wliafe.github.io/post/Conda.html">
 <meta property="og:image" content="https://wliafe.github.io/wliafe.jpg">
@@ -139,26 +101,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>管理conda</h1>
-<h2>获取版本号</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda --version</pre></div>
-<h2>列出所有的环境</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda env list</pre></div>
-<h2>查看conda当前环境下的包</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda list</pre></div>
-<h2>查看环境管理的全部命令帮助</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda env -h</pre></div>
-<h2>conda升级</h2>
-<p>我们可以在命令行中或者anaconda prompt中执行命令进行操作。</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda update conda</pre></div>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda update --all</pre></div>
-<h2>conda升级后释放空间</h2>
-<p>在升级完成之后，我们可以使用命令来清理一些无用的包以释放一些空间：</p>
-<p>删除没有用的包</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda clean -p</pre></div>
-<p>删除保存下来的压缩文件（.tar）</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda clean -t</pre></div>
-<h1>管理环境</h1>
+<div class="markdown-body" id="postBody"><h1>管理环境</h1>
 <h2>创建环境</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda create -n env-name [list of package]</pre></div>
 <p>-n env-name是设置新建环境的名字</p>
@@ -179,6 +122,25 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda env list</pre></div>
 <h2>删除一个环境</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda env remove -n env-name</pre></div>
+<h1>管理conda</h1>
+<h2>获取版本号</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda --version</pre></div>
+<h2>列出所有的环境</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda env list</pre></div>
+<h2>查看conda当前环境下的包</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda list</pre></div>
+<h2>查看环境管理的全部命令帮助</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda env -h</pre></div>
+<h2>conda升级</h2>
+<p>我们可以在命令行中或者anaconda prompt中执行命令进行操作。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda update conda</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda update --all</pre></div>
+<h2>conda升级后释放空间</h2>
+<p>在升级完成之后，我们可以使用命令来清理一些无用的包以释放一些空间：</p>
+<p>删除没有用的包</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda clean -p</pre></div>
+<p>删除保存下来的压缩文件（.tar）</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda clean -t</pre></div>
 <h1>管理包</h1>
 <h2>安装包 或 安装特定版本的包</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda install package-name</pre></div>

@@ -1,57 +1,3 @@
-# 管理conda
-
-## 获取版本号
-
-```bash
-conda --version
-```
-
-## 列出所有的环境
-
-```bash
-conda env list
-```
-
-## 查看conda当前环境下的包
-
-```bash
-conda list
-```
-
-## 查看环境管理的全部命令帮助
-
-```bash
-conda env -h
-```
-
-## conda升级
-
-我们可以在命令行中或者anaconda prompt中执行命令进行操作。
-
-```bash
-conda update conda
-```
-
-```bash
-conda update --all
-```
-
-## conda升级后释放空间
-
-在升级完成之后，我们可以使用命令来清理一些无用的包以释放一些空间：
-
-删除没有用的包
-
-```bash
-conda clean -p
-```
-
-删除保存下来的压缩文件（.tar）
-
-```bash
-conda clean -t
-```
-
 # 管理环境
 
 ## 创建环境
@@ -105,6 +51,60 @@ conda env list
 
 ```bash
 conda env remove -n env-name
+```
+
+# 管理conda
+
+## 获取版本号
+
+```bash
+conda --version
+```
+
+## 列出所有的环境
+
+```bash
+conda env list
+```
+
+## 查看conda当前环境下的包
+
+```bash
+conda list
+```
+
+## 查看环境管理的全部命令帮助
+
+```bash
+conda env -h
+```
+
+## conda升级
+
+我们可以在命令行中或者anaconda prompt中执行命令进行操作。
+
+```bash
+conda update conda
+```
+
+```bash
+conda update --all
+```
+
+## conda升级后释放空间
+
+在升级完成之后，我们可以使用命令来清理一些无用的包以释放一些空间：
+
+删除没有用的包
+
+```bash
+conda clean -p
+```
+
+删除保存下来的压缩文件（.tar）
+
+```bash
+conda clean -t
 ```
 
 # 管理包
