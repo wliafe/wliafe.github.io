@@ -23,6 +23,13 @@ sudo apt-get install libxkbcommon-x11-0
 
 # 创建 Qt 环境
 
+```bash
+conda create -n qt python=3.10
+```
+```bash
+conda activate qt
+```
+
 # 安装 Qt
 
 ```bash
