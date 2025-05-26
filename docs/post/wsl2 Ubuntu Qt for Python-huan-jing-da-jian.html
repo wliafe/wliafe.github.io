@@ -53,6 +53,15 @@ pip install pyside6
 ```bash
 sudo apt-get install fonts-noto-cjk
 ```
+
+# 解决wayland 错误 
+
+>Failed to create wl_display (No such file or directory)
+>qt.qpa.plugin: Could not load the Qt platform plugin 'wayland' in '' even though it was found.
+
+```bash
+export QT_QPA_PLATFORM=xcb
+```
 。">
 <meta property="og:title" content="wsl2 Ubuntu Qt for Python环境搭建">
 <meta property="og:description" content="# 安装基础环境
@@ -97,6 +106,15 @@ pip install pyside6
 
 ```bash
 sudo apt-get install fonts-noto-cjk
+```
+
+# 解决wayland 错误 
+
+>Failed to create wl_display (No such file or directory)
+>qt.qpa.plugin: Could not load the Qt platform plugin 'wayland' in '' even though it was found.
+
+```bash
+export QT_QPA_PLATFORM=xcb
 ```
 。">
 <meta property="og:type" content="article">
@@ -184,7 +202,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h1>安装 Qt</h1>
 <div class="highlight highlight-source-shell"><pre class="notranslate">pip install pyside6</pre></div>
 <h1>解决输出界面所有中文乱码中部分的乱码问题(标题乱码未解决)</h1>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt-get install fonts-noto-cjk</pre></div></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt-get install fonts-noto-cjk</pre></div>
+<h1>解决wayland 错误</h1>
+<blockquote>
+<p>Failed to create wl_display (No such file or directory)<br>
+qt.qpa.plugin: Could not load the Qt platform plugin "wayland" in "" even though it was found.</p>
+</blockquote>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-k">export</span> QT_QPA_PLATFORM=xcb</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️ 转载文章请注明出处，谢谢！❤️</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

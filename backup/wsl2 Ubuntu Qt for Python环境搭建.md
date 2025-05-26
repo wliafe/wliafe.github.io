@@ -41,3 +41,12 @@ pip install pyside6
 ```bash
 sudo apt-get install fonts-noto-cjk
 ```
+
+# 解决wayland 错误 
+
+>Failed to create wl_display (No such file or directory)
+>qt.qpa.plugin: Could not load the Qt platform plugin "wayland" in "" even though it was found.
+
+```bash
+export QT_QPA_PLATFORM=xcb
+```
