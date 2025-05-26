@@ -59,6 +59,8 @@ sudo apt-get install fonts-noto-cjk
 >Failed to create wl_display (No such file or directory)
 >qt.qpa.plugin: Could not load the Qt platform plugin 'wayland' in '' even though it was found.
 
+在 `.bashrc` 文件里加入下面这一行
+
 ```bash
 export QT_QPA_PLATFORM=xcb
 ```
@@ -112,6 +114,8 @@ sudo apt-get install fonts-noto-cjk
 
 >Failed to create wl_display (No such file or directory)
 >qt.qpa.plugin: Could not load the Qt platform plugin 'wayland' in '' even though it was found.
+
+在 `.bashrc` 文件里加入下面这一行
 
 ```bash
 export QT_QPA_PLATFORM=xcb
@@ -208,6 +212,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>Failed to create wl_display (No such file or directory)<br>
 qt.qpa.plugin: Could not load the Qt platform plugin "wayland" in "" even though it was found.</p>
 </blockquote>
+<p>在 <code class="notranslate">.bashrc</code> 文件里加入下面这一行</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-k">export</span> QT_QPA_PLATFORM=xcb</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️ 转载文章请注明出处，谢谢！❤️</div>
 
