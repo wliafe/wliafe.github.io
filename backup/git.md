@@ -28,15 +28,28 @@
 
 单机右键，打开Git Bush Here然后通过输入命令设置用户名。
 
+配置用户名
+
 ```bash
-# 配置用户名
 git config --global user.name "Github的用户名"      
-# 配置用户邮箱
-git config --global user.email "GitHub的绑定邮箱"   
-# 查看用户名
-git config --global user.name                      
-# 查看用户邮箱
-git config --global user.email                     
+```
+
+配置用户邮箱
+
+```bash
+git config --global user.email "GitHub的绑定邮箱"
+```
+
+查看用户名
+
+```bash
+git config --global user.name
+```
+
+查看用户邮箱
+
+```bash
+git config --global user.email
 ```
 
 ![10](https://github.com/user-attachments/assets/b610171c-43d2-4d3a-a24c-a80cb04a03ff)
@@ -45,7 +58,11 @@ git config --global user.email
 
 ```bash
 cd ~/.ssh
-# 生成SSH
+```
+
+生成SSH
+
+```bash
 ssh-keygen -t rsa -C "Githum的绑定邮箱"     
 ```
 
@@ -71,34 +88,87 @@ ssh-keygen -t rsa -C "Githum的绑定邮箱"
 
 在本地新建文件夹，这个文件夹将成为与GitHub链接的文件夹。在文件夹中依次输入如下命令
 
+如果链接存在内容的仓库
+
 ```bash
-# 如果链接存在内容的仓库
 git clone "GitHub之前复制的网址"
-# 创建git
+```
+
+创建git
+
+```bash
 git init
-# 保存GitHub网址
+```
+
+保存GitHub网址
+
+```bash
 git remote add origin "GitHub之前复制的网址"
-# 从GitHub中拉取文件覆盖本地文件夹
+```
+
+从GitHub中拉取文件覆盖本地文件夹
+
+```bash
 git pull origin master
-# 保存本地更改
+```
+
+保存本地更改
+
+```bash
 git stash
-# 查看本地分支
+```
+
+查看本地分支
+
+```bash
 git branch
-# 在本地新建分支
+```
+
+在本地新建分支
+
+```bash
 git branch "分支名"
-# 切换本地分支
+```
+
+切换本地分支
+
+```bash
 git checkout "分支名"
-# 删除本地分支
+```
+
+删除本地分支
+
+```bash
 git branch -d "分支名"
-# 将文件放入缓存区
+```
+
+将文件放入缓存区
+
+```bash
 git add "文件名"
-# 将本地的所有文件放入缓存区
+```
+
+将本地的所有文件放入缓存区
+
+```bash
 git add .
-# 为放入缓存中的文件添加说明
+```
+
+为放入缓存中的文件添加说明
+
+```bash
 git commit -m "注释"
-# 将缓存中的文件上传到GitHub
+```
+
+将缓存中的文件上传到GitHub
+
+```bash
 git push origin master
-# 取消某个文件的版本控制
+```
+
+取消某个文件的版本控制
+
+```bash
 git rm -r --cached "要取消版本控制的文件或文件夹"
 ```
 
@@ -106,16 +176,33 @@ git rm -r --cached "要取消版本控制的文件或文件夹"
 
 **git 代理设置命令**
 
+设置代理http
+
 ```bash
-# 设置代理http
 git config --global http.proxy http://127.0.0.1:8889
-# 设置代理https
+```
+
+设置代理https
+
+```bash
 git config --global https.proxy https://127.0.0.1:8889
-# 取消代理http
+```
+
+取消代理http
+
+```bash
 git config --global --unset http.proxy
-# 取消代理https
+```
+
+取消代理https
+
+```bash
 git config --global --unset https.proxy
-# 查看git配置
+```
+
+查看git配置
+
+```bash
 git config -l --global
 ```
 
@@ -147,6 +234,9 @@ git config -l --global
 
 ```bash
 git config --global http.proxy http://127.0.0.1:8889
+```
+
+```bash
 git config --global https.proxy https://127.0.0.1:8889
 ```
 
@@ -171,6 +261,9 @@ https.proxy=https://127.0.0.1:8889
 
 ```bash
 git config --global --unset http.proxy
+```
+
+```bash
 git config --global --unset https.proxy
 ```
 
