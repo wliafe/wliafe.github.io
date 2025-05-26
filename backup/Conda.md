@@ -1,3 +1,43 @@
+本文首先列出我常用的环境命令方便我以后使用，然后介绍了conda的基本使用方法。
+
+# 常用环境
+
+## pytorch 环境
+
+```bash
+conda create -n pytorch python=3.10
+```
+```bash
+conda activate pytorch
+```
+```bash
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+```
+```bash
+conda install jupyter
+```
+```bash
+pip3 install pandas matplotlib
+```
+
+## limu 环境(d2l 环境)
+
+```bash
+conda create -n limu python=3.8
+```
+```bash
+conda activate limu
+```
+```bash
+conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=12.1 -c pytorch -c nvidia
+```
+```bash
+conda install jupyter==1.0.0
+```
+```bash
+pip3 install d2l==0.17.5
+```
+
 # 管理环境
 
 ## 创建环境

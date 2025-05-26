@@ -1,20 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>wliafe</title><link>https://wliafe.github.io</link><description>一种生活，一种态度</description><copyright>wliafe</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://wliafe.github.io/wliafe.jpg</url><title>avatar</title><link>https://wliafe.github.io</link></image><lastBuildDate>Mon, 26 May 2025 15:01:33 +0000</lastBuildDate><managingEditor>wliafe</managingEditor><ttl>60</ttl><webMaster>wliafe</webMaster><item><title>Windows Subsystem for Linux (WSL)</title><link>https://wliafe.github.io/post/Windows%20Subsystem%20for%20Linux%20%28WSL%29.html</link><description>在Windows上直接编写代码存在不少问题，例如:
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>wliafe</title><link>https://wliafe.github.io</link><description>一种生活，一种态度</description><copyright>wliafe</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://wliafe.github.io/wliafe.jpg</url><title>avatar</title><link>https://wliafe.github.io</link></image><lastBuildDate>Mon, 26 May 2025 15:37:04 +0000</lastBuildDate><managingEditor>wliafe</managingEditor><ttl>60</ttl><webMaster>wliafe</webMaster><item><title>Windows Subsystem for Linux (WSL)</title><link>https://wliafe.github.io/post/Windows%20Subsystem%20for%20Linux%20%28WSL%29.html</link><description>在Windows上直接编写代码存在不少问题，例如:
 
 - 环境污染: 多个python版本，每个版本不同环境等
 - 软件杂而多: 各种软件，多次修改环境变量，导致Windows环境变量乱七八糟
 - 运行环境不匹配: 很多软件例如MySQL, Redis等，都比较适合运行在Linux上，但为了在Windows上运行，需要修改环境变量，安装软件，修改配置文件等，非常麻烦
 
-为了解决这个问题，这里我使用一个软件，两个方案，较好的解决这样的问题。</description><guid isPermaLink="true">https://wliafe.github.io/post/Windows%20Subsystem%20for%20Linux%20%28WSL%29.html</guid><pubDate>Mon, 26 May 2025 05:32:05 +0000</pubDate></item><item><title>Conda</title><link>https://wliafe.github.io/post/Conda.html</link><description># 管理环境
-
-## 创建环境
-
-```bash
-conda create -n env-name [list of package]
-```
--n env-name是设置新建环境的名字
-
-list of package是可选项，选择要为该环境安装的包。</description><guid isPermaLink="true">https://wliafe.github.io/post/Conda.html</guid><pubDate>Sun, 25 May 2025 11:34:48 +0000</pubDate></item><item><title>wsl2 Ubuntu Qt for Python环境搭建</title><link>https://wliafe.github.io/post/wsl2%20Ubuntu%20Qt%20for%20Python-huan-jing-da-jian.html</link><description># 安装基础环境
+为了解决这个问题，这里我使用一个软件，两个方案，较好的解决这样的问题。</description><guid isPermaLink="true">https://wliafe.github.io/post/Windows%20Subsystem%20for%20Linux%20%28WSL%29.html</guid><pubDate>Mon, 26 May 2025 05:32:05 +0000</pubDate></item><item><title>Conda</title><link>https://wliafe.github.io/post/Conda.html</link><description>本文首先列出我常用的环境命令方便我以后使用，然后介绍了conda的基本使用方法。</description><guid isPermaLink="true">https://wliafe.github.io/post/Conda.html</guid><pubDate>Sun, 25 May 2025 11:34:48 +0000</pubDate></item><item><title>wsl2 Ubuntu Qt for Python环境搭建</title><link>https://wliafe.github.io/post/wsl2%20Ubuntu%20Qt%20for%20Python-huan-jing-da-jian.html</link><description># 安装基础环境
 
 ```bash
 sudo apt update

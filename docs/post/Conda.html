@@ -10,27 +10,9 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="# 管理环境
-
-## 创建环境
-
-```bash
-conda create -n env-name [list of package]
-```
--n env-name是设置新建环境的名字
-
-list of package是可选项，选择要为该环境安装的包。">
+<meta name="description" content="本文首先列出我常用的环境命令方便我以后使用，然后介绍了conda的基本使用方法。">
 <meta property="og:title" content="Conda">
-<meta property="og:description" content="# 管理环境
-
-## 创建环境
-
-```bash
-conda create -n env-name [list of package]
-```
--n env-name是设置新建环境的名字
-
-list of package是可选项，选择要为该环境安装的包。">
+<meta property="og:description" content="本文首先列出我常用的环境命令方便我以后使用，然后介绍了conda的基本使用方法。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://wliafe.github.io/post/Conda.html">
 <meta property="og:image" content="https://wliafe.github.io/wliafe.jpg">
@@ -101,7 +83,21 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>管理环境</h1>
+<div class="markdown-body" id="postBody"><p>本文首先列出我常用的环境命令方便我以后使用，然后介绍了conda的基本使用方法。</p>
+<h1>常用环境</h1>
+<h2>pytorch 环境</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda create -n pytorch python=3.10</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda activate pytorch</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda install jupyter</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">pip3 install pandas matplotlib</pre></div>
+<h2>limu 环境(d2l 环境)</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda create -n limu python=3.8</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda activate limu</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=12.1 -c pytorch -c nvidia</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda install jupyter==1.0.0</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">pip3 install d2l==0.17.5</pre></div>
+<h1>管理环境</h1>
 <h2>创建环境</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda create -n env-name [list of package]</pre></div>
 <p>-n env-name是设置新建环境的名字</p>
