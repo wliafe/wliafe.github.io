@@ -28,3 +28,9 @@ sudo apt-get install libxkbcommon-x11-0
 ```bash
 pip install pyside6
 ```
+
+# 解决输出界面中文乱码问题
+
+```bash
+sudo apt-get install fonts-noto-cjk
+```
