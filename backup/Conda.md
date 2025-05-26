@@ -47,6 +47,20 @@ conda install jupyter==1.0.0
 pip3 install d2l==0.17.5
 ```
 
+## pip 换清华源加快速度
+
+临时使用
+
+```bash
+pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple some-package
+```
+
+设为默认
+
+```bash
+pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+```
+
 # 管理环境
 
 ## 创建环境
