@@ -61,6 +61,12 @@ pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple some-package
 pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 ```
 
+恢复默认源
+
+```bash
+pip config unset global.index-url
+```
+
 # 管理环境
 
 ## 创建环境

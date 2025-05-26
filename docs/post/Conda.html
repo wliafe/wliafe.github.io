@@ -105,6 +105,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-source-shell"><pre class="notranslate">pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple some-package</pre></div>
 <p>设为默认</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">pip config <span class="pl-c1">set</span> global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple</pre></div>
+<p>恢复默认源</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">pip config <span class="pl-c1">unset</span> global.index-url</pre></div>
 <h1>管理环境</h1>
 <h2>创建环境</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda create -n env-name [list of package]</pre></div>
