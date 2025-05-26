@@ -2,6 +2,15 @@
 
 # 常用环境
 
+## python 环境
+
+```bash
+conda create -n python310 python=3.10
+```
+```bash
+conda activate python310
+```
+
 ## pytorch 环境
 
 ```bash
