@@ -11,6 +11,26 @@ conda create -n python310 python=3.10
 conda activate python310
 ```
 
+### qt 环境
+
+```bash
+pip3 install pyside6
+```
+
+### 爬虫环境
+
+请求库
+
+```bash
+pip3 install requests httpx[http2]
+```
+
+html解析库
+
+```bash
+pip3 install beautifulsoup4 pyquery parsel
+```
+
 ## pytorch 环境
 
 ```bash
