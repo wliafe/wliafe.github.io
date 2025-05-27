@@ -63,7 +63,7 @@ cd ~/.ssh
 生成SSH
 
 ```bash
-ssh-keygen -t rsa -C "Githum的绑定邮箱"     
+ssh-keygen -t rsa -C "Github的绑定邮箱"     
 ```
 
 然后都敲回车，生成下图则成功。

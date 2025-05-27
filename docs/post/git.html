@@ -166,7 +166,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>通过命令生成SSH Key</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-k">~</span>/.ssh</pre></div>
 <p>生成SSH</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">ssh-keygen -t rsa -C <span class="pl-s"><span class="pl-pds">"</span>Githum的绑定邮箱<span class="pl-pds">"</span></span>     </pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ssh-keygen -t rsa -C <span class="pl-s"><span class="pl-pds">"</span>Github的绑定邮箱<span class="pl-pds">"</span></span>     </pre></div>
 <p>然后都敲回车，生成下图则成功。</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/7d7ed643-24d2-4d71-b5d0-90b93f4fc139"><img src="https://github.com/user-attachments/assets/7d7ed643-24d2-4d71-b5d0-90b93f4fc139" alt="11" style="max-width: 100%;"></a></p>
 <p>创建完成后，在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人</p>
