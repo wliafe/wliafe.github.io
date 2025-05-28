@@ -114,6 +114,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-source-shell"><pre class="notranslate">pip config <span class="pl-c1">set</span> global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple</pre></div>
 <p>恢复默认源</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">pip config <span class="pl-c1">unset</span> global.index-url</pre></div>
+<h1>管理conda</h1>
+<p>获取版本号</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda --version</pre></div>
+<p>列出所有的环境</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda env list</pre></div>
+<p>查看conda当前环境下的包</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda list</pre></div>
+<p>查看环境管理的全部命令帮助</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda env -h</pre></div>
+<p>conda升级：我们可以在命令行中或者anaconda prompt中执行命令进行操作。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda update conda</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda update --all</pre></div>
+<p>conda升级后释放空间：在升级完成之后，我们可以使用命令来清理一些无用的包以释放一些空间。</p>
+<p>删除没有用的包</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda clean -p</pre></div>
+<p>删除保存下来的压缩文件（.tar）</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda clean -t</pre></div>
 <h1>管理环境</h1>
 <p>创建环境</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda create -n env-name [list of package]</pre></div>
@@ -133,23 +150,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda env list</pre></div>
 <p>删除一个环境</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda env remove -n env-name</pre></div>
-<h1>管理conda</h1>
-<p>获取版本号</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda --version</pre></div>
-<p>列出所有的环境</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda env list</pre></div>
-<p>查看conda当前环境下的包</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda list</pre></div>
-<p>查看环境管理的全部命令帮助</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda env -h</pre></div>
-<p>conda升级：我们可以在命令行中或者anaconda prompt中执行命令进行操作。</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda update conda</pre></div>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda update --all</pre></div>
-<p>conda升级后释放空间：在升级完成之后，我们可以使用命令来清理一些无用的包以释放一些空间。</p>
-<p>删除没有用的包</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda clean -p</pre></div>
-<p>删除保存下来的压缩文件（.tar）</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">conda clean -t</pre></div>
 <h1>管理包</h1>
 <p>安装包 或 安装特定版本的包</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">conda install package-name</pre></div>
