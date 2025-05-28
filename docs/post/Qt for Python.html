@@ -169,6 +169,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         <span class="pl-s1">self</span>.<span class="pl-c1">logger</span>.<span class="pl-c1">info</span>(<span class="pl-s">'predict'</span>)</pre></div>
 <div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># main.py</span>
 
+<span class="pl-k">import</span> <span class="pl-s1">os</span>
 <span class="pl-k">import</span> <span class="pl-s1">sys</span>
 <span class="pl-k">import</span> <span class="pl-s1">logging</span>
 <span class="pl-k">from</span> <span class="pl-v">PySide6</span>.<span class="pl-v">QtCore</span> <span class="pl-k">import</span> <span class="pl-v">Signal</span>, <span class="pl-v">QObject</span>
@@ -176,12 +177,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-k">from</span> <span class="pl-s1">test_ui</span> <span class="pl-k">import</span> <span class="pl-v">Ui_Form</span>
 <span class="pl-k">from</span> <span class="pl-s1">run</span> <span class="pl-k">import</span> <span class="pl-v">Run</span>
 
+<span class="pl-s1">os</span>.<span class="pl-c1">environ</span>[<span class="pl-s">"QT_QPA_PLATFORM"</span>] <span class="pl-c1">=</span> <span class="pl-s">"xcb"</span>
+
 
 <span class="pl-k">class</span> <span class="pl-v">QtHandler</span>(<span class="pl-s1">logging</span>.<span class="pl-c1">Handler</span>, <span class="pl-v">QObject</span>):
     <span class="pl-k">def</span> <span class="pl-en">__init__</span>(<span class="pl-s1">self</span>):
         <span class="pl-s1">logging</span>.<span class="pl-c1">Handler</span>.<span class="pl-c1">__init__</span>(<span class="pl-s1">self</span>)
         <span class="pl-v">QObject</span>.<span class="pl-c1">__init__</span>(<span class="pl-s1">self</span>)
-        
+
     <span class="pl-s1">qt_signal</span> <span class="pl-c1">=</span> <span class="pl-en">Signal</span>(<span class="pl-s1">str</span>)
 
     <span class="pl-k">def</span> <span class="pl-en">emit</span>(<span class="pl-s1">self</span>, <span class="pl-s1">record</span>):

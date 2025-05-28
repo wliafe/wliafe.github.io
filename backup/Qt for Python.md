@@ -90,6 +90,7 @@ class Run:
 ```python
 # main.py
 
+import os
 import sys
 import logging
 from PySide6.QtCore import Signal, QObject
@@ -97,12 +98,14 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 from test_ui import Ui_Form
 from run import Run
 
+os.environ["QT_QPA_PLATFORM"] = "xcb"
+
 
 class QtHandler(logging.Handler, QObject):
     def __init__(self):
         logging.Handler.__init__(self)
         QObject.__init__(self)
-        
+
     qt_signal = Signal(str)
 
     def emit(self, record):
