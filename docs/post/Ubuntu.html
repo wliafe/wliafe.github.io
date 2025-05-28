@@ -14,20 +14,45 @@
 
 Ubuntu包管理器有：apt, apt-cache, apt-get, dpkg
 
+更新包管理器
+
 ```bash
-#更新包管理器
 apt update
-#模糊查询软件
+```
+
+模糊查询软件
+
+```bash
 apt search 软件包
-#安装软件
+```
+
+安装软件
+
+```bash
 apt install 软件包
-#下载软件源码
+```
+
+下载软件源码
+
+```bash
 apt source 软件包
-#卸载软件
+```
+
+卸载软件
+
+```bash
 apt-get remove 软件包
-#查看已安装的软件包
+```
+
+查看已安装的软件包
+
+```bash
 dpkg -l
-#查看软件包的依赖项
+```
+
+查看软件包的依赖项
+
+```bash
 dpkg --list | grep 软件包
 ```
 
@@ -35,56 +60,130 @@ dpkg --list | grep 软件包
 
 Ubuntu防火墙是ufw
 
+
+安装防火墙
+
 ```bash
-#安装防火墙
 apt install ufw
-#防火墙状态
+```
+
+防火墙状态
+
+```bash
 ufw status
-#开启防火墙
+```
+
+开启防火墙
+
+```bash
 ufw enable
-#关闭防火墙
+```
+
+关闭防火墙
+
+```bash
 ufw disable
-#查看防火墙版本
+```
+
+查看防火墙版本
+
+```bash
 ufw version
-#默认允许外部主机访问
+```
+
+默认允许外部主机访问
+
+```bash
 ufw default allow
-#默认拒绝外部主机访问
+```
+
+默认拒绝外部主机访问
+
+```bash
 ufw default deny
-#开启${port}端口
+```
+
+开启${port}端口
+
+```bash
 ufw allow ${port}/tcp
-#关闭${port}端口
+```
+
+关闭${port}端口
+
+```bash
 ufw deny ${port}/tcp
-#展示已有防火墙规则
+```
+
+展示已有防火墙规则
+
+```bash
 ufw status
 ```
 
 # 切换到root用户
 
+修改root密码
+
 ```bash
-#修改root密码
 sudo passwd root
-#在当前用户临时进入root，使用当前用户的sudo密码
+```
+
+在当前用户临时进入root，使用当前用户的sudo密码
+
+```bash
 sudo -s
+```
+
+# 配置C/C++环境
+
+```bash
+sudo apt install build-essential gdb
 ```。">
 <meta property="og:title" content="Ubuntu">
 <meta property="og:description" content="# 包管理器
 
 Ubuntu包管理器有：apt, apt-cache, apt-get, dpkg
 
+更新包管理器
+
 ```bash
-#更新包管理器
 apt update
-#模糊查询软件
+```
+
+模糊查询软件
+
+```bash
 apt search 软件包
-#安装软件
+```
+
+安装软件
+
+```bash
 apt install 软件包
-#下载软件源码
+```
+
+下载软件源码
+
+```bash
 apt source 软件包
-#卸载软件
+```
+
+卸载软件
+
+```bash
 apt-get remove 软件包
-#查看已安装的软件包
+```
+
+查看已安装的软件包
+
+```bash
 dpkg -l
-#查看软件包的依赖项
+```
+
+查看软件包的依赖项
+
+```bash
 dpkg --list | grep 软件包
 ```
 
@@ -92,36 +191,85 @@ dpkg --list | grep 软件包
 
 Ubuntu防火墙是ufw
 
+
+安装防火墙
+
 ```bash
-#安装防火墙
 apt install ufw
-#防火墙状态
+```
+
+防火墙状态
+
+```bash
 ufw status
-#开启防火墙
+```
+
+开启防火墙
+
+```bash
 ufw enable
-#关闭防火墙
+```
+
+关闭防火墙
+
+```bash
 ufw disable
-#查看防火墙版本
+```
+
+查看防火墙版本
+
+```bash
 ufw version
-#默认允许外部主机访问
+```
+
+默认允许外部主机访问
+
+```bash
 ufw default allow
-#默认拒绝外部主机访问
+```
+
+默认拒绝外部主机访问
+
+```bash
 ufw default deny
-#开启${port}端口
+```
+
+开启${port}端口
+
+```bash
 ufw allow ${port}/tcp
-#关闭${port}端口
+```
+
+关闭${port}端口
+
+```bash
 ufw deny ${port}/tcp
-#展示已有防火墙规则
+```
+
+展示已有防火墙规则
+
+```bash
 ufw status
 ```
 
 # 切换到root用户
 
+修改root密码
+
 ```bash
-#修改root密码
 sudo passwd root
-#在当前用户临时进入root，使用当前用户的sudo密码
+```
+
+在当前用户临时进入root，使用当前用户的sudo密码
+
+```bash
 sudo -s
+```
+
+# 配置C/C++环境
+
+```bash
+sudo apt install build-essential gdb
 ```。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://wliafe.github.io/post/Ubuntu.html">
@@ -195,47 +343,49 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>包管理器</h1>
 <p>Ubuntu包管理器有：apt, apt-cache, apt-get, dpkg</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>更新包管理器</span>
-apt update
-<span class="pl-c"><span class="pl-c">#</span>模糊查询软件</span>
-apt search 软件包
-<span class="pl-c"><span class="pl-c">#</span>安装软件</span>
-apt install 软件包
-<span class="pl-c"><span class="pl-c">#</span>下载软件源码</span>
-apt <span class="pl-c1">source</span> 软件包
-<span class="pl-c"><span class="pl-c">#</span>卸载软件</span>
-apt-get remove 软件包
-<span class="pl-c"><span class="pl-c">#</span>查看已安装的软件包</span>
-dpkg -l
-<span class="pl-c"><span class="pl-c">#</span>查看软件包的依赖项</span>
-dpkg --list <span class="pl-k">|</span> grep 软件包</pre></div>
+<p>更新包管理器</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">apt update</pre></div>
+<p>模糊查询软件</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">apt search 软件包</pre></div>
+<p>安装软件</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">apt install 软件包</pre></div>
+<p>下载软件源码</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">apt <span class="pl-c1">source</span> 软件包</pre></div>
+<p>卸载软件</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">apt-get remove 软件包</pre></div>
+<p>查看已安装的软件包</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dpkg -l</pre></div>
+<p>查看软件包的依赖项</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dpkg --list <span class="pl-k">|</span> grep 软件包</pre></div>
 <h1>防火墙</h1>
 <p>Ubuntu防火墙是ufw</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>安装防火墙</span>
-apt install ufw
-<span class="pl-c"><span class="pl-c">#</span>防火墙状态</span>
-ufw status
-<span class="pl-c"><span class="pl-c">#</span>开启防火墙</span>
-ufw <span class="pl-c1">enable</span>
-<span class="pl-c"><span class="pl-c">#</span>关闭防火墙</span>
-ufw disable
-<span class="pl-c"><span class="pl-c">#</span>查看防火墙版本</span>
-ufw version
-<span class="pl-c"><span class="pl-c">#</span>默认允许外部主机访问</span>
-ufw default allow
-<span class="pl-c"><span class="pl-c">#</span>默认拒绝外部主机访问</span>
-ufw default deny
-<span class="pl-c"><span class="pl-c">#</span>开启${port}端口</span>
-ufw allow <span class="pl-smi">${port}</span>/tcp
-<span class="pl-c"><span class="pl-c">#</span>关闭${port}端口</span>
-ufw deny <span class="pl-smi">${port}</span>/tcp
-<span class="pl-c"><span class="pl-c">#</span>展示已有防火墙规则</span>
-ufw status</pre></div>
+<p>安装防火墙</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">apt install ufw</pre></div>
+<p>防火墙状态</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw status</pre></div>
+<p>开启防火墙</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw <span class="pl-c1">enable</span></pre></div>
+<p>关闭防火墙</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw disable</pre></div>
+<p>查看防火墙版本</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw version</pre></div>
+<p>默认允许外部主机访问</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw default allow</pre></div>
+<p>默认拒绝外部主机访问</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw default deny</pre></div>
+<p>开启${port}端口</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw allow <span class="pl-smi">${port}</span>/tcp</pre></div>
+<p>关闭${port}端口</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw deny <span class="pl-smi">${port}</span>/tcp</pre></div>
+<p>展示已有防火墙规则</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ufw status</pre></div>
 <h1>切换到root用户</h1>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>修改root密码</span>
-sudo passwd root
-<span class="pl-c"><span class="pl-c">#</span>在当前用户临时进入root，使用当前用户的sudo密码</span>
-sudo -s</pre></div></div>
+<p>修改root密码</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo passwd root</pre></div>
+<p>在当前用户临时进入root，使用当前用户的sudo密码</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo -s</pre></div>
+<h1>配置C/C++环境</h1>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install build-essential gdb</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️ 转载文章请注明出处，谢谢！❤️</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

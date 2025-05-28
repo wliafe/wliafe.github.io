@@ -2,20 +2,45 @@
 
 Ubuntu包管理器有：apt, apt-cache, apt-get, dpkg
 
+更新包管理器
+
 ```bash
-#更新包管理器
 apt update
-#模糊查询软件
+```
+
+模糊查询软件
+
+```bash
 apt search 软件包
-#安装软件
+```
+
+安装软件
+
+```bash
 apt install 软件包
-#下载软件源码
+```
+
+下载软件源码
+
+```bash
 apt source 软件包
-#卸载软件
+```
+
+卸载软件
+
+```bash
 apt-get remove 软件包
-#查看已安装的软件包
+```
+
+查看已安装的软件包
+
+```bash
 dpkg -l
-#查看软件包的依赖项
+```
+
+查看软件包的依赖项
+
+```bash
 dpkg --list | grep 软件包
 ```
 
@@ -23,34 +48,83 @@ dpkg --list | grep 软件包
 
 Ubuntu防火墙是ufw
 
+
+安装防火墙
+
 ```bash
-#安装防火墙
 apt install ufw
-#防火墙状态
+```
+
+防火墙状态
+
+```bash
 ufw status
-#开启防火墙
+```
+
+开启防火墙
+
+```bash
 ufw enable
-#关闭防火墙
+```
+
+关闭防火墙
+
+```bash
 ufw disable
-#查看防火墙版本
+```
+
+查看防火墙版本
+
+```bash
 ufw version
-#默认允许外部主机访问
+```
+
+默认允许外部主机访问
+
+```bash
 ufw default allow
-#默认拒绝外部主机访问
+```
+
+默认拒绝外部主机访问
+
+```bash
 ufw default deny
-#开启${port}端口
+```
+
+开启${port}端口
+
+```bash
 ufw allow ${port}/tcp
-#关闭${port}端口
+```
+
+关闭${port}端口
+
+```bash
 ufw deny ${port}/tcp
-#展示已有防火墙规则
+```
+
+展示已有防火墙规则
+
+```bash
 ufw status
 ```
 
 # 切换到root用户
 
+修改root密码
+
 ```bash
-#修改root密码
 sudo passwd root
-#在当前用户临时进入root，使用当前用户的sudo密码
+```
+
+在当前用户临时进入root，使用当前用户的sudo密码
+
+```bash
 sudo -s
+```
+
+# 配置C/C++环境
+
+```bash
+sudo apt install build-essential gdb
 ```
