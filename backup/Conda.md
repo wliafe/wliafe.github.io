@@ -11,13 +11,13 @@ conda create -n python310 python=3.10
 conda activate python310
 ```
 
-### qt 环境
+qt 环境
 
 ```bash
 pip3 install pyside6
 ```
 
-### 爬虫环境
+爬虫环境
 
 请求库
 
@@ -89,7 +89,7 @@ pip config unset global.index-url
 
 # 管理环境
 
-## 创建环境
+创建环境
 
 ```bash
 conda create -n env-name [list of package]
@@ -106,7 +106,7 @@ list of package是可选项，选择要为该环境安装的包。
 conda create -n env-name python=3.6
 ```
 
-## 激活环境
+激活环境
 
 ```bash
 conda activate env-name
@@ -114,15 +114,11 @@ conda activate env-name
 
 小技巧：新的开发环境会被默认安装在你conda目录下的envs文件目录下。你可以指定一个其他的路径
 
-## 切换到base环境
-
 退出当前环境
 
 ```bash
 conda deactivate
 ```
-
-## 复制一个环境
 
 通过克隆来复制一个环境
 
@@ -136,7 +132,7 @@ conda create -n new-env-name --clone old-env-name
 conda env list
 ```
 
-## 删除一个环境
+删除一个环境
 
 ```bash
 conda env remove -n env-name
@@ -144,33 +140,31 @@ conda env remove -n env-name
 
 # 管理conda
 
-## 获取版本号
+获取版本号
 
 ```bash
 conda --version
 ```
 
-## 列出所有的环境
+列出所有的环境
 
 ```bash
 conda env list
 ```
 
-## 查看conda当前环境下的包
+查看conda当前环境下的包
 
 ```bash
 conda list
 ```
 
-## 查看环境管理的全部命令帮助
+查看环境管理的全部命令帮助
 
 ```bash
 conda env -h
 ```
 
-## conda升级
-
-我们可以在命令行中或者anaconda prompt中执行命令进行操作。
+conda升级：我们可以在命令行中或者anaconda prompt中执行命令进行操作。
 
 ```bash
 conda update conda
@@ -180,9 +174,7 @@ conda update conda
 conda update --all
 ```
 
-## conda升级后释放空间
-
-在升级完成之后，我们可以使用命令来清理一些无用的包以释放一些空间：
+conda升级后释放空间：在升级完成之后，我们可以使用命令来清理一些无用的包以释放一些空间。
 
 删除没有用的包
 
@@ -198,7 +190,7 @@ conda clean -t
 
 # 管理包
 
-## 安装包 或 安装特定版本的包
+安装包 或 安装特定版本的包
 
 ```bash
 conda install package-name
@@ -208,21 +200,19 @@ conda install package-name
 conda install package-name==version
 ```
 
-## 查看所有已安装包
+查看所有已安装包
 
 ```bash
 conda list
 ```
 
-## 卸载包
+卸载包
 
 ```bash
 conda remove package-name
 ```
 
-## 更新包
-
-更新一个包
+更新包
 
 ```bash
 conda update package-name
@@ -234,7 +224,7 @@ conda update package-name
 conda update --all
 ```
 
-## 搜索包
+搜索包
 
 ```bash
 conda search search-term
