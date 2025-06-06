@@ -262,7 +262,7 @@ flags = fcntl(fd,F_GETFL);
 <span class="pl-c"><span class="pl-c">//</span>调用失败返回-1</span></pre></div>
 <h3>分散输入和集中输出：readv()和writev()</h3>
 <div class="highlight highlight-source-c++"><pre class="notranslate">#<span class="pl-k">include</span><span class="pl-s"><span class="pl-pds">&lt;</span>sys/uio.h<span class="pl-pds">&gt;</span></span>
-sturct <span class="pl-c1">iovec</span>{
+sturct iovec{
     <span class="pl-k">void</span> *iov_base;<span class="pl-c"><span class="pl-c">//</span>起始地址</span>
     <span class="pl-c1">size_t</span> iov_len;<span class="pl-c"><span class="pl-c">//</span>读取的字节数</span>
 }

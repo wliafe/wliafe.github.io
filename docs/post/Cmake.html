@@ -92,21 +92,21 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>下载cmake软件后，创建文件夹作为一个项目。</p>
 <p>在文件夹中新建CMakeLists.txt</p>
 <p><strong>Cmake文件</strong></p>
-<div class="highlight highlight-source-cmake"><pre class="notranslate"><span class="pl-k">cmake_minimum_required</span>(<span class="pl-e">VERSION</span> 3.5)<span class="pl-c">#最低CMake版本</span>
+<div class="highlight highlight-source-cmake"><pre class="notranslate"><span class="pl-c1">cmake_minimum_required</span>(<span class="pl-c1">VERSION</span> <span class="pl-s">3.5</span>)<span class="pl-c">#<span class="pl-c">最低CMake版本</span></span>
 
-<span class="pl-k">project</span> (projectname)<span class="pl-c"># 工程名</span>
+<span class="pl-c1">project</span> (<span class="pl-s">projectname</span>)<span class="pl-c">#<span class="pl-c"> 工程名</span></span>
 
-<span class="pl-c">#添加源文件</span>
-<span class="pl-k">aux_source_directory</span>(<span class="pl-k">${CMAKE_SOURCE_DIR}</span> MAIN_FUNC_SRCS)<span class="pl-c">#源文件目录(相对路径)</span>
-
-
-<span class="pl-c">#添加.h文件</span>
-<span class="pl-k">include_directories</span>(<span class="pl-k">${CMAKE_SOURCE_DIR}</span>)<span class="pl-c">#.h文件目录(相对路径)</span>
+<span class="pl-c">#<span class="pl-c">添加源文件</span></span>
+<span class="pl-c1">aux_source_directory</span>(<span class="pl-smi">${CMAKE_SOURCE_DIR}</span> <span class="pl-s">MAIN_FUNC_SRCS</span>)<span class="pl-c">#<span class="pl-c">源文件目录(相对路径)</span></span>
 
 
-<span class="pl-c">#指定生成目标</span>
-<span class="pl-k">add_executable</span>(<span class="pl-k">${PROJECT_NAME}</span> <span class="pl-k">${MAIN_FUNC_SRCS}</span>)
-            生成的可执行文件名      所有的源文件</pre></div>
+<span class="pl-c">#<span class="pl-c">添加.h文件</span></span>
+<span class="pl-c1">include_directories</span>(<span class="pl-smi">${CMAKE_SOURCE_DIR}</span>)<span class="pl-c">#<span class="pl-c">.h文件目录(相对路径)</span></span>
+
+
+<span class="pl-c">#<span class="pl-c">指定生成目标</span></span>
+<span class="pl-c1">add_executable</span>(<span class="pl-smi">${PROJECT_NAME}</span> <span class="pl-smi">${MAIN_FUNC_SRCS}</span>)
+            <span class="pl-s">生成的可执行文件名</span>      <span class="pl-s">所有的源文件</span></pre></div>
 <p>Cmake命令</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">mkdir build
 <span class="pl-c1">cd</span> build
@@ -122,29 +122,29 @@ make</pre></div>
      └── CMakeLists.txt
 </code></pre>
 <h1>cmake较理想结构</h1>
-<div class="highlight highlight-source-cmake"><pre class="notranslate"><span class="pl-k">cmake_minimum_required</span>(<span class="pl-e">VERSION</span> 3.20.2)
-<span class="pl-k">project</span>(SunProject)
+<div class="highlight highlight-source-cmake"><pre class="notranslate"><span class="pl-c1">cmake_minimum_required</span>(<span class="pl-c1">VERSION</span> <span class="pl-s">3.20.2</span>)
+<span class="pl-c1">project</span>(<span class="pl-s">SunProject</span>)
 
-<span class="pl-k">set</span>(CMAKE_CXX_STANDARD 14)
+<span class="pl-c1">set</span>(<span class="pl-c1">CMAKE_CXX_STANDARD</span> <span class="pl-s">14</span>)
 
-<span class="pl-k">add_library</span>(<span class="pl-k">${PROJECT_NAME}</span>-lib
+<span class="pl-c1">add_library</span>(<span class="pl-smi">${PROJECT_NAME}</span><span class="pl-s">-lib</span>
         
         )
 
-<span class="pl-k">add_definitions</span>(
+<span class="pl-c1">add_definitions</span>(
        
 )
 
-<span class="pl-k">target_include_directories</span>(<span class="pl-k">${PROJECT_NAME}</span>-lib <span class="pl-e">PUBLIC</span> src)
+<span class="pl-c1">target_include_directories</span>(<span class="pl-smi">${PROJECT_NAME}</span><span class="pl-s">-lib</span> <span class="pl-c1">PUBLIC</span> <span class="pl-s">src</span>)
 
-<span class="pl-k">add_executable</span>(<span class="pl-k">${PROJECT_NAME}</span>-exe src/main.cpp)
+<span class="pl-c1">add_executable</span>(<span class="pl-smi">${PROJECT_NAME}</span><span class="pl-s">-exe</span> <span class="pl-s">src/main.cpp</span>)
 
-<span class="pl-k">target_link_libraries</span>(<span class="pl-k">${PROJECT_NAME}</span>-exe <span class="pl-e">PRIVATE</span> <span class="pl-k">${PROJECT_NAME}</span>-lib)</pre></div>
+<span class="pl-c1">target_link_libraries</span>(<span class="pl-smi">${PROJECT_NAME}</span><span class="pl-s">-exe</span> <span class="pl-c1">PRIVATE</span> <span class="pl-smi">${PROJECT_NAME}</span><span class="pl-s">-lib</span>)</pre></div>
 <h1>add_definitions( )</h1>
 <p>变量名需要以D开头，变量在代码中作为宏定义出现</p>
 <p>cmake文件：</p>
-<div class="highlight highlight-source-cmake"><pre class="notranslate"><span class="pl-k">add_definitions</span>(
-        -DCONFIG_FILE=<span class="pl-s">"<span class="pl-k">${CMAKE_CURRENT_SOURCE_DIR}</span>/config"</span>
+<div class="highlight highlight-source-cmake"><pre class="notranslate"><span class="pl-c1">add_definitions</span>(
+        <span class="pl-s">-DCONFIG_FILE=</span><span class="pl-s">"<span class="pl-smi">${CMAKE_CURRENT_SOURCE_DIR}</span>/config"</span>
 )</pre></div>
 <p>cpp文件：</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">std::ifstream <span class="pl-en">conf</span>(CONFIG_FILE<span class="pl-s"><span class="pl-pds">"</span>/config<span class="pl-pds">"</span></span>);</pre></div>
