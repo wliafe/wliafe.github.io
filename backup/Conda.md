@@ -67,6 +67,12 @@ conda install jupyter==1.0.0
 pip3 install d2l==0.17.5
 ```
 
+## pytorch对应的python版本
+
+安装最新版本的pytorch，可以直接去[官方文档](https://pytorch.ac.cn/)查看所需python版本和安装命令。
+
+需要安装旧版的pytorch，就要查看旧版pytorch对应的python版本，官方提供的版本对照表不在官方文档中，而在GitHub源代码仓库里，这里是[版本对照表](https://github.com/pytorch/pytorch/blob/main/RELEASE.md#release-compatibility-matrix)，这里是[旧版pytorch 的安装命令](https://pytorch.ac.cn/get-started/previous-versions/)。
+
 ## pip 换清华源加快速度
 
 临时使用
