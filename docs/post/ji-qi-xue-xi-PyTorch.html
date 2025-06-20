@@ -10,13 +10,9 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="# 简介
-
-开始学习机器学习了，关注哔哩哔哩的up主[跟李沐学AI](https://space.bilibili.com/1567748478)，学习 **【完结】动手学深度学习 PyTorch版** 合集视频。">
+<meta name="description" content="开始学习机器学习了，关注哔哩哔哩的up主[跟李沐学AI](https://space.bilibili.com/1567748478)，学习 **【完结】动手学深度学习 PyTorch版** 合集视频。">
 <meta property="og:title" content="机器学习PyTorch">
-<meta property="og:description" content="# 简介
-
-开始学习机器学习了，关注哔哩哔哩的up主[跟李沐学AI](https://space.bilibili.com/1567748478)，学习 **【完结】动手学深度学习 PyTorch版** 合集视频。">
+<meta property="og:description" content="开始学习机器学习了，关注哔哩哔哩的up主[跟李沐学AI](https://space.bilibili.com/1567748478)，学习 **【完结】动手学深度学习 PyTorch版** 合集视频。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://wliafe.github.io/post/ji-qi-xue-xi-PyTorch.html">
 <meta property="og:image" content="https://wliafe.github.io/wliafe.jpg">
@@ -87,10 +83,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>简介</h1>
-<p>开始学习机器学习了，关注哔哩哔哩的up主<a href="https://space.bilibili.com/1567748478" rel="nofollow">跟李沐学AI</a>，学习 <strong>【完结】动手学深度学习 PyTorch版</strong> 合集视频。这篇博客是我对机器学习的补充。</p>
+<div class="markdown-body" id="postBody"><p>开始学习机器学习了，关注哔哩哔哩的up主<a href="https://space.bilibili.com/1567748478" rel="nofollow">跟李沐学AI</a>，学习 <strong>【完结】动手学深度学习 PyTorch版</strong> 合集视频。这篇博客是我对机器学习的补充。</p>
 <p>配套资料<a href="https://zh.d2l.ai/" rel="nofollow">《动手学深度学习》</a></p>
-<h1>flask应用</h1>
+<h2>pytorch环境搭建</h2>
+<p>官网下载<a href="https://www.anaconda.com/download/success" rel="nofollow">Miniconda</a>脚本并安装。</p>
+<p>pytorch环境搭建（参考<a href="https://wliafe.github.io/post/Conda.html" rel="nofollow">Conda</a>）</p>
+<h2>flask应用</h2>
 <div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">from</span> <span class="pl-s1">flask</span> <span class="pl-k">import</span> <span class="pl-v">Flask</span>, <span class="pl-s1">render_template</span>, <span class="pl-s1">request</span>, <span class="pl-s1">jsonify</span>
 
 <span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-en">Flask</span>(<span class="pl-s1">__name__</span>)

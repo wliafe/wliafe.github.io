@@ -1,10 +1,14 @@
-# 简介
-
 开始学习机器学习了，关注哔哩哔哩的up主[跟李沐学AI](https://space.bilibili.com/1567748478)，学习 **【完结】动手学深度学习 PyTorch版** 合集视频。这篇博客是我对机器学习的补充。
 
 配套资料[《动手学深度学习》](https://zh.d2l.ai/)
 
-# flask应用
+## pytorch环境搭建
+
+官网下载[Miniconda](https://www.anaconda.com/download/success)脚本并安装。
+
+pytorch环境搭建（参考[Conda](https://wliafe.github.io/post/Conda.html)）
+
+## flask应用
 
 ```py
 from flask import Flask, render_template, request, jsonify
