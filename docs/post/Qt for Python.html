@@ -89,46 +89,198 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>Qt将控制台的输出信息实时显示到GUI界面上</h1>
 <p>将logging库与pyside6的Signal结合使用，可以轻而易举地将控制台的输出信息实时显示到GUI界面上，具体做法如下，其中QtHandler类是自定义的Signal类，用于将logging库的输出信息转换为Signal信号，从而实现将控制台的输出信息实时显示到GUI界面上。</p>
-<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># test_ui.py</span>
+<div class="highlight highlight-text-xml"><pre class="notranslate"># main.ui
+
+&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>?&gt;
+&lt;<span class="pl-ent">ui</span> <span class="pl-e">version</span>=<span class="pl-s"><span class="pl-pds">"</span>4.0<span class="pl-pds">"</span></span>&gt;
+ &lt;<span class="pl-ent">class</span>&gt;Form&lt;/<span class="pl-ent">class</span>&gt;
+ &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QWidget<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>Form<span class="pl-pds">"</span></span>&gt;
+  &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">rect</span>&gt;
+    &lt;<span class="pl-ent">x</span>&gt;0&lt;/<span class="pl-ent">x</span>&gt;
+    &lt;<span class="pl-ent">y</span>&gt;0&lt;/<span class="pl-ent">y</span>&gt;
+    &lt;<span class="pl-ent">width</span>&gt;400&lt;/<span class="pl-ent">width</span>&gt;
+    &lt;<span class="pl-ent">height</span>&gt;300&lt;/<span class="pl-ent">height</span>&gt;
+   &lt;/<span class="pl-ent">rect</span>&gt;
+  &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>windowTitle<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">string</span>&gt;批量文字替换&lt;/<span class="pl-ent">string</span>&gt;
+  &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QPushButton<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>folderSearchButton<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;320&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;10&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;61&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;24&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">string</span>&gt;浏览&lt;/<span class="pl-ent">string</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QLineEdit<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>folderPathLineEdit<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;100&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;10&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;221&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;21&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QLineEdit<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>oldWordLineEdit<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;100&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;40&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;281&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;21&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QLineEdit<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>newWordLineEdit<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;100&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;70&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;281&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;21&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QTextBrowser<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>textBrowser<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;10&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;131&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;371&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;161&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QLabel<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>folderPathLabel<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;10&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;10&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;71&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;20&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">string</span>&gt;文件路径&lt;/<span class="pl-ent">string</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>alignment<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">set</span>&gt;Qt::AlignmentFlag::AlignCenter&lt;/<span class="pl-ent">set</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QLabel<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>oldWordLabel<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;10&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;40&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;71&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;20&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">string</span>&gt;查找内容&lt;/<span class="pl-ent">string</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>alignment<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">set</span>&gt;Qt::AlignmentFlag::AlignCenter&lt;/<span class="pl-ent">set</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QLabel<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>newWordLabel<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;10&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;70&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;71&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;20&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">string</span>&gt;替换为&lt;/<span class="pl-ent">string</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>alignment<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">set</span>&gt;Qt::AlignmentFlag::AlignCenter&lt;/<span class="pl-ent">set</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+  &lt;<span class="pl-ent">widget</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>QPushButton<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>runButton<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>geometry<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">rect</span>&gt;
+     &lt;<span class="pl-ent">x</span>&gt;14&lt;/<span class="pl-ent">x</span>&gt;
+     &lt;<span class="pl-ent">y</span>&gt;100&lt;/<span class="pl-ent">y</span>&gt;
+     &lt;<span class="pl-ent">width</span>&gt;361&lt;/<span class="pl-ent">width</span>&gt;
+     &lt;<span class="pl-ent">height</span>&gt;24&lt;/<span class="pl-ent">height</span>&gt;
+    &lt;/<span class="pl-ent">rect</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+   &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">string</span>&gt;开始执行&lt;/<span class="pl-ent">string</span>&gt;
+   &lt;/<span class="pl-ent">property</span>&gt;
+  &lt;/<span class="pl-ent">widget</span>&gt;
+ &lt;/<span class="pl-ent">widget</span>&gt;
+ &lt;<span class="pl-ent">resources</span>/&gt;
+ &lt;<span class="pl-ent">connections</span>/&gt;
+&lt;/<span class="pl-ent">ui</span>&gt;</pre></div>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># main_ui.py</span>
 
 <span class="pl-c"># -*- coding: utf-8 -*-</span>
 
 <span class="pl-c">################################################################################</span>
-<span class="pl-c"># Form generated from reading UI file 'test.ui'</span>
+<span class="pl-c">## Form generated from reading UI file 'main.ui'</span>
 <span class="pl-c">##</span>
-<span class="pl-c"># Created by: Qt User Interface Compiler version 6.9.0</span>
+<span class="pl-c">## Created by: Qt User Interface Compiler version 6.9.1</span>
 <span class="pl-c">##</span>
-<span class="pl-c"># WARNING! All changes made in this file will be lost when recompiling UI file!</span>
+<span class="pl-c">## WARNING! All changes made in this file will be lost when recompiling UI file!</span>
 <span class="pl-c">################################################################################</span>
 
 <span class="pl-k">from</span> <span class="pl-v">PySide6</span>.<span class="pl-v">QtCore</span> <span class="pl-k">import</span> (<span class="pl-v">QCoreApplication</span>, <span class="pl-v">QDate</span>, <span class="pl-v">QDateTime</span>, <span class="pl-v">QLocale</span>,
-                            <span class="pl-v">QMetaObject</span>, <span class="pl-v">QObject</span>, <span class="pl-v">QPoint</span>, <span class="pl-v">QRect</span>,
-                            <span class="pl-v">QSize</span>, <span class="pl-v">QTime</span>, <span class="pl-v">QUrl</span>, <span class="pl-v">Qt</span>)
+    <span class="pl-v">QMetaObject</span>, <span class="pl-v">QObject</span>, <span class="pl-v">QPoint</span>, <span class="pl-v">QRect</span>,
+    <span class="pl-v">QSize</span>, <span class="pl-v">QTime</span>, <span class="pl-v">QUrl</span>, <span class="pl-v">Qt</span>)
 <span class="pl-k">from</span> <span class="pl-v">PySide6</span>.<span class="pl-v">QtGui</span> <span class="pl-k">import</span> (<span class="pl-v">QBrush</span>, <span class="pl-v">QColor</span>, <span class="pl-v">QConicalGradient</span>, <span class="pl-v">QCursor</span>,
-                           <span class="pl-v">QFont</span>, <span class="pl-v">QFontDatabase</span>, <span class="pl-v">QGradient</span>, <span class="pl-v">QIcon</span>,
-                           <span class="pl-v">QImage</span>, <span class="pl-v">QKeySequence</span>, <span class="pl-v">QLinearGradient</span>, <span class="pl-v">QPainter</span>,
-                           <span class="pl-v">QPalette</span>, <span class="pl-v">QPixmap</span>, <span class="pl-v">QRadialGradient</span>, <span class="pl-v">QTransform</span>)
-<span class="pl-k">from</span> <span class="pl-v">PySide6</span>.<span class="pl-v">QtWidgets</span> <span class="pl-k">import</span> (<span class="pl-v">QApplication</span>, <span class="pl-v">QPushButton</span>, <span class="pl-v">QSizePolicy</span>, <span class="pl-v">QTextBrowser</span>,
-                               <span class="pl-v">QWidget</span>)
-
+    <span class="pl-v">QFont</span>, <span class="pl-v">QFontDatabase</span>, <span class="pl-v">QGradient</span>, <span class="pl-v">QIcon</span>,
+    <span class="pl-v">QImage</span>, <span class="pl-v">QKeySequence</span>, <span class="pl-v">QLinearGradient</span>, <span class="pl-v">QPainter</span>,
+    <span class="pl-v">QPalette</span>, <span class="pl-v">QPixmap</span>, <span class="pl-v">QRadialGradient</span>, <span class="pl-v">QTransform</span>)
+<span class="pl-k">from</span> <span class="pl-v">PySide6</span>.<span class="pl-v">QtWidgets</span> <span class="pl-k">import</span> (<span class="pl-v">QApplication</span>, <span class="pl-v">QLabel</span>, <span class="pl-v">QLineEdit</span>, <span class="pl-v">QPushButton</span>,
+    <span class="pl-v">QSizePolicy</span>, <span class="pl-v">QTextBrowser</span>, <span class="pl-v">QWidget</span>)
 
 <span class="pl-k">class</span> <span class="pl-v">Ui_Form</span>(<span class="pl-s1">object</span>):
     <span class="pl-k">def</span> <span class="pl-en">setupUi</span>(<span class="pl-s1">self</span>, <span class="pl-v">Form</span>):
         <span class="pl-k">if</span> <span class="pl-c1">not</span> <span class="pl-v">Form</span>.<span class="pl-c1">objectName</span>():
             <span class="pl-v">Form</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"Form"</span>)
         <span class="pl-v">Form</span>.<span class="pl-c1">resize</span>(<span class="pl-c1">400</span>, <span class="pl-c1">300</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">train_button</span> <span class="pl-c1">=</span> <span class="pl-en">QPushButton</span>(<span class="pl-v">Form</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">train_button</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"train_button"</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">train_button</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">30</span>, <span class="pl-c1">220</span>, <span class="pl-c1">83</span>, <span class="pl-c1">22</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderSearchButton</span> <span class="pl-c1">=</span> <span class="pl-en">QPushButton</span>(<span class="pl-v">Form</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderSearchButton</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"folderSearchButton"</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderSearchButton</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">320</span>, <span class="pl-c1">10</span>, <span class="pl-c1">61</span>, <span class="pl-c1">24</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderPathLineEdit</span> <span class="pl-c1">=</span> <span class="pl-en">QLineEdit</span>(<span class="pl-v">Form</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderPathLineEdit</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"folderPathLineEdit"</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderPathLineEdit</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">100</span>, <span class="pl-c1">10</span>, <span class="pl-c1">221</span>, <span class="pl-c1">21</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">oldWordLineEdit</span> <span class="pl-c1">=</span> <span class="pl-en">QLineEdit</span>(<span class="pl-v">Form</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">oldWordLineEdit</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"oldWordLineEdit"</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">oldWordLineEdit</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">100</span>, <span class="pl-c1">40</span>, <span class="pl-c1">281</span>, <span class="pl-c1">21</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">newWordLineEdit</span> <span class="pl-c1">=</span> <span class="pl-en">QLineEdit</span>(<span class="pl-v">Form</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">newWordLineEdit</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"newWordLineEdit"</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">newWordLineEdit</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">100</span>, <span class="pl-c1">70</span>, <span class="pl-c1">281</span>, <span class="pl-c1">21</span>))
         <span class="pl-s1">self</span>.<span class="pl-c1">textBrowser</span> <span class="pl-c1">=</span> <span class="pl-en">QTextBrowser</span>(<span class="pl-v">Form</span>)
         <span class="pl-s1">self</span>.<span class="pl-c1">textBrowser</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"textBrowser"</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">textBrowser</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">70</span>, <span class="pl-c1">10</span>, <span class="pl-c1">256</span>, <span class="pl-c1">192</span>))
-        <span class="pl-s1">self</span>.<span class="pl-c1">test_button</span> <span class="pl-c1">=</span> <span class="pl-en">QPushButton</span>(<span class="pl-v">Form</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">test_button</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"test_button"</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">test_button</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">150</span>, <span class="pl-c1">220</span>, <span class="pl-c1">83</span>, <span class="pl-c1">22</span>))
-        <span class="pl-s1">self</span>.<span class="pl-c1">predict_button</span> <span class="pl-c1">=</span> <span class="pl-en">QPushButton</span>(<span class="pl-v">Form</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">predict_button</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"predict_button"</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">predict_button</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">280</span>, <span class="pl-c1">220</span>, <span class="pl-c1">83</span>, <span class="pl-c1">22</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">textBrowser</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">10</span>, <span class="pl-c1">131</span>, <span class="pl-c1">371</span>, <span class="pl-c1">161</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderPathLabel</span> <span class="pl-c1">=</span> <span class="pl-en">QLabel</span>(<span class="pl-v">Form</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderPathLabel</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"folderPathLabel"</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderPathLabel</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">10</span>, <span class="pl-c1">10</span>, <span class="pl-c1">71</span>, <span class="pl-c1">20</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderPathLabel</span>.<span class="pl-c1">setAlignment</span>(<span class="pl-v">Qt</span>.<span class="pl-c1">AlignmentFlag</span>.<span class="pl-c1">AlignCenter</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">oldWordLabel</span> <span class="pl-c1">=</span> <span class="pl-en">QLabel</span>(<span class="pl-v">Form</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">oldWordLabel</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"oldWordLabel"</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">oldWordLabel</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">10</span>, <span class="pl-c1">40</span>, <span class="pl-c1">71</span>, <span class="pl-c1">20</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">oldWordLabel</span>.<span class="pl-c1">setAlignment</span>(<span class="pl-v">Qt</span>.<span class="pl-c1">AlignmentFlag</span>.<span class="pl-c1">AlignCenter</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">newWordLabel</span> <span class="pl-c1">=</span> <span class="pl-en">QLabel</span>(<span class="pl-v">Form</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">newWordLabel</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"newWordLabel"</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">newWordLabel</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">10</span>, <span class="pl-c1">70</span>, <span class="pl-c1">71</span>, <span class="pl-c1">20</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">newWordLabel</span>.<span class="pl-c1">setAlignment</span>(<span class="pl-v">Qt</span>.<span class="pl-c1">AlignmentFlag</span>.<span class="pl-c1">AlignCenter</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">runButton</span> <span class="pl-c1">=</span> <span class="pl-en">QPushButton</span>(<span class="pl-v">Form</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">runButton</span>.<span class="pl-c1">setObjectName</span>(<span class="pl-s">u"runButton"</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">runButton</span>.<span class="pl-c1">setGeometry</span>(<span class="pl-en">QRect</span>(<span class="pl-c1">14</span>, <span class="pl-c1">100</span>, <span class="pl-c1">361</span>, <span class="pl-c1">24</span>))
 
         <span class="pl-s1">self</span>.<span class="pl-c1">retranslateUi</span>(<span class="pl-v">Form</span>)
 
@@ -136,48 +288,93 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <span class="pl-c"># setupUi</span>
 
     <span class="pl-k">def</span> <span class="pl-en">retranslateUi</span>(<span class="pl-s1">self</span>, <span class="pl-v">Form</span>):
-        <span class="pl-v">Form</span>.<span class="pl-c1">setWindowTitle</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"Form"</span>, <span class="pl-c1">None</span>))
-        <span class="pl-s1">self</span>.<span class="pl-c1">train_button</span>.<span class="pl-c1">setText</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"train"</span>, <span class="pl-c1">None</span>))
-        <span class="pl-s1">self</span>.<span class="pl-c1">test_button</span>.<span class="pl-c1">setText</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"test"</span>, <span class="pl-c1">None</span>))
-        <span class="pl-s1">self</span>.<span class="pl-c1">predict_button</span>.<span class="pl-c1">setText</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"predict"</span>, <span class="pl-c1">None</span>))
+        <span class="pl-v">Form</span>.<span class="pl-c1">setWindowTitle</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"<span class="pl-cce">\u6279</span><span class="pl-cce">\u91cf</span><span class="pl-cce">\u6587</span><span class="pl-cce">\u5b57</span><span class="pl-cce">\u66ff</span><span class="pl-cce">\u6362</span>"</span>, <span class="pl-c1">None</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderSearchButton</span>.<span class="pl-c1">setText</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"<span class="pl-cce">\u6d4f</span><span class="pl-cce">\u89c8</span>"</span>, <span class="pl-c1">None</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">folderPathLabel</span>.<span class="pl-c1">setText</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"<span class="pl-cce">\u6587</span><span class="pl-cce">\u4ef6</span><span class="pl-cce">\u8def</span><span class="pl-cce">\u5f84</span>"</span>, <span class="pl-c1">None</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">oldWordLabel</span>.<span class="pl-c1">setText</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"<span class="pl-cce">\u67e5</span><span class="pl-cce">\u627e</span><span class="pl-cce">\u5185</span><span class="pl-cce">\u5bb9</span>"</span>, <span class="pl-c1">None</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">newWordLabel</span>.<span class="pl-c1">setText</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"<span class="pl-cce">\u66ff</span><span class="pl-cce">\u6362</span><span class="pl-cce">\u4e3a</span>"</span>, <span class="pl-c1">None</span>))
+        <span class="pl-s1">self</span>.<span class="pl-c1">runButton</span>.<span class="pl-c1">setText</span>(<span class="pl-v">QCoreApplication</span>.<span class="pl-c1">translate</span>(<span class="pl-s">"Form"</span>, <span class="pl-s">u"<span class="pl-cce">\u5f00</span><span class="pl-cce">\u59cb</span><span class="pl-cce">\u6267</span><span class="pl-cce">\u884c</span>"</span>, <span class="pl-c1">None</span>))
     <span class="pl-c"># retranslateUi</span></pre></div>
 <div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># run.py</span>
 
+<span class="pl-k">import</span> <span class="pl-s1">os</span>
 <span class="pl-k">import</span> <span class="pl-s1">logging</span>
+<span class="pl-k">import</span> <span class="pl-s1">pandas</span> <span class="pl-k">as</span> <span class="pl-s1">pd</span>
+<span class="pl-k">from</span> <span class="pl-s1">docx</span> <span class="pl-k">import</span> <span class="pl-v">Document</span>
+<span class="pl-k">from</span> <span class="pl-s1">win32com</span> <span class="pl-k">import</span> <span class="pl-s1">client</span>
+
 
 <span class="pl-k">class</span> <span class="pl-v">Run</span>:
     <span class="pl-k">def</span> <span class="pl-en">__init__</span>(<span class="pl-s1">self</span>):
         <span class="pl-c"># 设置日志</span>
         <span class="pl-s1">self</span>.<span class="pl-c1">logger</span> <span class="pl-c1">=</span> <span class="pl-s1">logging</span>.<span class="pl-c1">getLogger</span>()
         <span class="pl-s1">self</span>.<span class="pl-c1">logger</span>.<span class="pl-c1">setLevel</span>(<span class="pl-s1">logging</span>.<span class="pl-c1">DEBUG</span>)
-        <span class="pl-c"># 创建控制台处理器</span>
-        <span class="pl-s1">console_handler</span> <span class="pl-c1">=</span> <span class="pl-s1">logging</span>.<span class="pl-c1">StreamHandler</span>()
-        <span class="pl-s1">console_handler</span>.<span class="pl-c1">setLevel</span>(<span class="pl-s1">logging</span>.<span class="pl-c1">INFO</span>)
         <span class="pl-c"># 设置日志格式</span>
         <span class="pl-s1">self</span>.<span class="pl-c1">formatter</span> <span class="pl-c1">=</span> <span class="pl-s1">logging</span>.<span class="pl-c1">Formatter</span>(<span class="pl-s">"%(asctime)s - %(levelname)s: %(message)s"</span>)
-        <span class="pl-s1">console_handler</span>.<span class="pl-c1">setFormatter</span>(<span class="pl-s1">self</span>.<span class="pl-c1">formatter</span>)
-        <span class="pl-c"># 将处理器添加到日志记录器</span>
-        <span class="pl-s1">self</span>.<span class="pl-c1">logger</span>.<span class="pl-c1">addHandler</span>(<span class="pl-s1">console_handler</span>)
 
-    <span class="pl-k">def</span> <span class="pl-en">train</span>(<span class="pl-s1">self</span>):
-        <span class="pl-s1">self</span>.<span class="pl-c1">logger</span>.<span class="pl-c1">info</span>(<span class="pl-s">'train'</span>)
-    
-    <span class="pl-k">def</span> <span class="pl-en">test</span>(<span class="pl-s1">self</span>):
-        <span class="pl-s1">self</span>.<span class="pl-c1">logger</span>.<span class="pl-c1">info</span>(<span class="pl-s">'test'</span>)
-    
-    <span class="pl-k">def</span> <span class="pl-en">predict</span>(<span class="pl-s1">self</span>):
-        <span class="pl-s1">self</span>.<span class="pl-c1">logger</span>.<span class="pl-c1">info</span>(<span class="pl-s">'predict'</span>)</pre></div>
+    <span class="pl-k">def</span> <span class="pl-en">_batch_replace_excel_content</span>(<span class="pl-s1">self</span>, <span class="pl-s1">file_path</span>, <span class="pl-s1">old_string</span>, <span class="pl-s1">new_string</span>):
+        <span class="pl-s">'''批量替换excel中的内容'''</span>
+        <span class="pl-s1">df</span> <span class="pl-c1">=</span> <span class="pl-s1">pd</span>.<span class="pl-c1">read_excel</span>(<span class="pl-s1">file_path</span>)
+        <span class="pl-s1">df</span>.<span class="pl-c1">replace</span>(<span class="pl-s1">old_string</span>,  <span class="pl-s1">new_string</span>, <span class="pl-s1">inplace</span><span class="pl-c1">=</span><span class="pl-c1">True</span>)
+        <span class="pl-s1">df</span>.<span class="pl-c1">to_excel</span>(<span class="pl-s1">file_path</span>,  <span class="pl-s1">index</span><span class="pl-c1">=</span><span class="pl-c1">False</span>)
+
+    <span class="pl-k">def</span> <span class="pl-en">_doc_to_docx</span>(<span class="pl-s1">self</span>, <span class="pl-s1">path</span>):
+        <span class="pl-s">'''doc文件转换为docx文件'''</span>
+        <span class="pl-k">if</span> <span class="pl-s1">os</span>.<span class="pl-c1">path</span>.<span class="pl-c1">splitext</span>(<span class="pl-s1">path</span>)[<span class="pl-c1">1</span>] <span class="pl-c1">==</span> <span class="pl-s">".doc"</span>:
+            <span class="pl-s1">word</span> <span class="pl-c1">=</span> <span class="pl-s1">client</span>.<span class="pl-c1">Dispatch</span>(<span class="pl-s">'Word.Application'</span>)
+            <span class="pl-s1">doc</span> <span class="pl-c1">=</span> <span class="pl-s1">word</span>.<span class="pl-c1">Documents</span>.<span class="pl-c1">Open</span>(<span class="pl-s1">path</span>)  <span class="pl-c"># 目标路径下的文件</span>
+            <span class="pl-s1">new_path</span> <span class="pl-c1">=</span> <span class="pl-s1">os</span>.<span class="pl-c1">path</span>.<span class="pl-c1">splitext</span>(<span class="pl-s1">path</span>)[<span class="pl-c1">0</span>]<span class="pl-c1">+</span><span class="pl-s">".docx"</span>
+            <span class="pl-s1">doc</span>.<span class="pl-c1">SaveAs</span>(<span class="pl-s1">new_path</span>, <span class="pl-c1">16</span>)  <span class="pl-c"># 转化后路径下的文件</span>
+            <span class="pl-s1">doc</span>.<span class="pl-c1">Close</span>()
+            <span class="pl-s1">word</span>.<span class="pl-c1">Quit</span>()
+            <span class="pl-s1">os</span>.<span class="pl-c1">remove</span>(<span class="pl-s1">path</span>)
+        <span class="pl-k">return</span> <span class="pl-s1">new_path</span>
+
+    <span class="pl-k">def</span> <span class="pl-en">_batch_replace_word_content</span>(<span class="pl-s1">self</span>, <span class="pl-s1">file_path</span>, <span class="pl-s1">old_word</span>, <span class="pl-s1">new_word</span>):
+        <span class="pl-s">'''批量替换word中的内容'''</span>
+        <span class="pl-s1">doc</span> <span class="pl-c1">=</span> <span class="pl-en">Document</span>(<span class="pl-s1">file_path</span>)
+        <span class="pl-k">for</span> <span class="pl-s1">paragraph</span> <span class="pl-c1">in</span> <span class="pl-s1">doc</span>.<span class="pl-c1">paragraphs</span>:
+            <span class="pl-k">for</span> <span class="pl-s1">run</span> <span class="pl-c1">in</span> <span class="pl-s1">paragraph</span>.<span class="pl-c1">runs</span>:
+                <span class="pl-k">if</span> <span class="pl-s1">old_word</span> <span class="pl-c1">in</span> <span class="pl-s1">run</span>.<span class="pl-c1">text</span>:
+                    <span class="pl-s1">run</span>.<span class="pl-c1">text</span> <span class="pl-c1">=</span> <span class="pl-s1">run</span>.<span class="pl-c1">text</span>.<span class="pl-c1">replace</span>(<span class="pl-s1">old_word</span>,  <span class="pl-s1">new_word</span>)
+        <span class="pl-k">for</span> <span class="pl-s1">table</span> <span class="pl-c1">in</span> <span class="pl-s1">doc</span>.<span class="pl-c1">tables</span>:
+            <span class="pl-k">for</span> <span class="pl-s1">row</span> <span class="pl-c1">in</span> <span class="pl-s1">table</span>.<span class="pl-c1">rows</span>:
+                <span class="pl-k">for</span> <span class="pl-s1">cell</span> <span class="pl-c1">in</span> <span class="pl-s1">row</span>.<span class="pl-c1">cells</span>:
+                    <span class="pl-k">if</span> <span class="pl-s1">old_word</span> <span class="pl-c1">in</span> <span class="pl-s1">cell</span>.<span class="pl-c1">text</span>:
+                        <span class="pl-s1">cell</span>.<span class="pl-c1">text</span> <span class="pl-c1">=</span> <span class="pl-s1">cell</span>.<span class="pl-c1">text</span>.<span class="pl-c1">replace</span>(<span class="pl-s1">old_word</span>, <span class="pl-s1">new_word</span>)
+        <span class="pl-s1">doc</span>.<span class="pl-c1">save</span>(<span class="pl-s1">file_path</span>)
+
+    <span class="pl-k">def</span> <span class="pl-en">batch_replace_content</span>(<span class="pl-s1">self</span>, <span class="pl-s1">folder_path</span>, <span class="pl-s1">old_word</span>, <span class="pl-s1">new_word</span>):
+        <span class="pl-s">'''批量替换文件内容'''</span>
+        <span class="pl-k">for</span> <span class="pl-s1">filename</span> <span class="pl-c1">in</span> <span class="pl-s1">os</span>.<span class="pl-c1">listdir</span>(<span class="pl-s1">folder_path</span>):
+            <span class="pl-s1">full_path</span> <span class="pl-c1">=</span> <span class="pl-s1">os</span>.<span class="pl-c1">path</span>.<span class="pl-c1">join</span>(<span class="pl-s1">folder_path</span>, <span class="pl-s1">filename</span>)
+            <span class="pl-s1">self</span>.<span class="pl-c1">logger</span>.<span class="pl-c1">info</span>(<span class="pl-s1">full_path</span>)
+            <span class="pl-k">if</span> <span class="pl-s1">os</span>.<span class="pl-c1">path</span>.<span class="pl-c1">isfile</span>(<span class="pl-s1">full_path</span>):
+                <span class="pl-k">if</span> <span class="pl-s1">full_path</span>.<span class="pl-c1">endswith</span>(<span class="pl-s">'.doc'</span>):
+                    <span class="pl-s1">full_path</span> <span class="pl-c1">=</span> <span class="pl-s1">self</span>.<span class="pl-c1">_doc_to_docx</span>(<span class="pl-s1">full_path</span>)
+                <span class="pl-k">if</span> <span class="pl-s1">full_path</span>.<span class="pl-c1">endswith</span>(<span class="pl-s">'.docx'</span>):
+                    <span class="pl-s1">self</span>.<span class="pl-c1">_batch_replace_word_content</span>(<span class="pl-s1">full_path</span>, <span class="pl-s1">old_word</span>, <span class="pl-s1">new_word</span>)
+                <span class="pl-k">if</span> <span class="pl-s1">full_path</span>.<span class="pl-c1">endswith</span>(<span class="pl-s">'.xlsx'</span>):
+                    <span class="pl-s1">self</span>.<span class="pl-c1">_batch_replace_excel_content</span>(<span class="pl-s1">full_path</span>, <span class="pl-s1">old_word</span>, <span class="pl-s1">new_word</span>)
+            <span class="pl-k">else</span>:
+                <span class="pl-s1">self</span>.<span class="pl-c1">batch_replace_content</span>(<span class="pl-s1">full_path</span>, <span class="pl-s1">old_word</span>, <span class="pl-s1">new_word</span>)
+
+
+<span class="pl-k">if</span> <span class="pl-s1">__name__</span> <span class="pl-c1">==</span> <span class="pl-s">'__main__'</span>:
+    <span class="pl-c"># 功能执行参数</span>
+    <span class="pl-s1">folder_path</span> <span class="pl-c1">=</span> <span class="pl-s">'C:<span class="pl-cce">\\</span>Users<span class="pl-cce">\\</span>Administrator<span class="pl-cce">\\</span>Desktop<span class="pl-cce">\\</span>project<span class="pl-cce">\\</span>batch-replace-word<span class="pl-cce">\\</span>2005陆梁新能源维护工程开工资料'</span>
+    <span class="pl-s1">old_word</span> <span class="pl-c1">=</span> <span class="pl-s">'新疆西部明珠工程建设'</span>
+    <span class="pl-s1">new_word</span> <span class="pl-c1">=</span> <span class="pl-s">'永升建设集团'</span>
+    <span class="pl-s1">run</span> <span class="pl-c1">=</span> <span class="pl-en">Run</span>()
+    <span class="pl-s1">run</span>.<span class="pl-c1">batch_replace_content</span>(<span class="pl-s1">folder_path</span>, <span class="pl-s1">old_word</span>, <span class="pl-s1">new_word</span>)</pre></div>
 <div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># main.py</span>
 
-<span class="pl-k">import</span> <span class="pl-s1">os</span>
 <span class="pl-k">import</span> <span class="pl-s1">sys</span>
 <span class="pl-k">import</span> <span class="pl-s1">logging</span>
 <span class="pl-k">from</span> <span class="pl-v">PySide6</span>.<span class="pl-v">QtCore</span> <span class="pl-k">import</span> <span class="pl-v">Signal</span>, <span class="pl-v">QObject</span>
-<span class="pl-k">from</span> <span class="pl-v">PySide6</span>.<span class="pl-v">QtWidgets</span> <span class="pl-k">import</span> <span class="pl-v">QApplication</span>, <span class="pl-v">QMainWindow</span>
-<span class="pl-k">from</span> <span class="pl-s1">test_ui</span> <span class="pl-k">import</span> <span class="pl-v">Ui_Form</span>
+<span class="pl-k">from</span> <span class="pl-v">PySide6</span>.<span class="pl-v">QtWidgets</span> <span class="pl-k">import</span> <span class="pl-v">QApplication</span>, <span class="pl-v">QMainWindow</span>, <span class="pl-v">QFileDialog</span>
+<span class="pl-k">from</span> <span class="pl-s1">main_ui</span> <span class="pl-k">import</span> <span class="pl-v">Ui_Form</span>
 <span class="pl-k">from</span> <span class="pl-s1">run</span> <span class="pl-k">import</span> <span class="pl-v">Run</span>
-
-<span class="pl-s1">os</span>.<span class="pl-c1">environ</span>[<span class="pl-s">"QT_QPA_PLATFORM"</span>] <span class="pl-c1">=</span> <span class="pl-s">"xcb"</span>
 
 
 <span class="pl-k">class</span> <span class="pl-v">QtHandler</span>(<span class="pl-s1">logging</span>.<span class="pl-c1">Handler</span>, <span class="pl-v">QObject</span>):
@@ -209,10 +406,20 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">setupUi</span>(<span class="pl-s1">self</span>)
 
         <span class="pl-s1">qt_handler</span>.<span class="pl-c1">qt_signal</span>.<span class="pl-c1">connect</span>(<span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">textBrowser</span>.<span class="pl-c1">append</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">folderSearchButton</span>.<span class="pl-c1">clicked</span>.<span class="pl-c1">connect</span>(<span class="pl-s1">self</span>.<span class="pl-c1">browse_folder</span>)
+        <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">runButton</span>.<span class="pl-c1">clicked</span>.<span class="pl-c1">connect</span>(<span class="pl-s1">self</span>.<span class="pl-c1">run_Button</span>)
 
-        <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">train_button</span>.<span class="pl-c1">clicked</span>.<span class="pl-c1">connect</span>(<span class="pl-s1">self</span>.<span class="pl-c1">run</span>.<span class="pl-c1">train</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">test_button</span>.<span class="pl-c1">clicked</span>.<span class="pl-c1">connect</span>(<span class="pl-s1">self</span>.<span class="pl-c1">run</span>.<span class="pl-c1">test</span>)
-        <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">predict_button</span>.<span class="pl-c1">clicked</span>.<span class="pl-c1">connect</span>(<span class="pl-s1">self</span>.<span class="pl-c1">run</span>.<span class="pl-c1">predict</span>)
+    
+    <span class="pl-k">def</span> <span class="pl-en">browse_folder</span>(<span class="pl-s1">self</span>):
+        <span class="pl-s1">folder_path</span> <span class="pl-c1">=</span> <span class="pl-v">QFileDialog</span>.<span class="pl-c1">getExistingDirectory</span>(<span class="pl-s1">self</span>, <span class="pl-s">'选择文件夹'</span>)
+        <span class="pl-k">if</span> <span class="pl-s1">folder_path</span>:
+            <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">folderPathLineEdit</span>.<span class="pl-c1">setText</span>(<span class="pl-s1">folder_path</span>)
+    
+    <span class="pl-k">def</span> <span class="pl-en">run_Button</span>(<span class="pl-s1">self</span>):
+        <span class="pl-s1">folder_path</span> <span class="pl-c1">=</span> <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">folderPathLineEdit</span>.<span class="pl-c1">text</span>()
+        <span class="pl-s1">old_word</span> <span class="pl-c1">=</span> <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">oldWordLineEdit</span>.<span class="pl-c1">text</span>()
+        <span class="pl-s1">new_word</span> <span class="pl-c1">=</span> <span class="pl-s1">self</span>.<span class="pl-c1">ui</span>.<span class="pl-c1">newWordLineEdit</span>.<span class="pl-c1">text</span>()
+        <span class="pl-s1">self</span>.<span class="pl-c1">run</span>.<span class="pl-c1">batch_replace_content</span>(<span class="pl-s1">folder_path</span>, <span class="pl-s1">old_word</span>, <span class="pl-s1">new_word</span>)
 
 
 <span class="pl-k">if</span> <span class="pl-s1">__name__</span> <span class="pl-c1">==</span> <span class="pl-s">'__main__'</span>:
