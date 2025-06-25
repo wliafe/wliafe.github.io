@@ -1,6 +1,9 @@
 # Qt将控制台的输出信息实时显示到GUI界面上
 
-将logging库与pyside6的Signal结合使用，可以轻而易举地将控制台的输出信息实时显示到GUI界面上，具体做法如下，其中QtHandler类是自定义的Signal类，用于将logging库的输出信息转换为Signal信号，从而实现将控制台的输出信息实时显示到GUI界面上。
+这是一个批处理文件的例子，这个例子包含两个功能：
+
+- 将logging库与pyside6结合使用，使控制台的输出信息实时显示到GUI界面上
+- pyside6使用浏览的方式，获取文件目录
 
 ```xml
 # main.ui
@@ -13,8 +16,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>719</width>
+    <height>569</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +26,7 @@
   <widget class="QPushButton" name="folderSearchButton">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>630</x>
      <y>10</y>
      <width>61</width>
      <height>24</height>
@@ -38,7 +41,7 @@
     <rect>
      <x>100</x>
      <y>10</y>
-     <width>221</width>
+     <width>521</width>
      <height>21</height>
     </rect>
    </property>
@@ -48,7 +51,7 @@
     <rect>
      <x>100</x>
      <y>40</y>
-     <width>281</width>
+     <width>591</width>
      <height>21</height>
     </rect>
    </property>
@@ -58,7 +61,7 @@
     <rect>
      <x>100</x>
      <y>70</y>
-     <width>281</width>
+     <width>591</width>
      <height>21</height>
     </rect>
    </property>
@@ -67,9 +70,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>131</y>
-     <width>371</width>
-     <height>161</height>
+     <y>140</y>
+     <width>691</width>
+     <height>421</height>
     </rect>
    </property>
   </widget>
@@ -124,10 +127,10 @@
   <widget class="QPushButton" name="runButton">
    <property name="geometry">
     <rect>
-     <x>14</x>
+     <x>10</x>
      <y>100</y>
-     <width>361</width>
-     <height>24</height>
+     <width>681</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -167,22 +170,22 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(400, 300)
+        Form.resize(719, 569)
         self.folderSearchButton = QPushButton(Form)
         self.folderSearchButton.setObjectName(u"folderSearchButton")
-        self.folderSearchButton.setGeometry(QRect(320, 10, 61, 24))
+        self.folderSearchButton.setGeometry(QRect(630, 10, 61, 24))
         self.folderPathLineEdit = QLineEdit(Form)
         self.folderPathLineEdit.setObjectName(u"folderPathLineEdit")
-        self.folderPathLineEdit.setGeometry(QRect(100, 10, 221, 21))
+        self.folderPathLineEdit.setGeometry(QRect(100, 10, 521, 21))
         self.oldWordLineEdit = QLineEdit(Form)
         self.oldWordLineEdit.setObjectName(u"oldWordLineEdit")
-        self.oldWordLineEdit.setGeometry(QRect(100, 40, 281, 21))
+        self.oldWordLineEdit.setGeometry(QRect(100, 40, 591, 21))
         self.newWordLineEdit = QLineEdit(Form)
         self.newWordLineEdit.setObjectName(u"newWordLineEdit")
-        self.newWordLineEdit.setGeometry(QRect(100, 70, 281, 21))
+        self.newWordLineEdit.setGeometry(QRect(100, 70, 591, 21))
         self.textBrowser = QTextBrowser(Form)
         self.textBrowser.setObjectName(u"textBrowser")
-        self.textBrowser.setGeometry(QRect(10, 131, 371, 161))
+        self.textBrowser.setGeometry(QRect(10, 140, 691, 421))
         self.folderPathLabel = QLabel(Form)
         self.folderPathLabel.setObjectName(u"folderPathLabel")
         self.folderPathLabel.setGeometry(QRect(10, 10, 71, 20))
@@ -197,7 +200,7 @@ class Ui_Form(object):
         self.newWordLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.runButton = QPushButton(Form)
         self.runButton.setObjectName(u"runButton")
-        self.runButton.setGeometry(QRect(14, 100, 361, 24))
+        self.runButton.setGeometry(QRect(10, 100, 681, 31))
 
         self.retranslateUi(Form)
 
@@ -217,77 +220,75 @@ class Ui_Form(object):
 ```python
 # run.py
 
-import os
 import logging
-import pandas as pd
-from docx import Document
-from win32com import client
+from pathlib import Path
+import win32com.client as win32
 
 
-class Run:
+class QRun:
     def __init__(self):
         # 设置日志
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
         # 设置日志格式
         self.formatter = logging.Formatter("%(asctime)s - %(levelname)s: %(message)s")
+        # 创建控制台处理器
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.DEBUG)
+        console_handler.setFormatter(self.formatter)
+        self.logger.addHandler(console_handler)
 
-    def _batch_replace_excel_content(self, file_path, old_string, new_string):
-        '''批量替换excel中的内容'''
-        df = pd.read_excel(file_path)
-        df.replace(old_string,  new_string, inplace=True)
-        df.to_excel(file_path,  index=False)
 
-    def _doc_to_docx(self, path):
-        '''doc文件转换为docx文件'''
-        if os.path.splitext(path)[1] == ".doc":
-            word = client.Dispatch('Word.Application')
-            doc = word.Documents.Open(path)  # 目标路径下的文件
-            new_path = os.path.splitext(path)[0]+".docx"
-            doc.SaveAs(new_path, 16)  # 转化后路径下的文件
-            doc.Close()
-            word.Quit()
-            os.remove(path)
-        return new_path
+class Run(QRun):
+    def replace_word_content(self, file_path, old_word, new_word):
+        '''替换word文件内容'''
+        wps_word = win32.gencache.EnsureDispatch('KWPS.Application')  # 创建 WPS 文字应用程序对象
+        wps_word.Visible = False  # 让 WPS 窗口不可见
+        doc = wps_word.Documents.Open(file_path)  # 打开指定的 WPS 文字文件
+        doc.Content.Find.Execute(FindText=old_word, ReplaceWith=new_word, Replace=2)  # 替换文本
+        doc.Save()  # 保存文档
+        doc.Close()  # 关闭文档
+        wps_word.Quit()  # 退出 WPS 文字应用程序
 
-    def _batch_replace_word_content(self, file_path, old_word, new_word):
-        '''批量替换word中的内容'''
-        doc = Document(file_path)
-        for paragraph in doc.paragraphs:
-            for run in paragraph.runs:
-                if old_word in run.text:
-                    run.text = run.text.replace(old_word,  new_word)
-        for table in doc.tables:
-            for row in table.rows:
-                for cell in row.cells:
-                    if old_word in cell.text:
-                        cell.text = cell.text.replace(old_word, new_word)
-        doc.save(file_path)
+    def replace_excel_content(self, file_path, old_text, new_text):
+        '''替换excel文件内容'''
+        wps = win32.gencache.EnsureDispatch('KET.Application')  # 创建 WPS 表格应用程序对象
+        wps.Visible = False  # 使 WPS 表格窗口不可见（可选）
+        workbook = wps.Workbooks.Open(file_path)  # 打开指定的 WPS 表格文件
+        for sheet in workbook.Sheets:
+            cells = sheet.UsedRange
+            cells.Replace(What=old_text, Replacement=new_text, LookAt=win32.constants.xlPart, SearchOrder=win32.constants.xlByRows, MatchCase=False, SearchFormat=False, ReplaceFormat=False)
+        # 保存并关闭工作簿
+        workbook.Save()
+        workbook.Close()
+        wps.Quit()
 
     def batch_replace_content(self, folder_path, old_word, new_word):
         '''批量替换文件内容'''
-        for filename in os.listdir(folder_path):
-            full_path = os.path.join(folder_path, filename)
-            self.logger.info(full_path)
-            if os.path.isfile(full_path):
-                if full_path.endswith('.doc'):
-                    full_path = self._doc_to_docx(full_path)
-                if full_path.endswith('.docx'):
-                    self._batch_replace_word_content(full_path, old_word, new_word)
-                if full_path.endswith('.xlsx'):
-                    self._batch_replace_excel_content(full_path, old_word, new_word)
+        folder_path = Path(folder_path)
+        for filename in folder_path.iterdir():
+            full_path = folder_path / filename
+            if full_path.is_dir():
+                self.batch_replace_content(str(full_path), old_word, new_word)
             else:
-                self.batch_replace_content(full_path, old_word, new_word)
+                if full_path.suffix == '.docx' or full_path.suffix == '.doc':
+                    self.logger.info(f'替换文件{full_path}内容')
+                    self.replace_word_content(str(full_path), old_word, new_word)
+                elif full_path.suffix == '.xlsx' or full_path.suffix == '.xls':
+                    self.logger.info(f'替换文件{full_path}内容')
+                    self.replace_excel_content(str(full_path), old_word, new_word)
+                else:
+                    self.logger.info(f'文件{full_path}后缀名不在替换范围内')
+        self.logger.info('替换完成')
 
 
 if __name__ == '__main__':
     # 功能执行参数
-    folder_path = 'C:\\Users\\Administrator\\Desktop\\project\\batch-replace-word\\2005陆梁新能源维护工程开工资料'
+    folder_path = r"C:\Users\91409\Desktop\新建文件夹"
     old_word = '新疆西部明珠工程建设'
     new_word = '永升建设集团'
     run = Run()
     run.batch_replace_content(folder_path, old_word, new_word)
-
 ```
 
 ```python
@@ -301,44 +302,38 @@ from main_ui import Ui_Form
 from run import Run
 
 
-class QtHandler(logging.Handler, QObject):
-    def __init__(self):
+class QTextBrowserHandler(logging.Handler):
+    def __init__(self, text_browser):
         logging.Handler.__init__(self)
-        QObject.__init__(self)
-
-    qt_signal = Signal(str)
+        self.text_browser = text_browser
 
     def emit(self, record):
-        try:
-            msg = self.format(record)
-            self.qt_signal.emit(msg)
-        except Exception:
-            self.handleError(record)
+        msg = self.format(record)
+        self.text_browser.append(msg)
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
+        # 初始化界面
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
+        # 定义执行函数
         self.run = Run()
-
-        qt_handler = QtHandler()
+        # 添加qt日志输出
+        qt_handler = QTextBrowserHandler(self.ui.textBrowser)
         qt_handler.setLevel(logging.INFO)
         qt_handler.setFormatter(self.run.formatter)
         self.run.logger.addHandler(qt_handler)
-
-        self.ui = Ui_Form()
-        self.ui.setupUi(self)
-
-        qt_handler.qt_signal.connect(self.ui.textBrowser.append)
+        # 按钮事件绑定
         self.ui.folderSearchButton.clicked.connect(self.browse_folder)
         self.ui.runButton.clicked.connect(self.run_Button)
 
-    
     def browse_folder(self):
         folder_path = QFileDialog.getExistingDirectory(self, '选择文件夹')
         if folder_path:
             self.ui.folderPathLineEdit.setText(folder_path)
-    
+
     def run_Button(self):
         folder_path = self.ui.folderPathLineEdit.text()
         old_word = self.ui.oldWordLineEdit.text()

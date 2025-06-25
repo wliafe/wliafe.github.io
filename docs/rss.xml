@@ -1,7 +1,355 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>wliafe</title><link>https://wliafe.github.io</link><description>一种生活，一种态度</description><copyright>wliafe</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://wliafe.github.io/wliafe.jpg</url><title>avatar</title><link>https://wliafe.github.io</link></image><lastBuildDate>Fri, 20 Jun 2025 16:24:37 +0000</lastBuildDate><managingEditor>wliafe</managingEditor><ttl>60</ttl><webMaster>wliafe</webMaster><item><title>Qt for Python</title><link>https://wliafe.github.io/post/Qt%20for%20Python.html</link><description># Qt将控制台的输出信息实时显示到GUI界面上
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>wliafe</title><link>https://wliafe.github.io</link><description>一种生活，一种态度</description><copyright>wliafe</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://wliafe.github.io/wliafe.jpg</url><title>avatar</title><link>https://wliafe.github.io</link></image><lastBuildDate>Wed, 25 Jun 2025 16:42:26 +0000</lastBuildDate><managingEditor>wliafe</managingEditor><ttl>60</ttl><webMaster>wliafe</webMaster><item><title>Qt for Python</title><link>https://wliafe.github.io/post/Qt%20for%20Python.html</link><description># Qt将控制台的输出信息实时显示到GUI界面上
 
-将logging库与pyside6的Signal结合使用，可以轻而易举地将控制台的输出信息实时显示到GUI界面上，具体做法如下，其中QtHandler类是自定义的Signal类，用于将logging库的输出信息转换为Signal信号，从而实现将控制台的输出信息实时显示到GUI界面上。</description><guid isPermaLink="true">https://wliafe.github.io/post/Qt%20for%20Python.html</guid><pubDate>Tue, 27 May 2025 15:40:33 +0000</pubDate></item><item><title>Windows Subsystem for Linux (WSL)</title><link>https://wliafe.github.io/post/Windows%20Subsystem%20for%20Linux%20%28WSL%29.html</link><description>在Windows上直接编写代码存在不少问题，例如:
+这是一个批处理文件的例子，这个例子包含两个功能：
+
+- 将logging库与pyside6结合使用，使控制台的输出信息实时显示到GUI界面上
+- pyside6使用浏览的方式，获取文件目录
+
+```xml
+# main.ui
+
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;ui version='4.0'&gt;
+ &lt;class&gt;Form&lt;/class&gt;
+ &lt;widget class='QWidget' name='Form'&gt;
+  &lt;property name='geometry'&gt;
+   &lt;rect&gt;
+    &lt;x&gt;0&lt;/x&gt;
+    &lt;y&gt;0&lt;/y&gt;
+    &lt;width&gt;719&lt;/width&gt;
+    &lt;height&gt;569&lt;/height&gt;
+   &lt;/rect&gt;
+  &lt;/property&gt;
+  &lt;property name='windowTitle'&gt;
+   &lt;string&gt;批量文字替换&lt;/string&gt;
+  &lt;/property&gt;
+  &lt;widget class='QPushButton' name='folderSearchButton'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;630&lt;/x&gt;
+     &lt;y&gt;10&lt;/y&gt;
+     &lt;width&gt;61&lt;/width&gt;
+     &lt;height&gt;24&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name='text'&gt;
+    &lt;string&gt;浏览&lt;/string&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+  &lt;widget class='QLineEdit' name='folderPathLineEdit'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;100&lt;/x&gt;
+     &lt;y&gt;10&lt;/y&gt;
+     &lt;width&gt;521&lt;/width&gt;
+     &lt;height&gt;21&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+  &lt;widget class='QLineEdit' name='oldWordLineEdit'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;100&lt;/x&gt;
+     &lt;y&gt;40&lt;/y&gt;
+     &lt;width&gt;591&lt;/width&gt;
+     &lt;height&gt;21&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+  &lt;widget class='QLineEdit' name='newWordLineEdit'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;100&lt;/x&gt;
+     &lt;y&gt;70&lt;/y&gt;
+     &lt;width&gt;591&lt;/width&gt;
+     &lt;height&gt;21&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+  &lt;widget class='QTextBrowser' name='textBrowser'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;10&lt;/x&gt;
+     &lt;y&gt;140&lt;/y&gt;
+     &lt;width&gt;691&lt;/width&gt;
+     &lt;height&gt;421&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+  &lt;widget class='QLabel' name='folderPathLabel'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;10&lt;/x&gt;
+     &lt;y&gt;10&lt;/y&gt;
+     &lt;width&gt;71&lt;/width&gt;
+     &lt;height&gt;20&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name='text'&gt;
+    &lt;string&gt;文件路径&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name='alignment'&gt;
+    &lt;set&gt;Qt::AlignmentFlag::AlignCenter&lt;/set&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+  &lt;widget class='QLabel' name='oldWordLabel'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;10&lt;/x&gt;
+     &lt;y&gt;40&lt;/y&gt;
+     &lt;width&gt;71&lt;/width&gt;
+     &lt;height&gt;20&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name='text'&gt;
+    &lt;string&gt;查找内容&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name='alignment'&gt;
+    &lt;set&gt;Qt::AlignmentFlag::AlignCenter&lt;/set&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+  &lt;widget class='QLabel' name='newWordLabel'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;10&lt;/x&gt;
+     &lt;y&gt;70&lt;/y&gt;
+     &lt;width&gt;71&lt;/width&gt;
+     &lt;height&gt;20&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name='text'&gt;
+    &lt;string&gt;替换为&lt;/string&gt;
+   &lt;/property&gt;
+   &lt;property name='alignment'&gt;
+    &lt;set&gt;Qt::AlignmentFlag::AlignCenter&lt;/set&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+  &lt;widget class='QPushButton' name='runButton'&gt;
+   &lt;property name='geometry'&gt;
+    &lt;rect&gt;
+     &lt;x&gt;10&lt;/x&gt;
+     &lt;y&gt;100&lt;/y&gt;
+     &lt;width&gt;681&lt;/width&gt;
+     &lt;height&gt;31&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name='text'&gt;
+    &lt;string&gt;开始执行&lt;/string&gt;
+   &lt;/property&gt;
+  &lt;/widget&gt;
+ &lt;/widget&gt;
+ &lt;resources/&gt;
+ &lt;connections/&gt;
+&lt;/ui&gt;
+```
+
+```python
+# main_ui.py
+
+# -*- coding: utf-8 -*-
+
+################################################################################
+## Form generated from reading UI file 'main.ui'
+##
+## Created by: Qt User Interface Compiler version 6.9.1
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QPushButton,
+    QSizePolicy, QTextBrowser, QWidget)
+
+class Ui_Form(object):
+    def setupUi(self, Form):
+        if not Form.objectName():
+            Form.setObjectName(u'Form')
+        Form.resize(719, 569)
+        self.folderSearchButton = QPushButton(Form)
+        self.folderSearchButton.setObjectName(u'folderSearchButton')
+        self.folderSearchButton.setGeometry(QRect(630, 10, 61, 24))
+        self.folderPathLineEdit = QLineEdit(Form)
+        self.folderPathLineEdit.setObjectName(u'folderPathLineEdit')
+        self.folderPathLineEdit.setGeometry(QRect(100, 10, 521, 21))
+        self.oldWordLineEdit = QLineEdit(Form)
+        self.oldWordLineEdit.setObjectName(u'oldWordLineEdit')
+        self.oldWordLineEdit.setGeometry(QRect(100, 40, 591, 21))
+        self.newWordLineEdit = QLineEdit(Form)
+        self.newWordLineEdit.setObjectName(u'newWordLineEdit')
+        self.newWordLineEdit.setGeometry(QRect(100, 70, 591, 21))
+        self.textBrowser = QTextBrowser(Form)
+        self.textBrowser.setObjectName(u'textBrowser')
+        self.textBrowser.setGeometry(QRect(10, 140, 691, 421))
+        self.folderPathLabel = QLabel(Form)
+        self.folderPathLabel.setObjectName(u'folderPathLabel')
+        self.folderPathLabel.setGeometry(QRect(10, 10, 71, 20))
+        self.folderPathLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.oldWordLabel = QLabel(Form)
+        self.oldWordLabel.setObjectName(u'oldWordLabel')
+        self.oldWordLabel.setGeometry(QRect(10, 40, 71, 20))
+        self.oldWordLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.newWordLabel = QLabel(Form)
+        self.newWordLabel.setObjectName(u'newWordLabel')
+        self.newWordLabel.setGeometry(QRect(10, 70, 71, 20))
+        self.newWordLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.runButton = QPushButton(Form)
+        self.runButton.setObjectName(u'runButton')
+        self.runButton.setGeometry(QRect(10, 100, 681, 31))
+
+        self.retranslateUi(Form)
+
+        QMetaObject.connectSlotsByName(Form)
+    # setupUi
+
+    def retranslateUi(self, Form):
+        Form.setWindowTitle(QCoreApplication.translate('Form', u'\u6279\u91cf\u6587\u5b57\u66ff\u6362', None))
+        self.folderSearchButton.setText(QCoreApplication.translate('Form', u'\u6d4f\u89c8', None))
+        self.folderPathLabel.setText(QCoreApplication.translate('Form', u'\u6587\u4ef6\u8def\u5f84', None))
+        self.oldWordLabel.setText(QCoreApplication.translate('Form', u'\u67e5\u627e\u5185\u5bb9', None))
+        self.newWordLabel.setText(QCoreApplication.translate('Form', u'\u66ff\u6362\u4e3a', None))
+        self.runButton.setText(QCoreApplication.translate('Form', u'\u5f00\u59cb\u6267\u884c', None))
+    # retranslateUi
+```
+
+```python
+# run.py
+
+import logging
+from pathlib import Path
+import win32com.client as win32
+
+
+class QRun:
+    def __init__(self):
+        # 设置日志
+        self.logger = logging.getLogger()
+        self.logger.setLevel(logging.DEBUG)
+        # 设置日志格式
+        self.formatter = logging.Formatter('%(asctime)s - %(levelname)s: %(message)s')
+        # 创建控制台处理器
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.DEBUG)
+        console_handler.setFormatter(self.formatter)
+        self.logger.addHandler(console_handler)
+
+
+class Run(QRun):
+    def replace_word_content(self, file_path, old_word, new_word):
+        '''替换word文件内容'''
+        wps_word = win32.gencache.EnsureDispatch('KWPS.Application')  # 创建 WPS 文字应用程序对象
+        wps_word.Visible = False  # 让 WPS 窗口不可见
+        doc = wps_word.Documents.Open(file_path)  # 打开指定的 WPS 文字文件
+        doc.Content.Find.Execute(FindText=old_word, ReplaceWith=new_word, Replace=2)  # 替换文本
+        doc.Save()  # 保存文档
+        doc.Close()  # 关闭文档
+        wps_word.Quit()  # 退出 WPS 文字应用程序
+
+    def replace_excel_content(self, file_path, old_text, new_text):
+        '''替换excel文件内容'''
+        wps = win32.gencache.EnsureDispatch('KET.Application')  # 创建 WPS 表格应用程序对象
+        wps.Visible = False  # 使 WPS 表格窗口不可见（可选）
+        workbook = wps.Workbooks.Open(file_path)  # 打开指定的 WPS 表格文件
+        for sheet in workbook.Sheets:
+            cells = sheet.UsedRange
+            cells.Replace(What=old_text, Replacement=new_text, LookAt=win32.constants.xlPart, SearchOrder=win32.constants.xlByRows, MatchCase=False, SearchFormat=False, ReplaceFormat=False)
+        # 保存并关闭工作簿
+        workbook.Save()
+        workbook.Close()
+        wps.Quit()
+
+    def batch_replace_content(self, folder_path, old_word, new_word):
+        '''批量替换文件内容'''
+        folder_path = Path(folder_path)
+        for filename in folder_path.iterdir():
+            full_path = folder_path / filename
+            if full_path.is_dir():
+                self.batch_replace_content(str(full_path), old_word, new_word)
+            else:
+                if full_path.suffix == '.docx' or full_path.suffix == '.doc':
+                    self.logger.info(f'替换文件{full_path}内容')
+                    self.replace_word_content(str(full_path), old_word, new_word)
+                elif full_path.suffix == '.xlsx' or full_path.suffix == '.xls':
+                    self.logger.info(f'替换文件{full_path}内容')
+                    self.replace_excel_content(str(full_path), old_word, new_word)
+                else:
+                    self.logger.info(f'文件{full_path}后缀名不在替换范围内')
+        self.logger.info('替换完成')
+
+
+if __name__ == '__main__':
+    # 功能执行参数
+    folder_path = r'C:\Users\91409\Desktop\新建文件夹'
+    old_word = '新疆西部明珠工程建设'
+    new_word = '永升建设集团'
+    run = Run()
+    run.batch_replace_content(folder_path, old_word, new_word)
+```
+
+```python
+# main.py
+
+import sys
+import logging
+from PySide6.QtCore import Signal, QObject
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
+from main_ui import Ui_Form
+from run import Run
+
+
+class QTextBrowserHandler(logging.Handler):
+    def __init__(self, text_browser):
+        logging.Handler.__init__(self)
+        self.text_browser = text_browser
+
+    def emit(self, record):
+        msg = self.format(record)
+        self.text_browser.append(msg)
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self)
+        # 初始化界面
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
+        # 定义执行函数
+        self.run = Run()
+        # 添加qt日志输出
+        qt_handler = QTextBrowserHandler(self.ui.textBrowser)
+        qt_handler.setLevel(logging.INFO)
+        qt_handler.setFormatter(self.run.formatter)
+        self.run.logger.addHandler(qt_handler)
+        # 按钮事件绑定
+        self.ui.folderSearchButton.clicked.connect(self.browse_folder)
+        self.ui.runButton.clicked.connect(self.run_Button)
+
+    def browse_folder(self):
+        folder_path = QFileDialog.getExistingDirectory(self, '选择文件夹')
+        if folder_path:
+            self.ui.folderPathLineEdit.setText(folder_path)
+
+    def run_Button(self):
+        folder_path = self.ui.folderPathLineEdit.text()
+        old_word = self.ui.oldWordLineEdit.text()
+        new_word = self.ui.newWordLineEdit.text()
+        self.run.batch_replace_content(folder_path, old_word, new_word)
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+
+    window = MainWindow()
+    window.show()
+
+    sys.exit(app.exec())
+```。</description><guid isPermaLink="true">https://wliafe.github.io/post/Qt%20for%20Python.html</guid><pubDate>Tue, 27 May 2025 15:40:33 +0000</pubDate></item><item><title>Windows Subsystem for Linux (WSL)</title><link>https://wliafe.github.io/post/Windows%20Subsystem%20for%20Linux%20%28WSL%29.html</link><description>在Windows上直接编写代码存在不少问题，例如:
 
 - 环境污染: 多个python版本，每个版本不同环境等
 - 软件杂而多: 各种软件，多次修改环境变量，导致Windows环境变量乱七八糟
