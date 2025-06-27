@@ -1,9 +1,96 @@
+Qt for Python 也叫 Pyside 是 Qt 的 python 版本，是一个比较通用的图形化界面工具。
+
+# Qt for Python 环境搭建
+
+## 安装基础环境（Linux）
+
+```bash
+sudo apt update
+```
+```bash
+sudo apt upgrade
+```
+```bash
+sudo apt-get install libxcb-*
+```
+```bash
+sudo apt-get install libxkbcommon-x11-0
+```
+
+## 安装 Qt
+
+官网下载[Qt安装软件](https://www.qt.io/download-qt-installer-oss)
+
+## 安装 Miniconda
+
+官网下载[Miniconda脚本](https://www.anaconda.com/download/success)
+
+## 创建 Qt 环境
+
+```bash
+conda create -n qt python=3.10
+```
+```bash
+conda activate qt
+```
+
+## 安装 Qt for Python
+
+```bash
+pip install pyside6
+```
+
+## 解决输出界面所有中文乱码中部分的乱码问题(标题乱码未解决)（Linux）
+
+```bash
+sudo apt-get install fonts-noto-cjk
+```
+
+## 解决 wayland 错误（Linux）
+
+>Failed to create wl_display (No such file or directory)
+>qt.qpa.plugin: Could not load the Qt platform plugin "wayland" in "" even though it was found.
+
+在代码中加入下面这一行
+
+```python
+import os
+os.environ['QT_QPA_PLATFORM'] = 'xcb'
+```
+
+# Qt 打包
+
+使用 pyside6-deploy 打包 exe 文件时，可以通过修改 nuitka 的一些参数来达到想要的效果
+
+## pyside6-deploy 打包 exe 不显示终端窗口
+
+这里假设你的主文件是 main.py 文件。
+
+生成打包配置文件 pysidedeploy.spec
+
+```bash
+pyside6-deploy --init
+```
+
+在 pysidedeploy.spec 文件中 [nuitka] 的 extra_args 中添加下面的参数
+
+```bash
+--windows-console-mode=disable
+```
+
+运行打包命令
+
+```bash
+pyside6-deploy
+```
+
 # Qt将控制台的输出信息实时显示到GUI界面上
 
-这是一个批处理文件的例子，这个例子包含两个功能：
+这是一个批量替换文件字符的例子，这个例子包含两个功能：
 
 - 将logging库与pyside6结合使用，使控制台的输出信息实时显示到GUI界面上
 - pyside6使用浏览的方式，获取文件目录
+- pyside6使用主线程更新界面，使用子线程执行run函数
 
 ```xml
 # main.ui
@@ -225,7 +312,7 @@ from pathlib import Path
 import win32com.client as win32
 
 
-class QRun:
+class BaseRun:
     def __init__(self):
         # 设置日志
         self.logger = logging.getLogger()
@@ -239,7 +326,7 @@ class QRun:
         self.logger.addHandler(console_handler)
 
 
-class Run(QRun):
+class Run(BaseRun):
     def replace_word_content(self, file_path, old_word, new_word):
         '''替换word文件内容'''
         wps_word = win32.gencache.EnsureDispatch('KWPS.Application')  # 创建 WPS 文字应用程序对象
@@ -279,16 +366,21 @@ class Run(QRun):
                     self.replace_excel_content(str(full_path), old_word, new_word)
                 else:
                     self.logger.info(f'文件{full_path}后缀名不在替换范围内')
+
+    def run(self, folder_path, old_word, new_word):
+        '''运行程序'''
+        self.logger.info('替换开始')
+        self.batch_replace_content(folder_path, old_word, new_word)
         self.logger.info('替换完成')
 
 
 if __name__ == '__main__':
     # 功能执行参数
-    folder_path = r"C:\Users\91409\Desktop\新建文件夹"
-    old_word = '新疆西部明珠工程建设'
-    new_word = '永升建设集团'
+    folder_path = r''
+    old_word = ''
+    new_word = ''
     run = Run()
-    run.batch_replace_content(folder_path, old_word, new_word)
+    run.run(folder_path, old_word, new_word)
 ```
 
 ```python
@@ -296,24 +388,40 @@ if __name__ == '__main__':
 
 import sys
 import logging
-from PySide6.QtCore import Signal, QObject
+from PySide6.QtCore import Signal, QObject, QThread
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from main_ui import Ui_Form
 from run import Run
 
 
-class QTextBrowserHandler(logging.Handler):
-    def __init__(self, text_browser):
+class QTextBrowserHandler(logging.Handler, QObject):
+    '''自定义Qt日志处理器'''
+    signal = Signal(str)
+
+    def __init__(self):
+        '''初始化'''
         logging.Handler.__init__(self)
-        self.text_browser = text_browser
+        QObject.__init__(self)
 
     def emit(self, record):
+        '''重写日志输出方法'''
         msg = self.format(record)
-        self.text_browser.append(msg)
+        self.signal.emit(msg)
+
+
+class QWorkThread(QThread):
+    '''自定义Qt线程'''
+
+    def set_run(self, run):
+        '''设置线程执行函数'''
+        self.run = run
 
 
 class MainWindow(QMainWindow):
+    '''自定义Qt主窗口'''
+
     def __init__(self):
+        '''初始化'''
         QMainWindow.__init__(self)
         # 初始化界面
         self.ui = Ui_Form()
@@ -321,24 +429,30 @@ class MainWindow(QMainWindow):
         # 定义执行函数
         self.run = Run()
         # 添加qt日志输出
-        qt_handler = QTextBrowserHandler(self.ui.textBrowser)
+        qt_handler = QTextBrowserHandler()
         qt_handler.setLevel(logging.INFO)
         qt_handler.setFormatter(self.run.formatter)
         self.run.logger.addHandler(qt_handler)
-        # 按钮事件绑定
+        # 定义执行线程
+        self.thread = QWorkThread(self)
+        # 事件绑定
+        qt_handler.signal.connect(self.ui.textBrowser.append)
         self.ui.folderSearchButton.clicked.connect(self.browse_folder)
-        self.ui.runButton.clicked.connect(self.run_Button)
+        self.ui.runButton.clicked.connect(self.start_replace)
 
     def browse_folder(self):
+        '''选择文件夹'''
         folder_path = QFileDialog.getExistingDirectory(self, '选择文件夹')
         if folder_path:
             self.ui.folderPathLineEdit.setText(folder_path)
 
-    def run_Button(self):
+    def start_replace(self):
+        '''开始替换'''
         folder_path = self.ui.folderPathLineEdit.text()
         old_word = self.ui.oldWordLineEdit.text()
         new_word = self.ui.newWordLineEdit.text()
-        self.run.batch_replace_content(folder_path, old_word, new_word)
+        self.thread.set_run(lambda: self.run.run(folder_path, old_word, new_word))
+        self.thread.start() # 线程启动，执行run函数
 
 
 if __name__ == '__main__':
