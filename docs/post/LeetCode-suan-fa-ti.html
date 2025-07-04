@@ -92,7 +92,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>整数反转</h1>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/c7bc9880-721f-49f3-84f8-48aeff31906b"><img src="https://github.com/user-attachments/assets/c7bc9880-721f-49f3-84f8-48aeff31906b" alt="1" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/c7bc9880-721f-49f3-84f8-48aeff31906b"><img src="https://github.com/user-attachments/assets/c7bc9880-721f-49f3-84f8-48aeff31906b" alt="1" style="max-width: 100%; height: auto;"></a></p>
 <p><strong>我的思路</strong>：将int数字转化为字符串，再将字符串逆序，最后将字符串转化为数字。</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">#<span class="pl-k">include</span><span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span><span class="pl-s"><span class="pl-pds">&lt;</span>sstream<span class="pl-pds">&gt;</span></span>
@@ -142,8 +142,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 }</pre></div>
 <p>这里将字符串685，通过流变为数字685。</p>
 <h1>合并有序链表</h1>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/84354d9a-8de3-4afb-a771-3327d843dd90"><img src="https://github.com/user-attachments/assets/84354d9a-8de3-4afb-a771-3327d843dd90" alt="2" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/0b5d95a2-de2f-460c-9085-61a22a767c68"><img src="https://github.com/user-attachments/assets/0b5d95a2-de2f-460c-9085-61a22a767c68" alt="3" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/84354d9a-8de3-4afb-a771-3327d843dd90"><img src="https://github.com/user-attachments/assets/84354d9a-8de3-4afb-a771-3327d843dd90" alt="2" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/0b5d95a2-de2f-460c-9085-61a22a767c68"><img src="https://github.com/user-attachments/assets/0b5d95a2-de2f-460c-9085-61a22a767c68" alt="3" style="max-width: 100%; height: auto;"></a></p>
 <p>这道题用的是递推算法，我一开始的想法是先将两条链表通过递推延伸到末尾，然后再反向递推得出新链表。在这个方法中，递推分为了四种情况，即l1，l2都为nullptr，其中一个是nullptr，两个都不是nullptr，但再返回时由于不能确定返回过程与递推过程是否相符因此失败了。<br>
 采用新思路。既然从后往前不行，那就从前往后，判断两条链的头谁最小，将小的取出放到新链表中去。代码如下：</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-c"><span class="pl-c">/*</span>*</span>
@@ -185,9 +185,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     }
 };</pre></div>
 <h1>简化路径</h1>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/9ba12add-904b-413a-915f-dfec101c0b62"><img src="https://github.com/user-attachments/assets/9ba12add-904b-413a-915f-dfec101c0b62" alt="4" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/a6d43a0e-b5bd-45b4-91a1-a3a1f8a19d78"><img src="https://github.com/user-attachments/assets/a6d43a0e-b5bd-45b4-91a1-a3a1f8a19d78" alt="5" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/13805aaa-74b1-4c7e-8240-063ff4bfdbc3"><img src="https://github.com/user-attachments/assets/13805aaa-74b1-4c7e-8240-063ff4bfdbc3" alt="6" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/9ba12add-904b-413a-915f-dfec101c0b62"><img src="https://github.com/user-attachments/assets/9ba12add-904b-413a-915f-dfec101c0b62" alt="4" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/a6d43a0e-b5bd-45b4-91a1-a3a1f8a19d78"><img src="https://github.com/user-attachments/assets/a6d43a0e-b5bd-45b4-91a1-a3a1f8a19d78" alt="5" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/13805aaa-74b1-4c7e-8240-063ff4bfdbc3"><img src="https://github.com/user-attachments/assets/13805aaa-74b1-4c7e-8240-063ff4bfdbc3" alt="6" style="max-width: 100%; height: auto;"></a></p>
 <p>思路：以“/”为分界线将path分为多段，判断每段的内容是否是“.” “..”，再根据内容分别处理。</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>deque<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>string<span class="pl-pds">&gt;</span></span>

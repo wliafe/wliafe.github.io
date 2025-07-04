@@ -541,7 +541,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 <p>一言以蔽之，RFC822定义了邮件内容的格式和邮件头字段的详细细节，MIME协议则是定义了如何在邮件体部分表达出的丰富多样的数据内容。</p>
 <p><strong>电子邮件发送和接收流程</strong></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/1305a4ab-6944-45eb-a9a9-9c6391a094bc"><img src="https://github.com/user-attachments/assets/1305a4ab-6944-45eb-a9a9-9c6391a094bc" alt="1" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/1305a4ab-6944-45eb-a9a9-9c6391a094bc"><img src="https://github.com/user-attachments/assets/1305a4ab-6944-45eb-a9a9-9c6391a094bc" alt="1" style="max-width: 100%; height: auto;"></a></p>
 <ul>
 <li>
 <p>用户A的电子邮箱为：<a href="mailto:xx@qq.com">xx@qq.com</a>，通过邮件客户端软件写好一封邮件，交到QQ的邮件服务器，这一步使用的协议是SMTP,对应图示的①；</p>
@@ -567,8 +567,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 <h2>开发邮箱验证码接口</h2>
 <p><strong>邮箱服务器打开smtp服务</strong></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/351543f4-f119-4d68-b15c-332841e6d216"><img src="https://github.com/user-attachments/assets/351543f4-f119-4d68-b15c-332841e6d216" alt="2" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/7644f7e3-7ad9-4c14-8253-d5e7716a12a4"><img src="https://github.com/user-attachments/assets/7644f7e3-7ad9-4c14-8253-d5e7716a12a4" alt="3" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/351543f4-f119-4d68-b15c-332841e6d216"><img src="https://github.com/user-attachments/assets/351543f4-f119-4d68-b15c-332841e6d216" alt="2" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/7644f7e3-7ad9-4c14-8253-d5e7716a12a4"><img src="https://github.com/user-attachments/assets/7644f7e3-7ad9-4c14-8253-d5e7716a12a4" alt="3" style="max-width: 100%; height: auto;"></a></p>
 <p><strong>引入依赖</strong></p>
 <div class="highlight highlight-text-xml"><pre class="notranslate"><span class="pl-c"><span class="pl-c">&lt;!--</span>发送邮件:实现邮箱验证码<span class="pl-c">--&gt;</span></span>
 &lt;<span class="pl-ent">dependency</span>&gt;
@@ -577,7 +577,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 &lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
 <p>发送email的依赖，springboot帮我们封装好了</p>
 <p>可以看到，底层用的sun公司的api</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/1917cdf7-a60a-4816-8024-6bfe1a3beeca"><img src="https://github.com/user-attachments/assets/1917cdf7-a60a-4816-8024-6bfe1a3beeca" alt="4" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/1917cdf7-a60a-4816-8024-6bfe1a3beeca"><img src="https://github.com/user-attachments/assets/1917cdf7-a60a-4816-8024-6bfe1a3beeca" alt="4" style="max-width: 100%; height: auto;"></a></p>
 <div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">spring</span>:
   <span class="pl-ent">mail</span>:
     <span class="pl-c"><span class="pl-c">#</span> 设置邮箱主机</span>
@@ -815,7 +815,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 }</pre></div>
 <p><strong>打开接口的访问权限</strong></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e5d59a91-3cbf-43a2-b23e-de116ca06275"><img src="https://github.com/user-attachments/assets/e5d59a91-3cbf-43a2-b23e-de116ca06275" alt="5" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e5d59a91-3cbf-43a2-b23e-de116ca06275"><img src="https://github.com/user-attachments/assets/e5d59a91-3cbf-43a2-b23e-de116ca06275" alt="5" style="max-width: 100%; height: auto;"></a></p>
 <p><strong>修改application.yml</strong></p>
 <p>把登录的界面改成新写的界面</p>
 <div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">v</span>:
@@ -825,9 +825,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
       <span class="pl-ent">loginPage</span>: <span class="pl-s">/login3.html</span></pre></div>
 <p><strong>前端代码</strong></p>
 <p>创建新的登录页面 login3.html</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/a629904f-06e0-4c68-8743-063c33b05750"><img src="https://github.com/user-attachments/assets/a629904f-06e0-4c68-8743-063c33b05750" alt="6" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/a629904f-06e0-4c68-8743-063c33b05750"><img src="https://github.com/user-attachments/assets/a629904f-06e0-4c68-8743-063c33b05750" alt="6" style="max-width: 100%; height: auto;"></a></p>
 <p>前端代码bug不深究</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/de58af5d-45f7-4198-beed-f685fd8dc581"><img src="https://github.com/user-attachments/assets/de58af5d-45f7-4198-beed-f685fd8dc581" alt="7" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/de58af5d-45f7-4198-beed-f685fd8dc581"><img src="https://github.com/user-attachments/assets/de58af5d-45f7-4198-beed-f685fd8dc581" alt="7" style="max-width: 100%; height: auto;"></a></p>
 <div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>
 <span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">&gt;</span>
 <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>
@@ -889,7 +889,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p><strong>访问测试</strong></p>
 <p><a href="http://localhost:8080/login3.html" rel="nofollow">http://localhost:8080/login3.html</a></p>
 <p>写入邮箱，</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/65821308-f03e-4f57-b162-0a33791d7413"><img src="https://github.com/user-attachments/assets/65821308-f03e-4f57-b162-0a33791d7413" alt="8" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/65821308-f03e-4f57-b162-0a33791d7413"><img src="https://github.com/user-attachments/assets/65821308-f03e-4f57-b162-0a33791d7413" alt="8" style="max-width: 100%; height: auto;"></a></p>
 <h2>重构代码（一）</h2>
 <p>重构思路是用模板方法把代码（分级）抽出</p>
 <ul>
@@ -907,16 +907,16 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>而不一样的部分：发送（邮箱发送、图片发送）则写到子类ImageCodeProcessor和EmailCodeProcessor</p>
 </li>
 </ul>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b977658c-56a6-445d-b8f5-1dcd2f21a591"><img src="https://github.com/user-attachments/assets/b977658c-56a6-445d-b8f5-1dcd2f21a591" alt="9" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b977658c-56a6-445d-b8f5-1dcd2f21a591"><img src="https://github.com/user-attachments/assets/b977658c-56a6-445d-b8f5-1dcd2f21a591" alt="9" style="max-width: 100%; height: auto;"></a></p>
 <p><strong>重构抽象类 generate方法时，用到 spring 常见的开发技巧：依赖查找</strong></p>
 <p>因为图形验证码和邮箱验证码的生成逻辑都是封装在ValidateCodeGenerator接口下面，当我们（下图）形式注入时</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/464a1add-14d5-4812-94d5-4048b67d56a7"><img src="https://github.com/user-attachments/assets/464a1add-14d5-4812-94d5-4048b67d56a7" alt="10" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/464a1add-14d5-4812-94d5-4048b67d56a7"><img src="https://github.com/user-attachments/assets/464a1add-14d5-4812-94d5-4048b67d56a7" alt="10" style="max-width: 100%; height: auto;"></a></p>
 <p>spring会把实现了接口的bean，以名字作为key，bean的值作为value存入</p>
 <p>当收到请求，会从请求中截取认证类型的部分，调用相应的认证类型的 ValidateCodeGenerator</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/9a3f8c3a-be50-482a-bd9d-77b0485234bb"><img src="https://github.com/user-attachments/assets/9a3f8c3a-be50-482a-bd9d-77b0485234bb" alt="11" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/9a3f8c3a-be50-482a-bd9d-77b0485234bb"><img src="https://github.com/user-attachments/assets/9a3f8c3a-be50-482a-bd9d-77b0485234bb" alt="11" style="max-width: 100%; height: auto;"></a></p>
 <h2>校验邮箱验证码并登录</h2>
 <p>仿照（下图）用户密码登录流程，给出邮箱验证码验证流程</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/cafddc75-3723-496b-b30a-c297295c01d3"><img src="https://github.com/user-attachments/assets/cafddc75-3723-496b-b30a-c297295c01d3" alt="12" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/cafddc75-3723-496b-b30a-c297295c01d3"><img src="https://github.com/user-attachments/assets/cafddc75-3723-496b-b30a-c297295c01d3" alt="12" style="max-width: 100%; height: auto;"></a></p>
 <p>要创建下面几个类：</p>
 <ul>
 <li>
@@ -938,7 +938,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>因为无论是浏览器亦或者手机端均会使用短信验证，因此写在 core 模块中。</p>
 <p><strong>编写EmailAuthenticationToken</strong></p>
 <p>直接复制 UsernamePasswordAuthenticationToken,并且去掉Credential(密码)部分即可</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/4770a1a6-b8a9-47f0-892e-ec4200e5c329"><img src="https://github.com/user-attachments/assets/4770a1a6-b8a9-47f0-892e-ec4200e5c329" alt="13" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/4770a1a6-b8a9-47f0-892e-ec4200e5c329"><img src="https://github.com/user-attachments/assets/4770a1a6-b8a9-47f0-892e-ec4200e5c329" alt="13" style="max-width: 100%; height: auto;"></a></p>
 <div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">authentication</span>.<span class="pl-s1">AbstractAuthenticationToken</span>;
 <span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">authentication</span>.<span class="pl-s1">UsernamePasswordAuthenticationToken</span>;
 <span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">core</span>.<span class="pl-s1">GrantedAuthority</span>;
@@ -1029,7 +1029,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 }</pre></div>
 <p><strong>编写EmailAuthenticationFilter</strong></p>
 <p>同样的，复制 UsernamePasswordAuthenticationFilter，并改成 Email 形式</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/289c6871-5d66-4415-be0e-a0c64030edca"><img src="https://github.com/user-attachments/assets/289c6871-5d66-4415-be0e-a0c64030edca" alt="14" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/289c6871-5d66-4415-be0e-a0c64030edca"><img src="https://github.com/user-attachments/assets/289c6871-5d66-4415-be0e-a0c64030edca" alt="14" style="max-width: 100%; height: auto;"></a></p>
 <div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">authentication</span>.<span class="pl-s1">AuthenticationServiceException</span>;
 <span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">core</span>.<span class="pl-s1">Authentication</span>;
 <span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">core</span>.<span class="pl-s1">AuthenticationException</span>;
@@ -1156,7 +1156,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 }</pre></div>
 <p><strong>编写EmailCodeAuthenticationProvider</strong></p>
 <p>提供对我们自定义的EmailAuthenticationToken的认证提供者。</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f0b4b28f-4e53-48b0-9a6e-1050b16ace39"><img src="https://github.com/user-attachments/assets/f0b4b28f-4e53-48b0-9a6e-1050b16ace39" alt="15" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f0b4b28f-4e53-48b0-9a6e-1050b16ace39"><img src="https://github.com/user-attachments/assets/f0b4b28f-4e53-48b0-9a6e-1050b16ace39" alt="15" style="max-width: 100%; height: auto;"></a></p>
 <div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">authentication</span>.<span class="pl-s1">AuthenticationProvider</span>;
 <span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">authentication</span>.<span class="pl-s1">InternalAuthenticationServiceException</span>;
 <span class="pl-k">import</span> <span class="pl-s1">org</span>.<span class="pl-s1">springframework</span>.<span class="pl-s1">security</span>.<span class="pl-s1">core</span>.<span class="pl-s1">Authentication</span>;
@@ -1217,7 +1217,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p><strong>编写EmailCodeFilter</strong></p>
 <p>拦截邮件认证请求，校验邮箱认证码是否正确</p>
 <p>参考之前写的ImageCodeFilter</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/a1ba5287-299b-42f3-8384-fdd9b3df35a2"><img src="https://github.com/user-attachments/assets/a1ba5287-299b-42f3-8384-fdd9b3df35a2" alt="16" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/a1ba5287-299b-42f3-8384-fdd9b3df35a2"><img src="https://github.com/user-attachments/assets/a1ba5287-299b-42f3-8384-fdd9b3df35a2" alt="16" style="max-width: 100%; height: auto;"></a></p>
 <div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">cn</span>.<span class="pl-s1">vshop</span>.<span class="pl-s1">security</span>.<span class="pl-s1">core</span>.<span class="pl-s1">properties</span>.<span class="pl-s1">SecurityProperties</span>;
 <span class="pl-k">import</span> <span class="pl-s1">cn</span>.<span class="pl-s1">vshop</span>.<span class="pl-s1">security</span>.<span class="pl-s1">core</span>.<span class="pl-s1">validate</span>.<span class="pl-s1">code</span>.<span class="pl-s1">ValidateCode</span>;
 <span class="pl-k">import</span> <span class="pl-s1">cn</span>.<span class="pl-s1">vshop</span>.<span class="pl-s1">security</span>.<span class="pl-s1">core</span>.<span class="pl-s1">validate</span>.<span class="pl-s1">code</span>.<span class="pl-s1">ValidateCodeException</span>;
@@ -1432,37 +1432,37 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 }</pre></div>
 <p><strong>修改BrowserSecurityConfig</strong></p>
 <p>在应用配置中导入新加的配置</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f275a9c1-5a79-4979-9501-05a6803df59d"><img src="https://github.com/user-attachments/assets/f275a9c1-5a79-4979-9501-05a6803df59d" alt="17" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/131bf86b-374b-4a0c-bbad-4bc90f585867"><img src="https://github.com/user-attachments/assets/131bf86b-374b-4a0c-bbad-4bc90f585867" alt="18" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f275a9c1-5a79-4979-9501-05a6803df59d"><img src="https://github.com/user-attachments/assets/f275a9c1-5a79-4979-9501-05a6803df59d" alt="17" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/131bf86b-374b-4a0c-bbad-4bc90f585867"><img src="https://github.com/user-attachments/assets/131bf86b-374b-4a0c-bbad-4bc90f585867" alt="18" style="max-width: 100%; height: auto;"></a></p>
 <p><strong>登录测试</strong></p>
 <p>把两种登录方式放入了同一页面login4.html</p>
 <p><strong>不输入验证码，直接邮箱登录</strong></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/0f7184b1-4350-4a3f-a9c5-037eb8a945b8"><img src="https://github.com/user-attachments/assets/0f7184b1-4350-4a3f-a9c5-037eb8a945b8" alt="19" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/ebeb83a7-2b4e-4550-8e71-25c4d9ba5d7a"><img src="https://github.com/user-attachments/assets/ebeb83a7-2b4e-4550-8e71-25c4d9ba5d7a" alt="20" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/0f7184b1-4350-4a3f-a9c5-037eb8a945b8"><img src="https://github.com/user-attachments/assets/0f7184b1-4350-4a3f-a9c5-037eb8a945b8" alt="19" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/ebeb83a7-2b4e-4550-8e71-25c4d9ba5d7a"><img src="https://github.com/user-attachments/assets/ebeb83a7-2b4e-4550-8e71-25c4d9ba5d7a" alt="20" style="max-width: 100%; height: auto;"></a></p>
 <p>随便乱输入</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/af627fc5-1cc7-4ac3-b812-9422cd506dc6"><img src="https://github.com/user-attachments/assets/af627fc5-1cc7-4ac3-b812-9422cd506dc6" alt="21" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/0ccbb405-78dd-4211-99a1-d6468961b806"><img src="https://github.com/user-attachments/assets/0ccbb405-78dd-4211-99a1-d6468961b806" alt="22" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/af627fc5-1cc7-4ac3-b812-9422cd506dc6"><img src="https://github.com/user-attachments/assets/af627fc5-1cc7-4ac3-b812-9422cd506dc6" alt="21" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/0ccbb405-78dd-4211-99a1-d6468961b806"><img src="https://github.com/user-attachments/assets/0ccbb405-78dd-4211-99a1-d6468961b806" alt="22" style="max-width: 100%; height: auto;"></a></p>
 <p>输入正确验证码</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/37d827fd-2312-4b8c-b8c9-5e8ec187756f"><img src="https://github.com/user-attachments/assets/37d827fd-2312-4b8c-b8c9-5e8ec187756f" alt="23" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/1aff7571-fee2-4e8a-94eb-804a7377eb02"><img src="https://github.com/user-attachments/assets/1aff7571-fee2-4e8a-94eb-804a7377eb02" alt="24" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/37d827fd-2312-4b8c-b8c9-5e8ec187756f"><img src="https://github.com/user-attachments/assets/37d827fd-2312-4b8c-b8c9-5e8ec187756f" alt="23" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/1aff7571-fee2-4e8a-94eb-804a7377eb02"><img src="https://github.com/user-attachments/assets/1aff7571-fee2-4e8a-94eb-804a7377eb02" alt="24" style="max-width: 100%; height: auto;"></a></p>
 <p>等待60s（验证码过期）</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/53cd5106-e2d0-4624-9fec-d1ae1fda531a"><img src="https://github.com/user-attachments/assets/53cd5106-e2d0-4624-9fec-d1ae1fda531a" alt="26" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/53cd5106-e2d0-4624-9fec-d1ae1fda531a"><img src="https://github.com/user-attachments/assets/53cd5106-e2d0-4624-9fec-d1ae1fda531a" alt="26" style="max-width: 100%; height: auto;"></a></p>
 <p>同时，图片验证码也是可用的</p>
 <h2>重构代码（二）</h2>
 <p><strong>图形验证码和邮箱验证码重复的配置部分</strong></p>
 <p>将重复部分抽出为一个个的类，用apply方法应用其配置，使其生效</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/554c13e0-c586-49ef-96c2-d23eafb76749"><img src="https://github.com/user-attachments/assets/554c13e0-c586-49ef-96c2-d23eafb76749" alt="27" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/554c13e0-c586-49ef-96c2-d23eafb76749"><img src="https://github.com/user-attachments/assets/554c13e0-c586-49ef-96c2-d23eafb76749" alt="27" style="max-width: 100%; height: auto;"></a></p>
 <p>图形和短信校验码的校验过滤器（validateFilter）合并为一个。</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f36d1512-a517-4d9b-b764-d520e2dfdfa3"><img src="https://github.com/user-attachments/assets/f36d1512-a517-4d9b-b764-d520e2dfdfa3" alt="28" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/dbde8267-bb9a-4f74-834e-6ea4f61dd457"><img src="https://github.com/user-attachments/assets/dbde8267-bb9a-4f74-834e-6ea4f61dd457" alt="29" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/18e1292c-4301-4a6e-9c4e-5227348073f3"><img src="https://github.com/user-attachments/assets/18e1292c-4301-4a6e-9c4e-5227348073f3" alt="30" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5674c3e4-b80d-42af-a776-3b0e16370cd8"><img src="https://github.com/user-attachments/assets/5674c3e4-b80d-42af-a776-3b0e16370cd8" alt="31" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/81be3fd6-dc7a-41a7-9ef5-57e382ebf52d"><img src="https://github.com/user-attachments/assets/81be3fd6-dc7a-41a7-9ef5-57e382ebf52d" alt="32" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/3e52cdb2-8ef2-425c-bc4d-d7210dd68bc1"><img src="https://github.com/user-attachments/assets/3e52cdb2-8ef2-425c-bc4d-d7210dd68bc1" alt="33" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/71a8537b-4930-4345-813a-a6c92dd2123a"><img src="https://github.com/user-attachments/assets/71a8537b-4930-4345-813a-a6c92dd2123a" alt="34" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/aca2efcd-6d4c-4942-a166-abbe3d84f2e9"><img src="https://github.com/user-attachments/assets/aca2efcd-6d4c-4942-a166-abbe3d84f2e9" alt="35" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/674221c6-6c17-45ab-8c22-5da8e95f567d"><img src="https://github.com/user-attachments/assets/674221c6-6c17-45ab-8c22-5da8e95f567d" alt="36" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5f8cadcc-22b7-476f-ac57-9c91a2122b43"><img src="https://github.com/user-attachments/assets/5f8cadcc-22b7-476f-ac57-9c91a2122b43" alt="37" style="max-width: 100%;"></a></p></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f36d1512-a517-4d9b-b764-d520e2dfdfa3"><img src="https://github.com/user-attachments/assets/f36d1512-a517-4d9b-b764-d520e2dfdfa3" alt="28" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/dbde8267-bb9a-4f74-834e-6ea4f61dd457"><img src="https://github.com/user-attachments/assets/dbde8267-bb9a-4f74-834e-6ea4f61dd457" alt="29" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/18e1292c-4301-4a6e-9c4e-5227348073f3"><img src="https://github.com/user-attachments/assets/18e1292c-4301-4a6e-9c4e-5227348073f3" alt="30" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5674c3e4-b80d-42af-a776-3b0e16370cd8"><img src="https://github.com/user-attachments/assets/5674c3e4-b80d-42af-a776-3b0e16370cd8" alt="31" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/81be3fd6-dc7a-41a7-9ef5-57e382ebf52d"><img src="https://github.com/user-attachments/assets/81be3fd6-dc7a-41a7-9ef5-57e382ebf52d" alt="32" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/3e52cdb2-8ef2-425c-bc4d-d7210dd68bc1"><img src="https://github.com/user-attachments/assets/3e52cdb2-8ef2-425c-bc4d-d7210dd68bc1" alt="33" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/71a8537b-4930-4345-813a-a6c92dd2123a"><img src="https://github.com/user-attachments/assets/71a8537b-4930-4345-813a-a6c92dd2123a" alt="34" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/aca2efcd-6d4c-4942-a166-abbe3d84f2e9"><img src="https://github.com/user-attachments/assets/aca2efcd-6d4c-4942-a166-abbe3d84f2e9" alt="35" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/674221c6-6c17-45ab-8c22-5da8e95f567d"><img src="https://github.com/user-attachments/assets/674221c6-6c17-45ab-8c22-5da8e95f567d" alt="36" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5f8cadcc-22b7-476f-ac57-9c91a2122b43"><img src="https://github.com/user-attachments/assets/5f8cadcc-22b7-476f-ac57-9c91a2122b43" alt="37" style="max-width: 100%; height: auto;"></a></p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️ 转载文章请注明出处，谢谢！❤️</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

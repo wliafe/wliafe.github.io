@@ -457,9 +457,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>第一个项目</h1>
 <h2>项目创建</h2>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/bd9f75b4-d73c-44f5-832f-2b197741ff12"><img src="https://github.com/user-attachments/assets/bd9f75b4-d73c-44f5-832f-2b197741ff12" alt="1" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b5d17599-91c0-4c4e-8db6-5343fa03f0bc"><img src="https://github.com/user-attachments/assets/b5d17599-91c0-4c4e-8db6-5343fa03f0bc" alt="2" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/8076e8f1-82b4-41f6-be92-bd61d7b143bf"><img src="https://github.com/user-attachments/assets/8076e8f1-82b4-41f6-be92-bd61d7b143bf" alt="3" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/bd9f75b4-d73c-44f5-832f-2b197741ff12"><img src="https://github.com/user-attachments/assets/bd9f75b4-d73c-44f5-832f-2b197741ff12" alt="1" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b5d17599-91c0-4c4e-8db6-5343fa03f0bc"><img src="https://github.com/user-attachments/assets/b5d17599-91c0-4c4e-8db6-5343fa03f0bc" alt="2" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/8076e8f1-82b4-41f6-be92-bd61d7b143bf"><img src="https://github.com/user-attachments/assets/8076e8f1-82b4-41f6-be92-bd61d7b143bf" alt="3" style="max-width: 100%; height: auto;"></a></p>
 <h2>文件编写</h2>
 <p>application.yml</p>
 <div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">spring</span>:
@@ -603,8 +603,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     }
 }</pre></div>
 <h2>运行</h2>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/cec1368d-e978-4665-9a35-58743224fe5e"><img src="https://github.com/user-attachments/assets/cec1368d-e978-4665-9a35-58743224fe5e" alt="4" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/a2d437d2-3cec-44fd-9584-94e792bac260"><img src="https://github.com/user-attachments/assets/a2d437d2-3cec-44fd-9584-94e792bac260" alt="5" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/cec1368d-e978-4665-9a35-58743224fe5e"><img src="https://github.com/user-attachments/assets/cec1368d-e978-4665-9a35-58743224fe5e" alt="4" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/a2d437d2-3cec-44fd-9584-94e792bac260"><img src="https://github.com/user-attachments/assets/a2d437d2-3cec-44fd-9584-94e792bac260" alt="5" style="max-width: 100%; height: auto;"></a></p>
 <h1>多环境配置</h1>
 <blockquote>
 <p>开发SpringBoot应用的时候，通常程序需要在测试环境测试成功后才会上线到生产环境。而测试环境和生产环境的数据库地址、服务器端口等配置都不同。在为不同环境打jar包时，需要频繁的修改application.yml配置文件，十分麻烦。</p>
@@ -622,7 +622,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>application-prod.yml：生产环境</p>
 </li>
 </ul>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/3e964f88-a19d-4f16-9771-3ee4d86a2b37"><img src="https://github.com/user-attachments/assets/3e964f88-a19d-4f16-9771-3ee4d86a2b37" alt="6" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/3e964f88-a19d-4f16-9771-3ee4d86a2b37"><img src="https://github.com/user-attachments/assets/3e964f88-a19d-4f16-9771-3ee4d86a2b37" alt="6" style="max-width: 100%; height: auto;"></a></p>
 <p>其中application.yml存放公共配置，可通过修改active切换读取的配置文件，比如active: dev改成active: test就是将读取application-dev.yml改为application-test.yml，环境也从本地开发变成了测试环境</p>
 <p>application-dev.yml</p>
 <div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">spring</span>:
@@ -661,10 +661,10 @@ Caused by: org.yaml.snakeyaml.error.YAMLException: java.nio.charset.MalformedInp
     &lt;<span class="pl-ent">project</span>.reporting.outputEncoding&gt;UTF-8&lt;/<span class="pl-ent">project</span>.reporting.outputEncoding&gt;
     &lt;<span class="pl-ent">maven</span>.compiler.encoding&gt;UTF-8&lt;/<span class="pl-ent">maven</span>.compiler.encoding&gt;
 &lt;/<span class="pl-ent">properties</span>&gt;</pre></div>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/25b4bc95-e64e-474e-ae2c-df7a658d8c21"><img src="https://github.com/user-attachments/assets/25b4bc95-e64e-474e-ae2c-df7a658d8c21" alt="7" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/25b4bc95-e64e-474e-ae2c-df7a658d8c21"><img src="https://github.com/user-attachments/assets/25b4bc95-e64e-474e-ae2c-df7a658d8c21" alt="7" style="max-width: 100%; height: auto;"></a></p>
 <h2>修改编码格式</h2>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b5c48be4-3917-4bf5-bbd5-c79dc8c2b855"><img src="https://github.com/user-attachments/assets/b5c48be4-3917-4bf5-bbd5-c79dc8c2b855" alt="8" style="max-width: 100%;"></a></p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/8953da9f-f84c-4163-a2aa-454b0ae75cde"><img src="https://github.com/user-attachments/assets/8953da9f-f84c-4163-a2aa-454b0ae75cde" alt="9" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b5c48be4-3917-4bf5-bbd5-c79dc8c2b855"><img src="https://github.com/user-attachments/assets/b5c48be4-3917-4bf5-bbd5-c79dc8c2b855" alt="8" style="max-width: 100%; height: auto;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/8953da9f-f84c-4163-a2aa-454b0ae75cde"><img src="https://github.com/user-attachments/assets/8953da9f-f84c-4163-a2aa-454b0ae75cde" alt="9" style="max-width: 100%; height: auto;"></a></p>
 <p>然后重新启动项目！！！！</p>
 <h2>最不应该出现的错误</h2>
 <p>就是你的application.yml文件是通过把其他类型的文件后缀名直接改为yml生成的，这时就需要你把application.yml中的内容全部复制，然后删除，再新建一个application.yml文件，将复制的内容拷贝进去再运行项目就不会报错了。</p>
