@@ -140,7 +140,7 @@ nrm use taobao
 nrm use npm
 ```
 
-## package.json 文件
+## package.json Node.js项目包管理文件
 
 前面提到过，`package.json`文件中记录了项目的依赖关系，不止如此，`package.json`的scripts字段记录的脚本命令也很好用，scripts字段将项目的构建、运行、部署等脚本命令集中到一起，由npm run命令统一执行，不必每次都输入完整的命令，为用户提供了极大方便，这里还是以hexo项目为例。
 
