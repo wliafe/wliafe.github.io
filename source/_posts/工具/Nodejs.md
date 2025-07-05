@@ -102,9 +102,11 @@ npx 创建 hexo 项目的速度要比正常 hexo 创建项目的速度要慢一�
 
 ## nrm Node.js的镜像源管理器
 
-nrm 是 Node.js 的镜像源管理器，用于管理 Node.js 的镜像源，nrm 可以切换 npm 源，也可以添加自定义源，关于 nrm 文档可以在[这里](https://github.com/Pana/nrm)查看。
+nrm 是 Node.js 的镜像源管理器，用于管理 Node.js 的镜像源，nrm 可以切换 npm 源，也可以添加自定义源，关于 nrm 官方文档可以在[这里](https://github.com/Pana/nrm)查看。
 
 在给 npm 换源时发现了 nrm 这个工具，给了我意外的惊喜，在给其他工具换源时，我需要查询源的网址，换源命令，有时还要修改配置文件，非常麻烦不说，还要担心源不稳定时切换回官方源的问题，有了这个工具，我不再需要手动修改 npm 源配置文件了，非常方便，强烈建议 pip、conda 也推出类似的工具。
+
+当然 nrm 也可用 npx 执行，只是不那么方便罢了。
 
 ### nrm 安装
 
@@ -137,3 +139,38 @@ nrm use taobao
 ```bash
 nrm use npm
 ```
+
+## package.json 文件
+
+前面提到过，`package.json`文件中记录了项目的依赖关系，不止如此，`package.json`的scripts字段记录的脚本命令也很好用，scripts字段将项目的构建、运行、部署等脚本命令集中到一起，由npm run命令统一执行，不必每次都输入完整的命令，为用户提供了极大方便，这里还是以hexo项目为例。
+
+scripts字段为
+
+```json
+"scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
+```
+
+这时，我们就可以使用npm run命令来执行scripts字段中的脚本命令了，比如执行构建命令
+
+```bash
+npm run build
+```
+
+执行部署命令
+
+```bash
+npm run deploy
+```
+
+执行运行命令
+
+```bash
+npm run server
+```
+
+利用好scripts字段，我们可以大大简化我们的操作。
