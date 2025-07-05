@@ -15,6 +15,60 @@ tags:
 
 <!-- more -->
 
-## Next主题安装
+## NexT主题发展史
 
-我认为的NexT
+我在GitHub上搜到最早的NexT主题应该是这个仓库[theme-next/hexo-theme-next](https://github.com/theme-next/hexo-theme-next)，我的判断依据也挺简单，他的头像图标和NexT图标一样，这也算是一种经验主义吧。hexo-theme-next仓库star比较多的有三家，他们star比其他人的star高出了一个数量级，所以在选择时只要货比三家就可以了。显而易见，原始仓库theme-next/hexo-theme-next停更四年有余，第一个仓库更是停更了七年有余，而[next-theme/hexo-theme-next](https://github.com/next-theme/hexo-theme-next)仓库最近刚刚更新，活跃度还是很高的，这正是我喜欢的。这算是从我的视角观察到的NexT主题的发展变化，也是我选择仓库的根据。
+
+![GitHub hexo-theme-next仓库搜索图](1.png)
+
+## NexT主题安装
+
+### 一般的主题安装方法
+
+这里先讲一下一般主题安装方式，以NexT主题举例。
+
+找到主题的仓库[next-theme/hexo-theme-next](https://github.com/next-theme/hexo-theme-next)，对于新手来说最好选择稳定的发行版，也就是`Releases`，点击`Releases`。
+
+![GitHub hexo-theme-next仓库截图](2.png)
+
+选择`Latest release`，点击`Source code (zip)`下载。
+
+![GitHub hexo-theme-next仓库Releases图](3.png)
+
+如果没有`Releases`，就只能选择`Code`，点击`Download ZIP`下载。
+
+![Code 下载图](4.png)
+
+下载完成后，解压出来一个文件夹，改名为next，放到themes文件夹下，如下图所示。
+
+![博客项目文件结构图](5.png)
+
+修改blog目录下的配置文件（不是next主题的配置文件）`_config.yml`，将主题改为next，这样主题的最原始状态就可以使用了。
+
+```yml
+theme: next
+```
+
+要想修改主题的配置，最好的办法就是将next目录下的`_config.yml`文件复制出来一份，改名为`_config.next.yml`，存放在blog目录下，通过修改`_config.next.yml`文件来修改主题的配置。
+
+### NexT主题最好的安装办法
+
+NexT仓库[next-theme/hexo-theme-next](https://github.com/next-theme/hexo-theme-next)的其中一位贡献者stevenjoezhang将仓库打包成了一个npm包，并将它发布到了npm官方仓库中了，这给了NexT主题一个全新的，快捷方便的安装方式，即使用npm安装。
+
+只这一条命令，就抵得上一般主题安装方法中的所有步骤了。
+
+```bash
+npm install hexo-theme-next
+```
+
+然后在node_modules目录下的hexo-theme-next目录中，找到主题的配置文件`_config.yml`，复制到blog目录下，改名为`_config.next.yml`，这样就可以通过修改`_config.next.yml`文件来修改主题的配置了。
+
+## NexT主题配置
+
+NexT主题的配置文件是`_config.next.yml`，它的配置项非常多，就参考[官方文档](https://theme-next.js.org/docs/)吧，我就不一一介绍了。
+
+### 评论系统Utterances配置遇到的问题
+
+>我在配置Utterances评论系统时，遇到评论登录GitHub时跳转到了[Example Domain](https://example.com/)，这是因为我在blog目录下`_config.yml`文件中没有配置`url`项，导致Utterances评论系统无法获取到我的博客网址，我在`_config.yml`文件中添加了`url`项，配置我的博客网址，就解决了这个问题。
+
+![Example Domain图](6.png)
