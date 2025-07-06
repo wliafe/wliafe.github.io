@@ -45,7 +45,7 @@ tags:
 
 修改blog目录下的配置文件（不是next主题的配置文件）`_config.yml`，将主题改为next，这样主题的最原始状态就可以使用了。
 
-```yml
+```yml _config.yml
 theme: next
 ```
 

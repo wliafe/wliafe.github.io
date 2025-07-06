@@ -162,7 +162,7 @@ git rm -r --cached <要取消版本控制的文件或文件夹>
 
 例如，如果想忽略`node_modules`文件夹，忽略所有`.log`文件，那么就在`.gitignore`文件中添加以下内容：
 
-```txt
+```txt .gitignore
 node_modules/
 *.log
 ```

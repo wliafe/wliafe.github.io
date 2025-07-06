@@ -102,7 +102,7 @@ npx 创建 hexo 项目的速度要比正常 hexo 创建项目的速度要慢一�
 
 ## nrm Node.js的镜像源管理器
 
-nrm 是 Node.js 的镜像源管理器，用于管理 Node.js 的镜像源，nrm 可以切换 npm 源，也可以添加自定义源，关于 nrm 官方文档可以在[这里](https://github.com/Pana/nrm)查看。
+nrm 是 Node.js 的镜像源管理器，用于管理 Node.js 的镜像源，nrm 可以切换 npm 源，也可以添加自定义源，这里是 [nrm 官方文档](https://github.com/Pana/nrm)。
 
 在给 npm 换源时发现了 nrm 这个工具，给了我意外的惊喜，在给其他工具换源时，我需要查询源的网址，换源命令，有时还要修改配置文件，非常麻烦不说，还要担心源不稳定时切换回官方源的问题，有了这个工具，我不再需要手动修改 npm 源配置文件了，非常方便，强烈建议 pip、conda 也推出类似的工具。
 
@@ -146,7 +146,7 @@ nrm use npm
 
 scripts字段为
 
-```json
+```json package.json
 "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
