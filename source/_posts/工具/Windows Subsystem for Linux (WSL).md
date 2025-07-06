@@ -92,8 +92,6 @@ C:\Users\<UserName>\AppData\Local\wsl
 
 ## Docker Desktop for Windows
 
-Docker Desktop for Windows是微软推出的一个功能，它允许用户在Windows上运行Docker。Docker Desktop for Windows可以让用户在Windows上运行Docker容器，同时也可以运行Linux容器。Docker Desktop for Windows的出现，使得用户可以在Windows上运行Docker环境，而不需要安装虚拟机。
+Docker Desktop for Windows是微软推出的一个软件，它允许用户在Windows上运行Docker容器，而不需要安装虚拟机。Docker Desktop for Windows的docker引擎是跑在Linux环境中的，而Linux环境是WSL提供的，因此使用Docker Desktop for Windows时需要安装WSL。
 
-Docker Desktop for Windows的Linux环境是通过WSL提供的。
-
-[Docker Desktop for Windows 下载地址](https://www.docker.com/products/docker-desktop/)
+这是[Docker Desktop for Windows 下载地址](https://www.docker.com/products/docker-desktop/)

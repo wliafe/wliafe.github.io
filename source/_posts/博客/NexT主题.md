@@ -69,6 +69,8 @@ NexT主题的配置文件是`_config.next.yml`，它的配置项非常多，就�
 
 ### 评论系统Utterances配置遇到的问题
 
->我在配置Utterances评论系统时，遇到评论登录GitHub时跳转到了[Example Domain](https://example.com/)，这是因为我在blog目录下`_config.yml`文件中没有配置`url`项，导致Utterances评论系统无法获取到我的博客网址，我在`_config.yml`文件中添加了`url`项，配置我的博客网址，就解决了这个问题。
+{%note danger %}
+我在配置Utterances评论系统时，遇到评论登录GitHub时跳转到了[Example Domain](https://example.com/)，这是因为我在blog目录下`_config.yml`文件中没有配置`url`项，导致Utterances评论系统无法获取到我的博客网址，我在`_config.yml`文件中添加了`url`项，配置我的博客网址，就解决了这个问题。
+{% endnote %}
 
 ![Example Domain图](6.png)

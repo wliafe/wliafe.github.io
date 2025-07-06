@@ -1,5 +1,5 @@
 ---
-title: 博客搭建
+title: Hexo博客搭建
 date: 2025-07-04 22:49:20
 categories:
     - 博客
