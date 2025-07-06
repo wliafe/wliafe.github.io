@@ -661,7 +661,7 @@ comments:
   # Setting `true` means remembering the comment system selected by the visitor.
   storage: true
   # Lazyload all comment systems.
-  lazyload: false
+  lazyload: true
   # Modify texts or order for any naves, here are some examples.
   nav:
     #disqus:
@@ -669,6 +669,12 @@ comments:
     #  order: -1
     #gitalk:
     #  order: -2
+    utterances:
+      text: Utterances
+      order: 1
+    changyan:
+      text: 畅言
+      order: 2
 
 # Disqus
 # For more information: https://disqus.com
@@ -692,9 +698,9 @@ disqusjs:
 # Changyan
 # For more information: https://changyan.kuaizhan.com
 changyan:
-  enable: false
-  appid:
-  appkey:
+  enable: true
+  appid: cyvv7NovA
+  appkey: c0269eb44b0e52c5034e5c924eded05f
   # Show comments count
   count: true
 
