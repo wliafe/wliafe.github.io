@@ -36,7 +36,7 @@ Git的安装教程网上数不胜数，其中[Git 详细安装教程（详解 Gi
 
 ## 配置 Git
 
-单机右键，打开Git Bush Here然后通过输入命令设置用户名。
+单机右键，打开Git Bush Here然后通过输入命令配置用户名和邮箱。
 
 配置用户名
 
@@ -64,21 +64,19 @@ git config --global user.email
 
 ## Git 链接仓库
 
-一般的选择是使用ssh公私钥，但是现在可以直接使用账号密码登录的方式上传代码（无论是GitHub还是Gitee），只需要一次登录就可以上传多次。
+一般的选择是使用ssh公私钥，但是现在可以直接使用账号密码登录的方式上传代码（无论是GitHub还是Gitee），只需要一次登录就可以上传多次，因此我不再配置ssh了，至于创建`.git`文件，我现在比较喜欢先创建仓库，然后clone仓库，克隆下来的仓库自带`.git`文件，不需要自己创建。
 
-至于创建`.git`文件，我现在比较喜欢先创建仓库，然后clone仓库，克隆下来的仓库自带`.git`文件，不需要自己创建。
-
-## Git 常用命令
-
-下图是获取仓库HTTP网址的方法
+如下图，获取仓库HTTP网址。
 
 ![仓库HTTP网址](4.png)
 
-克隆仓库
+### 直接克隆仓库
 
 ```bash
 git clone <仓库HTTP网址>
 ```
+
+### 创建`.git`文件，添加仓库网址
 
 创建Git文件
 
@@ -91,6 +89,8 @@ git init
 ```bash
 git remote add origin <仓库HTTP网址>
 ```
+
+### 编写代码提交到仓库
 
 从仓库中拉取文件覆盖本地文件夹
 
@@ -116,6 +116,8 @@ git commit -m <注释>
 git push origin main
 ```
 
+### 分支管理
+
 查看本地分支
 
 ```bash
@@ -140,6 +142,8 @@ git checkout <分支名>
 git branch -d <分支名>
 ```
 
+### 其他
+
 取消某个文件的版本控制
 
 ```bash
@@ -154,7 +158,7 @@ git rm -r --cached <要取消版本控制的文件或文件夹>
 
 `.gitignore` 文件用于指定 Git 不应该跟踪的文件，详细的语法规则可以参考[`.gitignore`的官方文档](https://git-scm.com/docs/gitignore/zh_HANS-CN)
 
-我一般在创建仓库时使用仓库提供的`.gitignore`文件，或者创建项目时项目自带`.gitignore`文件，然后我会根据自己的需要添加部分配置。
+我一般在创建仓库时使用仓库提供的`.gitignore`文件，或者创建的项目自带`.gitignore`文件，然后我会根据自己的需要添加部分配置。
 
 例如，如果想忽略`node_modules`文件夹，忽略所有`.log`文件，那么就在`.gitignore`文件中添加以下内容：
 
@@ -162,3 +166,5 @@ git rm -r --cached <要取消版本控制的文件或文件夹>
 node_modules/
 *.log
 ```
+
+这样就不会将`node_modules`文件夹中的文件上传到仓库了，节省了仓库的空间和上传时间，因此应该养成在每个项目中设置`.gitignore`文件的习惯。
