@@ -54,22 +54,6 @@ favicon:
   small: /images/wliafe16.ico
   medium: /images/wliafe32.ico
 
-# Custom Logo (Warning: Do not support scheme Mist)
-custom_logo: #/uploads/custom-logo.png
-
-# Open graph settings
-# See: https://hexo.io/docs/helpers#open-graph
-open_graph:
-  enable: true
-  options:
-    #twitter_card: <twitter:card>
-    #twitter_id: <twitter:creator>
-    #twitter_site: <twitter:site>
-    #twitter_image: <twitter:image>
-    #google_plus: <g+:profile_link>
-    #fb_admins: <fb:admin_id>
-    #fb_app_id: <fb:app_id>
-
 
 # ---------------------------------------------------------------
 # Menu Settings
@@ -92,37 +76,13 @@ menu:
 # Enable / Disable menu icons / item badges.
 menu_settings:
   icons: true
-  badges: false
+  badges: true
 
 
 # ---------------------------------------------------------------
 # Sidebar Settings
 # See: https://theme-next.js.org/docs/theme-settings/sidebar
 # ---------------------------------------------------------------
-
-sidebar:
-  # Sidebar position. Available values: left | right
-  position: left
-
-  # Sidebar width.
-  # Applicable to Muse | Mist and mobile of Pisces | Gemini.
-  width_expanded: 320
-  # Applicable to desktop of Pisces | Gemini.
-  width_dual_column: 240
-
-  # Sidebar display.
-  # Applicable to Muse | Mist and mobile of Pisces | Gemini.
-  # Available values:
-  #  - post    expand on posts automatically. Default.
-  #  - always  expand for all pages automatically.
-  #  - hide    expand only when click on the sidebar toggle icon.
-  #  - remove  totally remove sidebar including sidebar toggle.
-  display: post
-
-  # Sidebar padding in pixels.
-  padding: 18
-  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
-  offset: 12
 
 # Sidebar Avatar
 avatar:
@@ -154,38 +114,13 @@ social:
 social_icons:
   enable: true
   icons_only: false
-  transition: false
-
-# Blog rolls
-links_settings:
-  icon: fa fa-globe
-  # Available values: block | inline
-  layout: block
-
-links:
-  #Title: https://example.com
-
-# Table of Contents in the Sidebar
-# Front-matter variable (nonsupport wrap expand_all).
-toc:
-  enable: true
-  # Automatically add list number to toc.
-  number: true
-  # If true, all words will placed on next lines if header width longer then sidebar width.
-  wrap: false
-  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
-  expand_all: false
-  # Maximum heading depth of generated toc.
-  max_depth: 6
+  transition: true
 
 
 # ---------------------------------------------------------------
 # Footer Settings
 # See: https://theme-next.js.org/docs/theme-settings/footer
 # ---------------------------------------------------------------
-
-# Show multilingual switcher in footer.
-language_switcher: false
 
 footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
@@ -196,16 +131,9 @@ footer:
     # Icon name in Font Awesome. See: https://fontawesome.com/icons
     name: fa fa-heart
     # If you want to animate the icon, set it to true.
-    animated: false
+    animated: true
     # Change the color of icon, using Hex Code.
     color: "#ff0000"
-
-  # If not defined, `author` from Hexo `_config.yml` will be used.
-  # Set to `false` to disable the copyright statement.
-  copyright:
-
-  # Powered by Hexo & NexT
-  powered: true
 
   # Beian ICP and gongan information for Chinese users. See: https://beian.miit.gov.cn, https://beian.mps.gov.cn
   beian:
@@ -225,62 +153,28 @@ footer:
 # ---------------------------------------------------------------
 
 # Use `description` in front-matter to specify post excerpt.
-excerpt_description: true
-
-# Read more button
-# If true, the read more button will be displayed in excerpt section.
-read_more_btn: true
-
-# Post meta display settings
-post_meta:
-  item_text: true
-  created_at: true
-  updated_at:
-    enable: true
-    another_day: true
-  categories: true
+excerpt_description: false
 
 # Post wordcount display settings
 # Dependencies: https://github.com/next-theme/hexo-word-counter
 symbols_count_time:
   separated_meta: true
-  item_text_total: false
+  item_text_total: true
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
-tag_icon: false
-
-# Donate (Sponsor) settings
-# Front-matter variable (nonsupport animation).
-reward_settings:
-  # If true, a donate button will be displayed in every article by default.
-  enable: false
-  animation: false
-
-reward:
-  #wechatpay: /images/wechatpay.png
-  #alipay: /images/alipay.png
-  #paypal: /images/paypal.png
-  #bitcoin: /images/bitcoin.png
-
-# Subscribe through Telegram Channel, Twitter, etc.
-# Usage: `Key: permalink || icon` (Font Awesome)
-follow_me:
-  #Twitter: https://twitter.com/username || fab fa-twitter
-  #Telegram: https://t.me/channel_name || fab fa-telegram
-  #WeChat: /images/wechat_channel.png || fab fa-weixin
-  #RSS: /atom.xml || fa fa-rss
+tag_icon: true
 
 # Related popular posts
 # Dependencies: https://github.com/sergeyzwezdin/hexo-related-posts
 related_posts:
-  enable: false
+  enable: true
   icon: fa fa-signs-post
 
 # Post edit
 # Easily browse and edit blog source code online.
 post_edit:
   enable: false
-  url: https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/ # Link for view source
+  url: https://github.com/wliafe/blog/tree/main/source/ # Link for view source
   #url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/ # Link for fork & edit
 
 # Show previous post and next post in post footer if exists
