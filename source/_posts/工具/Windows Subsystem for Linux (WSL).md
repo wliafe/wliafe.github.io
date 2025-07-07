@@ -58,7 +58,9 @@ wsl --unregister <DistributionName>
 
 如果你使用图形化安装的话可以使用这个命令格式化Linux。
 
+{% note warning %}
 如果你想完全卸载图形化安装的Linux，就必须先使用这个命令注销Linux，目的是将注册表中有关Linux的信息删除，然后在Windows的开始菜单中找到Ubuntu，点击卸载。
+{% endnote %}
 
 #### 出错原因以及解决方案
 

@@ -53,6 +53,8 @@ highlight:
   tab_replace: ''
   wrap: true
   hljs: false
+  exclude_languages:
+    - mermaid
 prismjs:
   preprocess: true
   line_number: true
@@ -106,6 +108,9 @@ theme: next
 deploy:
   type: ''
 
+# NexT主题额外配置
+
+# 文章字数统计和阅读时长功能
 symbols_count_time:
   symbols: true                # 文章字数统计
   time: true                   # 文章阅读时长
@@ -114,9 +119,11 @@ symbols_count_time:
   awl: 4
   wpm: 275
 
+# 相关文章功能
 related_posts:
   enable: true
 
+# 搜索功能
 search:
   path: search.xml
   field: post
