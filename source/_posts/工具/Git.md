@@ -5,7 +5,7 @@ categories:
     - 工具
 tags:
 ---
-Git 作为版本管理工具是每一个程序员必备的技能，学会使用Git对我有很大的帮助。
+Git作为版本管理工具是每一个程序员必备的技能，学会使用Git对我有很大的帮助。
 
 - 版本管理工具，它可以将我写的代码存档，便于我在已编写好的代码上尝试下一步开发，出现错误时可以及时回退。
 - 控制代码上传，在一个项目里，需要上传的代码其实是少数，占用空间并不大，而项目中很大一部分是软件包、执行文件、缓存等，这些文件并不需要上传到GitHub，Git提供了`.gitignore`文件，将不需要上传的文件添加到该文件中，可以避免上传不需要的文件。
@@ -14,7 +14,7 @@ Git 作为版本管理工具是每一个程序员必备的技能，学会使用G
 
 <!--more-->
 
-## 安装 Git
+## 安装Git
 
 Git的安装教程网上数不胜数，其中[Git 详细安装教程（详解 Git 安装过程的每一个步骤）](https://blog.csdn.net/mukes/article/details/115693833)这一篇讲的非常详细，虽然他之后也可能会过时，但我仍想在这里引用他，我在这里就只提一下我自己在安装过程中修改的配置。
 
@@ -24,7 +24,7 @@ Git的安装教程网上数不胜数，其中[Git 详细安装教程（详解 Gi
 
 ![Git选择安装组件](1.png)
 
-这里我选择用main，这也是主流的选择，因为**Black Lives Matter（黑人的命也是命）**运动，很多人认为 master 不尊重黑人，因此改为main。
+这里我选择用main，这也是主流的选择，因为**Black Lives Matter（黑人的命也是命）**运动，很多人认为master不尊重黑人，因此改为main。
 
 ![初始化仓库主干名](2.png)
 
@@ -34,7 +34,7 @@ Git的安装教程网上数不胜数，其中[Git 详细安装教程（详解 Gi
 
 之后就一路next直到结束了。
 
-## 配置 Git
+## 配置Git
 
 单机右键，打开Git Bush Here然后通过输入命令配置用户名和邮箱。
 
@@ -62,7 +62,7 @@ git config --global user.name
 git config --global user.email
 ```
 
-## Git 链接仓库
+## Git链接仓库
 
 一般的选择是使用ssh公私钥，但是现在可以直接使用账号密码登录的方式上传代码（无论是GitHub还是Gitee），只需要一次登录就可以上传多次，因此我不再配置ssh了，至于创建`.git`文件，我现在比较喜欢先创建仓库，然后clone仓库，克隆下来的仓库自带`.git`文件，不需要自己创建。
 
@@ -150,13 +150,13 @@ git branch -d <分支名>
 git rm -r --cached <要取消版本控制的文件或文件夹>
 ```
 
-## Git 代理设置
+## Git代理设置
 
 如果要用Git同步GitHub仓库，推荐使用代理客户端软件。
 
-## `.gitignore` 文件
+## `.gitignore`文件
 
-`.gitignore` 文件用于指定 Git 不应该跟踪的文件，详细的语法规则可以参考[`.gitignore`的官方文档](https://git-scm.com/docs/gitignore/zh_HANS-CN)
+`.gitignore`文件用于指定Git不应该跟踪的文件，详细的语法规则可以参考[`.gitignore`的官方文档](https://git-scm.com/docs/gitignore/zh_HANS-CN)。
 
 我一般在创建仓库时使用仓库提供的`.gitignore`文件，或者创建的项目自带`.gitignore`文件，然后我会根据自己的需要添加部分配置。
 
