@@ -37,7 +37,7 @@ wsl --install
 #### 命令安装
 
 ```bash
-wsl --install <DistributionName>
+wsl --install [Linux发行版名称]
 ```
 
 #### 图形化安装
@@ -53,7 +53,7 @@ wsl --install <DistributionName>
 如果你使用命令安装的话，你可以使用以下命令卸载。
 
 ```bash
-wsl --unregister <DistributionName>
+wsl --unregister [Linux发行版名称]
 ```
 
 如果你使用图形化安装的话可以使用这个命令格式化Linux。

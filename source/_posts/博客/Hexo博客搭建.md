@@ -69,7 +69,7 @@ public
 在本地博客项目目录中执行下面的命令：
 
 ```bash
-npx hexo new -p <文件路径> <文章名>
+npx hexo new -p [文件路径] [文章名]
 ```
 
 例如

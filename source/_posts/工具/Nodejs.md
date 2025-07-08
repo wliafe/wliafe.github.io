@@ -39,7 +39,7 @@ npm安装包分为全局安装和局部安装，全局安装表明安装的包�
 全局安装的命令格式为：
 
 ```bash
-npm install -g <package>
+npm install -g [package]
 ```
 
 #### 局部安装
@@ -47,7 +47,7 @@ npm install -g <package>
 局部安装的命令格式为：
 
 ```bash
-npm install <package>
+npm install [package]
 ```
 
 #### package.json局部安装
@@ -65,7 +65,7 @@ npm install
 全局卸载的命令格式为：
 
 ```bash
-npm uninstall -g <package>
+npm uninstall -g [package]
 ```
 
 #### 局部卸载
@@ -73,7 +73,7 @@ npm uninstall -g <package>
 局部卸载的命令格式为：
 
 ```bash
-npm uninstall <package>
+npm uninstall [package]
 ```
 
 ## npx Node.js的包执行器
@@ -127,7 +127,7 @@ nrm ls
 切换源（建议选taobao）
 
 ```bash
-nrm use <registry>
+nrm use [registry]
 ```
 
 ```bash

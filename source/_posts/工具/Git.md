@@ -41,13 +41,13 @@ Git的安装教程网上数不胜数，其中[Git 详细安装教程（详解 Gi
 配置用户名
 
 ```bash
-git config --global user.name <仓库的用户名>
+git config --global user.name [仓库的用户名]
 ```
 
 配置用户邮箱
 
 ```bash
-git config --global user.email <仓库的绑定邮箱>
+git config --global user.email [仓库的绑定邮箱]
 ```
 
 查看用户名
@@ -73,7 +73,7 @@ git config --global user.email
 ### 直接克隆仓库
 
 ```bash
-git clone <仓库HTTP网址>
+git clone [仓库HTTP网址]
 ```
 
 ### 创建`.git`文件，添加仓库网址
@@ -87,7 +87,7 @@ git init
 保存仓库网址
 
 ```bash
-git remote add origin <仓库HTTP网址>
+git remote add origin [仓库HTTP网址]
 ```
 
 ### 编写代码提交到仓库
@@ -107,7 +107,7 @@ git add .
 为放入缓存中的文件添加说明
 
 ```bash
-git commit -m <注释>
+git commit -m [注释]
 ```
 
 将缓存中的文件上传到远程仓库
@@ -127,19 +127,19 @@ git branch
 在本地新建分支
 
 ```bash
-git branch <分支名>
+git branch [分支名]
 ```
 
 切换本地分支
 
 ```bash
-git checkout <分支名>
+git checkout [分支名]
 ```
 
 删除本地分支
 
 ```bash
-git branch -d <分支名>
+git branch -d [分支名]
 ```
 
 ### 其他
@@ -147,7 +147,7 @@ git branch -d <分支名>
 取消某个文件的版本控制
 
 ```bash
-git rm -r --cached <要取消版本控制的文件或文件夹>
+git rm -r --cached [要取消版本控制的文件或文件夹]
 ```
 
 ## Git代理设置
