@@ -11,5 +11,3 @@ tags:
 ## Typst 官方文档
 
 这是Typst的[官方文档](https://typst.app/)所有内容都可以在这里找到。
-
-## 你
