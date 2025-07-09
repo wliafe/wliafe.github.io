@@ -6,8 +6,8 @@ categories:
 tags:
     - Windows
     - Linux
-    - Docker
 ---
+
 在Windows上直接编写代码存在不少问题，例如:
 
 - 环境污染: 多个python版本，每个版本不同环境等
@@ -53,7 +53,7 @@ wsl --install [Linux发行版名称]
 如果你使用命令安装的话，你可以使用以下命令卸载。
 
 ```bash
-wsl --unregister [Linux发行版名称]
+wsl --unregister <Linux发行版名称>
 ```
 
 如果你使用图形化安装的话可以使用这个命令格式化Linux。
@@ -93,9 +93,3 @@ C:\Users\<UserName>\AppData\Local\Packages\(目录名含有Linux发行版名称)
 {% note info %}
 C:\Users\<UserName>\AppData\Local\wsl
 {% endnote %}
-
-## Docker Desktop for Windows
-
-Docker Desktop for Windows是微软推出的一个软件，它允许用户在Windows上运行Docker容器，而不需要安装虚拟机。Docker Desktop for Windows的docker引擎是跑在Linux环境中的，而Linux环境是WSL提供的，因此使用Docker Desktop for Windows时需要安装WSL。
-
-这是[Docker Desktop for Windows的下载地址](https://www.docker.com/products/docker-desktop/)

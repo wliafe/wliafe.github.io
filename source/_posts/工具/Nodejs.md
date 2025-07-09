@@ -6,6 +6,7 @@ categories:
 tags:
     - JavaScript
 ---
+
 Node.js是一个基于Chrome V8引擎的JavaScript运行环境，前端项目（Vue，React项目）和博客项目（Hexo项目）都是用JavaScript开发的，而Node.js就是这些项目运行的核心，它可以让JavaScript运行在服务器端，而不是浏览器端。通俗的讲，Node.js就像Java中的JVM，Python中的解释器，它们都是执行代码的工具。
 
 <!-- more -->
@@ -34,23 +35,19 @@ npm是Node.js的包管理器，用于安装、发布、管理和开发Node.js应
 
 npm安装包分为全局安装和局部安装，全局安装表明安装的包可以在任何目录下使用，而局部安装表明安装的包只能在当前目录下使用。我个人其实更推荐局部安装，局部安装可以实现环境隔离，避免不同项目环境的冲突，就像conda在python中的作用一样。
 
-#### 全局安装
-
-全局安装的命令格式为：
+全局安装
 
 ```bash
-npm install -g [package]
+npm install -g <package>
 ```
 
-#### 局部安装
-
-局部安装的命令格式为：
+局部安装
 
 ```bash
-npm install [package]
+npm install <package>
 ```
 
-#### package.json局部安装
+package.json局部安装
 
 局部安装包列表在项目的`package.json`文件中就可查看，同时`package.json`文件也是项目的配置文件，记录项目的依赖关系，当项目迁移到其他机器时，只需要一条npm命令就可安装`package.json`文件中所有依赖。
 
@@ -60,20 +57,16 @@ npm install
 
 ### 卸载包
 
-#### 全局卸载
-
-全局卸载的命令格式为：
+全局卸载
 
 ```bash
-npm uninstall -g [package]
+npm uninstall -g <package>
 ```
 
-#### 局部卸载
-
-局部卸载的命令格式为：
+局部卸载
 
 ```bash
-npm uninstall [package]
+npm uninstall <package>
 ```
 
 ## npx Node.js的包执行器
@@ -127,7 +120,7 @@ nrm ls
 切换源（建议选taobao）
 
 ```bash
-nrm use [registry]
+nrm use <registry>
 ```
 
 ```bash
@@ -155,7 +148,9 @@ scripts字段为
   },
 ```
 
-这时，我们就可以使用npm run命令来执行scripts字段中的脚本命令了，比如执行构建命令
+这时，我们就可以使用npm run命令来执行scripts字段中的脚本命令了，比如：
+
+执行构建命令
 
 ```bash
 npm run build

@@ -4,7 +4,10 @@ date: 2022-03-16 09:15:57
 categories:
     - 工具
 tags:
+    - GitHub
+    - Gitee
 ---
+
 Git作为版本管理工具是每一个程序员必备的技能，学会使用Git对我有很大的帮助。
 
 - 版本管理工具，它可以将我写的代码存档，便于我在已编写好的代码上尝试下一步开发，出现错误时可以及时回退。
@@ -41,13 +44,13 @@ Git的安装教程网上数不胜数，其中[Git 详细安装教程（详解 Gi
 配置用户名
 
 ```bash
-git config --global user.name [仓库的用户名]
+git config --global user.name <仓库的用户名>
 ```
 
 配置用户邮箱
 
 ```bash
-git config --global user.email [仓库的绑定邮箱]
+git config --global user.email <仓库的绑定邮箱>
 ```
 
 查看用户名
@@ -73,7 +76,7 @@ git config --global user.email
 ### 直接克隆仓库
 
 ```bash
-git clone [仓库HTTP网址]
+git clone <仓库HTTP网址>
 ```
 
 ### 创建`.git`文件，添加仓库网址
@@ -84,10 +87,10 @@ git clone [仓库HTTP网址]
 git init
 ```
 
-保存仓库网址
+添加仓库网址
 
 ```bash
-git remote add origin [仓库HTTP网址]
+git remote add origin <仓库HTTP网址>
 ```
 
 ### 编写代码提交到仓库
@@ -98,7 +101,7 @@ git remote add origin [仓库HTTP网址]
 git pull origin main
 ```
 
-将本地的所有文件放入缓存区
+添加本地的所有文件放入缓存区
 
 ```bash
 git add .
@@ -107,10 +110,10 @@ git add .
 为放入缓存中的文件添加说明
 
 ```bash
-git commit -m [注释]
+git commit -m <注释>
 ```
 
-将缓存中的文件上传到远程仓库
+上传缓存中的文件到远程仓库
 
 ```bash
 git push origin main
@@ -127,27 +130,33 @@ git branch
 在本地新建分支
 
 ```bash
-git branch [分支名]
+git branch <分支名>
 ```
 
 切换本地分支
 
 ```bash
-git checkout [分支名]
+git checkout <分支名>
 ```
 
 删除本地分支
 
 ```bash
-git branch -d [分支名]
+git branch -d <分支名>
 ```
 
 ### 其他
 
-取消某个文件的版本控制
+取消文件或文件夹的版本控制
 
 ```bash
-git rm -r --cached [要取消版本控制的文件或文件夹]
+git rm -r --cached <要取消版本控制的文件或文件夹>
+```
+
+查看文件修改历史
+
+```bash
+git blame <file>
 ```
 
 ## Git代理设置
