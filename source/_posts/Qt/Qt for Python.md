@@ -113,7 +113,7 @@ pyside6-deploy
 
 ### QTextBrowserHandler
 
-由于Qt显示logging的GUI工具是TextBrowser，所以我们定义了一个QTextBrowserHandler类，用来将logging的信息输出到TextBrowser中。
+由于Qt显示logging的GUI工具是TextBrowser，所以我定义了一个QTextBrowserHandler类，用来将logging的信息输出到TextBrowser中。
 
 ```python
 class QTextBrowserHandler(logging.Handler, QObject):
@@ -133,7 +133,7 @@ class QTextBrowserHandler(logging.Handler, QObject):
 
 ### QThread
 
-QThread是Qt中的线程类，用来执行耗时的操作。我们定义了一个QWorkThread类，用来执行run函数。
+QThread是Qt中的线程类，用来执行耗时的操作。我定义了一个QWorkThread类，用来执行run函数。
 
 ```python
 class QWorkThread(QThread):
