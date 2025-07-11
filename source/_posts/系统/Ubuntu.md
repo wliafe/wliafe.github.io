@@ -7,13 +7,15 @@ tags:
     - Linux
 ---
 
-Ubuntu是一个基于Debian的Linux发行版，它是一个免费的、开源的、社区驱动的操作系统。Ubuntu的桌面环境是GNOME，它是一个基于GTK+的桌面环境，它的特点是简单、易用、美观。
+Ubuntu是一个基于Debian的Linux发行版，它是一个免费的、开源的、社区驱动的操作系统。Ubuntu的桌面环境是GNOME，它是一个基于GTK+的桌面环境，它的特点是简单、易用、美观，本文主要讲Ubuntu的使用。
 
 <!-- more -->
 
 ## 包管理器
 
-Ubuntu包管理器有：apt, apt-cache, apt-get, dpkg
+Ubuntu包管理器有：apt，apt-cache，apt-get，dpkg
+
+### apt包管理器
 
 更新包管理器
 
@@ -21,40 +23,42 @@ Ubuntu包管理器有：apt, apt-cache, apt-get, dpkg
 apt update
 ```
 
-模糊查询软件
+模糊查询软件包
 
 ```bash
-apt search 软件包
+apt search <软件包名>
 ```
 
 安装软件
 
 ```bash
-apt install 软件包
+apt install <软件包>
 ```
 
 下载软件源码
 
 ```bash
-apt source 软件包
+apt source <软件包>
 ```
 
 卸载软件
 
 ```bash
-apt-get remove 软件包
+apt-get remove <软件包>
 ```
+
+### dpkg包管理器
 
 查看已安装的软件包
 
 ```bash
-dpkg -l
+dpkg --list
 ```
 
-查看软件包的依赖项
+查看指定软件包的信息
 
 ```bash
-dpkg --list | grep 软件包
+dpkg --list | grep <软件包>
 ```
 
 ## 防火墙
@@ -103,16 +107,16 @@ ufw default allow
 ufw default deny
 ```
 
-开启${port}端口
+开启port端口
 
 ```bash
-ufw allow ${port}/tcp
+ufw allow <port>/tcp
 ```
 
-关闭${port}端口
+关闭port端口
 
 ```bash
-ufw deny ${port}/tcp
+ufw deny <port>/tcp
 ```
 
 展示已有防火墙规则
