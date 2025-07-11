@@ -136,37 +136,37 @@ pip是Python的包管理工具，它可以用来安装、升级、卸载Python�
 安装包
 
 ```bash
-pip install <package-name>
+pip3 install <package-name>
 ```
 
 安装特定版本的包
 
 ```bash
-pip install <package-name>==<version>
+pip3 install <package-name>==<version>
 ```
 
 查看所有已安装包
 
 ```bash
-pip list
+pip3 list
 ```
 
 卸载包
 
 ```bash
-pip uninstall <package-name>
+pip3 uninstall <package-name>
 ```
 
 更新包
 
 ```bash
-pip install --upgrade <package-name>
+pip3 install --upgrade <package-name>
 ```
 
 搜索包
 
 ```bash
-pip search <search-term>
+pip3 search <search-term>
 ```
 
 ### pip换清华源加快速度
@@ -174,17 +174,17 @@ pip search <search-term>
 临时使用
 
 ```bash
-pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple some-package
+pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple some-package
 ```
 
 设为默认
 
 ```bash
-pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+pip3 config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 ```
 
 恢复官方源
 
 ```bash
-pip config unset global.index-url
+pip3 config unset global.index-url
 ```

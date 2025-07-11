@@ -54,7 +54,7 @@ conda activate qt
 ### 安装Qt for Python
 
 ```bash
-pip install pyside6
+conda install pyside6
 ```
 
 ### 安装VSCode Qt for Python插件
