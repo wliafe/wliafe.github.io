@@ -35,11 +35,9 @@ sudo apt-get install libxkbcommon-x11-0
 
 官网下载[Qt安装软件](https://www.qt.io/download-qt-installer-oss)
 
-### 安装Miniconda
+### 搭建Python环境
 
-官网下载[Miniconda脚本](https://www.anaconda.com/download/success)
-
-有关Conda的详细内容请移步我的博客{% post_link Conda %}
+我的Python环境主要依赖于Conda，有关Conda的详细内容可以参考我的博客{% post_link Conda %}
 
 ### 创建Qt环境
 

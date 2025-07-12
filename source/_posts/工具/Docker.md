@@ -1,0 +1,68 @@
+---
+title: Docker
+date: 2023-08-01 10:47:03
+categories:
+    - 工具
+tags:
+---
+
+Docker是一个开源的应用容器引擎，它可以让开发者打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+
+本文介绍了我常用几个Docker容器，Docker Desktop for Windows软件，以及其它一些Docker用法。
+
+<!--more-->
+
+## Docker容器创建
+
+### Redis容器创建(最简单)
+
+```bash
+docker run --name env-redis -d -p 6379:6379 redis --requirepass Redis.123
+```
+
+### Mysql容器创建(最简单)
+
+```bash
+docker run --name env-mysql -e MYSQL_ROOT_PASSWORD=Mysql.123 -d -p 3306:3306 mysql
+```
+
+### Nginx容器创建
+
+```bash
+docker run --name env-nginx -d -p 8080:80 nginx:stable-perl
+```
+
+{% note info %}
+如果想让Docker容器随Docker启动而启动，就要在创建容器（docker run）时指定`--restart=always`参数。
+
+```txt
+--restart=always
+```
+
+{% endnote %}
+
+## Docker Desktop for Windows
+
+Docker Desktop for Windows是微软推出的一个软件，它允许用户在Windows上运行Docker容器，而不需要安装虚拟机。Docker Desktop for Windows的docker引擎是跑在Linux环境中的，而Linux环境是WSL提供的，因此使用Docker Desktop for Windows时需要安装{% post_link "Windows Subsystem for Linux (WSL)" WSL %}。
+
+这是[Docker Desktop for Windows的下载地址](https://www.docker.com/products/docker-desktop/)
+
+## Docker本地和容器之间的文件传输
+
+### 获取容器id全称
+
+```bash
+docker inspect -f '{{.id}}' <容器名称>
+```
+
+### 本地文件传输到容器
+
+```bash
+docker cp <本地文件路径> <ID全称>:<容器路径>
+```
+
+### 容器文件传输到本地
+
+```bash
+docker cp <ID全称>:<容器路径> <本地文件路径>
+```
