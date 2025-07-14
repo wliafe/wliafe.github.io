@@ -14,22 +14,10 @@ Docker是一个开源的应用容器引擎，它可以让开发者打包他们�
 
 ## Docker容器创建
 
-Redis容器创建(最简单)
-
-```bash
-docker run --name env-redis -d -p 6379:6379 redis --requirepass Redis.123
-```
-
-Mysql容器创建(最简单)
-
-```bash
-docker run --name env-mysql -e MYSQL_ROOT_PASSWORD=Mysql.123 -d -p 3306:3306 mysql
-```
-
 Nginx容器创建
 
 ```bash
-docker run --name env-nginx -d -p 8080:80 nginx:stable-perl
+docker run --name <Nginx容器名称> -d -p 8080:80 nginx:stable-perl
 ```
 
 {% note info %}
