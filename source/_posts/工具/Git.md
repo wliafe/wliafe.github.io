@@ -171,7 +171,7 @@ git blame <file>
 
 例如，如果想忽略`node_modules`文件夹，忽略所有`.log`文件，那么就在`.gitignore`文件中添加以下内容：
 
-```txt .gitignore
+```text .gitignore
 node_modules/
 *.log
 ```

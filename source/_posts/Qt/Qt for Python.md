@@ -95,7 +95,7 @@ pyside6-deploy --init
 
 在`pysidedeploy.spec`文件中[nuitka]的extra_args中添加下面的参数
 
-```txt pysidedeploy.spec
+```text pysidedeploy.spec
 --windows-console-mode=disable
 ```
 

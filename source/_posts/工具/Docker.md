@@ -23,7 +23,7 @@ docker run --name <Nginx容器名称> -d -p 8080:80 nginx:stable-perl
 {% note info %}
 如果想让Docker容器随Docker启动而启动，就要在创建容器（docker run）时指定`--restart=always`参数。
 
-```txt
+```text
 --restart=always
 ```
 

@@ -53,7 +53,7 @@ npm run build
 
 输出目录
 
-```txt
+```text
 public
 ```
 
