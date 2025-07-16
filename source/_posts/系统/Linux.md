@@ -1,5 +1,5 @@
 ---
-title: Linux系统
+title: Linux
 date: 2022-04-04 11:36:05
 categories:
     - 系统
