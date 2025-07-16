@@ -472,9 +472,9 @@ int open(const char *pathname,int flags, mode_t mode);
 
 参数表：
 
-![open函数参数表1](1.png)
+![open函数参数表1](2.png)
 
-![open函数参数表2](2.png)
+![open函数参数表2](3.png)
 
 在open函数含有O_CREAT时，即需要创建文件时，就要添加mode参数注明文件的读取权限。
 
