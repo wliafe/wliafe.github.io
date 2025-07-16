@@ -1,6 +1,6 @@
 ---
 title: Ubuntu
-date: 2023-04-28 17:45:41
+date: 2022-04-19 09:47:36
 categories:
     - 系统
 tags:
