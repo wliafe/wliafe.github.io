@@ -1,5 +1,5 @@
 ---
-title: Flask框架
+title: Flask
 date: 2024-03-06 11:08:53
 categories:
     - 后端

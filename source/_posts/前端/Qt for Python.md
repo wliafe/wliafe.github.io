@@ -2,7 +2,7 @@
 title: Qt for Python
 date: 2025-05-27 17:25:19
 categories:
-    - Qt
+    - 前端
 tags:
     - Python
 ---

@@ -1,5 +1,5 @@
 ---
-title: 前端学习
+title: JavaScript前端
 date: 2023-05-03 22:36:08
 categories:
     - 前端
