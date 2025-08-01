@@ -9,7 +9,7 @@ tags:
 
 本文主要介绍Conda这个工具，Conda是一个用于管理Python环境的工具，它可以帮助我们创建、管理和切换不同的Python环境，避免环境冲突。同时，Conda还可以作为Python包管理器使用，我们可以使用Conda来安装、升级、卸载Python包。然而，pip也可以作为Python包管理器使用，pip与Conda相比，他的包会更加丰富，因为pip有着更大的开源社区。但Conda对包的依赖管理更加严格，使用Conda可以有效避免包之间的冲突。建议优先使用conda安装包。
 
-关于Conda的详细内容，我们可以参考[Conda官方文档](https://www.anaconda.com/docs/main)，有关pip的文档和包源，我们可以参考[pip官方文档](https://pypi.org/)，基本使用参考[pip安装包](https://packaging.python.org/en/latest/tutorials/installing-packages/)。
+关于Conda的详细内容，我们可以参考[Conda官方文档](https://www.anaconda.com/docs/main)。
 
 <!-- more -->
 
@@ -125,66 +125,4 @@ conda update --all
 
 ```bash
 conda search <search-term>
-```
-
-## pip包管理器
-
-pip是Python的包管理工具，它可以用来安装、升级、卸载Python包。
-
-### pip常用命令
-
-安装包
-
-```bash
-pip3 install <package-name>
-```
-
-安装特定版本的包
-
-```bash
-pip3 install <package-name>==<version>
-```
-
-查看所有已安装包
-
-```bash
-pip3 list
-```
-
-卸载包
-
-```bash
-pip3 uninstall <package-name>
-```
-
-更新包
-
-```bash
-pip3 install --upgrade <package-name>
-```
-
-搜索包
-
-```bash
-pip3 search <search-term>
-```
-
-### pip换清华源加快速度
-
-临时使用
-
-```bash
-pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple some-package
-```
-
-设为默认
-
-```bash
-pip3 config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
-```
-
-恢复官方源
-
-```bash
-pip3 config unset global.index-url
 ```

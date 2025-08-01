@@ -75,3 +75,11 @@ GitHub是一个基于Git的版本控制平台，用于托管和协作开发项�
 每当Gitee代码仓库更新时，他就会自动同步到GitHub仓库，当然，你也可以通过下图界面手动同步。
 
 ![Gitee仓库代码同步](12.png)
+
+## GitHub Actions
+
+GitHub Actions是一个持续集成和持续交付（CI/CD）平台，用于自动化构建、测试和部署软件项目。学会使用GitHub Actions可以帮助你更高效地管理项目，提高项目的质量。对我来说，使用GitHub Actions可以帮我自动发布博客，还可以帮我自动发布pip库。
+
+### 创建Actions
+
+在GitHub项目中添加文件`.github/workflows`，在该目录下添加文件`<main>.yml`文件，然后上传到GitHub就可以了。
