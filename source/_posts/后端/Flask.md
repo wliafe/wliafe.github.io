@@ -14,7 +14,7 @@ Flask是一个简单的Python后端框架，用于构建简单的Python后端Web
 ## Flask安装
 
 ```bash
-conda install flask
+uv add flask
 ```
 
 ## Flask教程
