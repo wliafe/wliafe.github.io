@@ -31,10 +31,6 @@ sudo apt-get install libxcb-*
 sudo apt-get install libxkbcommon-x11-0
 ```
 
-### 安装Qt
-
-官网下载[Qt安装软件](https://www.qt.io/download-qt-installer-oss)
-
 ### 搭建Python环境
 
 我的Python环境主要依赖于uv，有关uv的详细内容可以参考我的博客{% post_link uv %}
