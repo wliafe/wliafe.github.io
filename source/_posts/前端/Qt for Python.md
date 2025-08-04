@@ -37,22 +37,18 @@ sudo apt-get install libxkbcommon-x11-0
 
 ### 搭建Python环境
 
-我的Python环境主要依赖于Conda，有关Conda的详细内容可以参考我的博客{% post_link Conda %}
+我的Python环境主要依赖于uv，有关uv的详细内容可以参考我的博客{% post_link uv %}
 
-### 创建Qt环境
+创建Qt环境
 
 ```bash
-conda create -n qt python=3.10
+uv init
 ```
 
-```bash
-conda activate qt
-```
-
-### 安装Qt for Python
+安装Qt for Python
 
 ```bash
-conda install pyside6
+uv add pyside6
 ```
 
 ### 安装VSCode Qt for Python插件
