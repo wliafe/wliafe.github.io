@@ -83,3 +83,15 @@ GitHub Actions是一个持续集成和持续交付（CI/CD）平台，用于自�
 ### 创建Actions
 
 在GitHub项目中添加文件`.github/workflows`，在该目录下添加文件`<main>.yml`文件，然后上传到GitHub就可以了。
+
+## Webhooks
+
+`Github项目->Settings->Webhooks`中包含项目更新时需要同步发送的信息选项，Gitee的仓库同步，Read the Docs的文档更新都通过Webhooks进行。
+
+![Webhooks](13.png)
+
+点击`Edit`可以编辑Webhooks的触发条件，可以修改Gitee的同步触发方式，或者降低Read the Docs文档的更新频率。
+
+## Github徽标
+
+使用[Shield.io](https://shields.io/)可以轻松创建GitHub徽标，徽标可以显示项目的状态，比如是否通过了测试，是否发布了新的版本，是否有新的问题等。

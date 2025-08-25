@@ -225,3 +225,220 @@ PyPI的包名是不可重复的，而且已创建项目的名称即使删除，�
 ### 发布项目
 
 在Gitee中创建一个tag，GitHub Actions就会自动执行workflow，发布项目到PyPI。
+
+## 给PyPI项目添加文档
+
+我使用的文档工具是[Sphinx](https://sphinx-doc.cn/en/master/index.html)，我使用的文档主题是[sphinx_rtd_theme](https://rtd.sphinx-doc.cn/en/stable/index.html)，我的文档发布平台是[Read the Docs](https://app.readthedocs.org/dashboard/)。
+
+### Sphinx
+
+#### 安装
+
+```bash
+uv add sphinx
+```
+
+#### 初始化
+
+```bash
+sphinx-quickstart docs
+```
+
+#### 配置
+
+配置项目信息，其中，通过代码获取版本号填入`release`变量。
+
+```python conf.py
+# Configuration file for the Sphinx documentation builder.
+#
+# For the full list of built-in configuration values, see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
+
+# -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+
+import sys
+from pathlib import Path
+
+FILE = Path(__file__).resolve()
+ROOT = FILE.parents[2]  # 项目根目录
+
+sys.path.insert(0, str(ROOT / "src"))
+
+if sys.version_info >= (3, 11):
+    # Python 3.11 或更高
+    import tomllib as tomli
+else:
+    # Python 3.8 ~ 3.10
+    import tomli
+
+with open(ROOT / "pyproject.toml", "rb") as f:
+    config = tomli.load(f)
+
+project = "wliafe-mltools"
+copyright = "2025, wliafe"
+author = "wliafe"
+release = config["project"]["version"]
+```
+
+添加Sphinx插件。
+
+```python conf.py
+# -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.napoleon",
+    "myst_parser",
+    "sphinx_rtd_theme",
+]
+
+templates_path = ["_templates"]
+exclude_patterns = []
+
+language = "zh_CN"
+```
+
+设置html主题。
+
+```python conf.py
+# -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+
+html_theme = "sphinx_rtd_theme"
+html_static_path = ["_static"]
+```
+
+#### 编写index.rst文件
+
+在`.. toctree`下面列出自己编写的文档。
+
+```rst index.rst
+.. wliafe-mltools documentation master file, created by
+   sphinx-quickstart on Fri Aug 22 14:27:37 2025.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+欢迎查看 wliafe-mltools 文档
+==========================================
+
+.. toctree::
+   :maxdepth: 1
+
+   入门
+   api
+   历史版本
+
+索引和表格
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+```
+
+#### 自动生成API文档
+
+使用`sphinx.ext.autodoc`和`sphinx.ext.napoleon`插件根据代码中的注释自动生成API文档。
+
+在`conf.py`文件中添加插件。
+
+编写`api.rst`文件，列出需要生成文档的模块。
+
+```rst api.rst
+API 文档
+========
+
+.. automodule:: mltools
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: mltools.learn.Epoch
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: mltools.utils.Timer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: mltools.utils.Recorder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: mltools.draw.Animator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
+将`api.rst`添加到`index.rst`中。
+
+#### 使用Markdown编写文档
+
+使用Markdown编写文档，需要安装`myst_parser`插件。
+
+```bash
+uv add myst_parser
+```
+
+在`conf.py`文件中添加插件。
+
+编写Markdown文件，将Markdown文件名添加到`index.rst`。
+
+#### 本地构建项目
+
+在项目根目录下执行以下命令，构建项目。
+
+```bash
+sphinx-build -M html docs/source docs/build
+```
+
+### sphinx_rtd_theme主题
+
+#### 安装
+
+```bash
+uv add sphinx_rtd_theme
+```
+
+#### 配置
+
+将主题作为插件添加到`conf.py`文件中。
+
+将`conf.py`文件中的`html_theme`变量设置为`sphinx_rtd_theme`。
+
+我使用的是主题的默认配置，如果想配置主题，参考[sphinx_rtd_theme](https://rtd.sphinx-doc.cn/en/stable/index.html)。
+
+### Read the Docs
+
+使用Github注册Read the Docs账号。
+
+点击`Add project`，填写信息。
+
+![Read the Docs控制面板](8.png)
+
+在项目中添加`.readthedocs.yaml`文件用于Read the Docs构建项目。
+
+```yaml .readthedocs.yaml
+version: 2
+build:
+  os: ubuntu-24.04
+  tools:
+    python: '3.8'
+sphinx:
+  configuration: docs/source/conf.py
+python:
+  install:
+  - requirements: docs/requirements.txt
+  - requirements: requirements.txt
+```
+
+{% note info %}
+`.readthedocs.yaml`配置文件的requirements选项只支持`requirements.txt`文件。
+{% endnote %}
