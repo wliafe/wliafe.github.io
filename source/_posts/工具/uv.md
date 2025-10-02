@@ -57,6 +57,24 @@ uv tree
 uv build
 ```
 
+## uv工具
+
+### nvitop
+
+[nvitop](https://github.com/XuehaiPan/nvitop)是一个用于监控NVIDIA GPU的工具，它可以显示GPU的使用情况。
+
+安装命令
+
+```bash
+uv tool install nvitop
+```
+
+运行nvitop
+
+```bash
+nvitop
+```
+
 ## uv脚本
 
 Python是一个脚本语言，而uv的脚本功能，使我深刻了解到了这一点。
