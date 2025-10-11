@@ -57,6 +57,26 @@ uv tree
 uv build
 ```
 
+## 无外网使用
+
+当我在服务器上使用uv时，我不能指望服务器有外网，所以我需要使用国内镜像源。
+
+### 安装Python
+
+```bash
+export UV_PYTHON_INSTALL_MIRROR=https://proxy.pipers.cn/https://github.com/astral-sh/python-build-standalone/releases/download
+```
+
+### 换源
+
+在`~/.config/uv`目录下创建`uv.toml`文件，添加以下内容。
+
+```toml uv.toml
+[[index]]
+url = " https://pypi.tuna.tsinghua.edu.cn/simple/ "
+default = true
+```
+
 ## uv工具
 
 ### nvitop
