@@ -73,7 +73,7 @@ export UV_PYTHON_INSTALL_MIRROR=https://proxy.pipers.cn/https://github.com/astra
 
 ```toml uv.toml
 [[index]]
-url = " https://pypi.tuna.tsinghua.edu.cn/simple/ "
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
 default = true
 ```
 
