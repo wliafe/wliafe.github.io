@@ -175,3 +175,18 @@ node_modules/
 ```
 
 每一个程序员都应该养成在项目中设置`.gitignore`文件的习惯。
+
+## git配置GitHub镜像
+
+命令配置
+
+```bash
+git config --global url."https://bgithub.xyz/".insteadOf "https://github.com/"
+```
+
+或配置文件配置
+
+```text .gitconfig
+[url "https://bgithub.xyz/"]
+    insteadOf = https://github.com/
+```
