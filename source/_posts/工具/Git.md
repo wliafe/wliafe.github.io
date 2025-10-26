@@ -178,6 +178,8 @@ node_modules/
 
 ## git配置GitHub镜像
 
+[镜像链接](https://freevaults.com/github-mirror-daily-updates.html)
+
 命令配置
 
 ```bash
