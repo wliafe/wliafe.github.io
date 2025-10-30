@@ -169,7 +169,7 @@ git blame <file>
 
 例如，如果想忽略`node_modules`文件夹，忽略所有`.log`文件，那么就在`.gitignore`文件中添加以下内容：
 
-```text .gitignore
+```conf .gitignore
 node_modules/
 *.log
 ```
@@ -188,7 +188,7 @@ git config --global url."https://bgithub.xyz/".insteadOf "https://github.com/"
 
 或配置文件配置
 
-```text .gitconfig
+```conf .gitconfig
 [url "https://bgithub.xyz/"]
     insteadOf = https://github.com/
 ```

@@ -71,7 +71,7 @@ export UV_PYTHON_INSTALL_MIRROR=https://proxy.pipers.cn/https://github.com/astra
 
 在`~/.config/uv`目录下创建`uv.toml`文件，添加以下内容。
 
-```toml uv.toml
+```conf uv.toml
 [[index]]
 url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
 default = true
@@ -120,7 +120,7 @@ def write_requirements():
 
 `pyproject.toml`文件中的`project.scripts`条目是项目的脚本入口，在其中添加`utils/__init__.py`文件中的函数。
 
-```toml pyproject.toml
+```conf pyproject.toml
 [project.scripts]
 requires = "utils:write_requirements"
 ```
