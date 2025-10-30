@@ -176,7 +176,9 @@ node_modules/
 
 每一个程序员都应该养成在项目中设置`.gitignore`文件的习惯。
 
-## git配置GitHub镜像
+## git配置镜像
+
+### Github镜像
 
 [镜像链接](https://freevaults.com/github-mirror-daily-updates.html)
 
@@ -191,4 +193,19 @@ git config --global url."https://bgithub.xyz/".insteadOf "https://github.com/"
 ```conf .gitconfig
 [url "https://bgithub.xyz/"]
     insteadOf = https://github.com/
+```
+
+### Hugging Face镜像
+
+命令配置
+
+```bash
+git config --global url."https://hf-mirror.com/".insteadOf "https://huggingface.co/"
+```
+
+或配置文件配置
+
+```conf .gitconfig
+[url "https://hf-mirror.com/"]
+    insteadOf = https://huggingface.co/
 ```
