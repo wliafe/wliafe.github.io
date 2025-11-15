@@ -54,3 +54,27 @@ docker cp <本地文件路径> <ID全称>:<容器路径>
 ```bash
 docker cp <ID全称>:<容器路径> <本地文件路径>
 ```
+
+## Docker国内镜像
+
+`/etc/docker/daemon.json`文件中添加以下内容：
+
+```json daemon.json
+{
+    "registry-mirrors": [
+        "https://docker.1ms.run",
+        "https://docker.mybacc.com",
+        "https://dytt.online",
+        "https://lispy.org",
+        "https://docker.xiaogenban1993.com",
+        "https://docker.yomansunter.com",
+        "https://aicarbon.xyz",
+        "https://666860.xyz",
+        "https://docker.zhai.cm",
+        "https://a.ussh.net",
+        "https://hub.littlediary.cn",
+        "https://hub.rat.dev",
+        "https://docker.m.daocloud.io"
+    ]
+}
+```
