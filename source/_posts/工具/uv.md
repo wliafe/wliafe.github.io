@@ -69,13 +69,7 @@ export UV_PYTHON_INSTALL_MIRROR=https://proxy.pipers.cn/https://github.com/astra
 
 ### 换源
 
-在`~/.config/uv`目录下创建`uv.toml`文件，添加以下内容。
-
-```conf uv.toml
-[[index]]
-url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
-default = true
-```
+在`~/.config/uv`目录下创建`uv.toml`文件，添加[pypi清华源](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
 
 ## uv工具
 
