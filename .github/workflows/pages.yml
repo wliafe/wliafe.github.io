@@ -1,9 +1,7 @@
 name: Pages
 
 on:
-  push:
-    branches:
-      - main # default branch
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,6 +12,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # If your repository depends on submodule, please see: https://github.com/actions/checkout
           submodules: recursive
+      - name: Checkout notes
+        uses: actions/checkout@v4
+        with:
+          repository: wliafe/notes
+          ref: main
+          path: source/_posts
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
