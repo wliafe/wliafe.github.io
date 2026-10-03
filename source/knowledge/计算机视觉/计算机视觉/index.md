@@ -7,21 +7,21 @@ area: Computer Vision
 status: active
 review: reviewed
 tags: []
-layout: page
+layout: false
 date: 2026-06-20
 updated: 2026-06-20
 categories: []
 permalink: knowledge/计算机视觉/计算机视觉/
 comments: false
 ---
-[返回知识库](/knowledge/)
-
-计算机视觉主题索引。
-
-## Research Direction
-
-- MSGG — RGB-IR Scene Graph Generation（未公开）
-
-## 主题
-
-- MM Relation Head Forward 结构分析（未公开）
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>目录已合并到分类</title>
+<link rel="canonical" href="https://wliafe.github.io/categories/">
+<meta http-equiv="refresh" content="0;url=/categories/">
+</head>
+<body><p>目录已合并到分类，<a href="/categories/">查看分类</a>。</p></body>
+</html>

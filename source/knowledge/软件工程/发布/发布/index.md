@@ -7,18 +7,21 @@ area: Publishing
 status: active
 review: reviewed
 tags: []
-layout: page
+layout: false
 date: 2026-06-20
 updated: 2026-06-20
 categories: []
 permalink: knowledge/软件工程/发布/发布/
 comments: false
 ---
-[返回知识库](/knowledge/)
-
-发布主题索引。
-
-## 主题
-
-- [Hexo 博客搭建](/%E5%8D%9A%E5%AE%A2/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/)
-- [NexT 主题](/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98/)
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>目录已合并到分类</title>
+<link rel="canonical" href="https://wliafe.github.io/categories/%E5%8D%9A%E5%AE%A2/">
+<meta http-equiv="refresh" content="0;url=/categories/%E5%8D%9A%E5%AE%A2/">
+</head>
+<body><p>目录已合并到分类，<a href="/categories/%E5%8D%9A%E5%AE%A2/">查看分类</a>。</p></body>
+</html>

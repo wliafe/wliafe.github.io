@@ -13,7 +13,6 @@ date: 2025-05-27
 updated: 2025-05-27
 categories:
   - 软件工程
-  - 前端
 permalink: 前端/Qt for Python/
 ---
 > **导航**

@@ -12,7 +12,7 @@ layout: post
 date: 2020-12-09
 updated: 2020-12-09
 categories:
-  - 编程
+  - 编程语言
 permalink: 语言/Python/
 ---
 > **导航**

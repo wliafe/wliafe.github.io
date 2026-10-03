@@ -7,17 +7,21 @@ area: Mathematics
 status: active
 review: reviewed
 tags: []
-layout: page
+layout: false
 date: 2026-06-20
 updated: 2026-06-20
 categories: []
 permalink: knowledge/数学/数学/
 comments: false
 ---
-[返回知识库](/knowledge/)
-
-数学主题索引。
-
-## 主题
-
-_尚无笔记。_
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>目录已合并到分类</title>
+<link rel="canonical" href="https://wliafe.github.io/categories/">
+<meta http-equiv="refresh" content="0;url=/categories/">
+</head>
+<body><p>目录已合并到分类，<a href="/categories/">查看分类</a>。</p></body>
+</html>

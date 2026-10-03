@@ -11,8 +11,7 @@ layout: post
 date: 2025-07-04
 updated: 2025-07-04
 categories:
-  - 软件工程
-  - 发布
+  - 博客
 permalink: 博客/Hexo博客搭建/
 ---
 > **导航**

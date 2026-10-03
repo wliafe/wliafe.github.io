@@ -28,7 +28,8 @@ npx hexo new -p knowledge/开发工具/新文章 "新文章"
 
 在 front matter 填写 `date`、`categories`、`tags`，已经发布的文章保留原有 `permalink`。
 图片放在文章同名资源文件夹，或 `source/images/` 中，并使用标准 Markdown 图片链接。
-目录导航页位于 `source/knowledge/`，知识库入口是 `/knowledge/`。
+站点统一使用 `/categories/` 分类入口，分类只保留一级。
+`source/knowledge/` 中的旧目录索引仅作兼容跳转，不再提供另一套目录。
 
 本地查看博客
 
@@ -56,10 +57,11 @@ npm run build
 [migration/knowledge-manifest.json](migration/knowledge-manifest.json)。
 49 个既有文章地址见 [migration/legacy-permalinks.json](migration/legacy-permalinks.json)，
 已与原站归档核对。保留这些地址可以继续关联以 `pathname` 为标识的 Utterances 评论。
-新文章和索引使用 `/knowledge/` 路径；索引页关闭评论，不进入文章列表。
+两篇新增文章保留 `/knowledge/` 路径。旧索引地址继续可访问，并跳转到对应分类；
+总目录与没有文章的主题索引跳转到 `/categories/`，索引页关闭评论，不进入文章列表。
 
 旧分类/标签地址也保持兼容：八个标签通过 `tag_map` 保留原有 URL 大小写，
-九个改名或改变层级的分类生成静态跳转页，系统分类地址保持不变。
+14 个改名或改变层级的分类地址直接跳转到最终一级分类，博客、系统分类地址保持不变。
 对应清单见 [migration/legacy-taxonomy.json](migration/legacy-taxonomy.json)。
 这些兼容措施不改文章正文；标签名称仍沿用知识库中的名称。
 
@@ -68,5 +70,5 @@ npm run build
 代码块、行内代码、HTML 中的双链示例保留原样；普通双链、标题链接、图片嵌入和 callout
 转换为标准 Markdown。笔记嵌入转换为链接，范围外笔记链接显示为“未公开”。
 
-迁移后请在博客中直接编辑 Markdown 和导航索引；清单中的哈希记录的是初次迁移状态，
+迁移后请在博客中直接编辑 Markdown 的正文和分类；清单中的哈希记录的是初次迁移状态，
 不限制之后正常修改文章。
