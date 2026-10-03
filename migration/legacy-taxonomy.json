@@ -1,0 +1,24 @@
+{
+  "tagSlugs": {
+    "assembly": "Assembly",
+    "c": "C",
+    "cpp": "Cpp",
+    "java": "Java",
+    "javascript": "JavaScript",
+    "linux": "Linux",
+    "python": "Python",
+    "windows": "Windows"
+  },
+  "categoryRedirects": {
+    "categories/前端/": "categories/软件工程/前端/",
+    "categories/博客/": "categories/软件工程/发布/",
+    "categories/后端/": "categories/软件工程/后端/",
+    "categories/安全/": "categories/网络安全/",
+    "categories/工具/": "categories/开发工具/",
+    "categories/数据结构/": "categories/计算机科学/",
+    "categories/机器学习/": "categories/深度学习/",
+    "categories/爬虫/": "categories/软件工程/网络爬虫/",
+    "categories/语言/": "categories/编程/"
+  },
+  "unchangedCategories": ["categories/系统/"]
+}

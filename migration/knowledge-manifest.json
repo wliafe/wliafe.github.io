@@ -1,0 +1,1596 @@
+{
+  "policy": {
+    "notes": "40-知识库",
+    "assets": "99-附件/遗留"
+  },
+  "articles": [
+    {
+      "source": "40-知识库/Mac/Mac.md",
+      "destination": "source/knowledge/Mac/Mac/index.md",
+      "permalink": "knowledge/Mac/Mac/",
+      "type": "moc",
+      "sourceSha256": "c8dcec9fbbc5af49a14e1871708ed3c346c19482e4b354f0ebc0715dd4b63a1a",
+      "destinationSha256": "30ddb635febba9d1f12b234cb736746b67d8d3fdb8e9a7b3cdb80860fcb584f8"
+    },
+    {
+      "source": "40-知识库/开发工具/AI提示词.md",
+      "destination": "source/_posts/knowledge/开发工具/AI提示词.md",
+      "permalink": "knowledge/开发工具/AI提示词/",
+      "type": "note",
+      "sourceSha256": "1db96f96089f14cccf9afa1ad30a91714b9e0afc18980cabc525919e450f45b8",
+      "destinationSha256": "2898ad500ec0196951891b336633d48c52bff5607f91b29587541d02903267a4"
+    },
+    {
+      "source": "40-知识库/开发工具/Breed 刷机工具.md",
+      "destination": "source/_posts/knowledge/开发工具/Breed 刷机工具.md",
+      "permalink": "工具/Breed/",
+      "type": "note",
+      "sourceSha256": "0f710f6819b065794303e880a92896fcb1eae93d5e1e85e2db0c77d992d386eb",
+      "destinationSha256": "73921bcf4bc2808bfd794c43a54244e957a4400190ae93abcf377766fe95a096"
+    },
+    {
+      "source": "40-知识库/开发工具/CMake 构建工具.md",
+      "destination": "source/_posts/knowledge/开发工具/CMake 构建工具.md",
+      "permalink": "工具/CMake/",
+      "type": "note",
+      "sourceSha256": "22aa4175d3b0c3344b70c42da8407f5ac3930749c967331b0e94151292d8097d",
+      "destinationSha256": "07c2656c8960a7f5a82cd586db336b554e73079ad5df39dd38dab656971170b3"
+    },
+    {
+      "source": "40-知识库/开发工具/Codex 工具.md",
+      "destination": "source/_posts/knowledge/开发工具/Codex 工具.md",
+      "permalink": "knowledge/开发工具/Codex 工具/",
+      "type": "note",
+      "sourceSha256": "68717846560da772a500a9a6ca476ebde1811a9f11a9a232ebc14c12e8f08c58",
+      "destinationSha256": "824f1cb47c416defb51008100da10584406964c149fd3c16a0e6a360f1d54678"
+    },
+    {
+      "source": "40-知识库/开发工具/Conda 环境管理.md",
+      "destination": "source/_posts/knowledge/开发工具/Conda 环境管理.md",
+      "permalink": "工具/Conda/",
+      "type": "note",
+      "sourceSha256": "d4a145053c5ef7545de693bc06f76e6ffc50fc3313dc5d81db1786de33bbbb78",
+      "destinationSha256": "8e08ba3f63746d4cc19e620a1402c917b0dea7b0498a4462e359bd9bf3155190"
+    },
+    {
+      "source": "40-知识库/开发工具/Docker 容器.md",
+      "destination": "source/_posts/knowledge/开发工具/Docker 容器.md",
+      "permalink": "工具/Docker/",
+      "type": "note",
+      "sourceSha256": "32bcc54bbb659ade00e95ac76b65c6b32fede8e3fd7093d346b9d60f26aafec1",
+      "destinationSha256": "04e03b40c430c30bc93c58a3bb3a73534b7a951f961e60a1c788c8630c11dff9"
+    },
+    {
+      "source": "40-知识库/开发工具/Git 版本控制.md",
+      "destination": "source/_posts/knowledge/开发工具/Git 版本控制.md",
+      "permalink": "工具/Git/",
+      "type": "note",
+      "sourceSha256": "5ad92bf4c305e2be9948e85e79b3e9eebb52f417585e3f10733c36bf2817cb12",
+      "destinationSha256": "0376fe364da886ef2ecfc438b9e8468cb2ee8f80daf7f2a426dc1b67bc1c2e45"
+    },
+    {
+      "source": "40-知识库/开发工具/GitHub 代码托管.md",
+      "destination": "source/_posts/knowledge/开发工具/GitHub 代码托管.md",
+      "permalink": "工具/GitHub/",
+      "type": "note",
+      "sourceSha256": "1316ad2585c639b461a9d42b5daee40502f3dd7f2eb226bde1de0f61d24e8dea",
+      "destinationSha256": "c6cd34c64c96b515292170d29e5105438d16d01d25764128000cad7b0eadd9b9"
+    },
+    {
+      "source": "40-知识库/开发工具/JetBrains 开发工具.md",
+      "destination": "source/_posts/knowledge/开发工具/JetBrains 开发工具.md",
+      "permalink": "工具/JetBrains/",
+      "type": "note",
+      "sourceSha256": "203c071b7ce0759bcddc5d831a11b983e82624b2935c0a1dd0e1904c5c253a6c",
+      "destinationSha256": "46435800e3f2f62cbbbb4c2dbf8832fe01035754c42a0c0328ac4b053fff8e43"
+    },
+    {
+      "source": "40-知识库/开发工具/MySQL 数据库.md",
+      "destination": "source/_posts/knowledge/开发工具/MySQL 数据库.md",
+      "permalink": "工具/MySQL/",
+      "type": "note",
+      "sourceSha256": "2bed96834f5547ee3143840eb77de9c3b37b90c11fd72aaf68e23d2d07d2c83e",
+      "destinationSha256": "9c5068d2054de96868c7b5001363425e4a287ca22b4852fcdea7a665811c465a"
+    },
+    {
+      "source": "40-知识库/开发工具/Node.js 运行时.md",
+      "destination": "source/_posts/knowledge/开发工具/Node.js 运行时.md",
+      "permalink": "工具/Nodejs/",
+      "type": "note",
+      "sourceSha256": "d2b092f90e6e05aeee756d5c9531509ab2d2c4905aba5c6c01eb6e434aa9ae74",
+      "destinationSha256": "e6c8665d8493f7cdec221abc66cde590291cd3ff43dfb01657b5e6281a706bdd"
+    },
+    {
+      "source": "40-知识库/开发工具/Nuitka 打包.md",
+      "destination": "source/_posts/knowledge/开发工具/Nuitka 打包.md",
+      "permalink": "工具/Nuitka/",
+      "type": "note",
+      "sourceSha256": "64ca58886c01eb3eae49cb0e608af331513730dbd8c0b91a80b4eecf9dfc4aa2",
+      "destinationSha256": "2d9ca90d096bcbfb87887937fb2a59ddc09299c3d35613dcb1b53ebd49d524cd"
+    },
+    {
+      "source": "40-知识库/开发工具/Ollama 本地模型.md",
+      "destination": "source/_posts/knowledge/开发工具/Ollama 本地模型.md",
+      "permalink": "工具/Ollama/",
+      "type": "note",
+      "sourceSha256": "6874c78ccfb1e97412e799873dd2ea21ff3b09b4ff042c780b1df132753c1795",
+      "destinationSha256": "3598ae77f7a071573d71798c1befd961f6ec24aafa3c3d60fab39ec7488d2c0a"
+    },
+    {
+      "source": "40-知识库/开发工具/Python 包管理.md",
+      "destination": "source/_posts/knowledge/开发工具/Python 包管理.md",
+      "permalink": "工具/pip/",
+      "type": "note",
+      "sourceSha256": "de76394f37e3dad5b74c7195ab5e657012efd84d9b0869fe732c2a879ddbf99c",
+      "destinationSha256": "533c0546560a80921a2b2e198f1bed9a88c579496683cbd16732ef27d81c433d"
+    },
+    {
+      "source": "40-知识库/开发工具/Redis 缓存.md",
+      "destination": "source/_posts/knowledge/开发工具/Redis 缓存.md",
+      "permalink": "工具/Redis/",
+      "type": "note",
+      "sourceSha256": "1c6b346a582e76108b22196bdf1ec9646db106d45559d389ffb76c06c12aab84",
+      "destinationSha256": "57744828e2c3b382d28576dcd4975d16954eb759266d730885ad4adae0618d6d"
+    },
+    {
+      "source": "40-知识库/开发工具/Shell 脚本.md",
+      "destination": "source/_posts/knowledge/开发工具/Shell 脚本.md",
+      "permalink": "工具/shell/",
+      "type": "note",
+      "sourceSha256": "8ccc7fcfc8cb1607e1cbaf0a085e0c209cef1430d563b820a71e9535c35cadc1",
+      "destinationSha256": "ad6f020d257a9c6157a77edb15a2991542e99a525a1eae7bed614f96947d1603"
+    },
+    {
+      "source": "40-知识库/开发工具/StarUML 建模.md",
+      "destination": "source/_posts/knowledge/开发工具/StarUML 建模.md",
+      "permalink": "工具/StarUML/",
+      "type": "note",
+      "sourceSha256": "000cc691922ea9e4a3ed27e7e8a58f82f5235f8a468bb8e7ac25dcc2eff6192d",
+      "destinationSha256": "6a916b336c260366ac5fa718e2fcc9fd471f9d5509352a6b2ace2b7da02a517d"
+    },
+    {
+      "source": "40-知识库/开发工具/uv 项目管理.md",
+      "destination": "source/_posts/knowledge/开发工具/uv 项目管理.md",
+      "permalink": "工具/uv/",
+      "type": "note",
+      "sourceSha256": "91a0463a43222ce04cea495adbf8ac743a83d1308e9b73365e6ef087dad01413",
+      "destinationSha256": "4e884fcc12926948e4731ad864161e993ecdd645a3e77ab066062b7c3447160b"
+    },
+    {
+      "source": "40-知识库/开发工具/Visual Studio 开发环境.md",
+      "destination": "source/_posts/knowledge/开发工具/Visual Studio 开发环境.md",
+      "permalink": "工具/Visual Studio/",
+      "type": "note",
+      "sourceSha256": "39aeeb308628c5cc758a8db31071645f120ab73cc4a7fae6aa4a57a6dcb03403",
+      "destinationSha256": "45da87c3e19109c89ceeafd2e3efeb7fc458136ae628a7672adf0dd37a712a91"
+    },
+    {
+      "source": "40-知识库/开发工具/VS Code 编辑器.md",
+      "destination": "source/_posts/knowledge/开发工具/VS Code 编辑器.md",
+      "permalink": "工具/Visual Studio Code/",
+      "type": "note",
+      "sourceSha256": "c72c7f9247e9b4de7ea71b0eeec6178fdca36a1898c6bd88ca409319f00948f6",
+      "destinationSha256": "8bea0c9fceeb50bb98606dc03c50d10cb79d6dbded670c266cd0fa0ba086592e"
+    },
+    {
+      "source": "40-知识库/开发工具/Windows 子系统.md",
+      "destination": "source/_posts/knowledge/开发工具/Windows 子系统.md",
+      "permalink": "工具/Windows Subsystem for Linux (WSL)/",
+      "type": "note",
+      "sourceSha256": "85c4917d33760d3522d506f8817100218bcc25d3db060dbc4939f78799c6cf39",
+      "destinationSha256": "7f7d26b2ec40320c09ed3b73add5a65ec0ab126e0ba9754a4555aca05b17287a"
+    },
+    {
+      "source": "40-知识库/开发工具/上网.md",
+      "destination": "source/_posts/knowledge/开发工具/上网.md",
+      "permalink": "工具/上网/",
+      "type": "note",
+      "sourceSha256": "297d0fce9c0dd00883394f41a3935d1e8dd2630fe95ce748928e993f784c82b3",
+      "destinationSha256": "4046af5ef8f8d93cb720cc4e5ae65174294e0d3f4e49f972eef20b4b0320fd8d"
+    },
+    {
+      "source": "40-知识库/开发工具/开发工具.md",
+      "destination": "source/knowledge/开发工具/开发工具/index.md",
+      "permalink": "knowledge/开发工具/开发工具/",
+      "type": "moc",
+      "sourceSha256": "bf395bb4ae64ed21213cb820aad1a826c87fdc906dafdf850ee571e7dff36e04",
+      "destinationSha256": "251c9c737851c89cc57641ddbe4ff4b4abcd346363ce742acd98bd57b368bc45"
+    },
+    {
+      "source": "40-知识库/开发工具/终端复用.md",
+      "destination": "source/_posts/knowledge/开发工具/终端复用.md",
+      "permalink": "工具/tmux/",
+      "type": "note",
+      "sourceSha256": "acb05a5901b13b2c6fed3cd7e3b56b05c5280eaa276c47cd59833fe33e06f2d8",
+      "destinationSha256": "d8b67e751e909056fe191b190f67ba6ca4478be4515b6553d0fd908b56de180e"
+    },
+    {
+      "source": "40-知识库/数学/数学.md",
+      "destination": "source/knowledge/数学/数学/index.md",
+      "permalink": "knowledge/数学/数学/",
+      "type": "moc",
+      "sourceSha256": "93dab13f7281a353c2c53ab81420d728e0a9481f006cc7357bd11432fb48eec8",
+      "destinationSha256": "bf1e0c76b7c6266098bba6d351900fba0075a31bfeaabd663c0ec97330d55c8a"
+    },
+    {
+      "source": "40-知识库/深度学习/人工智能顶会顶刊.md",
+      "destination": "source/_posts/knowledge/深度学习/人工智能顶会顶刊.md",
+      "permalink": "机器学习/人工智能顶会顶刊/",
+      "type": "note",
+      "sourceSha256": "050b7afc666ada95aba8afbc1f91592c777f3048f86a3c24ed4a35b4dedc9f53",
+      "destinationSha256": "21905771ac52530f56a044c4ac0e5cf9dadf110b5c90fe1451d3bda69de4d1df"
+    },
+    {
+      "source": "40-知识库/深度学习/深度学习.md",
+      "destination": "source/_posts/knowledge/深度学习/深度学习.md",
+      "permalink": "机器学习/深度学习/",
+      "type": "note",
+      "sourceSha256": "2b94cd19ae6aacfae1bb434f31a207ea37b12a61b92aed99a6717f5d2de29703",
+      "destinationSha256": "6524719100091cedfd808887fbc00854355e092c662bbf5424b713bd628ef6f7"
+    },
+    {
+      "source": "40-知识库/深度学习/深度学习索引.md",
+      "destination": "source/knowledge/深度学习/深度学习索引/index.md",
+      "permalink": "knowledge/深度学习/深度学习索引/",
+      "type": "moc",
+      "sourceSha256": "bdea0ab07b76d35c959277eabf507895e85a2961aab9733e5d42be09f7ac5f4a",
+      "destinationSha256": "8fde62a0ce604b839d789a481c1c1d92ea73a7f2301808b46fb35077e889800c"
+    },
+    {
+      "source": "40-知识库/知识库.md",
+      "destination": "source/knowledge/index.md",
+      "permalink": "knowledge/",
+      "type": "moc",
+      "sourceSha256": "66cb3d50bcc7d44e5a09aa1e751ceb298a6cf4069fe44f29d4c02a167c8956fc",
+      "destinationSha256": "d7a59ef71faa701bb572a030a0c77fb448a05c374dcf1b5b03a2a96739417d7f"
+    },
+    {
+      "source": "40-知识库/系统/ArchLinux 系统.md",
+      "destination": "source/_posts/knowledge/系统/ArchLinux 系统.md",
+      "permalink": "系统/ArchLinux/",
+      "type": "note",
+      "sourceSha256": "56dca44031e2556753054decd75df45f48e9eb57564305db4a44b92c6cb182fe",
+      "destinationSha256": "1ec39ddd472320dddce843285b566c82099c988eaec9e63096dd369a005622df"
+    },
+    {
+      "source": "40-知识库/系统/ESXI 虚拟化.md",
+      "destination": "source/_posts/knowledge/系统/ESXI 虚拟化.md",
+      "permalink": "系统/ESXI/",
+      "type": "note",
+      "sourceSha256": "9067c22d8db943f5bd56d8b12606f5e1e53f5b705351d0c0258f0c3253f1a0d5",
+      "destinationSha256": "094fbe7c1e32ef423b80957791528ac0d0054d988734943936cd07570695b0e9"
+    },
+    {
+      "source": "40-知识库/系统/Linux 系统.md",
+      "destination": "source/_posts/knowledge/系统/Linux 系统.md",
+      "permalink": "系统/Linux/",
+      "type": "note",
+      "sourceSha256": "2f11e2f1d772b6642dda1dbdd130eb9b7f4b0b78591789700cf3839d9f03755e",
+      "destinationSha256": "251dc7b0814de0eac62c56d5f6b1bcf559a13337fb489afc9183fbad3282536e"
+    },
+    {
+      "source": "40-知识库/系统/Ubuntu 系统.md",
+      "destination": "source/_posts/knowledge/系统/Ubuntu 系统.md",
+      "permalink": "系统/Ubuntu/",
+      "type": "note",
+      "sourceSha256": "31018519a4fbf8fdf88204c0f11b9290d2d904e227fbf3d95b57efff5cf339d2",
+      "destinationSha256": "932b74ec18730c123ec1c16b170c7f2d1f1ac3cde62a8c8486fabd213c296293"
+    },
+    {
+      "source": "40-知识库/系统/系统.md",
+      "destination": "source/knowledge/系统/系统/index.md",
+      "permalink": "knowledge/系统/系统/",
+      "type": "moc",
+      "sourceSha256": "71a01c376c8f1219bf155f110afdb691a6bea65f35d0e3401ee9ec84ffe6839a",
+      "destinationSha256": "f6bdd97f63450cacaa8b1220b6516e06c3262ed8349c580d9ca67c9857f3f6bd"
+    },
+    {
+      "source": "40-知识库/编程/C 语言.md",
+      "destination": "source/_posts/knowledge/编程/C 语言.md",
+      "permalink": "语言/C/",
+      "type": "note",
+      "sourceSha256": "ea4504770a38588aff4bbdaec853322d3553b69129fa74c98c24100e7f3e22d0",
+      "destinationSha256": "879432aa1711f9c4993882caf56f2744d25adc20dd802b64c2747f9ae8d3fd7a"
+    },
+    {
+      "source": "40-知识库/编程/C++ 语言.md",
+      "destination": "source/_posts/knowledge/编程/C++ 语言.md",
+      "permalink": "语言/Cpp/",
+      "type": "note",
+      "sourceSha256": "0ee95889ab8ae4aa702446c6b0d4db676e1d2ec461d2b4cb2767925305fa2b4b",
+      "destinationSha256": "3122c04c9b76374e41c60197f38ac374831670d5835188ccbbac9bf7ca7ee7f7"
+    },
+    {
+      "source": "40-知识库/编程/Python 语言.md",
+      "destination": "source/_posts/knowledge/编程/Python 语言.md",
+      "permalink": "语言/Python/",
+      "type": "note",
+      "sourceSha256": "69537a841a00dc9795a0cb32e451428f9bd928f56996df7464c70d5eb32bf73a",
+      "destinationSha256": "38f747482b4897a3ffac1ff16559a6c47f0b1abc37569b091dadfc2557ab1039"
+    },
+    {
+      "source": "40-知识库/编程/汇编语言.md",
+      "destination": "source/_posts/knowledge/编程/汇编语言.md",
+      "permalink": "语言/Assembly/",
+      "type": "note",
+      "sourceSha256": "a232e570708944f1af1aabf8bc10ba72832ac330198cbf4893496536c3756e60",
+      "destinationSha256": "d16740ee03e2576a93208561cada4cdc9de04311aac8e83cedca7a2796b969aa"
+    },
+    {
+      "source": "40-知识库/编程/编程.md",
+      "destination": "source/knowledge/编程/编程/index.md",
+      "permalink": "knowledge/编程/编程/",
+      "type": "moc",
+      "sourceSha256": "66f5167209b9ab9f9c18490ea602a7950b3b691dbfa0257b301dba2fdd180327",
+      "destinationSha256": "40ba28486b8dd150274fca31df7f9a7d650b8376b4af6b1c4902bf5a7a3814c0"
+    },
+    {
+      "source": "40-知识库/网络安全/安全.md",
+      "destination": "source/_posts/knowledge/网络安全/安全.md",
+      "permalink": "安全/安全/",
+      "type": "note",
+      "sourceSha256": "7e68e2d469ace3504c39a11397f615a29347a3b0f5d73857210f666f8fcb2d15",
+      "destinationSha256": "41052398d33896641c057b31f152d4a5f8f1b8943eb32e2f0428e35ac1124a2d"
+    },
+    {
+      "source": "40-知识库/网络安全/第二届西安邮电大学网络安全大赛（部分逆向）.md",
+      "destination": "source/_posts/knowledge/网络安全/第二届西安邮电大学网络安全大赛（部分逆向）.md",
+      "permalink": "安全/第二届西安邮电大学网络安全大赛(部分re)/",
+      "type": "note",
+      "sourceSha256": "3dd273464f8ade2f2d075f620fcdcb4fc8697df182cf1851ed1c7aad9d38ed69",
+      "destinationSha256": "fd373ddc2ad59a005eb92fdd29fa970855a548662975b4f1e6f05fda16d7d0b9"
+    },
+    {
+      "source": "40-知识库/网络安全/网协安全组二面试题.md",
+      "destination": "source/_posts/knowledge/网络安全/网协安全组二面试题.md",
+      "permalink": "安全/网协安全组二面试题/",
+      "type": "note",
+      "sourceSha256": "8eaaf5da186a2ec5af3038430b1006cf0a2dc90f69c9e75e0b90a2c84c110165",
+      "destinationSha256": "2a29e23f0664275b1409af3b1743eb4eea032c5b95da6a578fc066bb7b4efe52"
+    },
+    {
+      "source": "40-知识库/网络安全/网络安全.md",
+      "destination": "source/knowledge/网络安全/网络安全/index.md",
+      "permalink": "knowledge/网络安全/网络安全/",
+      "type": "moc",
+      "sourceSha256": "c6a0b90d8ca33aafbc594420366a1c9d09633945ae00ac6605efc58788e26b53",
+      "destinationSha256": "59698bac27150aabf27fbc302bf3f77cb2eca9d9c23c399c8949ef3e8331795c"
+    },
+    {
+      "source": "40-知识库/计算机视觉/计算机视觉.md",
+      "destination": "source/knowledge/计算机视觉/计算机视觉/index.md",
+      "permalink": "knowledge/计算机视觉/计算机视觉/",
+      "type": "moc",
+      "sourceSha256": "332c0e76b2b2f66bd178c5eedd6ec802f187e477d59223869cf0b2d7fd337d9c",
+      "destinationSha256": "8a937762fb54c70daf038283930a226f8708f15b49360194c08d851e696dc49a"
+    },
+    {
+      "source": "40-知识库/计算机科学/数据结构实现.md",
+      "destination": "source/_posts/knowledge/计算机科学/数据结构实现.md",
+      "permalink": "数据结构/数据结构实现/",
+      "type": "note",
+      "sourceSha256": "9999c8689e7941cf19f34f584aacb78d1f280a72fdb341da5cbca544ecd83df3",
+      "destinationSha256": "2a7379c542104a6a5c1d2469e2e0361fee0f387f0a3a9e6a07114fc6faa89563"
+    },
+    {
+      "source": "40-知识库/计算机科学/算法题.md",
+      "destination": "source/_posts/knowledge/计算机科学/算法题.md",
+      "permalink": "数据结构/算法题/",
+      "type": "note",
+      "sourceSha256": "e69ba1f29e53e3be9444dce12e10f0f6a8718968b7f7e7976f64af8833319f0b",
+      "destinationSha256": "f9a624a3396fae6f86d5a0f4667bb08db93ca463784c85d630b5cd1b50e809f9"
+    },
+    {
+      "source": "40-知识库/计算机科学/计算机科学.md",
+      "destination": "source/knowledge/计算机科学/计算机科学/index.md",
+      "permalink": "knowledge/计算机科学/计算机科学/",
+      "type": "moc",
+      "sourceSha256": "bf6a6ac5b4cd60f0f66cacc034edb92d3eb94ab9f3012003ba37de408763df3a",
+      "destinationSha256": "b5f0b99d86e2957b02cec81ace3844686d14a011b82bc5eb6f7fd917199711c5"
+    },
+    {
+      "source": "40-知识库/软件工程/前端/JavaScript 前端.md",
+      "destination": "source/_posts/knowledge/软件工程/前端/JavaScript 前端.md",
+      "permalink": "前端/JavaScript前端/",
+      "type": "note",
+      "sourceSha256": "477d8985bf241adf90d6d626001c4e6cd7da8561c0772f94468f8ffdfd300d5f",
+      "destinationSha256": "2abb9381e71ceb92cb88ef75684cee93c87454f1bf0c4c70213068132f8a6972"
+    },
+    {
+      "source": "40-知识库/软件工程/前端/Qt Python 开发.md",
+      "destination": "source/_posts/knowledge/软件工程/前端/Qt Python 开发.md",
+      "permalink": "前端/Qt for Python/",
+      "type": "note",
+      "sourceSha256": "4029332a11cd79a32ce2665cf4e9452eac45a7466ba657f6c57a0301d89e5aa5",
+      "destinationSha256": "bd4108963324219f24695fee87ebad20a91afe8327f47913caf6da29460a6b15"
+    },
+    {
+      "source": "40-知识库/软件工程/前端/前端.md",
+      "destination": "source/knowledge/软件工程/前端/前端/index.md",
+      "permalink": "knowledge/软件工程/前端/前端/",
+      "type": "moc",
+      "sourceSha256": "e16edcd92bd510a7ee33bbc2ec04a9d78cdb6225b98b01912d18641e928c804c",
+      "destinationSha256": "dc6292d24ff646cac44a2d180937bcf005c6939e66c99bd397c00083fee8cc63"
+    },
+    {
+      "source": "40-知识库/软件工程/发布/Hexo 博客搭建.md",
+      "destination": "source/_posts/knowledge/软件工程/发布/Hexo 博客搭建.md",
+      "permalink": "博客/Hexo博客搭建/",
+      "type": "note",
+      "sourceSha256": "f0985249d235763d39791829e9c624964e854d7b78e29be6bfe21686a9967ed8",
+      "destinationSha256": "fdd36454f4a299e3cb6bc2c2bb2870d8f60ddfa6859fdfc16c6b2d119a62ffae"
+    },
+    {
+      "source": "40-知识库/软件工程/发布/NexT 主题.md",
+      "destination": "source/_posts/knowledge/软件工程/发布/NexT 主题.md",
+      "permalink": "博客/NexT主题/",
+      "type": "note",
+      "sourceSha256": "2f1cd22cab1e6ab4e350e1a05aece7c7114b6f1140c7c0ec62cb3f4026718102",
+      "destinationSha256": "fe12cfa55dcf433007a3e62f744738bae8f4443760bafd2cced501bc89421240"
+    },
+    {
+      "source": "40-知识库/软件工程/发布/发布.md",
+      "destination": "source/knowledge/软件工程/发布/发布/index.md",
+      "permalink": "knowledge/软件工程/发布/发布/",
+      "type": "moc",
+      "sourceSha256": "9f92a5fa069008113e2e69ed7aca89fde8cc9e93b812f84cd5b66acd736e0cf0",
+      "destinationSha256": "89671df01557d4918e412120ba920c4a5108960996752883cea7cda8cc85b0ad"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/Flask 框架.md",
+      "destination": "source/_posts/knowledge/软件工程/后端/Flask 框架.md",
+      "permalink": "后端/Flask/",
+      "type": "note",
+      "sourceSha256": "831d38be8a9f2e08076f993cfdc79bf324be976eb15f829f24d082022bbab16e",
+      "destinationSha256": "b57e5e9e9da3e623a977150156c554f88776ae0eb1af253a06201a2e22b91744"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/Java 后端.md",
+      "destination": "source/_posts/knowledge/软件工程/后端/Java 后端.md",
+      "permalink": "后端/Java后端/",
+      "type": "note",
+      "sourceSha256": "de463c9009a82fa9306bceefee87692412e953d27afef7b62dacb1f865f291a8",
+      "destinationSha256": "426f566d0407361e8cccd4c6ab236b8eb58b4a8ee149ab3cddf23d5a40c9ef53"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/MyBatis-Plus 持久层.md",
+      "destination": "source/_posts/knowledge/软件工程/后端/MyBatis-Plus 持久层.md",
+      "permalink": "后端/MyBatis-Plus/",
+      "type": "note",
+      "sourceSha256": "db883f947641c245c02ffd98e8a33ed9e0d5842883ce7753ecca80078bd1e00d",
+      "destinationSha256": "515e0e05622f07497a216a5d9259fb7a336f0d2a7a0b98c11c8165bd0da117d2"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/Spring Boot 框架.md",
+      "destination": "source/_posts/knowledge/软件工程/后端/Spring Boot 框架.md",
+      "permalink": "后端/SpringBoot/",
+      "type": "note",
+      "sourceSha256": "0c2b7277a4930af74377e2c5f07db105b93e93bab5363d962deba21cf86f76ee",
+      "destinationSha256": "f4bd921ff229ce27dfd1735ef25ffe54ff917bfdb081c00c98246b340689c73f"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/Spring Security 安全框架.md",
+      "destination": "source/_posts/knowledge/软件工程/后端/Spring Security 安全框架.md",
+      "permalink": "后端/SpringSecurity/",
+      "type": "note",
+      "sourceSha256": "00218fd913724329f28fec9505aebc38fdbbe00bde70819cd8cf20cb5a8a4f06",
+      "destinationSha256": "823607a6da5b5c4a2dde599e9403a9869ae45a5e61ac00cc206ba94df4fb03be"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/Spring 框架.md",
+      "destination": "source/_posts/knowledge/软件工程/后端/Spring 框架.md",
+      "permalink": "后端/Spring/",
+      "type": "note",
+      "sourceSha256": "7260f882511db96e7b9b539464636f6c8c578c014d81d57e9b98eab32e20c429",
+      "destinationSha256": "6d136b34c9c5a113f048b90b3fd900ce50e960ed86b965b9b99ea0ff42284796"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/Swagger 与 SpringDoc.md",
+      "destination": "source/_posts/knowledge/软件工程/后端/Swagger 与 SpringDoc.md",
+      "permalink": "后端/Swagger-SpringDoc/",
+      "type": "note",
+      "sourceSha256": "a82b7247b00290c6a082c3aaa8c66372b97d22546e89a3f5262e2efe7837ac6e",
+      "destinationSha256": "73aa5bf22ac116ea74f28e07172a2a97192d0f5ef0627b0372a8bca84200a360"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/后端.md",
+      "destination": "source/knowledge/软件工程/后端/后端/index.md",
+      "permalink": "knowledge/软件工程/后端/后端/",
+      "type": "moc",
+      "sourceSha256": "442e6e6a0ff8c21daf3b9eaab4bd676534d123b28567a51a2bb7c5fff7dae712",
+      "destinationSha256": "e3c5746436ff03b8437fd5a4ec84920e601a564f1be824c3cba382c3b55007b2"
+    },
+    {
+      "source": "40-知识库/软件工程/后端/异常处理.md",
+      "destination": "source/_posts/knowledge/软件工程/后端/异常处理.md",
+      "permalink": "后端/异常处理/",
+      "type": "note",
+      "sourceSha256": "04bb3853a3949571063cde2ab87266e029f1fdbe91bd3956d6bb7fd6407839d1",
+      "destinationSha256": "db60b7236cd95cb1289e6de08fec5e3fe4f76332605ed97e8accc8278b3446cc"
+    },
+    {
+      "source": "40-知识库/软件工程/网络爬虫/爬虫.md",
+      "destination": "source/_posts/knowledge/软件工程/网络爬虫/爬虫.md",
+      "permalink": "爬虫/爬虫/",
+      "type": "note",
+      "sourceSha256": "3597a1fbbbaf66efca57469165f673ae72f52aa44e7d298c12001d1d41d6b1a4",
+      "destinationSha256": "67350afd8a3ad52ebe2a5deb154f3cdc01b0a7e90b8d4daccef480961890d3e0"
+    },
+    {
+      "source": "40-知识库/软件工程/网络爬虫/网络爬虫.md",
+      "destination": "source/knowledge/软件工程/网络爬虫/网络爬虫/index.md",
+      "permalink": "knowledge/软件工程/网络爬虫/网络爬虫/",
+      "type": "moc",
+      "sourceSha256": "b08874e810addcc02c6b5eee7da3e804ddf1a127da167777ffac69504909831d",
+      "destinationSha256": "99b8cf9b7b3fbf22de85c3e7c2c14e4f1e7e29669c866f574739e2b7f7cbfec2"
+    },
+    {
+      "source": "40-知识库/软件工程/软件工程.md",
+      "destination": "source/knowledge/软件工程/软件工程/index.md",
+      "permalink": "knowledge/软件工程/软件工程/",
+      "type": "moc",
+      "sourceSha256": "ae96cacea4430221804b843a890ed361bb34b7ce0c68a3cb18896fe90512b3c9",
+      "destinationSha256": "1d1c4e32e980b616640ee1aec3e1165e69498036c1741437adda33c2f8a3c71b"
+    }
+  ],
+  "assets": [
+    {
+      "source": "99-附件/遗留/工具/Git/1.png",
+      "destination": "source/images/knowledge/工具/Git/1.png",
+      "bytes": 136033,
+      "sha256": "dcacf7a32fd56b60968d4a3f694de295e916a7ccbf17841e8f6e2b6131c179ea"
+    },
+    {
+      "source": "99-附件/遗留/工具/Git/2.png",
+      "destination": "source/images/knowledge/工具/Git/2.png",
+      "bytes": 23841,
+      "sha256": "e57dc66aca406ed3410f70ea0ae74a34beadb2fde2ec37b753ac913dfce17d2f"
+    },
+    {
+      "source": "99-附件/遗留/工具/Git/3.png",
+      "destination": "source/images/knowledge/工具/Git/3.png",
+      "bytes": 28453,
+      "sha256": "1784724d722ba1d242fc3d8bc85f4640a56091eeea35129c281e3a4fcca3d80f"
+    },
+    {
+      "source": "99-附件/遗留/工具/Git/4.png",
+      "destination": "source/images/knowledge/工具/Git/4.png",
+      "bytes": 31986,
+      "sha256": "c6d177ffe8e05bda9e40df2722a2cf2e672d5fa9f2a543a6c06cd6dd1c7aff4d"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/1.png",
+      "destination": "source/images/knowledge/工具/GitHub/1.png",
+      "bytes": 108575,
+      "sha256": "5138463f44d13a85486966e8b756651cf9fba194ca9058109cbc9192bb2df2aa"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/2.png",
+      "destination": "source/images/knowledge/工具/GitHub/2.png",
+      "bytes": 121669,
+      "sha256": "352608281754b6ed4915cf344f1d3ce92337d8763e58227004db86b589137c8e"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/3.png",
+      "destination": "source/images/knowledge/工具/GitHub/3.png",
+      "bytes": 188040,
+      "sha256": "606638d59ba1ba80d1464f2004d2e2b3f4d181753215bcadda3f70c86b44f63e"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/4.png",
+      "destination": "source/images/knowledge/工具/GitHub/4.png",
+      "bytes": 178816,
+      "sha256": "d428860001ce22476d354006ef65af5af38088f45b7cf366c46932017300b23a"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/5.png",
+      "destination": "source/images/knowledge/工具/GitHub/5.png",
+      "bytes": 44358,
+      "sha256": "c0316082d286bf913a846c21f2aeaad6333f859f27a830802ab0fecbb492f24d"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/6.png",
+      "destination": "source/images/knowledge/工具/GitHub/6.png",
+      "bytes": 134800,
+      "sha256": "1e2d259e0f693f75e7823be0ef6b65fd7fb51baa757c17c6431d2ea93e334cea"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/7.png",
+      "destination": "source/images/knowledge/工具/GitHub/7.png",
+      "bytes": 77253,
+      "sha256": "bcd25f0da4280e3aa98d3e3a81610e349ada3f0b9bd9323e0d67c51a7b7cb92e"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/8.png",
+      "destination": "source/images/knowledge/工具/GitHub/8.png",
+      "bytes": 77452,
+      "sha256": "21ef3c35be819e9a9b0a3f0ae81dfb33567742ed38975f219d5c3166534a2ee0"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/9.png",
+      "destination": "source/images/knowledge/工具/GitHub/9.png",
+      "bytes": 70550,
+      "sha256": "6179e439114e60e2b0f4cf2b90081841cf42233ea7148ed4e421a8cd63620b6f"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/10.png",
+      "destination": "source/images/knowledge/工具/GitHub/10.png",
+      "bytes": 321931,
+      "sha256": "f378459c07bc20d308773bef5ee1206b12a8d7e41d193b71aba03c78bd4cad7b"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/11.png",
+      "destination": "source/images/knowledge/工具/GitHub/11.png",
+      "bytes": 154715,
+      "sha256": "4a6e60cdc4d9758c87f4b23ec3596a36fc85821fc41173d7195ffaef496cb777"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/12.png",
+      "destination": "source/images/knowledge/工具/GitHub/12.png",
+      "bytes": 148756,
+      "sha256": "c27ac0bc2754603ae0760d2425acbe06531acf0c7a80d6787337c6865644b40d"
+    },
+    {
+      "source": "99-附件/遗留/工具/GitHub/13.png",
+      "destination": "source/images/knowledge/工具/GitHub/13.png",
+      "bytes": 95911,
+      "sha256": "367556122707cc099adfcd59bab9bf8b36557b31a14e5a8a24c33603723bf455"
+    },
+    {
+      "source": "99-附件/遗留/工具/Nodejs/1.png",
+      "destination": "source/images/knowledge/工具/Nodejs/1.png",
+      "bytes": 85835,
+      "sha256": "189ac3b140e72282b77cbda2f4d5cad5b80c665ea054630b0c901ebe2daf406a"
+    },
+    {
+      "source": "99-附件/遗留/工具/Nodejs/2.png",
+      "destination": "source/images/knowledge/工具/Nodejs/2.png",
+      "bytes": 97903,
+      "sha256": "5ec904d87af5b13ff842ea9dc1fe0cca8f49d436537b4b09cdf4b15874957cec"
+    },
+    {
+      "source": "99-附件/遗留/工具/pip/1.png",
+      "destination": "source/images/knowledge/工具/pip/1.png",
+      "bytes": 135970,
+      "sha256": "42bd6326f2d0fcb1ea29d3a7352a5fc3f4e85c8db8c7a53dc4fdba489e7788b8"
+    },
+    {
+      "source": "99-附件/遗留/工具/pip/2.png",
+      "destination": "source/images/knowledge/工具/pip/2.png",
+      "bytes": 89826,
+      "sha256": "efffad7801417149de35093dce9bc6b78d024e03030eaeacb73e4085fd1980a3"
+    },
+    {
+      "source": "99-附件/遗留/工具/pip/3.png",
+      "destination": "source/images/knowledge/工具/pip/3.png",
+      "bytes": 90262,
+      "sha256": "d09ef07927ae221b968b990bc8a28fce5c8d7ae2846f8ae18d20bb8a11e42d6e"
+    },
+    {
+      "source": "99-附件/遗留/工具/pip/4.png",
+      "destination": "source/images/knowledge/工具/pip/4.png",
+      "bytes": 26482,
+      "sha256": "45425a9d60f5725f7843605d717269cde7b130c86a3f0ec133456d77f4f78ca1"
+    },
+    {
+      "source": "99-附件/遗留/工具/pip/5.png",
+      "destination": "source/images/knowledge/工具/pip/5.png",
+      "bytes": 85707,
+      "sha256": "8e7478a1803cab6a21cacc011278a36b640121ec04d8f175c5df6cc0055527dd"
+    },
+    {
+      "source": "99-附件/遗留/工具/pip/6.png",
+      "destination": "source/images/knowledge/工具/pip/6.png",
+      "bytes": 40343,
+      "sha256": "bb82a63de44eda48b8d5aa7d012c9d111bac02e338855e99535df86b820961bf"
+    },
+    {
+      "source": "99-附件/遗留/工具/pip/7.png",
+      "destination": "source/images/knowledge/工具/pip/7.png",
+      "bytes": 49508,
+      "sha256": "b46d3aeac0f5eb4a5420000c696e7c0e3647d9f68c43dbb0d5aa2bb80c181cae"
+    },
+    {
+      "source": "99-附件/遗留/工具/pip/8.png",
+      "destination": "source/images/knowledge/工具/pip/8.png",
+      "bytes": 104431,
+      "sha256": "c12b8356ab6c84fab2fc133b43b1c61efe8deae130b21f8f1c6e831b37ff4041"
+    },
+    {
+      "source": "99-附件/遗留/工具/Redis/1.png",
+      "destination": "source/images/knowledge/工具/Redis/1.png",
+      "bytes": 5774,
+      "sha256": "59b2a9404e7e3eb01b493bce268dd74640d02f69f5f1adffc6aa017f29db7b3e"
+    },
+    {
+      "source": "99-附件/遗留/工具/Redis/2.png",
+      "destination": "source/images/knowledge/工具/Redis/2.png",
+      "bytes": 12407,
+      "sha256": "652b93deec5dcbbb52e5305640eee663bda0498b09a3a9b5c43c3bc4ef975513"
+    },
+    {
+      "source": "99-附件/遗留/工具/Redis/3.png",
+      "destination": "source/images/knowledge/工具/Redis/3.png",
+      "bytes": 14012,
+      "sha256": "e3d73334a29dcbf8ad9f340c336a56c12e0149e79dac5532f4b1ad59f32cb136"
+    },
+    {
+      "source": "99-附件/遗留/工具/StarUML/1.png",
+      "destination": "source/images/knowledge/工具/StarUML/1.png",
+      "bytes": 11076,
+      "sha256": "7b820402350bb9a9e6cf761b53af3393fd26bd5c951cf508d80c60ec373cb383"
+    },
+    {
+      "source": "99-附件/遗留/工具/StarUML/2.png",
+      "destination": "source/images/knowledge/工具/StarUML/2.png",
+      "bytes": 13000,
+      "sha256": "c860144fb09db1673e699786b8aec6a6221579133bcdcb30a4f72068526eff5d"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/1.png",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/1.png",
+      "bytes": 29428,
+      "sha256": "1838d45be685d22ca31dc93a43ca58c7cbd641890ca0d12170e3d3586b467b58"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/2.png",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/2.png",
+      "bytes": 22179,
+      "sha256": "fa51eaa60305ffdaef69f0cb808d57d776473d2508a0e5f02150a0bafa6a056a"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/3.gif",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/3.gif",
+      "bytes": 43673,
+      "sha256": "c87abb47cd744f5404a2081d41639052625d9d8bf1411a05eff9dded76e33168"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/4.gif",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/4.gif",
+      "bytes": 100553,
+      "sha256": "462f90d1000e6e9a8ad4b0420bc3e6d8e813e0cec83fee5e86c43d49bdd958cb"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/5.gif",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/5.gif",
+      "bytes": 132721,
+      "sha256": "af8fab7f20e078e5d15ad0aa5c3f94de8cc7b50e88fd12b73c7de930f9e3854a"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/6.gif",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/6.gif",
+      "bytes": 130078,
+      "sha256": "9db78bfd9ccc54663c4473b61ee620f3e040c3e06041011ae85abc7e6f9bc2e3"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/7.png",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/7.png",
+      "bytes": 83926,
+      "sha256": "2029b01e3f3064494b2fc3e266012733ab2a8b4d21961cb66256277762fdac88"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/8.png",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/8.png",
+      "bytes": 119127,
+      "sha256": "e9f3b9bd945cfb5691813c16c66ee2bb1ebb12be7447b71f956d0decdeb32d04"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/9.gif",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/9.gif",
+      "bytes": 64286,
+      "sha256": "8039491c80d35bf15d944b9a657fee20a348a5f88f16524331e710284dcd24c4"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/10.png",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/10.png",
+      "bytes": 104820,
+      "sha256": "acf09a69832143044c06590ae8444e2f4d21f327b0c4a18b1e6bfd841d7aa258"
+    },
+    {
+      "source": "99-附件/遗留/工具/Visual Studio Code/11.png",
+      "destination": "source/images/knowledge/工具/Visual Studio Code/11.png",
+      "bytes": 20007,
+      "sha256": "f5d10f2d96229b742bb2bdead570838a47f233475b4eb482ae2bc4f95708bc29"
+    },
+    {
+      "source": "99-附件/遗留/工具/Windows Subsystem for Linux (WSL)/1.png",
+      "destination": "source/images/knowledge/工具/Windows Subsystem for Linux (WSL)/1.png",
+      "bytes": 546384,
+      "sha256": "ae60749e1e275db53848223cac569a2ac4a04c9a8ae29a5cef791911b9e25a8c"
+    },
+    {
+      "source": "99-附件/遗留/机器学习/深度学习/1.png",
+      "destination": "source/images/knowledge/机器学习/深度学习/1.png",
+      "bytes": 64023,
+      "sha256": "59dd821569ce6f4d888060f5c17237442c75a89f2628f98d2d8334a5b1a8cdf6"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/1.png",
+      "destination": "source/images/knowledge/系统/ESXI/1.png",
+      "bytes": 271963,
+      "sha256": "2a4d40f5f1ba67bc583eb860173fe22036add8570eaea3bce1831a2b62afb9ac"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/2.png",
+      "destination": "source/images/knowledge/系统/ESXI/2.png",
+      "bytes": 68393,
+      "sha256": "8aa8b1bb845890ae15fccfda89c8dc53ffd6fe2f1a8c7679f50f7189d9e3bd25"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/3.png",
+      "destination": "source/images/knowledge/系统/ESXI/3.png",
+      "bytes": 74283,
+      "sha256": "cd9cf3a2295795351fb39b243cbdca75a7b11ce3b29d12ca7f5d974dc7db8a92"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/4.png",
+      "destination": "source/images/knowledge/系统/ESXI/4.png",
+      "bytes": 60527,
+      "sha256": "e999d7b19fa39fb795d4a060af460e882f5fbe4ee3da95055575fda6075b0029"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/5.png",
+      "destination": "source/images/knowledge/系统/ESXI/5.png",
+      "bytes": 10490,
+      "sha256": "10aeffbdabe2098157582c54b0ededaca59899498548b0ac10313701aa99db71"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/6.png",
+      "destination": "source/images/knowledge/系统/ESXI/6.png",
+      "bytes": 2026,
+      "sha256": "dff1d67377ecf3d8ca0e4990d954605c26d89a6d9d4c1e6264fd3ed65bfe7fdb"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/7.png",
+      "destination": "source/images/knowledge/系统/ESXI/7.png",
+      "bytes": 76957,
+      "sha256": "677f6b6fa45b7385b74393adf4a20b1deb0ba07d819f4a3bceb1ae49404610c1"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/8.png",
+      "destination": "source/images/knowledge/系统/ESXI/8.png",
+      "bytes": 3467,
+      "sha256": "4e8081ab6b72a3546132bc4c0a8df1a095358384e256a93f6f87a5b8e353ce4c"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/9.png",
+      "destination": "source/images/knowledge/系统/ESXI/9.png",
+      "bytes": 3053,
+      "sha256": "3fab6e12a3ec74386b931c62f89c6e0733359aecf54cf5b1609c43ccb43a1572"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/10.png",
+      "destination": "source/images/knowledge/系统/ESXI/10.png",
+      "bytes": 37968,
+      "sha256": "26d6c3b3556ea6607f08c91298b56d39b032becf5f68278314c6c03d9a2c7f63"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/11.png",
+      "destination": "source/images/knowledge/系统/ESXI/11.png",
+      "bytes": 24172,
+      "sha256": "958707ff2a7c10e766b7b73bd684fd3fc5d3eb507d6ecd3d29afa68bf50561a7"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/12.png",
+      "destination": "source/images/knowledge/系统/ESXI/12.png",
+      "bytes": 7594,
+      "sha256": "36102ae84bef8e5d8da373f91a64d7893bb96981ff64ac574b8072a0743646fe"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/13.png",
+      "destination": "source/images/knowledge/系统/ESXI/13.png",
+      "bytes": 45525,
+      "sha256": "86b2fc76241eaa948c194bcffc9defa715de7fe4a0bfdd8bc96a1d8299e5ed0f"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/14.png",
+      "destination": "source/images/knowledge/系统/ESXI/14.png",
+      "bytes": 35583,
+      "sha256": "d49c818ae9a60348fed9e83360b5ebb820cd2fcdf469eebe97d251c5400bbd3e"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/15.png",
+      "destination": "source/images/knowledge/系统/ESXI/15.png",
+      "bytes": 237124,
+      "sha256": "ce90f7e24193e8ee2e0de4d7edd0e2078e26971ffd620a89976f9e7cf05638bd"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/16.png",
+      "destination": "source/images/knowledge/系统/ESXI/16.png",
+      "bytes": 39047,
+      "sha256": "abc46c8ff8dfc478d347a2dab348d948993e9dbfc170c7b577ba10ca60fe9f73"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/17.png",
+      "destination": "source/images/knowledge/系统/ESXI/17.png",
+      "bytes": 4340,
+      "sha256": "c9cb40ceb06d26aa999e5868bfdba70802dc62e1a5af8c651f34a72878c545df"
+    },
+    {
+      "source": "99-附件/遗留/系统/ESXI/18.png",
+      "destination": "source/images/knowledge/系统/ESXI/18.png",
+      "bytes": 235461,
+      "sha256": "a98064b2edc95dd6cd7c4f6989cd3a595cafe510b7ccf203f3f10594b16d6573"
+    },
+    {
+      "source": "99-附件/遗留/语言/C/1.png",
+      "destination": "source/images/knowledge/语言/C/1.png",
+      "bytes": 14601,
+      "sha256": "27fb91c53080b6bbfb58c4f70fac9abdf945cda8e052ccfc1a17c0f5e36faefa"
+    },
+    {
+      "source": "99-附件/遗留/语言/C/2.png",
+      "destination": "source/images/knowledge/语言/C/2.png",
+      "bytes": 140050,
+      "sha256": "9921bffa6f0a633e5a1347b2f0ff4aa34f7f7fc81076bbee98f2700868b68526"
+    },
+    {
+      "source": "99-附件/遗留/语言/C/3.png",
+      "destination": "source/images/knowledge/语言/C/3.png",
+      "bytes": 61394,
+      "sha256": "6789a2673f585a6f065e0f267d84b892233eeec1c7ac66dc11fcada5504a7c25"
+    },
+    {
+      "source": "99-附件/遗留/语言/Cpp/1.png",
+      "destination": "source/images/knowledge/语言/Cpp/1.png",
+      "bytes": 251386,
+      "sha256": "21f06ffac199f84428f5bcfbc54ef3b68f2ead87901465fa801690329a46d1b3"
+    },
+    {
+      "source": "99-附件/遗留/语言/Cpp/2.png",
+      "destination": "source/images/knowledge/语言/Cpp/2.png",
+      "bytes": 431512,
+      "sha256": "e951c243ed908913a5db37d32ad6afb4b311581529edc3b16aa22ae6c63a4fb0"
+    },
+    {
+      "source": "99-附件/遗留/语言/Cpp/3.png",
+      "destination": "source/images/knowledge/语言/Cpp/3.png",
+      "bytes": 242485,
+      "sha256": "d48293aa2b0b8799ef00a607bd438228d16a200c3d71e1d19aedc564bd37e1bb"
+    },
+    {
+      "source": "99-附件/遗留/语言/Cpp/4.png",
+      "destination": "source/images/knowledge/语言/Cpp/4.png",
+      "bytes": 225762,
+      "sha256": "a31e2a6c760d621e4fee5891930864eefef73044e3a7fbb210bdfc6563412506"
+    },
+    {
+      "source": "99-附件/遗留/语言/Cpp/5.png",
+      "destination": "source/images/knowledge/语言/Cpp/5.png",
+      "bytes": 377221,
+      "sha256": "ddafd0d88e71c93092f87cb092c3d429b7cf8a191eb5baf6db954f33e75ab851"
+    },
+    {
+      "source": "99-附件/遗留/语言/Cpp/6.png",
+      "destination": "source/images/knowledge/语言/Cpp/6.png",
+      "bytes": 445333,
+      "sha256": "4e6577d60e7f7fb2fb11173e60221565574912c1a3000c6bb22a9e4c4c6ce24a"
+    },
+    {
+      "source": "99-附件/遗留/语言/Cpp/7.png",
+      "destination": "source/images/knowledge/语言/Cpp/7.png",
+      "bytes": 292859,
+      "sha256": "08054e0153659b0c69f9dd9c7b1ee8e8fa9b8e8515a879e49795744c7071f719"
+    },
+    {
+      "source": "99-附件/遗留/语言/Cpp/8.png",
+      "destination": "source/images/knowledge/语言/Cpp/8.png",
+      "bytes": 233339,
+      "sha256": "3dadcb6a795b99c996729ee667827fc64af9d25fa2fd5cda89ef3766e821a96e"
+    },
+    {
+      "source": "99-附件/遗留/语言/Python/1.png",
+      "destination": "source/images/knowledge/语言/Python/1.png",
+      "bytes": 1874,
+      "sha256": "65c12e38f6beafe391552e18a41237f3b22ce53888f77e3b8872b39bf884e616"
+    },
+    {
+      "source": "99-附件/遗留/语言/Python/2.png",
+      "destination": "source/images/knowledge/语言/Python/2.png",
+      "bytes": 1779,
+      "sha256": "6e8c074d7186e08e2fa9d00475e628e24a6acfaeb140a099a4fa3d2a8acec577"
+    },
+    {
+      "source": "99-附件/遗留/语言/Python/3.png",
+      "destination": "source/images/knowledge/语言/Python/3.png",
+      "bytes": 2381,
+      "sha256": "c7e54e803379cde754b14ed1db35f2991d5e4a03758d7fbc9464fe0f6ea65941"
+    },
+    {
+      "source": "99-附件/遗留/语言/Python/4.png",
+      "destination": "source/images/knowledge/语言/Python/4.png",
+      "bytes": 1904,
+      "sha256": "65e7c53ad0159bf0b18579d538035cd71f70d310695f81c5fb89d173c66248db"
+    },
+    {
+      "source": "99-附件/遗留/语言/Python/5.png",
+      "destination": "source/images/knowledge/语言/Python/5.png",
+      "bytes": 18861,
+      "sha256": "4158173fde9be2db992434ec806aa40e0f09127978c4daac7238ba8a9a0572f1"
+    },
+    {
+      "source": "99-附件/遗留/语言/Python/6.png",
+      "destination": "source/images/knowledge/语言/Python/6.png",
+      "bytes": 1916,
+      "sha256": "43d7cad2a0fccc2e078640963ba230f49c976e34df5c009b22275907f599fae1"
+    },
+    {
+      "source": "99-附件/遗留/语言/Python/7.png",
+      "destination": "source/images/knowledge/语言/Python/7.png",
+      "bytes": 1858,
+      "sha256": "b235ec9cde50a979fa617dcd332971a3551c8e8aa0770549f981025c69e15034"
+    },
+    {
+      "source": "99-附件/遗留/语言/Python/8.png",
+      "destination": "source/images/knowledge/语言/Python/8.png",
+      "bytes": 1632,
+      "sha256": "48e0d39884597a767093296cdcb991ad600652a24960f2af69d7ba6c72086621"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/1.png",
+      "destination": "source/images/knowledge/语言/Assembly/1.png",
+      "bytes": 580711,
+      "sha256": "9896655fdda20851e563153cae5ea20320583a6a6ee4b489b21275dcb793482e"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/2.png",
+      "destination": "source/images/knowledge/语言/Assembly/2.png",
+      "bytes": 142450,
+      "sha256": "55858a36d86bbdc1179e7b19dd6d2cac2999ce9e5bac53a248cdedc511ff89d5"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/3.png",
+      "destination": "source/images/knowledge/语言/Assembly/3.png",
+      "bytes": 441279,
+      "sha256": "c7f19553f4a52fb2e634e214144c5bdca2ba9477922cd9f06c84aa9dd857832b"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/4.png",
+      "destination": "source/images/knowledge/语言/Assembly/4.png",
+      "bytes": 271532,
+      "sha256": "506d997626d9c930ee1c3a1a0ff706b52d79181c6b89156cd62f80b008e3f030"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/5.png",
+      "destination": "source/images/knowledge/语言/Assembly/5.png",
+      "bytes": 213801,
+      "sha256": "a656e76b9dec95a1d5911aed41c9668dc6f6de387e3b60de359ea504b1b7879a"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/6.png",
+      "destination": "source/images/knowledge/语言/Assembly/6.png",
+      "bytes": 562696,
+      "sha256": "af782ecd5e91cb71f22699942bef24a4ce1095861c05a59ce13e0f047c84c011"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/7.png",
+      "destination": "source/images/knowledge/语言/Assembly/7.png",
+      "bytes": 32999,
+      "sha256": "45df27d032f8d61bce84cf847bec5d271014914c8816f8bb2ada636c11c69b52"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/8.png",
+      "destination": "source/images/knowledge/语言/Assembly/8.png",
+      "bytes": 50166,
+      "sha256": "95cc228ed5c62abdef675fe67ada1d0a52229d19d711cc56b312fde85a0dd9b8"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/9.png",
+      "destination": "source/images/knowledge/语言/Assembly/9.png",
+      "bytes": 51456,
+      "sha256": "6fd8a2398cafd1ab6b2d93f1837a6bc2770d65e67ce6d3ad75164a3d3c978070"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/10.png",
+      "destination": "source/images/knowledge/语言/Assembly/10.png",
+      "bytes": 368362,
+      "sha256": "6c51f56982518fc5ffa9acaa9b3e715b365769883f53ec97935b9ce31968f53d"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/11.png",
+      "destination": "source/images/knowledge/语言/Assembly/11.png",
+      "bytes": 24064,
+      "sha256": "20279a075edf94af390b468da7136475f61ba1a7621206536551970d883bf3d8"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/12.png",
+      "destination": "source/images/knowledge/语言/Assembly/12.png",
+      "bytes": 35790,
+      "sha256": "7777de14670a540d82e483b80a3ce5149e2363cd9a79cd92d00c68394a1868fa"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/13.png",
+      "destination": "source/images/knowledge/语言/Assembly/13.png",
+      "bytes": 42670,
+      "sha256": "d6d3190ee33765220e905fadea284c0fb04a1e433abe8f621ae057e6b086191c"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/14.png",
+      "destination": "source/images/knowledge/语言/Assembly/14.png",
+      "bytes": 57536,
+      "sha256": "56a7053f464eec1418e1671ce6291a1a66c6fe106248f94bbbc442808a01df95"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/15.png",
+      "destination": "source/images/knowledge/语言/Assembly/15.png",
+      "bytes": 80664,
+      "sha256": "76b4b862973b51c4329d873b7695e63bf550ffe9defb855b78a96d58fafdac92"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/16.png",
+      "destination": "source/images/knowledge/语言/Assembly/16.png",
+      "bytes": 89037,
+      "sha256": "842fb3ef6d517bcd2b0748ce0b7ed5d5672619c89a79b073cc0f4816e371ada3"
+    },
+    {
+      "source": "99-附件/遗留/语言/Assembly/17.png",
+      "destination": "source/images/knowledge/语言/Assembly/17.png",
+      "bytes": 78949,
+      "sha256": "52088352e2d4e55e3f09a8055280aae0e2fa34f269a59ca3f7f28e341b117f77"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/1.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/1.png",
+      "bytes": 42869,
+      "sha256": "9ee6d537c92d968eb289e76910bc2da4f497d0790369a0d9e2faefed012c5dba"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/2.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/2.png",
+      "bytes": 45372,
+      "sha256": "312a86a1ad1d4d52a15d4fc99db26c94efa6c6abd7c446321ed526e13a625697"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/3.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/3.png",
+      "bytes": 24972,
+      "sha256": "57ac89ed5a0270562803f79c5847a05bc29a6e60d64a6d7c89300458bd84b82f"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/4.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/4.png",
+      "bytes": 68796,
+      "sha256": "71224310291e74c7107eb134c62c183bed16a7a01d92506b760ccb0a250c6b43"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/5.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/5.png",
+      "bytes": 68565,
+      "sha256": "4a8a2e31fced57cf82f7583bbf5a910a64ff558c8556394c745246434f6e3558"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/6.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/6.png",
+      "bytes": 74752,
+      "sha256": "1857ecb9ebda24ef6b7968d77ffe05fd3f264529f316f773b69b8b48a985d47e"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/7.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/7.png",
+      "bytes": 18925,
+      "sha256": "44b2bc41adf21239dde07de666d0acab4468bbf59af2279c6d24194211c8038d"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/8.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/8.png",
+      "bytes": 176036,
+      "sha256": "72e4dc568ef23db1bfe6e2703f940f3f122e9a1921102b0a7fca20eab7350d30"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/9.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/9.png",
+      "bytes": 65050,
+      "sha256": "18f0c11cd6ae28d8050f6eb89c78d09a572b6d10e421054e96d172bf3c50ae29"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/10.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/10.png",
+      "bytes": 22090,
+      "sha256": "0a9349469abc9ae7c9f9c7a42c32dc8b22b86f6e98223d00cf0bdda5d70968fd"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/11.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/11.png",
+      "bytes": 120829,
+      "sha256": "e0092dcbbf6d1304c661dcbee18c71da7881a0e2484c49d73775fec51e808756"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/12.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/12.png",
+      "bytes": 160434,
+      "sha256": "24793995886ab4640d803516c5debfd6c9b3ad1b16e3b56b72ea6092d28b5dd2"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/13.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/13.png",
+      "bytes": 138629,
+      "sha256": "d0b271e1557a7d3c1a614531f40d793783ba2bb1f0e46fc1e637bacf4ac16e28"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/14.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/14.png",
+      "bytes": 185617,
+      "sha256": "b61e4e99e09cda1e87b3523442e1c99250f59c8463bf6fd82ed5c2d7a9eed083"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/15.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/15.png",
+      "bytes": 79348,
+      "sha256": "653021f8035e264c3da0364f770d26cafe7ae113c67ffde0a28a9eb6c43bff3e"
+    },
+    {
+      "source": "99-附件/遗留/安全/第二届西安邮电大学网络安全大赛(部分re)/16.png",
+      "destination": "source/images/knowledge/安全/第二届西安邮电大学网络安全大赛(部分re)/16.png",
+      "bytes": 13401,
+      "sha256": "cb540ac5a63b829fcfdba2817120efad3f6592b960593337f29c7da809ada368"
+    },
+    {
+      "source": "99-附件/遗留/前端/Qt for Python/1.png",
+      "destination": "source/images/knowledge/前端/Qt for Python/1.png",
+      "bytes": 25733,
+      "sha256": "e54478f079204fa21722d634502a69a2d0f075b0f8d4b0aa4574e59ef4e8f76d"
+    },
+    {
+      "source": "99-附件/遗留/前端/Qt for Python/2.png",
+      "destination": "source/images/knowledge/前端/Qt for Python/2.png",
+      "bytes": 8737,
+      "sha256": "056235431bb48e75ffa19e43ba6bc726ba5b000869a2f3eb3c8f418d8cd5daba"
+    },
+    {
+      "source": "99-附件/遗留/博客/Hexo博客搭建/1.png",
+      "destination": "source/images/knowledge/博客/Hexo博客搭建/1.png",
+      "bytes": 82557,
+      "sha256": "fd2fb08a4a89cbc3b9f9e4767cbd0304d5fdc2778ea90c82d4e0b8007f8ca53b"
+    },
+    {
+      "source": "99-附件/遗留/博客/Hexo博客搭建/2.png",
+      "destination": "source/images/knowledge/博客/Hexo博客搭建/2.png",
+      "bytes": 140189,
+      "sha256": "751f80ecf2f46c021593b1e41377849d98bf929bc81f27fd06053e0b3f9c8122"
+    },
+    {
+      "source": "99-附件/遗留/博客/Hexo博客搭建/3.png",
+      "destination": "source/images/knowledge/博客/Hexo博客搭建/3.png",
+      "bytes": 74937,
+      "sha256": "ff3f9b6fcf9f1bcb68f5ad12b79a5edc0a5558a3a54de0c20a4d34637cc74262"
+    },
+    {
+      "source": "99-附件/遗留/博客/Hexo博客搭建/4.png",
+      "destination": "source/images/knowledge/博客/Hexo博客搭建/4.png",
+      "bytes": 72005,
+      "sha256": "9264f1cc73cf7cd132953288955f8b09837af4617eb033773376df12ddc2a4be"
+    },
+    {
+      "source": "99-附件/遗留/博客/Hexo博客搭建/5.png",
+      "destination": "source/images/knowledge/博客/Hexo博客搭建/5.png",
+      "bytes": 38818,
+      "sha256": "23bab8b6ee88dec79e42b4293c6cdba219f0aeeb1c1d5304f0ddb5a74988a4be"
+    },
+    {
+      "source": "99-附件/遗留/博客/NexT主题/1.png",
+      "destination": "source/images/knowledge/博客/NexT主题/1.png",
+      "bytes": 171293,
+      "sha256": "95c257eb7d62319782426756a1d88aa02800964b84c06c4d9cd24c7dc0fe327d"
+    },
+    {
+      "source": "99-附件/遗留/博客/NexT主题/2.png",
+      "destination": "source/images/knowledge/博客/NexT主题/2.png",
+      "bytes": 142980,
+      "sha256": "77d078799c6caf8517d3ba2a85bfd3cdd48dedad8efe8556882d328388fef19a"
+    },
+    {
+      "source": "99-附件/遗留/博客/NexT主题/3.png",
+      "destination": "source/images/knowledge/博客/NexT主题/3.png",
+      "bytes": 221017,
+      "sha256": "7d0bb9892e1bd0e86e9d5d2d6bf8f6d390d0f63e2bc12a4484a878d6075986d5"
+    },
+    {
+      "source": "99-附件/遗留/博客/NexT主题/4.png",
+      "destination": "source/images/knowledge/博客/NexT主题/4.png",
+      "bytes": 160171,
+      "sha256": "542ebb43469a6a111d3a1c83b91e36f19f8620620e9e22efd014ef598af78875"
+    },
+    {
+      "source": "99-附件/遗留/博客/NexT主题/5.png",
+      "destination": "source/images/knowledge/博客/NexT主题/5.png",
+      "bytes": 12809,
+      "sha256": "f067cf703feba49590ff8f44eba683da5e69bd664c58f1d06013c00e53fdece8"
+    },
+    {
+      "source": "99-附件/遗留/博客/NexT主题/6.png",
+      "destination": "source/images/knowledge/博客/NexT主题/6.png",
+      "bytes": 17192,
+      "sha256": "e9afcd7677084242cfda018101b10bcbfecabcf938ae8830247a3ebcfa1f1328"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/1.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/1.png",
+      "bytes": 80943,
+      "sha256": "71d40d2cc083e539f455da84ccf55694e4d455997703a8b3d0c1217021a638da"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/2.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/2.png",
+      "bytes": 58552,
+      "sha256": "ebf3508d5ea56779ffc406559cd749f33c012529ba2170a108eee5b50cd9c855"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/3.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/3.png",
+      "bytes": 72946,
+      "sha256": "966cf6b2ad112ffc6bcace84e8c3cea56b8221c98ed5c6cb2934fff1ff2fbfcf"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/4.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/4.png",
+      "bytes": 366503,
+      "sha256": "ae844ccb0a297b2b9124ccbeac82f273222f3dc53cab7aae1a9e7d75b82120ad"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/5.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/5.png",
+      "bytes": 18397,
+      "sha256": "8f285ef373f699a62f7cdba7380e2ad746f7773357b4d500c2be187985b44401"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/6.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/6.png",
+      "bytes": 6092,
+      "sha256": "68071c8931800cfc7ab32f6b417079ae85fe68fecddddf55d545ab79dd852c8e"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/7.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/7.png",
+      "bytes": 76362,
+      "sha256": "c072c79c8cbc7b0e90ff90146b9ca027fc83580c4216445f3e7ef6515219794c"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/8.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/8.png",
+      "bytes": 28254,
+      "sha256": "92ec81df1a096a49063073ff0b7d046f7e2767a5a01cd2a5f50a2503518130c6"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringBoot/9.png",
+      "destination": "source/images/knowledge/后端/SpringBoot/9.png",
+      "bytes": 194043,
+      "sha256": "b877402a109c511447d01ef147eb2bcfc1c07e91bb9bf5eced5603ea72842515"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/1.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/1.png",
+      "bytes": 89610,
+      "sha256": "15b9b10f50c0bd3ca767a2880c93feb3b63a71e1b490a8c7c6a6c4db56fc1a13"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/2.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/2.png",
+      "bytes": 101141,
+      "sha256": "b9a6af2bbe97ea5c00c3fdaece7e34e762e283d98e0c20d0d23c44fa85f210de"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/3.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/3.png",
+      "bytes": 156892,
+      "sha256": "b232d5faae50c4063bb188ded5a0928d4859568fcc03fc793c26718875ae31d7"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/4.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/4.png",
+      "bytes": 16785,
+      "sha256": "f18943abfaba84d804c115467b868ae3b21b28ded20cfc96ba2e6bd725a5640f"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/5.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/5.png",
+      "bytes": 73128,
+      "sha256": "8a9069cab41a56f15deaeea5343793c763b37474d79c893f9a4651055f7c9ab5"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/6.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/6.png",
+      "bytes": 5785,
+      "sha256": "6e1c89ce8c3d4f950d488a0daddaba4c61c484c439b9e4f783c97a139b1b5248"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/7.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/7.png",
+      "bytes": 20971,
+      "sha256": "3e9529712cfaa21af53edfe98b463c1085d4798bb6601f04883273d2add0edac"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/8.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/8.png",
+      "bytes": 64030,
+      "sha256": "3eb1d1a084a86e8e08602f758f064cde86e276c424a0e0c6ed7fdeeb4f5a26ee"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/9.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/9.png",
+      "bytes": 157876,
+      "sha256": "19b55260ffbb729384676c55bc0c70a6aeccb643bb67aae22971ba90f0befc30"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/10.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/10.png",
+      "bytes": 78101,
+      "sha256": "8df4699de3f9a3f8191f108c2b7a409ff8a0f6a82fe2ca2ecb7d64815e48c503"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/11.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/11.png",
+      "bytes": 356941,
+      "sha256": "f5c908a9d55e9938946c041001837cbf589407c93a9152e8f7e92bf98a79cd22"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/12.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/12.png",
+      "bytes": 314377,
+      "sha256": "a1a990fcb181c54015f20be0aa46987a10402bb260fc1e8e1fe66e5c9f1dac94"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/13.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/13.png",
+      "bytes": 229436,
+      "sha256": "ad5a9693d595a50d154c5b5bc08cad9a39e59699741dc59c2d865a9c4053543b"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/14.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/14.png",
+      "bytes": 229846,
+      "sha256": "dd134fbfa252ff18c2c05a6c7ea8ba7800a22c1f9cdf1655e4b8959dcb5ebd1d"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/15.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/15.png",
+      "bytes": 229688,
+      "sha256": "6c8310137a2413a8a31d4571878d011887467e4d0e8c7391cf06f7920877c1b4"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/16.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/16.png",
+      "bytes": 231493,
+      "sha256": "58aaf9c6430ba05115851677d81e946aa1015cc83dd50d261dc2ac1f67982c4c"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/17.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/17.png",
+      "bytes": 76146,
+      "sha256": "455cff9e7f77190aa2e15ab7a438640a4bbea5763ff25c6a8ea4965724591453"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/18.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/18.png",
+      "bytes": 25028,
+      "sha256": "d750a342dbb14099862ea3a60332776b024f43e3bbb37cef4a90987cc463e3e1"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/19.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/19.png",
+      "bytes": 51713,
+      "sha256": "dedac0783fb7c1df50c5cb35a487444087f16d1da970863e6e6f6aa2b37a63a9"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/20.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/20.png",
+      "bytes": 28039,
+      "sha256": "fd314aff5ed82a2c8608a0dce19b768ee08fe001c1148e717628cf7669117e02"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/21.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/21.png",
+      "bytes": 53912,
+      "sha256": "45528e83b531fa6e9055c5241927cf9c4201855d677a1e7f8cd243748a696a04"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/22.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/22.png",
+      "bytes": 27912,
+      "sha256": "1e884bbd80bdb9026b7117c551dec17f1d0c2c04e0e0c5614c32099a107612e5"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/23.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/23.png",
+      "bytes": 64807,
+      "sha256": "5d350240b6427da4c4b5a9dd8ff7f8237405e5e6b2b9024bd4223406aae78416"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/24.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/24.png",
+      "bytes": 42999,
+      "sha256": "24a1adca732dff28f52953be4d3f2549a3fcc578590aefec37288e71852f94f9"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/26.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/26.png",
+      "bytes": 27388,
+      "sha256": "a5b867e37b45a3b4f493e05a0a9c8e916632de6619e258939d38734b856d52bd"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/27.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/27.png",
+      "bytes": 371950,
+      "sha256": "816b6cc244f3592fe7dfafceed39a541e2ed0327528fbd216e746eca35039568"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/28.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/28.png",
+      "bytes": 282353,
+      "sha256": "0d8a4958b0f957dd5601ab551fdaf135212f16e1fcde9b8c3617d7e01d99d8f4"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/29.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/29.png",
+      "bytes": 390607,
+      "sha256": "6a6f86b1704f8b67cb7916a2c7220e07186abba2832ee68f77d920c1eaf2d8ef"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/30.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/30.png",
+      "bytes": 400205,
+      "sha256": "6a9ce51628f420db426ad73d913627129d7cae43e9a2ddbc7b9ee7130ff5d78b"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/31.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/31.png",
+      "bytes": 333169,
+      "sha256": "343f4f1fb244fc0231b90de95cd8b315518c2e4346c066029706a6d0901c36f1"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/32.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/32.png",
+      "bytes": 708103,
+      "sha256": "2dffea2dc08ee5bcd6e058be12f3f5613e550871b94826e324d391ed3ba3a525"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/33.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/33.png",
+      "bytes": 662518,
+      "sha256": "67409f1116538901358ad17b36037c68ad9fbb0b17765dc55e42a656b106d7bf"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/34.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/34.png",
+      "bytes": 675182,
+      "sha256": "f2fc1d428cd1ecfb371c5145458b41ad79d05a6995e0a642762b9e1aa834cfbb"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/35.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/35.png",
+      "bytes": 571169,
+      "sha256": "a0c8d1bcbb203cb5a2ba7919416e23763e9f939f21d607760cc9baf432addae3"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/36.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/36.png",
+      "bytes": 537556,
+      "sha256": "a7831938488c53d81551dae5a3b23b84e94a6eea0ce412728153ed25cfc84d33"
+    },
+    {
+      "source": "99-附件/遗留/后端/SpringSecurity/37.png",
+      "destination": "source/images/knowledge/后端/SpringSecurity/37.png",
+      "bytes": 679025,
+      "sha256": "886e852ea05c1c5a8ca58ae07718648255857e6146b8247fc23c212891d827ed"
+    },
+    {
+      "source": "99-附件/遗留/后端/Swagger-SpringDoc/1.png",
+      "destination": "source/images/knowledge/后端/Swagger-SpringDoc/1.png",
+      "bytes": 275252,
+      "sha256": "b4fb6dfae87b6b01c72ac4729b7e19d5bf95c6881817f87ab0f509eb53ebdbd2"
+    }
+  ],
+  "blockedLinks": [
+    {
+      "source": "40-知识库/知识库.md",
+      "target": "首页"
+    },
+    {
+      "source": "40-知识库/计算机视觉/计算机视觉.md",
+      "target": "20-项目/MSGG/MSGG"
+    },
+    {
+      "source": "40-知识库/计算机视觉/计算机视觉.md",
+      "target": "20-项目/MSGG/资源/MM Relation Head Forward 结构分析"
+    }
+  ]
+}

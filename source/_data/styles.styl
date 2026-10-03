@@ -1,0 +1,98 @@
+// Small, local refinements. No remote fonts or decorative image assets.
+body
+  color: #303846;
+
+.site-brand-container
+  background: #253248;
+
+.site-title
+  font-size: 22px;
+  letter-spacing: .03em;
+
+.menu-item a
+  border-radius: 5px;
+
+.menu-item-active a, .menu-item a:hover
+  color: #315f91;
+  background: #edf2f8;
+
+.post-block, .sidebar-inner
+  border-radius: 8px;
+
+.post-title
+  font-weight: 600;
+  line-height: 1.5;
+
+.post-meta
+  color: #77818f;
+
+.post-body
+  font-size: 17px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+
+  h2, h3, h4
+    margin-top: 1.7em;
+    line-height: 1.55;
+
+  a
+    color: #315f91;
+    border-bottom-color: #bacbe0;
+
+  blockquote
+    color: #5e6877;
+    border-left: 3px solid #bacbe0;
+    background: #f6f8fb;
+    padding: 10px 16px;
+    margin: 1.5em 0;
+
+  code
+    font-size: .88em;
+    background: #f0f3f7;
+    border-radius: 3px;
+
+  .highlight
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.65;
+
+  img
+    height: auto;
+
+.index .post-block
+  padding: 32px 40px;
+
+.index .post-header
+  text-align: left;
+
+.index .post-meta-container, .index .post-meta
+  text-align: left;
+
+.index .post-meta
+  justify-content: flex-start;
+
+.index .post-eof
+  margin: 28px auto;
+
+.index .post-body
+  margin-top: 20px;
+  font-size: 16px;
+
+.index .post-button
+  text-align: left;
+  margin-top: 20px;
+
+@media (max-width: 767px)
+  .post-block, .index .post-block
+    padding: 24px 20px;
+    border-radius: 0;
+
+  .post-body
+    font-size: 16px;
+    line-height: 1.85;
+
+  .post-title
+    font-size: 23px;
+
+  .post-body .highlight
+    font-size: 13px;

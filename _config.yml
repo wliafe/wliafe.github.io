@@ -73,6 +73,14 @@ index_generator:
 default_category: uncategorized
 category_map:
 tag_map:
+  assembly: Assembly
+  c: C
+  cpp: Cpp
+  java: Java
+  javascript: JavaScript
+  linux: Linux
+  python: Python
+  windows: Windows
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
