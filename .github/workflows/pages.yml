@@ -12,12 +12,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # If your repository depends on submodule, please see: https://github.com/actions/checkout
           submodules: recursive
-      - name: Checkout notes
-        uses: actions/checkout@v6
-        with:
-          repository: wliafe/notes
-          ref: main
-          path: source/_posts
       - name: Use Node.js 22
         uses: actions/setup-node@v6
         with:
@@ -32,7 +26,9 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
+      - name: Test migration boundaries
+        run: npm test
       - name: Build
         run: npm run build
       - name: Upload Pages artifact

@@ -1,0 +1,108 @@
+---
+title: GitHub 代码托管
+aliases: []
+type: note
+created: 2025-07-31
+area: Developer Tools
+status: active
+review: reviewed
+tags: []
+layout: post
+date: 2025-07-31
+updated: 2025-07-31
+categories:
+  - 开发工具
+permalink: 工具/GitHub/
+---
+> **导航**
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+
+GitHub是一个基于Git的版本控制平台，用于托管和协作开发项目。
+
+
+
+## 我的仓库管理体系
+
+先简单介绍一下我的仓库管理办法，由于墙的缘故，GitHub时不时无法访问，而我并不希望我的代码管理依赖于代理软件是否好用，因此有了现在的仓库管理体系，简单的说就是利用Gitee的仓库镜像管理功能，将国内的Gitee仓库作为GitHub的加速器，让本地项目直接上传到Gitee，让Gitee帮忙上传到GitHub，这样除了在配置仓库时需要代理软件访问GitHub，在项目开发中就不需要了。
+
+### Gitee仓库创建
+
+当创建一个新项目时，我会在国内的Gitee仓库建立项目，这并不需要代理软件。
+
+![1.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/1.png)
+
+填写仓库信息，根据代码是否允许公开选择公开或私有（公开仓库可被任何人读取，不能依赖“没人看”保护代码或凭据），我一般也会选择初始化仓库，添加`.gitignore`文件，添加开源协议（开源协议可以根据自己的喜好选），README文件我也会加上，项目写到后期总要介绍的，哪怕只是给未来的自己看。
+
+![2.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/2.png)
+
+填写完成后，点击创建即可，创建好的仓库是这样的。
+
+![3.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/3.png)
+
+之后就是像前文提到的获取仓库http地址，将仓库地址克隆到本地了。
+
+到这一步，全程没有使用代理软件，我的项目开发也可以步入正轨了，但当我想将项目放到GitHub上时，就需要进行下面的操作，运气好的话可能也不需要代理软件。
+
+### Gitee联动GitHub
+
+打开新建好的仓库，点击管理，选择仓库镜像管理，点击添加镜像。
+
+![4.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/4.png)
+
+#### GitHub导入Gitee仓库
+
+保持页面打开，然后打开GitHub，选择导入仓库。
+
+![5.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/5.png)
+
+填写Gitee仓库信息，最后点击导入。
+
+![6.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/6.png)
+
+#### 获取GitHub私人令牌
+
+打开GitHub个人设置。
+
+![7.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/7.png)
+
+选择开发者设置。
+
+![8.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/8.png)
+
+点击创建新令牌。
+
+![9.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/9.png)
+
+填写令牌名（我的习惯是Gitee<仓库名>Mirror），设置合理的到期时间，并只授予镜像所需权限。优先使用限定单个仓库的细粒度令牌；如果当前Gitee集成只支持classic令牌，再按其文档选择最小scope。classic的`repo`权限可访问账号下多个仓库，不应作为所有场景的默认选项。下图保留旧界面示例，其中“无期限 + repo”的配置不建议照抄。参见[GitHub令牌安全说明](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)。
+
+![10.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/10.png)
+
+#### Gitee添加镜像
+
+确认自己信任Gitee保存这枚令牌及其授权范围后，再将令牌填入添加镜像页面，选择目标GitHub仓库并添加。不要把令牌写入仓库、聊天或公开截图。Push镜像可能覆盖目标仓库内容，操作前备份并核对同步方向，避免在两端同时独立修改。
+
+![11.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/11.png)
+
+每当Gitee代码仓库更新时，他就会自动同步到GitHub仓库，当然，你也可以通过下图界面手动同步。
+
+![12.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/12.png)
+
+## GitHub Actions
+
+GitHub Actions是一个持续集成和持续交付（CI/CD）平台，用于自动化构建、测试和部署软件项目。学会使用GitHub Actions可以帮助你更高效地管理项目，提高项目的质量。对我来说，使用GitHub Actions可以帮我自动发布博客，还可以帮我自动发布pip库。
+
+### 创建Actions
+
+在GitHub项目中创建目录`.github/workflows`，在该目录下添加文件`<main>.yml`文件，然后上传到GitHub就可以了。
+
+## Webhooks
+
+`Github项目->Settings->Webhooks`中包含项目更新时需要同步发送的信息选项，具体集成可以通过Webhooks触发更新；同步方向和配置由各平台决定，不能仅凭GitHub的Webhooks页面推断Gitee向GitHub的推送机制。
+
+![13.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/13.png)
+
+点击`Edit`可以编辑Webhooks的触发条件，可以修改Gitee的同步触发方式，或者降低Read the Docs文档的更新频率。
+
+## Github徽标
+
+使用[Shield.io](https://shields.io/)可以轻松创建GitHub徽标，徽标可以显示项目的状态，比如是否通过了测试，是否发布了新的版本，是否有新的问题等。
