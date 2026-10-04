@@ -15,7 +15,7 @@ categories:
 permalink: 工具/StarUML/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
 StarUML是一个UML图绘制工具，它支持绘制类图、用例图、活动图等UML图，是软件工程必不可少的工具。
 
@@ -27,7 +27,7 @@ StarUML是一个UML图绘制工具，它支持绘制类图、用例图、活动�
 
 ### 简介
 
-StarUML版本为4.0
+以下是StarUML 4.0的历史记录，不能据此判断当前版本是否适用。修改许可证校验或替换来历不明的程序包存在许可和供应链风险；本次未验证网盘文件或补丁安全性，不建议在日常环境直接照做。正式使用应按[StarUML官方授权](https://staruml.io/legals/license/)操作。
 
 ### 我的资源
 
@@ -37,11 +37,11 @@ StarUML版本为4.0
 
 ### 找到管理注册的文件
 
-StarUML是用js写的，所以文件系统比较简单，在你安装的StarUML目录下resourse文件夹下面有一个`app.asar`的文件。
+StarUML是用js写的，所以文件系统比较简单，在你安装的StarUML目录下resources文件夹下面有一个`app.asar`的文件。
 
 ![1.png](/images/knowledge/%E5%B7%A5%E5%85%B7/StarUML/1.png)
 
-关于asar格式，其实这是一个代码的压缩包格式，里面存在着各种代码，只是为了不让里面的代码不直接暴露。这种格式就需要专门的asar工具包进行解压和打包。
+ASAR是Electron常用的应用归档格式，并不压缩或加密内容，也不能作为保密机制。它可使用专用工具提取和重新打包，参见[Electron ASAR文档](https://www.electronjs.org/docs/latest/tutorial/asar-archives)。
 
 ### npm下载asar工具
 

@@ -16,7 +16,7 @@ categories:
 permalink: 后端/Spring/
 ---
 > **导航**
-> [返回后端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
 Spring框架是一个经典的Java框架，它提供了一个简单的开发平台，用于构建企业级应用程序。
 
@@ -50,6 +50,8 @@ IoC容器负责对象的创建、初始化等一系列工作。
 
 ## 代码样例
 
+以下保留Spring 5.2的学习示例和版本号，不代表新项目的版本推荐。Spring 6起要求Java 17，并将相关Java EE注解迁移到`jakarta.*`，使用时需按项目版本调整。
+
 ### 业务层代码
 
 ```java BookService.java
@@ -80,7 +82,7 @@ public interface BookDao {
 ```java BookDaoImpl.java
 public class BookDaoImpl implements BookDao {
  public void save(){
-  System.out.println("book dao save ...")
+  System.out.println("book dao save ...");
  }
 }
 ```
@@ -103,9 +105,9 @@ public class Application {
 ```
 
 ```xml applicationContext.xml
-<?xml version="1.0"encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
- xmlns xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.springframework.org/schema/beans
       https://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -136,7 +138,8 @@ public class BookServiceImpl implements BookService {
 创建配置文件，配置bean
 
 ```xml
-<bean id="bookService"class="com.itheima.service.impl.BookServiceImpl"/>
+<bean id="bookDao" class="com.itheima.dao.impl.BookDaoImpl"/>
+<bean id="bookService" class="com.itheima.service.impl.BookServiceImpl"/>
 ```
 
 初始化容器
@@ -189,17 +192,17 @@ name：别名
 
 class：bean类型
 
-scope：是否是单例
+scope：bean的作用域，例如singleton、prototype以及Web作用域
 
 init-method：bean初始化对应的操作
 
-destory-method：bean销毁前对应的操作
+destroy-method：bean销毁前对应的操作
 
 autowire：自动装配
 
 ## Bean实例化
 
-spring创造bean调用无参构造方法。
+通过构造器创建bean时，Spring可以调用无参构造器，也可以按配置使用有参构造器；此外还支持下面的工厂方式。
 
 ### 使用静态工厂实例化bean
 
@@ -269,7 +272,7 @@ public class BookDaoFactoryBean implements FactoryBean<BookDao> {
 
 ## 通过接口控制bean生命周期
 
-添加接口，代替init-method，destory-method
+添加接口，代替init-method，destroy-method
 
 ```java
 public class BookServiceImpl implements BookService, InitializingBean, DisposableBean {
@@ -352,9 +355,9 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
  </property>
  <property name="map">
   <map>
-   <entry key=""value=""/>
-   <entry key=""value=""/>
-   <entry key=""value=""/>
+   <entry key="first" value="100"/>
+   <entry key="second" value="200"/>
+   <entry key="third" value="300"/>
   </map>
  </property>
 </bean>
@@ -366,7 +369,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 
 ```java
 @Configuration
-@ComponentScan("com.itheima.dao")
+@ComponentScan("com.itheima")
 public class SpringConfig {
 }
 ```
@@ -378,7 +381,7 @@ public class SpringConfig {
 //@Controller:用于表现层bean定义
 //@Service:用于业务层bean定义
 //@Repository:用于数据层bean定义
-@Scope("prototype")//单例或非单例
+@Scope("prototype")//每次向容器请求该bean时创建新实例
 public class BookDaoImpl implements BookDao {
     public void save() {
         System.out.println("book dao save ...");
@@ -432,7 +435,7 @@ public class Application {
 ```java
 @Configuration
 @ComponentScan("com.itheima")
-@PropertySource("jdbc.properties")
+@PropertySource("classpath:jdbc.properties")
 public class SpringConfig {
 }
 ```

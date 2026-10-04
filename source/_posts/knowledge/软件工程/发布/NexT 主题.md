@@ -15,7 +15,7 @@ categories:
 permalink: 博客/NexT主题/
 ---
 > **导航**
-> [返回博客索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%8F%91%E5%B8%83/%E5%8F%91%E5%B8%83/)
+> [返回博客分类](/categories/%E5%8D%9A%E5%AE%A2/)
 
 我选择NexT主题主要有以下理由。
 
@@ -27,7 +27,7 @@ permalink: 博客/NexT主题/
 
 ## NexT主题发展史
 
-我在GitHub上搜到最早的NexT主题应该是这个仓库[theme-next/hexo-theme-next](https://github.com/theme-next/hexo-theme-next)，我的判断依据也挺简单，他的头像图标和NexT图标一样，这也算是一种经验主义吧。hexo-theme-next仓库star比较多的有三家，他们star比其他人的star高出了一个数量级，所以在选择时只要货比三家就可以了。显而易见，原始仓库theme-next/hexo-theme-next停更四年有余，第一个仓库更是停更了七年有余，而[next-theme/hexo-theme-next](https://github.com/next-theme/hexo-theme-next)仓库最近刚刚更新，活跃度还是很高的，这正是我喜欢的。这算是从我的视角观察到的NexT主题的发展变化，也是我选择仓库的根据。
+我当时在GitHub上搜到了三个star较多的NexT仓库，但仅凭头像和star数判断原始仓库并不准确。按[官方升级文档](https://theme-next.js.org/docs/getting-started/upgrade)的历史，2014—2017年的v5在[iissnan/hexo-theme-next](https://github.com/iissnan/hexo-theme-next)，2018—2019年的v6—v7在[theme-next/hexo-theme-next](https://github.com/theme-next/hexo-theme-next)，2020年起的v8在[next-theme/hexo-theme-next](https://github.com/next-theme/hexo-theme-next)。我选择的是最后这个仓库。
 
 ![1.png](/images/knowledge/%E5%8D%9A%E5%AE%A2/NexT%E4%B8%BB%E9%A2%98/1.png)
 
@@ -65,7 +65,7 @@ theme: next
 
 NexT仓库[next-theme/hexo-theme-next](https://github.com/next-theme/hexo-theme-next)的其中一位贡献者stevenjoezhang将仓库打包成了一个npm包，并将它发布到了npm官方仓库中了，这给了NexT主题一个全新的，快捷方便的安装方式，即使用npm安装。
 
-只这一条命令，就抵得上一般主题安装方法中的所有步骤了。
+Hexo 5.0及以上可以通过下面的命令安装NexT；安装后仍需在站点`_config.yml`中设置`theme: next`，见[官方安装说明](https://theme-next.js.org/docs/getting-started/installation)。
 
 ```bash
 npm install hexo-theme-next

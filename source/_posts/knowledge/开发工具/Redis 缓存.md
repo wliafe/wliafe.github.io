@@ -15,7 +15,7 @@ categories:
 permalink: 工具/Redis/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
 Redis是一个开源的内存数据库，它是一个键值对数据库。
 
@@ -35,11 +35,11 @@ apt install redis-server
 
 ![1.png](/images/knowledge/%E5%B7%A5%E5%85%B7/Redis/1.png)
 
-设置Redis密码，在配置文件中添加 requirepass Redis.123
+设置Redis密码时使用独立的强随机密码，例如配置`requirepass <强随机密码>`，不要照抄截图中的示例密码。Redis 6及以上还可以用ACL限制不同用户的权限。
 
 ![2.png](/images/knowledge/%E5%B7%A5%E5%85%B7/Redis/2.png)
 
-设置Redis远程连接，注释掉 # bind 127.0.0.1
+默认保留本机绑定，不要把“注释bind”当作通用远程连接方法。确需远程访问时，绑定实际私有网络地址，仅允许可信客户端通过防火墙访问，配置认证并保留保护模式；不要把6379端口直接暴露到公网。跨不可信网络还需要TLS或受控隧道，密码认证本身不加密数据。参见[Redis安全文档](https://redis.io/docs/latest/operate/oss_and_stack/management/security/)。
 
 ![3.png](/images/knowledge/%E5%B7%A5%E5%85%B7/Redis/3.png)
 
@@ -47,6 +47,8 @@ apt install redis-server
 
 ## Docker创建Redis容器
 
+以下仅用于本机测试。密码写在命令参数中可能进入历史或容器配置，正式部署应通过受控配置/秘密管理提供，不能复用真实生产密码。
+
 ```bash
-docker run --name <Redis容器名称> -d -p 6379:6379 redis --requirepass <Redis密码>
+docker run --name <Redis容器名称> -d -p 127.0.0.1:6379:6379 redis --requirepass <Redis密码>
 ```

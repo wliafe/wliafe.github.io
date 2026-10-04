@@ -16,7 +16,7 @@ categories:
 permalink: 后端/Java后端/
 ---
 > **导航**
-> [返回后端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
 这是一篇Java后端学习的博客，讲述Java的一些配置，文章是基于Ubuntu系统配置的。
 
@@ -25,12 +25,12 @@ permalink: 后端/Java后端/
 ## 安装OpenJDK（Java环境）
 
 > **info**
-> headless是OpenJDK的无头版本，即没有图形用户界面(GUI)的版本。无头版本通常用于服务器环境或不需要图形界面的应用程序。它们不包含与图形相关的库和工具，因此可以减少安装的大小和资源消耗。所以，openjdk-9-jre-headless中的headless表示没有图形界面。
+> headless是OpenJDK的无头版本，即没有图形用户界面(GUI)的版本。无头版本通常用于服务器环境或不需要图形界面的应用程序。它们减少了对图形显示环境的依赖，但不代表所有图像处理API都不可用。所以，openjdk-11-jre-headless中的headless表示没有图形界面。
 
-可根据需要选择不同的jdk版本
+开发和编译Java代码需要JDK，只有JRE不能提供`javac`。下面是Ubuntu软件源提供该版本时的JDK 11安装示例；版本应与项目匹配，例如Spring Boot 3最低要求Java 17。
 
 ```bash
-apt install openjdk-11-jre-headless
+sudo apt install openjdk-11-jdk-headless
 ```
 
 ## shell脚本
@@ -43,7 +43,7 @@ IntelliJ IDEA的安装破解方法在我的博客[JetBrains 开发工具](/%E5%B
 
 ## Maven（Java包管理工具）
 
-Java的包管理工具就是Maven，这是[Maven的官方网站](https://mvnrepository.com/)所有的Maven包都可以查到。
+Maven是Java常用的构建和依赖管理工具之一，这是[Maven官方网站](https://maven.apache.org/)。[MVN Repository](https://mvnrepository.com/)是第三方依赖检索站点，并不是Maven官网，也不保证收录所有仓库中的包。
 
 ### Hutool
 

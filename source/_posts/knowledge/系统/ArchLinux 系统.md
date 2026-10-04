@@ -16,7 +16,7 @@ categories:
 permalink: 系统/ArchLinux/
 ---
 > **导航**
-> [返回系统索引](/knowledge/%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F/)
+> [返回系统分类](/categories/%E7%B3%BB%E7%BB%9F/)
 
 ArchLinux系统是我大二尝试折腾的一个系统，说实话，当时折腾这个系统确实有点太早了，我也很快认识到了这个问题，因此写完这篇博客没多久就放弃了，Ubuntu还是香的。
 
@@ -28,6 +28,9 @@ ArchLinux系统是我大二尝试折腾的一个系统，说实话，当时折�
 4. [Arch Linux 软件安装](/%E7%B3%BB%E7%BB%9F/ArchLinux/#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85)
 
 ## 安装ArchLinux
+
+> **warning**
+> 本文保留2022年的虚拟机学习记录，不是适用于所有机器的完整安装指南。实际安装请使用当前ISO并对照[官方安装指南](https://wiki.archlinux.org/title/Installation_guide)。分区、格式化和安装引导会改写磁盘，先备份数据并确认目标盘；下面的`/dev/sda`仅为示例。
 
 ### 文章参考
 
@@ -52,7 +55,7 @@ ping baidu.com
 
 ### 分区
 
-初学者只要分两个区就可以了，分别是swap区和根区（/）。
+分区方案取决于引导模式。下面以传统BIOS启动、GPT分区表和GRUB为例，除swap和根分区（/）外，还需要一个约1MiB、类型为BIOS boot且不格式化的引导分区。UEFI启动则需要EFI系统分区，应改用[ArchWiki对应步骤](https://wiki.archlinux.org/title/GRUB)。
 
 展示分区状态
 
@@ -66,9 +69,9 @@ lsblk
 cfdisk /dev/sda
 ```
 
-dev是Linux的外部设备目录，sda是硬盘。
+`/dev`存放设备节点，`/dev/sda`是此虚拟机的目标磁盘；真实设备也可能使用`/dev/nvme0n1`等名称，不能只按盘符猜测。
 
-分区格式选择gpt（Linux的最佳格式），将sda分为2G（swap区）+18G（剩余的存储，给根目录）
+分区表选择GPT。在此示例中，将`/dev/sda1`分为2GiB swap，`/dev/sda2`作为根分区，同时预留约1MiB给`/dev/sda3`并将其类型设为BIOS boot；根分区使用其余空间。不要格式化BIOS boot分区。
 
 格式化分区
 
@@ -98,7 +101,7 @@ mount /dev/sda2 /mnt
 
 文档参考：[源文档](https://mirrors.ustc.edu.cn/help/index.html)
 
-编译镜像文件
+编辑镜像文件
 
 ```bash
 vim /etc/pacman.d/mirrorlist
@@ -110,25 +113,19 @@ vim /etc/pacman.d/mirrorlist
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
 ```
 
-更新镜像源
-
-```bash
-pacman -Syy
-```
+保存镜像列表后继续安装。`pacstrap`会同步目标系统的软件包数据库；安装后的系统不要只运行`pacman -Sy`或`-Syy`再单独安装软件，应使用`pacman -Syu`完成整体升级，避免[不受支持的部分升级](https://wiki.archlinux.org/title/System_maintenance#Partial_upgrades_are_unsupported)。
 
 ### 下载Arch软件
 
-（具体是干啥我也不太清楚）
-
-base、base-devel是Linux基础包，必须安装。linux、linux-firmware是Linux驱动和Linux的其他东西。。。dhcpcd是网络自动分配ip的服务，vim是Linux常用的编辑器。这次安装目的是方便在新装的系统中使用。
+`base`提供基础用户空间，`linux`是内核，`linux-firmware`提供常见硬件固件；`base-devel`是构建软件所用的工具集，并非基本安装的必选项。`dhcpcd`是DHCP客户端，`vim`是编辑器。这里把它们一起装入新系统，便于后续使用。
 
 安装新系统软件
 
 ```bash
-pacstrap /mnt base base-devel linux linux -firmware dhcpcd vim
+pacstrap -K /mnt base base-devel linux linux-firmware dhcpcd vim
 ```
 
-生成文件系统信息
+生成文件系统挂载配置（首次写入使用下例；重复执行会追加重复项，应先检查现有fstab）
 
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -157,7 +154,7 @@ pacman -S grub
 ```
 
 ```bash
-grub-install --froce /dev/sda
+grub-install --target=i386-pc /dev/sda
 ```
 
 生成默认配置文件
@@ -165,6 +162,8 @@ grub-install --froce /dev/sda
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+上面的GRUB命令仅适用于传统BIOS模式，并要求前述BIOS boot分区已经存在；不能靠`--force`绕过缺失的分区。
 
 ### 为root设置密码
 
@@ -190,19 +189,20 @@ reboot
 
 ## 配置Archlinux
 
-如果要安装图形化界面，可配置中文本地化，不安装则没必要。
+语言区域设置也会影响命令行程序，应按需要配置；中文字体和输入法则在使用图形界面时另行安装。
 
 查看镜像源，重新配置镜像源
 
 重新配置网络
 
 ```bash
-systemctl (start/status/enable/stop) dhcpcd
+systemctl enable --now dhcpcd.service
+systemctl status dhcpcd.service
 ```
 
 ### 配置语言区域
 
-编辑`/etc/locale.gen`文件，删除zh_CN.UTF-8 前面的#号，运行命令locale-gen
+编辑`/etc/locale.gen`文件，启用所需UTF-8 locale（例如`en_US.UTF-8 UTF-8`和`zh_CN.UTF-8 UTF-8`），运行`locale-gen`，再在`/etc/locale.conf`中设置默认值，如`LANG=en_US.UTF-8`。生成locale本身不会自动选定默认语言
 
 ```bash
 vim /etc/locale.gen
@@ -266,7 +266,7 @@ pacman -S wqy-zenhei
 
 - 订阅结点，参考我的文章[上网](/%E5%B7%A5%E5%85%B7/%E4%B8%8A%E7%BD%91/)
 
-添加软件源
+添加软件源（可选的第三方Arch Linux CN仓库，安装GNOME本身不需要它；信任该仓库前请查看其当前说明）
 
 文档参考：[源文档](https://mirrors.ustc.edu.cn/help/index.html)
 
@@ -274,18 +274,14 @@ pacman -S wqy-zenhei
 
 ```text pacman.conf
 [archlinuxcn]
-SigLevel = Optional TrustedOnly
+SigLevel = Required DatabaseOptional
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
 
-导入GPG key
+按[Arch Linux CN官方说明](https://github.com/archlinuxcn/repo)初始化其签名密钥，再同步数据库并整体升级。若出现未知签名密钥错误，应按仓库文档解决，不要通过关闭签名校验继续安装。
 
 ```bash
-sudo pacman -S archlinuxcn-keyring
-```
-
-```bash
-sudo pacman -Sy
+sudo pacman -Syu archlinuxcn-keyring
 ```
 
 ### Gnome安装
@@ -300,10 +296,10 @@ systemctl enable gdm
 
 ### 安装插件
 
-这个插件的目的是和谷歌的扩展交互，使谷歌扩展中的插件能够在Gnome桌面上执行
+原来的`chrome-gnome-shell`已更名为[gnome-browser-connector](https://archlinux.org/packages/extra/any/gnome-browser-connector/)。它让浏览器通过extensions.gnome.org管理GNOME Shell扩展，并非把Chrome扩展装进GNOME桌面
 
 ```bash
-sudo pacman -S chrome-gnome-shell
+sudo pacman -S gnome-browser-connector
 ```
 
 下载谷歌浏览器，安装[插件](https://extensions.gnome.org)
@@ -322,7 +318,7 @@ sudo pacman -S chrome-gnome-shell
 
 ## 软件安装
 
-下载软件包管理器
+安装AUR助手yay（下例依赖前面配置并信任的Arch Linux CN仓库；yay不是Arch官方仓库中的包）
 
 ```bash
 sudo pacman -S yay

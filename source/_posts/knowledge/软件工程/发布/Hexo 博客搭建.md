@@ -15,7 +15,7 @@ categories:
 permalink: 博客/Hexo博客搭建/
 ---
 > **导航**
-> [返回博客索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%8F%91%E5%B8%83/%E5%8F%91%E5%B8%83/)
+> [返回博客分类](/categories/%E5%8D%9A%E5%AE%A2/)
 
 随着前置技术的博客逐步写完并发布，今天终于来到正餐——Hexo博客搭建。先简单介绍一下Hexo，Hexo是一个基于Node.js的静态博客框架，它可以将Markdown文件转换为静态HTML文件，并且可以部署到GitHub Pages、Coding Pages等平台上。我之所以选择Hexo，是因为他是一个非常经典的博客框架，有着完整的官方文档和广泛的社区支持，同时有着丰富的主题和大量的插件，最后Hexo的使用也非常简单，基于这些理由，我选择Hexo作为我的博客框架。
 
@@ -31,13 +31,15 @@ permalink: 博客/Hexo博客搭建/
 
 ## 初始化Hexo项目
 
-在本地克隆的blog文件夹中执行下面命令：
+新建Hexo站点时，目标目录必须为空，已克隆仓库中的`.git`也会使目录非空。可以先在仓库旁的空目录初始化，再将生成的站点文件复制到blog仓库中，保留仓库原有`.git`；不要对现有博客重新初始化。
 
 ```bash
-npx hexo init
+npx --package hexo-cli hexo init blog-starter
 ```
 
 ## 静态页面的部署
+
+以下帽子云经历是2025年写作时的记录，服务、免费额度和控制台界面可能已经变化；不是当前可用性保证。当前博客以仓库README和Pages工作流为准。
 
 在我的旧博客转写出来前，我的博客的部署全权交给了帽子云，当我开始使用GitHub Pages加帽子云是出现了一些小问题，这部分将会讲述帽子云的部署和GitHub Pages的部署，以及那些问题产生的原因和解决方案。
 
@@ -134,4 +136,4 @@ npm run server
 
 ### 发布博客
 
-我的博客发布并不需要hexo命令，只需要更新仓库即可。
+当前仓库的Pages工作流使用`workflow_dispatch`手动触发：提交文章后，还需要在GitHub Actions中运行Pages工作流。`npm run server`、`npm test`和`npm run build`只做本地预览、测试和构建，不会发布网站。

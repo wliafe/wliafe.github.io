@@ -17,9 +17,9 @@ categories:
 permalink: 工具/Nodejs/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
-Node.js是一个基于Chrome V8引擎的JavaScript运行环境，前端项目（Vue，React项目）和博客项目（Hexo项目）都是用JavaScript开发的，而Node.js就是这些项目运行的核心，它可以让JavaScript运行在服务器端，而不是浏览器端。通俗的讲，Node.js就像Java中的JVM，Python中的解释器，它们都是执行代码的工具。
+Node.js是一个基于V8引擎的JavaScript运行环境，可以在浏览器之外执行JavaScript。Vue、React等前端项目常用Node.js运行开发和构建工具，生成的前端代码通常仍在浏览器中运行；Hexo则用Node.js生成静态网页。通俗的讲，Node.js就像Java中的JVM，Python中的解释器，它们都是执行代码的工具。
 
 ## 安装
 
@@ -81,18 +81,14 @@ npm uninstall <package>
 
 ## npx Node.js的包执行器
 
-npx是Node.js的包执行器，npx的执行逻辑很有意思，下面是他的执行顺序：
-
-1. 检查当前目录局部安装的包，如果没有，执行下一步
-2. 检查全局安装的包，如果没有，执行下一步
-3. 从npm源中下载包到局部环境，回到第一步
+现代npm中的npx基于`npm exec`：优先使用项目中可用的包；所需包缺失时，会提示安装到npm缓存并临时加入执行路径，不会自动加入项目的`package.json`。不能简单理解为“局部→全局→下载到项目”的固定三步。执行前应核对包名和安装提示，避免运行拼错名称的陌生包。参见[npm exec文档](https://docs.npmjs.com/cli/v11/commands/npm-exec/)。
 
 因此npx特别适合执行项目创建命令，由于我最近在弄博客，就以hexo项目为例。
 
 安装好Node.js后，选用taobao镜像源（加快下载速度），在自己创建的空文件下执行下面一条命令，即可创建一个hexo项目。
 
 ```bash
-npx hexo init
+npx --package hexo-cli hexo init
 ```
 
 npx执行hexo要比正常执行hexo命令多一个npx前缀，但这对我来说算是微不足道的小问题。
@@ -147,15 +143,17 @@ nrm use npm
 
 前面提到过，`package.json`文件中记录了项目的依赖关系，不止如此，`package.json`的scripts字段记录的脚本命令也很好用，scripts字段将项目的构建、运行、部署等脚本命令集中到一起，由npm run命令统一执行，不必每次都输入完整的命令，为用户提供了极大方便，这里还是以hexo项目为例。
 
-scripts字段为
+下面是完整的最小`package.json`示例；合并到现有文件时保留其他字段
 
 ```json package.json
-"scripts": {
+{
+  "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server"
-  },
+  }
+}
 ```
 
 这时，我们就可以使用npm run命令来执行scripts字段中的脚本命令了，比如：

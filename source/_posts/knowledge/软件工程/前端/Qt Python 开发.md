@@ -16,9 +16,9 @@ categories:
 permalink: 前端/Qt for Python/
 ---
 > **导航**
-> [返回前端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
-Qt框架是一个跨平台的C++应用程序开发框架，由Qt公司开发。Qt框架提供了一组丰富的GUI组件和工具，用于开发Windows、Linux、macOS等操作系统的应用程序。Qt for Python也叫Pyside，是一个基于Qt框架的Python绑定库，它可以让Python开发者使用C++编写的Qt应用程序。本文主要讲Qt for Python的安装和使用。
+Qt框架是一个跨平台的C++应用程序开发框架，由Qt公司开发。Qt框架提供了一组丰富的GUI组件和工具，用于开发Windows、Linux、macOS等操作系统的应用程序。Qt for Python提供PySide6等工具，让Python开发者在Python代码中使用Qt的类和功能。本文主要讲Qt for Python的安装和使用。
 
 ## 章节目录
 
@@ -34,16 +34,10 @@ Qt框架是一个跨平台的C++应用程序开发框架，由Qt公司开发。Q
 sudo apt update
 ```
 
-```bash
-sudo apt upgrade
-```
+下面以Debian/Ubuntu上的常见xcb运行依赖为例；按实际缺失库补充，包名因发行版而异，不需要安装所有`libxcb-*`包或为此升级整个系统。完整依赖见[Qt Linux要求](https://doc.qt.io/qt-6/linux-requirements.html)。
 
 ```bash
-sudo apt-get install libxcb-*
-```
-
-```bash
-sudo apt-get install libxkbcommon-x11-0
+sudo apt-get install libxcb-cursor0 libxkbcommon-x11-0
 ```
 
 ### 搭建Python环境
@@ -78,7 +72,7 @@ sudo apt-get install fonts-noto-cjk
 > Failed to create wl_display (No such file or directory)
 > qt.qpa.plugin: Could not load the Qt platform plugin "wayland" in "" even though it was found.
 
-在代码中加入下面这一行
+如果当前环境有可用的X11/XWayland显示服务，可以在创建`QApplication`之前加入下面的代码，切换到xcb插件。没有显示服务的环境不能仅靠这个变量解决。
 
 ```python
 import os
@@ -87,7 +81,7 @@ os.environ['QT_QPA_PLATFORM'] = 'xcb'
 
 ## Qt打包
 
-使用pyside6-deploy打包exe文件时，可以通过修改nuitka的一些参数来达到想要的效果
+使用[pyside6-deploy](https://doc.qt.io/qtforpython-6/deployment/deployment-pyside6-deploy.html)打包时，可以通过修改Nuitka的一些参数来达到想要的效果。下面的exe和控制台参数针对Windows；不同平台应在对应环境中打包。
 
 ### pyside6-deploy打包exe不显示终端窗口
 
@@ -96,7 +90,7 @@ os.environ['QT_QPA_PLATFORM'] = 'xcb'
 生成打包配置文件`pysidedeploy.spec`
 
 ```bash
-pyside6-deploy --init
+uv run pyside6-deploy main.py --init
 ```
 
 在`pysidedeploy.spec`文件中[nuitka]的extra_args中添加下面的参数
@@ -108,7 +102,7 @@ pyside6-deploy --init
 运行打包命令
 
 ```bash
-pyside6-deploy
+uv run pyside6-deploy main.py
 ```
 
 ## Qt使用GUI实时显示logging信息
@@ -341,8 +335,17 @@ class Example(QWidget):
 
     def start_run(self):
         '''开始执行run函数'''
+        if self.thread.isRunning():
+            return
         self.thread.set_run(self.run.print_hello_world)
         self.thread.start()  # 线程启动，执行run函数
+
+    def closeEvent(self, event):
+        # 不要在工作线程还在运行时销毁窗口及其子线程
+        if self.thread.isRunning():
+            event.ignore()
+            return
+        super().closeEvent(event)
 
 
 if __name__ == '__main__':
@@ -353,6 +356,8 @@ if __name__ == '__main__':
 
     sys.exit(app.exec())
 ```
+
+这个例子会在任务运行期间拒绝重复启动和关闭窗口，避免销毁仍在运行的QThread。实际长任务还应设计协作取消；GUI更新保持在主线程，通过信号传递消息，见[QThread文档](https://doc.qt.io/qtforpython-6/PySide6/QtCore/QThread.html)。
 
 这是这个程序的显示结果
 

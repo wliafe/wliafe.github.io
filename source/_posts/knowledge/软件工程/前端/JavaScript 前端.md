@@ -16,7 +16,7 @@ categories:
 permalink: 前端/JavaScript前端/
 ---
 > **导航**
-> [返回前端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
 这篇文章主要是记录我前端学习的内容。
 
@@ -26,7 +26,7 @@ permalink: 前端/JavaScript前端/
 
 ### Node.js（运行JavaScript）
 
-想要编写前端项目需要安装[Node.js 运行时](/%E5%B7%A5%E5%85%B7/Nodejs/)来运行JavaScript。
+使用Vite等构建工具开发前端项目时，需要安装[Node.js 运行时](/%E5%B7%A5%E5%85%B7/Nodejs/)来运行JavaScript。
 
 ### WebStorm（前端最好用的编辑器）
 
@@ -34,9 +34,14 @@ WebStorm的安装破解方法在我的博客[JetBrains 开发工具](/%E5%B7%A5%
 
 ## Vite 配置方法
 
+下面是Vue项目中`vite.config.js`的独立配置片段，按需要合并到同一份配置中。
+
 ### base
 
 ```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
 export default defineConfig(({mode}) => {
     return {
         base: './',
@@ -48,12 +53,16 @@ export default defineConfig(({mode}) => {
 ### alias
 
 ```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'node:url'
+
 export default defineConfig(({mode}) => {
     return {
         plugins: [vue()],
         resolve: {
             alias: {
-                '@': resolve(__dirname, 'src')
+                '@': fileURLToPath(new URL('./src', import.meta.url))
             }
         }
     }
@@ -62,7 +71,12 @@ export default defineConfig(({mode}) => {
 
 ### 生产环境移除console
 
+选择`terser`压缩时，需要先安装`npm install -D terser`，见[Vite构建选项](https://vite.dev/config/build-options.html#build-minify)。
+
 ```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
 export default defineConfig(({mode}) => {
     return {
         plugins: [vue()],
@@ -82,7 +96,12 @@ export default defineConfig(({mode}) => {
 
 ### 配置proxy代理
 
+`server.proxy`只作用于Vite开发服务器；部署后的代理需要在实际后端或反向代理服务器中配置。
+
 ```js
+import { defineConfig, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
 export default defineConfig(({mode}) => {
     return {
         plugins: [vue()],
@@ -104,17 +123,17 @@ export default defineConfig(({mode}) => {
 
 创建`.env.development`和`.env.production`两个文件。
 
-在文件中用VITE_XXX作为变量。
+客户端需要读取的变量使用`VITE_XXX`，通过`import.meta.env.VITE_XXX`访问。它们会进入前端构建产物，不能放数据库密码、私钥等秘密；详见[Vite环境变量文档](https://vite.dev/guide/env-and-mode)。
 
 ## TypeScript
 
 ### 引入js组件
 
-当使用ts时引入js组件时，可以同时引入@types/xxx达到使用ts的目的。
+TypeScript项目引用JavaScript库时，优先使用库自带的类型声明；没有自带声明且存在对应包时，再安装`@types/xxx`。类型声明提供类型检查，不会把库的JavaScript实现转换成TypeScript。
 
 ## highlight
 
-使用最新的marked时无法显示highlight高亮，需要搭配marked-highlight使用highlight
+Marked从8.0.0起移除了内置`highlight`选项，可以通过`marked-highlight`搭配highlight.js实现代码高亮，见[Marked迁移说明](https://marked.js.org/using_advanced)。
 
 这是[marked-highlight的GitHub链接](https://github.com/markedjs/marked-highlight)在README中有使用样例，可以复制使用。
 
@@ -126,13 +145,13 @@ export default defineConfig(({mode}) => {
 
 [Vue Router官方文档](https://router.vuejs.org/zh/)，[Pinia官方文档](https://pinia.vuejs.org/zh/)
 
-[Element Plus官方文档](https://element-plus.gitee.io/zh-CN/)
+[Element Plus官方文档](https://element-plus.org/zh-CN/)
 
 [Axios官方文档](https://www.axios-http.cn/)，[Fetch文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
 
 [ECharts文档](https://echarts.apache.org/handbook/zh/get-started/)
 
-[marked.js文档](http://www.dagoogle.cn/n/745.html)，[highlight.js下载地址](https://highlightjs.org/)，[highlight.js预览效果](https://highlightjs.org/static/demo/)
+[marked.js文档](https://marked.js.org/)，[highlight.js下载地址](https://highlightjs.org/)，[highlight.js预览效果](https://highlightjs.org/static/demo/)
 
 ### 图标网站
 

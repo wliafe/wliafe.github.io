@@ -16,11 +16,11 @@ categories:
 permalink: 工具/Conda/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
-本文主要介绍Conda这个工具，Conda是一个用于管理Python环境的工具，它可以帮助我们创建、管理和切换不同的Python环境，避免环境冲突。同时，Conda还可以作为Python包管理器使用，我们可以使用Conda来安装、升级、卸载Python包。然而，pip也可以作为Python包管理器使用，pip与Conda相比，他的包会更加丰富，因为pip有着更大的开源社区。但Conda对包的依赖管理更加严格，使用Conda可以有效避免包之间的冲突。建议优先使用conda安装包。
+本文主要介绍Conda这个工具，Conda是一个用于管理Python环境的工具，它可以帮助我们创建、管理和切换不同的Python环境，避免环境冲突。同时，Conda还可以作为Python包管理器使用，我们可以使用Conda来安装、升级、卸载Python包。然而，pip也可以作为Python包管理器使用，pip与Conda相比，他的包会更加丰富，因为pip有着更大的开源社区。Conda会解析所选渠道中软件包及其依赖，但不能保证完全没有冲突。混用时建议先使用conda安装依赖，再按需使用pip，并在独立环境中操作。
 
-关于Conda的详细内容，我们可以参考[Conda官方文档](https://www.anaconda.com/docs/main)。
+关于Conda的详细内容，我们可以参考[Conda官方文档](https://docs.conda.io/projects/conda/en/latest/)。
 
 ## Miniconda安装
 
@@ -53,11 +53,11 @@ conda create -n <env-name> [list of package]
 创建特定python版本的环境
 
 ```bash
-conda create -n <env-name> python==<version>
+conda create -n <env-name> python=<version>
 ```
 
 > **warning**
-> 如果没有指定python的版本，conda会选择base环境的python版本。
+> `conda create -n <env-name>`通常创建空环境，不会自动复制base的Python；指定`python`而不固定版本时，由渠道、依赖和配置决定可用版本。需要固定版本时显式填写`python=<version>`。
 
 激活环境
 
@@ -83,7 +83,7 @@ conda create -n <new-env-name> --clone <old-env-name>
 conda env list
 ```
 
-删除环境
+删除环境前先退出该环境，并备份其中自行保存的文件；下面命令会删除整个目标环境。
 
 ```bash
 conda env remove -n <env-name>

@@ -16,15 +16,15 @@ categories:
 permalink: 工具/CMake/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
-CMake是一个跨平台的C++构建工具，它可以根据平台不同生成不同的构建脚本。
+CMake是一个跨平台的构建系统生成工具，常用于C和C++项目，可以为不同平台生成相应的构建文件。
 
 
 
 ## CMake的简单使用
 
-CMake的最简单粗暴的使用方法，仅限于Windows。
+下面是一个简单的CMake用法，Windows、Linux和macOS都可以使用；需要先安装对应的编译器和构建工具。
 
 下载CMake软件后，创建文件夹作为一个项目。
 
@@ -36,16 +36,16 @@ cmake_minimum_required(VERSION 3.5)#最低CMake版本
 project (projectname)# 工程名
 
 #添加源文件
-aux_source_directory(${CMAKE_SOURCE_DIR} MAIN_FUNC_SRCS)#源文件目录(相对路径)
+aux_source_directory(${CMAKE_SOURCE_DIR} MAIN_FUNC_SRCS)#源文件目录（项目根目录的绝对路径）
 
 
 #添加.h文件
-include_directories(${CMAKE_SOURCE_DIR})#.h文件目录(相对路径)
+include_directories(${CMAKE_SOURCE_DIR})#.h文件目录（项目根目录的绝对路径）
 
 
 #指定生成目标
 add_executable(${PROJECT_NAME} ${MAIN_FUNC_SRCS})
-            生成的可执行文件名      所有的源文件
+# 参数依次为：生成的可执行文件名、所有源文件
 ```
 
 CMake命令
@@ -63,8 +63,10 @@ cmake ..
 ```
 
 ```bash
-make
+cmake --build . --config Release
 ```
+
+`cmake --build`会调用当前生成器对应的构建工具；只有生成Makefile时才直接使用`make`。参见[CMake命令行文档](https://cmake.org/cmake/help/latest/manual/cmake.1.html)。
 
 ## 文件目录理想结构
 
@@ -79,6 +81,8 @@ make
 ```
 
 ## CMake较理想结构
+
+下面是结构模板：必须在`add_library`中填入实际库源文件，或后续用`target_sources`补充；不能把空库模板直接用于构建。如果只有`src/main.cpp`，直接用`add_executable`即可。
 
 ```text CMakeLists.txt
 cmake_minimum_required(VERSION 3.20.2)
@@ -103,7 +107,7 @@ target_link_libraries(${PROJECT_NAME}-exe PRIVATE ${PROJECT_NAME}-lib)
 
 ## add_definitions( )
 
-变量名需要以D开头，变量在代码中作为宏定义出现
+`-D`是编译器的宏定义选项前缀，不是宏名称的一部分；下面定义的宏名是`CONFIG_FILE`。
 
 CMake文件：
 

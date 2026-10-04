@@ -16,11 +16,11 @@ categories:
 permalink: 工具/pip/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
 pip是Python官方的包管理工具，它可以用来安装、升级、卸载Python包。
 
-有关pip的文档和包源，我们可以参考[pip官方文档](https://pypi.org/)，基本使用参考[pip安装包](https://packaging.python.org/en/latest/tutorials/installing-packages/)
+有关pip的文档和包源，我们可以参考[pip官方文档](https://pip.pypa.io/en/stable/)和[PyPI包索引](https://pypi.org/)，基本使用参考[pip安装包](https://packaging.python.org/en/latest/tutorials/installing-packages/)
 
 ## 章节目录
 
@@ -61,11 +61,7 @@ pip3 uninstall <package-name>
 pip3 install --upgrade <package-name>
 ```
 
-搜索包
-
-```bash
-pip3 search <search-term>
-```
+搜索包请使用[PyPI网站](https://pypi.org/search/)。PyPI已关闭`pip search`所依赖的XML-RPC搜索接口，不能再将该命令作为默认搜索办法；参见[pip说明](https://pip.pypa.io/en/stable/cli/pip_search/)。
 
 ## pip换清华源加快速度
 
@@ -81,10 +77,10 @@ pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple some-packag
 pip3 config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 ```
 
-恢复官方源
+恢复该配置项为官方源（若仍被覆盖，使用`pip3 config debug`检查其他配置及环境变量）
 
 ```bash
-pip3 config unset global.index-url
+pip3 config set global.index-url https://pypi.org/simple
 ```
 
 ## 创建一个库并发布到PyPI
@@ -119,7 +115,7 @@ uv add <package-name>
 
 修改项目根目录下的`pyproject.toml`文件，用于描述项目的元数据和依赖信息。
 
-其中，project-name为项目名称要与包名相同，project-description为项目描述。
+其中，project-name为分发项目名，project-description为项目描述。分发名与Python导入模块名不必相同，但构建后端必须正确定位实际模块。`requires-python`应填写代码实际测试支持的版本，不能只改数字就宣称兼容旧版Python。
 
 ```toml pyproject.toml
 [project]
@@ -196,9 +192,11 @@ jobs:
           password: ${{ secrets.PYPI_API_TOKEN }}
 ```
 
-每当创建一个tag时，workflow就会触发，自动发布项目到PyPI。
+当匹配`v*`的tag被推送到GitHub时，workflow才会触发；只在本地创建tag不会触发。上面的示例使用API Token认证，不是Trusted Publishing。
 
 ### 添加Trusted Publisher Management
+
+Trusted Publishing与API Token是两种不同的认证方式，不需要同时配置。选择Trusted Publishing时，在PyPI登记仓库和workflow文件名，并给发布job添加`permissions: { contents: read, id-token: write }`，同时删除发布步骤中的`user`和`password`。具体见[PyPI官方说明](https://docs.pypi.org/trusted-publishers/using-a-publisher/)。下面的Token两节只适用于保留上方Token工作流的情况。
 
 注册一个PyPI账号，选择Publishing，添加Trusted Publisher。
 
@@ -211,7 +209,7 @@ jobs:
 这里最常见的问题就是撞名，没办法，一个一个试吧。
 
 > **danger**
-> PyPI的包名是不可重复的，而且已创建项目的名称即使删除，上传的项目版本依然存在，如果想要重建，只能使用更高的版本号，所以在创建项目名称和发布版本号时要慎之又慎！！！关于PyPI的包名已存在问题，参考[Filename or contents already exists](https://pypi.org/help/#file-name-reuse)
+> PyPI项目名必须满足唯一性要求；已经上传过的分发文件名不能再次使用，即使文件后来被删除。删除不代表文件仍可下载，也不能靠删包重新上传同名文件。发布有误时通常应提高版本号重新构建，详见[Filename or contents already exists](https://pypi.org/help/#file-name-reuse)。
 
 ### 生成PyPI Token
 
@@ -223,7 +221,7 @@ jobs:
 
 ![4.png](/images/knowledge/%E5%B7%A5%E5%85%B7/pip/4.png)
 
-按要求填写表单，生成token。
+按要求填写表单，生成token。项目已存在时优先限定到该项目，妥善保存，不要把令牌贴进代码、日志或截图。
 
 ![5.png](/images/knowledge/%E5%B7%A5%E5%85%B7/pip/5.png)
 
@@ -239,11 +237,11 @@ jobs:
 
 ### 发布项目
 
-在Gitee中创建一个tag，GitHub Actions就会自动执行workflow，发布项目到PyPI。
+将匹配`v*`的tag推送到GitHub，才会触发上面的发布workflow；若在Gitee创建tag，需先确认镜像已将该tag同步到GitHub。也可在GitHub Actions中手动触发。
 
 ## 给PyPI项目添加文档
 
-我使用的文档工具是[Sphinx](https://sphinx-doc.cn/en/master/index.html)，我使用的文档主题是[sphinx_rtd_theme](https://rtd.sphinx-doc.cn/en/stable/index.html)，我的文档发布平台是[Read the Docs](https://app.readthedocs.org/dashboard/)。
+我使用的文档工具是[Sphinx](https://www.sphinx-doc.org/en/master/)，我使用的文档主题是[sphinx_rtd_theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/)，我的文档发布平台是[Read the Docs](https://app.readthedocs.org/dashboard/)。
 
 ### Sphinx
 
@@ -256,10 +254,12 @@ uv add sphinx
 #### 初始化
 
 ```bash
-sphinx-quickstart docs
+uv run sphinx-quickstart --sep docs
 ```
 
 #### 配置
+
+上面的`--sep`将源文件放入`docs/source`，与下文路径保持一致。若选择不分离source/build，必须相应调整路径。Python 3.10及更早版本还需安装`tomli`；MyST和主题插件需按后文先安装再构建。
 
 配置项目信息，其中，通过代码获取版本号填入`release`变量。
 
@@ -411,7 +411,7 @@ uv add myst_parser
 在项目根目录下执行以下命令，构建项目。
 
 ```bash
-sphinx-build -M html docs/source docs/build
+uv run sphinx-build -M html docs/source docs/build
 ```
 
 ### sphinx_rtd_theme主题
@@ -445,14 +445,16 @@ version: 2
 build:
   os: ubuntu-24.04
   tools:
-    python: '3.8'
+    python: '3.12'
 sphinx:
   configuration: docs/source/conf.py
 python:
   install:
   - requirements: docs/requirements.txt
   - requirements: requirements.txt
+  - method: pip
+    path: .
 ```
 
 > **info**
-> `.readthedocs.yaml`配置文件的requirements选项只支持`requirements.txt`文件。
+> `requirements`接收requirements格式文件的路径，并不要求文件必须叫`requirements.txt`；`python.install`还支持安装当前项目，供autodoc导入。示例采用Python 3.12，具体版本应与项目和文档依赖相容。参见[Read the Docs配置文档](https://docs.readthedocs.com/platform/stable/config-file/v2.html)。

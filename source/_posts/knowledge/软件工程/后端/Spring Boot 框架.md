@@ -16,7 +16,7 @@ categories:
 permalink: 后端/SpringBoot/
 ---
 > **导航**
-> [返回后端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
 SpringBoot是Spring的一个子项目，是为了简化Spring的配置而诞生的。
 
@@ -34,19 +34,24 @@ SpringBoot是Spring的一个子项目，是为了简化Spring的配置而诞生�
 
 ### 文件编写
 
+下面是早期Spring Boot项目的CRUD学习片段，省略了建表、依赖和认证配置，不能直接作为生产账号系统。真实密码必须在service层用`PasswordEncoder`等专用密码哈希工具处理，不能明文保存；读接口也不应返回密码或密码哈希。数据库使用最小权限账号，连接信息从环境配置读取。
+
 ```yml application.yml
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.120:3306/Users
-    username: root
-    password: Mysql.123
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 ```
 
 ```java User.java
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class User implements Serializable {
     private Integer id;
     private String name;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @Override
@@ -54,7 +59,6 @@ public class User implements Serializable {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -208,9 +212,9 @@ public class UserController {
 
 ![6.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringBoot/6.png)
 
-其中`application.yml`存放公共配置，可通过修改active切换读取的配置文件，比如active: dev改成active: test就是将读取`application-dev.yml`改为`application-test.yml`，环境也从本地开发变成了测试环境。
+其中`application.yml`存放公共配置，可通过`spring.profiles.active`选择环境，也可以用环境变量`SPRING_PROFILES_ACTIVE`或启动参数覆盖。`spring.profiles.active`应放在公共配置中，不能放进`application-dev.yml`等特定profile文件，见[Spring Boot Profiles文档](https://docs.spring.io/spring-boot/reference/features/profiles.html)。
 
-```yml application-dev.yml
+```yml application.yml
 spring:
   profiles:
     active: dev
@@ -253,11 +257,11 @@ Caused by: org.yaml.snakeyaml.error.YAMLException: java.nio.charset.MalformedInp
 
 但是通过cmd命令，`mvn clean compile`后，项目又可以成功运行
 
-找了很久问题，使用eclipse和IDEA同时测试，最终发现，是Maven在项目编译时，默认字符集编码是GBK
+当时使用Eclipse和IDEA测试后，问题定位到构建与文件编码不一致。Maven并不是固定默认使用GBK；未指定编码的相关插件可能依赖平台默认编码，详见[Maven编码说明](https://maven.apache.org/general.html)。
 
 ### 检查pom文件
 
-我们首先需要在pom文件中设置，编译时编码utf-8即可，如果解决不了进行第二步
+先确认源文件本身保存为UTF-8，再统一相关构建插件的编码。下面保留旧项目的Java 8和Hoxton版本，仅作历史配置示例；不能直接套到要求Java 17及以上的Spring Boot 3项目。
 
 ```xml pom.xml
 <properties>
@@ -281,8 +285,8 @@ Caused by: org.yaml.snakeyaml.error.YAMLException: java.nio.charset.MalformedInp
 
 ### 最不应该出现的错误
 
-就是你的`application.yml`文件是通过把其他类型的文件后缀名直接改为yml生成的，这时就需要你把`application.yml`中的内容全部复制，然后删除，再新建一个`application.yml`文件，将复制的内容拷贝进去再运行项目就不会报错了。
+直接修改后缀名不会改变文件编码，也不会自动使内容成为有效YAML。应检查真实编码和YAML语法，再用编辑器转换并保存为UTF-8；重新建文件只是可能的操作方式，不能保证解决所有解析错误。
 
 ### 总结
 
-这个问题，在一般成熟的项目里面是不会出现的，他一般出现在新建的项目上面，因为一般新建的项目有些配置不够完善，这一块是需要注意的地方。
+新旧项目都可能因编辑器、构建环境或文件编码变化出现这类问题，应统一编码并检查构建后的资源文件。

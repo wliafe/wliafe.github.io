@@ -15,7 +15,7 @@ categories:
 permalink: 工具/Visual Studio Code/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
 Visual Studio Code简称（VSCode）是微软开发的一款免费的代码编辑器，支持多种编程语言，支持插件扩展。当我要编写简单C语言、C++语言、Python语言、Markdown文件时，使用VSCode是非常方便的。由于VSCode功能强大，本身自带的功能就很多，而我个人对VSCode功能的发掘并不深，因此这里记录一些我对VSCode发掘的内容，方便日后使用。
 
@@ -33,13 +33,13 @@ VSCode有几个必用的插件，并不服务于某个语言，是通用插件�
 
 ### Trae AI (formerly MarsCode): Coding Assistant
 
-现在是AI时代，这是我比较喜欢使用的AI代码插件，提供代码补全、代码解释、代码格式化等功能，他是免费的。
+现在是AI时代，这是我比较喜欢使用的AI代码插件，提供代码补全、代码解释、代码格式化等功能，当时有免费使用方式；当前功能、额度和价格以扩展页面说明为准。
 
 ![2.png](/images/knowledge/%E5%B7%A5%E5%85%B7/Visual%20Studio%20Code/2.png)
 
 ## 工作区
 
-工作区是VSCode管理项目的工具，设置工作区有多种好处。通过打开工作区可以一次性打开电脑中的多个项目，而不需要每次都打开一个项目。工作区还是一个配置空间，工作区的配置对工作区内的项目都有效。设置一个工作去非常简单。
+工作区是VSCode管理项目的工具，设置工作区有多种好处。通过打开工作区可以一次性打开电脑中的多个项目，而不需要每次都打开一个项目。工作区还是一个配置空间，工作区的配置对工作区内的项目都有效。设置一个工作区非常简单。
 
 点击`文件`->`新建窗口`，就打开了一个新的工作区。
 
@@ -67,7 +67,7 @@ VSCode的配置文件设置非常巧妙，首先VSCode下载安装后有自己�
 
 ![7.png](/images/knowledge/%E5%B7%A5%E5%85%B7/Visual%20Studio%20Code/7.png)
 
-VSCode的配置设置很像代码语言的命名空间，简单的说，用户设置相当于全局作用域，工作区相当于一个小一点的作用域，再往下还有项目一级的作用域。而配置文件的优先级为`项目配置文件`>`工作区配置文件`>`用户配置文件`>`默认配置`。而用户配置文件是可以云同步的，所以一般的设置我会选择修改用户配置，而针对某台电脑的配置我会选择修改工作区配置文件，针对项目的设置我才会选择生成并修改项目配置文件。
+VSCode的配置设置很像代码语言的命名空间，简单的说，用户设置相当于全局作用域，工作区相当于一个小一点的作用域，再往下还有项目一级的作用域。在常见的多根工作区中，可简单理解为文件夹设置覆盖工作区设置，工作区设置覆盖用户设置，用户设置覆盖默认设置；远程设置、语言专用设置和策略还会影响最终值，不能用这个简化顺序覆盖所有情况。参见[设置优先级文档](https://code.visualstudio.com/docs/configure/settings#_settings-precedence)。而用户配置文件是可以云同步的，所以一般的设置我会选择修改用户配置，而针对某台电脑的配置我会选择修改工作区配置文件，针对项目的设置我才会选择生成并修改项目配置文件。
 
 可以通过设置页面打开不同的配置文件。
 
@@ -87,28 +87,30 @@ VSCode的配置设置很像代码语言的命名空间，简单的说，用户�
 
 ## 远程服务器`.vscode-server`下载失败问题
 
-当我们使用VSCode远程连接服务器时，VSCode会在服务器上安装一个`.vscode-server`目录，如果网络不好，可能会导致下载失败，从而无法连接服务器。解决方法是手动下载`.vscode-server`目录并上传到服务器上。
+当我们使用VSCode远程连接服务器时，VSCode会在服务器上安装一个`.vscode-server`目录，如果网络不好，可能会导致下载失败，从而无法连接服务器。优先按[Remote-SSH官方说明](https://code.visualstudio.com/docs/remote/ssh)将`remote.SSH.localServerDownload`设为`always`，让本机下载后传到服务器。以下手动办法只适用于使用旧`bin/<commit_id>`布局的Linux x64服务端；新版本的路径、架构和压缩包可能不同，应以Remote-SSH日志为准。
 
 首先查看`帮助->关于`，查看VSCode的提交版本号`commit_id`。
 
 ![11.png](/images/knowledge/%E5%B7%A5%E5%85%B7/Visual%20Studio%20Code/11.png)
 
-记下提交版本号`commit_id`，然后将`https://update.code.visualstudio.com/commit:${commit_id}/server-linux-x64/stable`中的`commit_id`替换为自己的`commit_id`，下载对应的文件。
+先在终端设置`commit_id="从关于页面复制的实际提交ID"`，然后将`https://update.code.visualstudio.com/commit:${commit_id}/server-linux-x64/stable`中的`commit_id`替换为自己的`commit_id`，下载对应的文件。
 
 ```bash
 mkdir -p ~/.vscode-server/bin # 创建目录
 ```
 
 ```bash
-rm -rf ~/.vscode-server/bin/* # 清空原有文件
+# 不要清空整个bin目录；先确认commit_id及实际失败版本，必要时只备份该版本目录
 ```
 
 ```bash
 tar -zxf vscode-server-linux-x64.tar.gz # 解压程序包
 ```
 
+如果目标commit目录已存在，先将该版本目录重命名备份，确认目标路径空缺后再移动。下面的检查会在目标存在时停止，避免`mv`把目录嵌套进去。
+
 ```bash
-mv vscode-server-linux-x64  ~/.vscode-server/bin/${commit_id} # 移动并重命名程序
+test ! -e "$HOME/.vscode-server/bin/$commit_id" && mv vscode-server-linux-x64 "$HOME/.vscode-server/bin/$commit_id"
 ```
 
-重启VSCode，即可连接服务器。
+重启VSCode后重试连接；仍失败时检查Remote-SSH输出日志，不要反复删除整个服务目录。

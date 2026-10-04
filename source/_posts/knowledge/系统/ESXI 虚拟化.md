@@ -16,7 +16,7 @@ categories:
 permalink: 系统/ESXI/
 ---
 > **导航**
-> [返回系统索引](/knowledge/%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F/)
+> [返回系统分类](/categories/%E7%B3%BB%E7%BB%9F/)
 
 ESXI系统是我大二折腾的一个系统，当时痴迷于虚拟机管理系统，所以就着手研究ESXI系统。ESXI作为虚拟机管理系统还是运行相当稳定的。
 
@@ -26,17 +26,20 @@ ESXI系统是我大二折腾的一个系统，当时痴迷于虚拟机管理系�
 
 
 
+> **warning**
+> 下面是旧版ESXi的个人实验记录，涉及第三方驱动、绕过安装检查和重新分区，不是当前版本的通用安装方案。仅在可丢弃的测试机或虚拟机中参考；生产环境应使用受支持的硬件、镜像和配置，并先备份目标磁盘上的数据。
+
 ## ESXI下载
 
-[官网下载地址](https://customerconnect.vmware.com/cn/downloads/info/slug/datacenter_cloud_infrastructure/vmware_vsphere/7_0)
+[官方镜像与补丁下载说明](https://knowledge.broadcom.com/external/article/372545/download-esxi-patches-and-isos-for-lates.html)
 
-[脚本之家下载地址](https://www.jb51.net/softjc/717737_all.html)
+[当时参考的脚本之家教程](https://www.jb51.net/softjc/717737_all.html)
 
-建议在脚本之家下载，因为有免费的许可证。
+镜像和许可证应从官方渠道获取，不要使用来源不明的共享密钥或修改版镜像。免费版的可用版本和限制以[官方免费Hypervisor说明](https://knowledge.broadcom.com/external/article/399823/vmware-esxi-80-update-3e-now-available-a.html)为准。
 
-这里下载的ESXI系统没有网卡驱动因此在安装时会显示No Network Adapters的错误，但你如果只是在VMware虚拟机上体验完全够用了。
+ESXi镜像并非完全没有网卡驱动；`No Network Adapters`通常表示当前网卡没有被受支持的驱动识别。在虚拟机中测试也需要选择目标ESXi版本支持的虚拟网卡。
 
-如果你是在实体虚拟机上安装，请往下看。
+如果你是在实体机上安装，请先核对硬件兼容性，再参考下面的历史记录。
 
 ## No Network Adapters问题
 
@@ -52,11 +55,14 @@ ESXI系统是我大二折腾的一个系统，当时痴迷于虚拟机管理系�
 
 net55-r8168驱动支持网卡型号（Realtek RTL8111B / RTL8168B / RTL8111/RTL8168 / RTL8111C / RTL8111CP / RTL8111D(L) / RTL8168C / RTL8111DP / RTL8111E / RTL8168E / RTL8111F / RTL8411 / RTL8111G / RTL8111GUS / RTL8411B(N) / RTL8118AS / D-Link DGE-528T）
 
+> **warning**
+> 上述[net55-r8168包说明](https://vibsdepot.v-front.de/wiki/index.php/Net55-r8168)仅列出ESXi 5.5至6.7兼容性。ESXi 7.0已移除它依赖的旧vmkapi接口，不能把这套驱动直接封装进7.x/8.x镜像；见[官方兼容性说明](https://knowledge.broadcom.com/external/article/318024)。
+
 ### 根据下面的教程将网卡驱动封装到系统中
 
 教程太多了，就不在这里描述了，在这里附[链接](https://blog.whsir.com/post-4462.html)，希望不会失效吧。
 
-如果你所需要的驱动恰好是net55-r8168，可直接在下面的百度网盘资源中下载已经封装好的ESXI系统。
+下面保留当时的第三方封装镜像链接，仅作历史参考，未验证现有文件的完整性、版本和来源；实际安装优先使用官方镜像与匹配的受信驱动。
 
 [百度网盘资源](https://pan.baidu.com/s/1XuOWRG-kNes3gi2lzyX_CA?pwd=91bb)
 
@@ -72,9 +78,9 @@ net55-r8168驱动支持网卡型号（Realtek RTL8111B / RTL8168B / RTL8111/RTL8
 
 在安装过程中我又遇到了这个问题，我的内存是3.9G的，但他需要的最小内存为4G。
 
-此文使用的方法在很早的版本ESXI系统安装时就有人使用过，可以绕过检查，但并不推荐在小内存机器上安装ESXI。
+下面的方法只记录旧版安装器中的实验。绕过内存检查不代表硬件达到官方要求，也不能保证稳定运行；不同版本的最低内存和安装器实现不同，不建议照搬。
 
-有些机器本身是4G内存，也许因为部分内存被核显使用，或者需要被BMC/BIOS/UEFI预留，或者其它ESXI系统的计算方法，会在启动是显示为3.xGB内存，这样因为差一点点内存不能使用ESXI系统还是有点可惜的，就可以想办法绕过内存检查脚本。
+有些机器本身是4G内存，也许因为部分内存被核显使用，或者需要被BMC/BIOS/UEFI预留，或者其它ESXI系统的计算方法，会在启动时显示为3.xGB内存，这样因为差一点点内存不能使用ESXI系统还是有点可惜的，就可以想办法绕过内存检查脚本。
 
 ### 解决方法
 
@@ -113,7 +119,7 @@ cp upgrade_precheck.py.bak upgrade_precheck.py
 ```
 
 ```bash
-chmod 666 upgrade_precheck.py
+chmod u+w upgrade_precheck.py
 ```
 
 ```bash
@@ -146,7 +152,7 @@ vi搜索MEM_MIN_SIZE
 
 按ESC进入命令模式，输入:wq,回车保存退出。
 
-执行下面的命令(杀掉当前的python进程)。
+下面的旧版命令会强制终止匹配到的weasel安装器进程，以重新载入检查脚本。先核对匹配进程，且只能在尚未开始写盘的实验安装阶段使用；安装或升级写盘过程中不要强制结束安装器。
 
 ```bash
 kill -9 $(ps -c | grep weasel | grep -v grep | awk '{print $1}')
@@ -158,7 +164,7 @@ kill -9 $(ps -c | grep weasel | grep -v grep | awk '{print $1}')
 
 回到安装界面
 
-一系列操作后，原来的内存检查错误界面不会出现了，出现了擦除安装介质的对话框，F11继续。
+一系列操作后，当时不再出现内存检查错误，而是进入确认安装界面。按F11前务必核对目标磁盘；安装可能重分区并覆盖目标盘数据，不能把目标磁盘与安装U盘混淆。
 
 ![11.png](/images/knowledge/%E7%B3%BB%E7%BB%9F/ESXI/11.png)
 
@@ -182,7 +188,7 @@ ESXI重启加载完毕后。
 
 重启完毕
 
-访问ESXI网页控制台，3.75GB内存正常使用。
+访问ESXI网页控制台，当时测试环境能够识别3.75GiB内存并启动；这不代表该配置满足受支持的运行要求。
 
 ![15.png](/images/knowledge/%E7%B3%BB%E7%BB%9F/ESXI/15.png)
 
@@ -192,7 +198,7 @@ ESXI重启加载完毕后。
 
 ### 问题描述
 
-我当时在虚拟机安装时，只给它分了40G的空间，安装好后完全没有存储空间可用，放心不是系统本身所占空间过大。如果你遇到同样的问题，不论是虚拟机还是实体机，都可参考下面的教程。
+我当时在虚拟机安装时，只给它分了40G的空间，安装好后没有可用的数据存储空间。这与ESXi 7的系统存储分区布局有关，不能仅根据系统文件体积判断剩余空间；小磁盘需要先核对版本对应的分区要求。
 
 ### 解决方法
 
@@ -200,15 +206,15 @@ ESXI重启加载完毕后。
 
 ![16.png](/images/knowledge/%E7%B3%BB%E7%BB%9F/ESXI/16.png)
 
-在最后加上autoPartitionOSDataSize参数即可定制虚拟闪存大小。
+下图记录的是旧版实验中用`autoPartitionOSDataSize`调整ESX-OSData分区大小的做法，并非“虚拟闪存”配置。不要直接照搬到其他版本；从ESXi 7.0 Update 1c起，官方提供`systemMediaSize`安装引导选项，例如`systemMediaSize=min`对应约33GB系统存储分区，具体见[官方说明](https://knowledge.broadcom.com/external/article/345195/boot-option-to-configure-the-size-of-esx.html)。
 
 ![17.png](/images/knowledge/%E7%B3%BB%E7%BB%9F/ESXI/17.png)
 
 > **warning**
-> 默认已有cdromBoot runweasel段，务必需要在后面加上空格分隔参数！！默认单位为MB ，例子为分配8G，毕竟磁盘只有可怜的80GB容量。
+> 引导参数之间必须用空格分隔。截图中的8GiB设置仅是旧实验记录，不是官方最低存储建议；不要混用旧参数的数值单位和`systemMediaSize`的命名档位。
 
 然后一路安装即可，在部分主机上使用DP接口可能无法看到此界面，可以在按电源后一直按着组合键或者尝试使用VGA接口显示器（如果有的话）。
 
-重新安装后即可看到虚拟闪存已经变成8GiB，存储空间已经恢复正常。
+当时重新安装后，ESX-OSData分区约为8GiB，并腾出了数据存储空间。重新安装会改写分区，必须先备份；今天安装应按对应版本的官方分区方案执行。
 
 ![18.png](/images/knowledge/%E7%B3%BB%E7%BB%9F/ESXI/18.png)

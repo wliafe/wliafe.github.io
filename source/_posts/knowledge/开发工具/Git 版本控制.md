@@ -15,7 +15,7 @@ categories:
 permalink: 工具/Git/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
 Git作为版本管理工具是每一个程序员必备的技能，学会使用Git对我有很大的帮助。
 
@@ -48,18 +48,18 @@ Git的安装教程网上数不胜数，其中[Git 详细安装教程（详解 Gi
 
 ## 配置Git
 
-单机右键，打开Git Bush Here然后通过输入命令配置用户名和邮箱。
+单击右键，打开Git Bash Here，然后配置提交作者姓名和邮箱。`user.name`、`user.email`用于提交记录，不是远程登录凭据，也不必与账号用户名相同。
 
 配置用户名
 
 ```bash
-git config --global user.name <仓库的用户名>
+git config --global user.name "<提交作者姓名>"
 ```
 
 配置用户邮箱
 
 ```bash
-git config --global user.email <仓库的绑定邮箱>
+git config --global user.email "<提交邮箱>"
 ```
 
 查看用户名
@@ -76,7 +76,7 @@ git config --global user.email
 
 ## Git链接仓库
 
-一般的选择是使用ssh公私钥，但是现在可以直接使用账号密码登录的方式上传代码（无论是GitHub还是Gitee），只需要一次登录就可以上传多次，因此我不再配置ssh了，至于创建`.git`文件，我现在比较喜欢先创建仓库，然后clone仓库，克隆下来的仓库自带`.git`文件，不需要自己创建。
+Git远程认证可以使用SSH密钥，也可以使用HTTPS。GitHub的HTTPS Git操作不再支持账号密码，应使用Git Credential Manager的浏览器登录或个人访问令牌；Gitee以其当前认证要求为准。凭据管理器可以在授权后复用登录。参见[GitHub认证文档](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)。我现在比较喜欢先创建仓库，再clone到本地；普通克隆会自动生成`.git`目录，不需要手动创建。
 
 如下图，获取仓库HTTP网址。
 
@@ -88,9 +88,11 @@ git config --global user.email
 git clone <仓库HTTP网址>
 ```
 
-### 创建`.git`文件，添加仓库网址
+<span id="创建-git文件，添加仓库网址"></span>
 
-创建Git文件
+### 创建`.git`目录，添加仓库网址
+
+初始化Git仓库
 
 ```bash
 git init
@@ -104,25 +106,25 @@ git remote add origin <仓库HTTP网址>
 
 ### 编写代码提交到仓库
 
-从仓库中拉取文件覆盖本地文件夹
+获取远程提交并整合到当前分支；`git pull`不是直接覆盖本地文件，存在分歧或本地修改时可能需要处理冲突。先确认当前分支和工作区状态。
 
 ```bash
 git pull origin main
 ```
 
-添加本地的所有文件放入缓存区
+将当前目录下的修改加入暂存区（受`.gitignore`影响）
 
 ```bash
 git add .
 ```
 
-为放入缓存中的文件添加说明
+提交暂存区内容并添加提交说明
 
 ```bash
 git commit -m <注释>
 ```
 
-上传缓存中的文件到远程仓库
+将本地main分支的提交推送到远程main分支（不会推送未提交的暂存内容）
 
 ```bash
 git push origin main
@@ -188,6 +190,8 @@ node_modules/
 每一个程序员都应该养成在项目中设置`.gitignore`文件的习惯。
 
 ## git配置镜像
+
+下面是历史配置示例，域名可用性和运营方未核实，不建议直接复制。`insteadOf`会改写所有匹配的远程URL，尤其不要将私有仓库或认证请求转给不可信镜像。优先通过官方域名访问，确需镜像时只用于公开仓库并核对来源。已有全局改写可先用`git config --global --get-regexp '^url\..*\.insteadof$'`检查。参见[Git URL改写文档](https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtinsteadOf)。
 
 ### Github镜像
 

@@ -16,9 +16,9 @@ categories:
 permalink: 工具/Nuitka/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
-Nuitka是一个将Python代码编译为C/C++并生成高效可执行文件的工具，显著提升运行性能且无需依赖Python环境。
+Nuitka是Python编译器，可以生成可执行文件。性能收益取决于程序和依赖，不能保证显著加速；只有使用`standalone`或`onefile`等分发模式并正确收集依赖时，目标机器才可不单独安装Python。
 
 
 
@@ -26,12 +26,12 @@ Nuitka是一个将Python代码编译为C/C++并生成高效可执行文件的工
 
 [官方文档](https://nuitka.net/)
 
-关于Nuitka的命令行参数信息我在官方文档并没有找到，这里是[`nuitka --help`文档中文翻译](https://nuitka-doc-zh.erduotong.com/docs/--help.html)
+命令行选项可查[官方用户手册](https://nuitka.net/user-documentation/user-manual.html)及当前版本的`--help`。也可参考[`uv run python -m nuitka --help`文档中文翻译](https://nuitka-doc-zh.erduotong.com/docs/--help.html)
 
 英文命令行参数文档
 
 ```bash
-nuitka --help
+uv run python -m nuitka --help
 ```
 
 ## 安装
@@ -43,5 +43,5 @@ uv add nuitka
 ## 编译
 
 ```bash
-nuitka --onefile --remove-output main.py
+uv run python -m nuitka --onefile --remove-output main.py
 ```

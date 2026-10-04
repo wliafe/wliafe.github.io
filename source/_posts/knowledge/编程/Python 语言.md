@@ -16,7 +16,7 @@ categories:
 permalink: 语言/Python/
 ---
 > **导航**
-> [返回语言索引](/knowledge/%E7%BC%96%E7%A8%8B/%E7%BC%96%E7%A8%8B/)
+> [返回编程语言分类](/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/)
 
 Python是一种高级、通用、解释型、面向对象的编程语言。
 
@@ -37,7 +37,7 @@ a=input()
 输入数字
 
 ```python
-a=eval(input())
+a=int(input())  # 输入小数时使用float(input())
 ```
 
 输入多个数字，中间用（特殊符号）隔开。
@@ -46,7 +46,7 @@ a=eval(input())
 a=map(int,input().split())
 ```
 
-split后面的括号中什么不填，默认为空格，split("")双引号中间的内容为间隔的符号。
+split()不传参数时按连续空白字符分隔，包括空格和制表符；可用split(",")指定分隔符，但不能使用空字符串split("")。map返回迭代器，需要列表时可写list(map(int,input().split()))。
 
 ## python的基本输出
 
@@ -99,18 +99,18 @@ float(x)
 # 将x转换为复数，实部为x，虚部为0
 complex(x)
 # 将x、y转换为复数，实部为x，虚部为y。
-conplex(x,y)
+complex(x,y)
 # 将x转换为字符串
 str(x)
-# 将整数转换为一个字符，整数为字符的ASCII编码
+# 将Unicode码点整数转换为一个字符
 chr(x)
-# 将一个字符转换为他的ASCII编码的整数值
+# 将一个字符转换为其Unicode码点整数值
 ord(x)
 # 将一个整数转换为一个十六进制字符串
 hex(x)
 # 将一个整数转换为一个八进制字符串
 oct(x)
-# 将一个字符串当作有效表达式求值，返回计算结果
+# 将字符串当作Python表达式求值；会执行代码，不能用于不可信输入
 eval(str)
 ```
 
@@ -128,29 +128,30 @@ a=int(x)
 
 ```python
 a_list=['physics','chemistry',2017,2.5]
-b_list=['wade',3.0,81['bosh','haslem']]#列表嵌套列表
+b_list=['wade',3.0,81,['bosh','haslem']]#列表嵌套列表
 c_list=[]#创建空列表
 ```
 
 ### 列表读取
 
-列表可以直接读取。
+列表可以通过下标读取，下标从0开始。
 
 ```python
-a_list=[1]
+a_list=['physics','chemistry',2017,2.5]
+print(a_list[1])  # chemistry
 ```
 
 ### 列表切片
 
 切片格式： 列表名[开始索引：结束索引：步长]
 
-开始索引省略默认为0，结束索引省略默认为到末尾，步长省略默认为1 。
+步长为正时，开始索引省略默认为0，结束索引省略默认为到末尾；步长省略默认为1，步长为负时默认从末尾向前切片。
 
 ```python
 a_list=['physics','chemistry',2017,2.5]
-a_list=[1:3]
-a_list=[:3]
-a_list=[:3:2]
+print(a_list[1:3])
+print(a_list[:3])
+print(a_list[:3:2])
 ```
 
 输出格式为
@@ -177,12 +178,12 @@ a_list+[5]
 输出为
 
 ```python
-['physics','chemistry',2017,2.5，5]
+['physics','chemistry',2017,2.5,5]
 ```
 
 #### append( )
 
-向列表尾部添加一个新元素，在原地址上操作。
+向原列表尾部添加一个新元素，不创建新的列表对象。
 
 ```python
 a_list=['physics','chemistry',2017,2.5]
@@ -197,19 +198,21 @@ a_list.append('Python')
 
 #### extend( )
 
-将一个新列表添加到原列表的尾部，与“+”不同，extend( )是在原列表地址上操作。
+将可迭代对象中的元素逐个添加到原列表的尾部，与“+”不同，extend( )会修改原列表。
 
 ```python
 a_list=['physics','chemistry',2017,2.5]
 a_list.extend(['Python'])
+print(a_list)
 a_list.extend('Python')
+print(a_list)
 ```
 
 输出
 
 ```python
 ['physics', 'chemistry', 2017, 2.5, 'Python']
-['physics', 'chemistry', 2017, 2.5, 'P', 'y', 't', 'h', 'o', 'n']
+['physics', 'chemistry', 2017, 2.5, 'Python', 'P', 'y', 't', 'h', 'o', 'n']
 ```
 
 #### insert( )
@@ -223,21 +226,23 @@ insert( )格式：列表名.insert(插入位置，插入元素)
 ```python
 a_list=['physics','chemistry',2017,2.5]
 a_list.insert(0,12.3)
+print(a_list)
 a_list.insert(7,12.3)
+print(a_list)
 ```
 
 输出
 
 ```python
-[12.3,'chemistry',2017,2.5]
-['physics', 'chemistry', 2017, 2.5, 12.3]
+[12.3, 'physics', 'chemistry', 2017, 2.5]
+[12.3, 'physics', 'chemistry', 2017, 2.5, 12.3]
 ```
 
 ### 查找元素
 
 #### index( )
 
-使用index可以获取指定元素首次出现的下标。
+使用index可以获取指定元素首次出现的下标；指定范围内找不到时会抛出ValueError。
 
 index( )格式：index（指定元素，start，end）
 
@@ -245,7 +250,7 @@ index( )格式：index（指定元素，start，end）
 a_list=['physics','chemistry',2017,2.5]
 a_list.index(2017)
 a_list.index(2017,2)
-a_list.index(2017,5,7)
+a_list.index(2017,5,7)  # 此范围内找不到，会抛出ValueError
 ```
 
 输出
@@ -287,7 +292,7 @@ a_list.index(2017,5,7)
 
 从左向右比较，如果相同，比较下一个，当出现不同时返回一个值，结束比较。
 
-最后比较的列表1的元素的值比列表2的值大时返回True,小时返回Flase。
+第一个不相等的元素中，列表1的值较大时返回True，较小时返回False；若共同部分相等，则比较长度。若元素无法进行大小比较，则会抛出TypeError。
 
 #### 函数
 
@@ -332,7 +337,7 @@ print(string)
 
 replace函数：string=string.replace(string[  :  ],"word")
 
-format函数："hello { } world".format("the")
+format函数："hello {} world".format("the")
 
 ## 函数
 

@@ -16,7 +16,7 @@ categories:
 permalink: 后端/Flask/
 ---
 > **导航**
-> [返回后端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
 Flask是一个简单的Python后端框架，用于构建简单的Python后端Web应用程序。它提供了基本的路由、请求处理和响应机制，使开发人员能够专注于业务逻辑而不是底层实现。
 
@@ -30,4 +30,4 @@ uv add flask
 
 ## Flask教程
 
-有关Flask的详细内容可以参考[Flask的官方文档](https://flask.org.cn/en/stable/)。
+有关Flask的详细内容可以参考[Flask的官方文档](https://flask.palletsprojects.com/en/stable/)。

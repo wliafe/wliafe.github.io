@@ -16,9 +16,11 @@ categories:
 permalink: 后端/Swagger-SpringDoc/
 ---
 > **导航**
-> [返回后端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
-SpringDoc是Swagger的优化版本，比较好用，这是[SpringDoc的官方文档](https://springdoc.org/)
+springdoc-openapi是为Spring应用生成OpenAPI文档的库，可集成Swagger UI，并不是Swagger的"优化版本"。这是[springdoc官方文档](https://springdoc.org/)。
+
+下面保留springdoc 1.x、Spring Boot 2与`javax.*`的旧版示例。Spring Boot 3应使用兼容的springdoc 2.x starter（如`springdoc-openapi-starter-webmvc-ui`），`GroupedOpenApi`移到`org.springdoc.core.models`，相关Java EE包改为`jakarta.*`；不要只改依赖版本就直接复制旧配置。详见[迁移文档](https://springdoc.org/v2/)。
 
 
 
@@ -80,7 +82,6 @@ public class SpringDocSwaggerConfig {
         components.addSecuritySchemes(headerName,
                 new SecurityScheme()
                         .type(SecurityScheme.Type.APIKEY)
-                        .scheme("basic")
                         .name(headerName)
                         .in(SecurityScheme.In.HEADER)
                         .description("请求头")
@@ -107,20 +108,20 @@ public class SpringDocSwaggerConfig {
 }
 ```
 
-ApiKey是对请求的header进行设置，第一、二个参数是header的key，第三个参数是用户输入
+这里定义的APIKEY方案会把用户输入的值原样放进`Authorization`请求头，方案名称必须与`SecurityRequirement`对应。若后端使用标准Bearer令牌，应改用`type: HTTP`、`scheme: bearer`，不能把APIKEY和Basic混写，见[Swagger认证说明](https://swagger.io/docs/specification/v3_0/authentication/)。文档里的安全方案不会替代后端认证。
 
 ## 常用注解
 
 |springdoc|注解位置|
 |:--|:--:|
-|@Tag(tags = “接口类描述”)|Controller类上|
-|@Operation(summary =“接口方法描述”)|Controller方法上|
+|@Tag(name = "接口类描述")|Controller类上|
+|@Operation(summary ="接口方法描述")|Controller方法上|
 |@Parameters|Controller方法上|
-|@Parameter(description=“参数描述”)|Controller方法上@Parameters里|
-|@Parameter(description=“参数描述”)|Controller方法的参数上|
+|@Parameter(description="参数描述")|Controller方法上@Parameters里|
+|@Parameter(description="参数描述")|Controller方法的参数上|
 |@Parameter(hidden = true)或@Operation(hidden = true)或@Hidden|-|
-|@Schema(description = “dto类描述”)|DTO类上|
-|@Schema(description = “属性描述”)|DTO属性上|
+|@Schema(description = "dto类描述")|DTO类上|
+|@Schema(description = "属性描述")|DTO属性上|
 
 ## 实体类
 
@@ -240,7 +241,7 @@ public class LoginController {
 
 ## 控制器放行地址
 
-如果有Spring-Security或者拦截器过滤器之类的配置，需要对以下地址进行放行
+只有需要匿名访问接口文档时才放行对应路径；生产环境可关闭文档或要求认证。下面是springdoc默认路径的示例，`/v3/api-docs/**`还包含分组文档；自定义路径需要同步调整，不必同时放行Springfox或其他文档工具的地址。
 
 ```java
     /**
@@ -249,12 +250,8 @@ public class LoginController {
     public static final String[] SWAGGER_WHITELIST = {
             "/swagger-ui.html",
             "/swagger-ui/**",
-            "/swagger-resources/**",
-            "/v2/api-docs",
             "/v3/api-docs",
-            "/v3/api-docs/swagger-config",
-            "/webjars/**",
-            "/doc.html",
+            "/v3/api-docs/**",
     };
 ```
 

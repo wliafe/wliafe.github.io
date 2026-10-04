@@ -90,3 +90,19 @@ test('legacy aliases point directly to real, flat categories', () => {
     assert.ok(!Object.hasOwn(legacy.categoryRedirects, to), 'redirect chain: ' + from);
   }
 });
+
+
+test('all article navigation names and links go directly to the current category', () => {
+  const directoryPaths = new Set(manifest.articles.filter(item => item.type === 'moc')
+    .map(item => '/' + item.permalink));
+  for (const item of manifest.articles.filter(item => item.type === 'note')) {
+    const { data, content } = frontMatter(item);
+    const category = data.categories[0];
+    const expected = `> [返回${category}分类](/categories/${encodeURIComponent(category)}/)`;
+    assert.ok(content.includes(`> **导航**\n${expected}`), item.destination);
+    assert.doesNotMatch(content, /返回[^\n]*索引|返回知识库/);
+    for (const match of content.matchAll(/\]\((\/knowledge\/[^\s)]+)\)/g)) {
+      assert.ok(!directoryPaths.has(decodeURIComponent(match[1])), 'obsolete directory link: ' + item.destination);
+    }
+  }
+});

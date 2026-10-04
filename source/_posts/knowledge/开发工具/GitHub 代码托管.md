@@ -15,7 +15,7 @@ categories:
 permalink: 工具/GitHub/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
 GitHub是一个基于Git的版本控制平台，用于托管和协作开发项目。
 
@@ -31,7 +31,7 @@ GitHub是一个基于Git的版本控制平台，用于托管和协作开发项�
 
 ![1.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/1.png)
 
-填写仓库信息，根据情况选择开源或私有（对Gitee来说无所谓，反正没人看，但选择私有可能会少些麻烦），我一般也会选择初始化仓库，添加`.gitignore`文件，添加开源协议（开源协议可以根据自己的喜好选），README文件我也会加上，项目写到后期总要介绍的，哪怕只是给未来的自己看。
+填写仓库信息，根据代码是否允许公开选择公开或私有（公开仓库可被任何人读取，不能依赖“没人看”保护代码或凭据），我一般也会选择初始化仓库，添加`.gitignore`文件，添加开源协议（开源协议可以根据自己的喜好选），README文件我也会加上，项目写到后期总要介绍的，哪怕只是给未来的自己看。
 
 ![2.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/2.png)
 
@@ -73,13 +73,13 @@ GitHub是一个基于Git的版本控制平台，用于托管和协作开发项�
 
 ![9.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/9.png)
 
-填写令牌名（我的习惯是Gitee<仓库名>Mirror），过期时间选择无期限，勾选`repo`，然后点击生成令牌。
+填写令牌名（我的习惯是Gitee<仓库名>Mirror），设置合理的到期时间，并只授予镜像所需权限。优先使用限定单个仓库的细粒度令牌；如果当前Gitee集成只支持classic令牌，再按其文档选择最小scope。classic的`repo`权限可访问账号下多个仓库，不应作为所有场景的默认选项。下图保留旧界面示例，其中“无期限 + repo”的配置不建议照抄。参见[GitHub令牌安全说明](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)。
 
 ![10.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/10.png)
 
 #### Gitee添加镜像
 
-将生成的令牌复制下来，粘贴到Gitee添加镜像页面私人令牌中，然后在镜像仓库列表里选择我们在GitHub新导入的Gitee仓库，最后点击添加。
+确认自己信任Gitee保存这枚令牌及其授权范围后，再将令牌填入添加镜像页面，选择目标GitHub仓库并添加。不要把令牌写入仓库、聊天或公开截图。Push镜像可能覆盖目标仓库内容，操作前备份并核对同步方向，避免在两端同时独立修改。
 
 ![11.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/11.png)
 
@@ -93,11 +93,11 @@ GitHub Actions是一个持续集成和持续交付（CI/CD）平台，用于自�
 
 ### 创建Actions
 
-在GitHub项目中添加文件`.github/workflows`，在该目录下添加文件`<main>.yml`文件，然后上传到GitHub就可以了。
+在GitHub项目中创建目录`.github/workflows`，在该目录下添加文件`<main>.yml`文件，然后上传到GitHub就可以了。
 
 ## Webhooks
 
-`Github项目->Settings->Webhooks`中包含项目更新时需要同步发送的信息选项，Gitee的仓库同步，Read the Docs的文档更新都通过Webhooks进行。
+`Github项目->Settings->Webhooks`中包含项目更新时需要同步发送的信息选项，具体集成可以通过Webhooks触发更新；同步方向和配置由各平台决定，不能仅凭GitHub的Webhooks页面推断Gitee向GitHub的推送机制。
 
 ![13.png](/images/knowledge/%E5%B7%A5%E5%85%B7/GitHub/13.png)
 

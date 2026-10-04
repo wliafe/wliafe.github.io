@@ -16,9 +16,9 @@ categories:
 permalink: 后端/MyBatis-Plus/
 ---
 > **导航**
-> [返回后端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
-MyBatis-Plas是Java后端开发对数据库进行操作的工具，这里是[MyBatis-Plas的官方文档](https://baomidou.com/)，同时这里还有[哔哩哔哩的视频](https://www.bilibili.com/video/BV1Bq4y1f7YD/)可以学习。
+MyBatis-Plus是Java后端开发对数据库进行操作的工具，这里是[MyBatis-Plus的官方文档](https://baomidou.com/)，同时这里还有[哔哩哔哩的视频](https://www.bilibili.com/video/BV1Bq4y1f7YD/)可以学习。
 
 主要内容可以根据这两个网址进行学习，以下是对MyBatis-Plus的补充内容。
 
@@ -30,7 +30,7 @@ MyBatis-Plas是Java后端开发对数据库进行操作的工具，这里是[MyB
 
 事务主要用于处理操作量大，复杂度高的数据。比如说，在人员管理系统中，你删除一个人员，你既需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，这样，这些数据库操作语句就构成一个事务！
 
-开启事务，在SpringBoot的启动类，或者某个@Configuration的类上加上@EnableTransactionManagement开启事务。因为这是数据库相关，所以我加在了mybatis-plus的配置类上
+使用Spring声明式事务时，可以在`@Configuration`类上加`@EnableTransactionManagement`。Spring Boot在满足自动配置条件时通常已启用事务管理，不一定需要重复添加。下面保留旧版MyBatis-Plus配置；3.4.0起应使用`MybatisPlusInterceptor`配合`OptimisticLockerInnerInterceptor`、`PaginationInnerInterceptor`，见[官方插件文档](https://baomidou.com/plugins/)。
 
 ```java
 /**
@@ -59,12 +59,12 @@ public class MybatisPlusConf {
 }
 ```
 
-然后只要在需要使用事务的方法上加上@Transactional就可以开启事务了，还是很简单的
+在Spring管理的service方法上加`@Transactional`声明事务，还需要可用的事务管理器。默认代理模式下，同一个对象内部的自调用不会经过事务代理，不能只加注解就认为事务一定生效。
 
 > **info**
-> @Transactional默认回滚的是RuntimeException也就是说如果抛出的不是RuntimeException的异常，数据库是不会回滚的。但是所幸的是，在Spring框架下，所有的异常都被org.springframework重写为RuntimeException，因此不需要太担心
+> `@Transactional`默认对`RuntimeException`和`Error`回滚，对受检异常通常不回滚。Spring不会把所有异常都改写为`RuntimeException`；需要对受检异常回滚时，可显式使用`@Transactional(rollbackFor = Exception.class)`。自定义或全局回滚规则也会影响结果，见[Spring事务文档](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html)。
 >
-> 还有如果在异常发生时，程序员自己手动捕获处理了，异常也不会回滚
+> 如果在事务方法内部吞掉异常，事务拦截器通常无法据此触发回滚；如果事务已被内部参与者标记为rollback-only，捕获异常也不会让它恢复可提交。
 
 ```java
 @Transactional

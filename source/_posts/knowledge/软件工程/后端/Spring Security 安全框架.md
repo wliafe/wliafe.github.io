@@ -16,9 +16,11 @@ categories:
 permalink: 后端/SpringSecurity/
 ---
 > **导航**
-> [返回后端索引](/knowledge/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%90%8E%E7%AB%AF/%E5%90%8E%E7%AB%AF/)
+> [返回软件工程分类](/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/)
 
 SpringSecurity是Spring安全框架的一种，这里是[哔哩哔哩视频](https://www.bilibili.com/video/BV1mm4y1X7Hc/)，以下内容是对SpringSecurity补充。
+
+这些主要是Spring Security 5.x、Spring Boot 2和`javax.servlet`时期的学习片段，邮箱部分还保留了更早版本的截图，不是可直接部署的完整认证系统。`WebSecurityConfigurerAdapter`从5.7弃用，6.x已移除；升级时还需迁移`antMatchers`、方法安全和Jakarta包，不能只删除父类。参见[官方组件式配置说明](https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter)。
 
 ## 章节目录
 
@@ -61,7 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-从春季安全5.7.0-M2开始。WebSecurityConfigurerAdapter类已被弃用，Spring团队鼓励用户转向基于组件的安全配置。
+从Spring Security 5.7.0-M2开始，WebSecurityConfigurerAdapter类已被弃用，Spring团队鼓励用户转向基于组件的安全配置。
 
 ### 没有网络安全配置器适配器
 
@@ -78,12 +80,13 @@ public class SecurityConfiguration {
          
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-      // configure HTTP security...     
+      // configure HTTP security...
+      return http.build();
     }
      
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-          // configure Web security...   
+          return web -> { /* 按需配置；通常优先用permitAll而不是忽略过滤器链 */ };
     }    
 }
 ```
@@ -151,7 +154,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .logout()
         .invalidateHttpSession(true)
         .clearAuthentication(true)
-        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+        .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
         .logoutSuccessUrl("/login?logout")
         .permitAll();
     }
@@ -191,11 +194,11 @@ public class SpringSecurity {
     // configure SecurityFilterChain
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests()
+        http.authorizeRequests()
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/index").permitAll()
                 .antMatchers("/users").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin(
                         form -> form
@@ -205,7 +208,7 @@ public class SpringSecurity {
                                 .permitAll()
                 ).logout(
                         logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
                                 .permitAll()
 
                 );
@@ -220,12 +223,14 @@ public class SpringSecurity {
 }
 ```
 
-在上面的例子中，我们遵循最佳实践，使用Spring Security lambda DSL和方法HttpSecurity#authorizeHttpRequests来定义我们的授权规则。如果你不熟悉lambda DSL，你可以在这篇博文中阅读它。
+上面的例子仍使用5.x的`authorizeRequests`，表单登录和退出部分用了lambda配置；它并没有使用`authorizeHttpRequests`。表单登录保留默认CSRF保护，登录、注册和POST退出请求都要携带CSRF令牌，见[官方CSRF文档](https://docs.spring.io/spring-security/reference/servlet/exploits/csrf.html)。
 
 > **info**
-> 我们不再需要手动将UserDetailsService和PasswordEncoder设置为AuthenticationManager实例，它只需要存在于Spring上下文中。一旦我们将UserDetailsService和PasswordEncoder配置为Spring bean，Spring Security就会自动设置为AuthenticationManager。
+> 在没有自行配置AuthenticationManagerBuilder或AuthenticationProvider等覆盖默认装配的情况下，可以通过UserDetailsService和PasswordEncoder bean配置用户名密码认证。自定义认证管理器时仍要显式检查它使用了哪些provider，见[UserDetailsService文档](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html)。
 
 ### Spring Security JWT（JSON Web Token）without WebSecurityConfigurerAdapter
+
+下面的`csrf().disable()`仅适用于经过评估、不依赖浏览器自动携带凭证的令牌API；如果JWT放在Cookie中，或仍使用Session/Basic认证，`STATELESS`也不能代替CSRF防护。示例把`GET /api/v1/**`设为公开，只能用于确实可匿名读取的数据。JWT过滤器还必须验证签名、允许的算法、有效期以及所需的issuer/audience，这些实现未在本文给出。
 
 考虑我们有以下的Spring安全性和使用WebSecurityConfigurerAdapter类的JWT配置，稍后我们将看到如何将此安全配置迁移到基于组件的方法。
 
@@ -449,6 +454,9 @@ public class SecurityConfig {
 
 ### 简介
 
+> **安全边界**
+> 邮箱验证码必须绑定收件账号、短时有效且单次使用，使用安全随机数，并在服务端对发送和验证按账号/IP限流；前端60秒倒计时不是安全控制。下面补充了邮箱绑定和一次尝试后消费，但仍省略了限流、分布式存储及完整集成测试，不能直接用于生产。重构到Processor时也必须保留这些约束，不能只保存验证码。参见[OWASP验证码安全要求](https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html)。
+
 实现邮箱认证码登录步骤：
 
 + 电子邮件原理
@@ -464,7 +472,7 @@ public class SecurityConfig {
 
 邮件服务器就好像是互联网世界的邮局。可以划分为两种类型：
 
-+ SMTP邮件服务器：用户替用户发送邮件外面发送给本地用户的邮件。(邮递员)
++ SMTP邮件服务器：接收客户端提交的邮件，并向其他邮件服务器转发或接收发给本地用户的邮件。(邮递员)
 + POP3/IMAP邮件服务器：用户帮助用户读取SMTP邮件服务器接收进来的邮件。(门前邮递箱)
 
 #### 电子邮箱
@@ -479,11 +487,11 @@ public class SecurityConfig {
 
 + 简单邮件传输协议（Simple Mail Transfer Protocol，SMTP）：定义了客户端和SMTP邮件发送服务器之间，以及两台SMTP邮件服务器之间的通信规则。
 + 邮局协议（Post Office Protocol，POP3）：定义了客户端和POP3邮件接收服务器的通信规则。
-+ 消息访问协议 （Internet Message Access Protocol，IMAP）：对POP3协议的一种扩展，也是定义了客户端和IMAP邮件服务器的通信规则。
++ 互联网消息访问协议（Internet Message Access Protocol，IMAP）：与POP3并列的邮件访问协议，支持在服务器上管理文件夹、邮件状态等，并不是POP3的扩展。
 
 #### 邮件格式
 
-邮件内容的基本格式和具体细节分别是由RFC822文档和MIME协议定义的。
+下面的RFC822是早期邮件格式规范，后来由RFC2822、[RFC5322](https://www.rfc-editor.org/info/rfc5322/)接替；MIME则扩展了邮件内容类型和编码。
 
 + RFC822文档
   + 定义的文件格式包括两个部分：邮件头、邮件体。
@@ -528,26 +536,31 @@ public class SecurityConfig {
 
 发送email的依赖，springboot帮我们封装好了
 
-可以看到，底层用的sun公司的api
+截图是旧版JavaMail依赖，不能据此判断当前版本的实现；依赖应由项目对应的Spring Boot版本管理。
 
 ![4.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringSecurity/4.png)
 
 ```yml
 spring:
   mail:
-    # 设置邮箱主机
-    host: smtp.163.com
-    # 非SSL的端口
-    port: 25
+    # 使用邮箱服务商提供的SMTP主机；下面按隐式TLS端口配置
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT:465}
     # 默认即为smtp
     protocol: smtp
     # 设置用户名
-    username: xxxxxxxxxxxxxxxxxx@163.com
-    # 设置密码，该处的密码是QQ邮箱开启SMTP的授权码而非登录密码
-    password: xxxxxxxxxxxxxxxxxxxxxxxx
+    username: ${MAIL_USERNAME}
+    # 使用对应邮箱服务商的SMTP授权码，不要将真实凭证提交到仓库
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.checkserveridentity: true
     # 默认即为utf8
     default-encoding: utf-8
 ```
+
+这份配置要求服务商支持对应端口的隐式TLS；如果服务商要求STARTTLS，应按其文档同时调整端口与TLS配置，不能只改端口。不要通过关闭证书验证来排障，见[RFC8314](https://www.rfc-editor.org/rfc/rfc8314.html)。
 
 #### 编写EmailCodeSender实现
 
@@ -644,7 +657,7 @@ import cn.vshop.security.core.validate.code.ValidateCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  * @author alan smith
@@ -661,7 +674,7 @@ public class EmailCodeGenerator implements ValidateCodeGenerator {
         return new ValidateCode(getCode(), securityProperties.getCode().getEmail().getExpireIn());
     }
 
-    private Random random = new Random();
+    private final SecureRandom random = new SecureRandom();
 
     private String getCode() {
         StringBuilder sb = new StringBuilder();
@@ -690,6 +703,8 @@ import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.ServletWebRequest;
 
@@ -773,22 +788,28 @@ public class ValidateCodeController {
     /**
      * 邮箱验证码接口
      */
-    @GetMapping("/code/email")
-    public void createSmsCode(HttpServletRequest request, HttpServletResponse response) throws ServletRequestBindingException {
-        // 生成邮箱形式的验证码(普通的验证码)
+    @PostMapping("/code/email")
+    public void createEmailCode(HttpServletRequest request, HttpServletResponse response) throws ServletRequestBindingException {
+        String email = ServletRequestUtils.getRequiredStringParameter(request, "email").trim();
+        // 实际项目在这里先校验邮箱格式，并执行服务端发送限流
         ValidateCode emailCode = emailCodeGenerator.generate(request);
-        // 将验证码放入session
-        sessionStrategy.setAttribute(new ServletWebRequest(request), EMAIL_SESSION_KEY, emailCode);
-        // 请求参数中获取目标eamil
-        String email = ServletRequestUtils.getRequiredStringParameter(request, "email") ;
-        // 发送短信
         emailCodeSender.send(email, emailCode.getCode());
+        // 将收件邮箱与验证码作为同一个挑战保存，重新发送会替换旧挑战
+        sessionStrategy.setAttribute(new ServletWebRequest(request), EMAIL_SESSION_KEY,
+                new java.util.AbstractMap.SimpleImmutableEntry<>(email, emailCode));
+    }
+
+    @GetMapping("/csrf")
+    public CsrfToken csrf(CsrfToken token) {
+        return token;
     }
 
 }
 ```
 
 #### 打开接口的访问权限
+
+允许匿名访问登录页、`GET /csrf`和`POST /code/email`，但保留CSRF保护。`permitAll`不会跳过CSRF校验，也不要将整个安全过滤器链忽略。本文前端从同源`/csrf`获取令牌，登录和发送验证码时一并提交。
 
 ![5.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringSecurity/5.png)
 
@@ -810,7 +831,7 @@ v:
 
 ![6.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringSecurity/6.png)
 
-前端代码bug不深究
+下面修正发送按钮误提交表单、读到旧邮箱值和错误响应仍提示成功的问题。静态登录页先获取CSRF令牌；生产环境还应补充网络重试和可访问性提示。
 
 ![7.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringSecurity/7.png)
 
@@ -825,30 +846,61 @@ v:
 
 <h2>邮箱登录</h2>
 <form id="loginForm" method="post" action="/authentication/email">
-    邮箱: <input type="text" name="email" value="1191693505@qq.com"><br>
+    邮箱: <input type="text" name="email" value="user@example.com"><br>
     验证码:<input type="text" name="emailCode">
-    <button onclick="sendCode(this)">发送验证码</button>
+    <input type="hidden" id="csrfToken">
+    <button type="button" id="sendButton" onclick="sendCode(this)" disabled>发送验证码</button>
     <br>
     <input type="checkbox" value="true" name="remember-me">记住我<br>
-    <input type="submit" value="登录">
+    <input type="submit" id="loginButton" value="登录" disabled>
 </form>
 
 <script>
-    let form = new FormData(document.getElementById("loginForm"));
+    let csrfReady = false;
+    document.getElementById("loginForm").addEventListener("submit", event => {
+        if (!csrfReady) event.preventDefault();
+    });
+    fetch('/csrf', { credentials: 'same-origin' })
+        .then(response => {
+            if (!response.ok) throw new Error('无法获取CSRF令牌');
+            return response.json();
+        })
+        .then(csrf => {
+            if (!csrf.parameterName || !csrf.token) throw new Error('CSRF令牌不可用');
+            const input = document.getElementById("csrfToken");
+            input.name = csrf.parameterName;
+            input.value = csrf.token;
+            csrfReady = true;
+            document.getElementById("sendButton").disabled = false;
+            document.getElementById("loginButton").disabled = false;
+        })
+        .catch(() => alert('无法初始化登录，请刷新重试'));
 
     function sendCode(o) {
+        if (!csrfReady) return;
+        const form = new FormData(document.getElementById("loginForm"));
+        const csrf = document.getElementById("csrfToken");
+        const body = new URLSearchParams();
+        body.set('email', form.get('email'));
+        body.set(csrf.name, csrf.value);
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', path());
-        xhr.send(null);
+        xhr.open('POST', '/code/email');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        o.disabled = true;
         xhr.onload = function () {
-            alert("验证码发送成功!");
-        }
-        time(o);
-    }
-
-    function path() {
-        let email = form.get("email");
-        return "/code/email?email=" + email;
+            if (xhr.status >= 200 && xhr.status < 300) {
+                alert("验证码发送成功!");
+                time(o);
+            } else {
+                o.disabled = false;
+                alert("发送失败，请稍后重试");
+            }
+        };
+        xhr.onerror = function () {
+            o.disabled = false;
+            alert("网络异常，请稍后重试");
+        };
+        xhr.send(body.toString());
     }
 
     let wait = 60 ;
@@ -861,7 +913,6 @@ v:
             wait = 60;
         } else {
             o.setAttribute("disabled", true);
-            if (o.innerHTML) content = o.innerHTML;
             o.innerHTML = wait + "秒后可以重新发送";
             wait--;
             setTimeout(() => {
@@ -919,11 +970,11 @@ spring会把实现了接口的bean，以名字作为key，bean的值作为value�
 
 + EmailCodeFilter：拦截邮件认证请求，校验邮箱认证码是否正确
 + EmailAuthenticationFilter：拦截邮件认证请求，通过邮箱获取角色认证
-+ EmailAuthenticationToken：短信认证Token，封装邮件登录信息
++ EmailAuthenticationToken：邮箱认证Token，封装邮件登录信息
 + EmailAuthenticaionProvider：能对邮件认证Token处理的Provider解析成UserDetails
 + EmailUserDetailsService：根据邮箱获取UserDetails
 
-因为无论是浏览器亦或者手机端均会使用短信验证，因此写在 core 模块中。
+因为浏览器和手机端都可能使用邮箱验证，因此写在core模块中。
 
 #### 编写EmailAuthenticationToken
 
@@ -1157,12 +1208,13 @@ public class EmailCodeAuthenticationFilter extends AbstractAuthenticationProcess
 
 #### 编写EmailCodeAuthenticationProvider
 
-提供对我们自定义的EmailAuthenticationToken的认证提供者。
+提供对我们自定义的EmailAuthenticationToken的认证提供者。这个Provider本身没有验证码凭证，必须确保所有调用路径都先完成邮箱绑定的验证码验证；不能单独注册后暴露只凭邮箱的登录入口。实际项目宜将挑战校验收敛到Provider内部。
 
 ![15.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringSecurity/15.png)
 
 ```java
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.AccountStatusUserDetailsChecker;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -1178,7 +1230,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 public class EmailCodeAuthenticationProvider implements AuthenticationProvider {
 
-    private UserDetailsService userDetailsService ;
+    private UserDetailsService userDetailsService;
+    private final AccountStatusUserDetailsChecker accountChecker = new AccountStatusUserDetailsChecker();
+
+    public void setUserDetailsService(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     /**
      * 认证的主要逻辑
@@ -1196,9 +1253,12 @@ public class EmailCodeAuthenticationProvider implements AuthenticationProvider {
 
         if(user==null){
             // 如果查找不到数据，抛出内部服务异常
-            // 这个InternalAuthenticationServiceException异常将被视为可处理异常，不会被最终抛出
+            // 由认证失败处理器转换为响应，不要向客户端暴露内部细节
             throw new InternalAuthenticationServiceException("无法获取用户信息") ;
         }
+
+        // 自定义Provider也必须检查账号锁定、禁用和过期状态
+        accountChecker.check(user);
 
         // 重新生成（已认证）Token
         EmailCodeAuthenticationToken authenticationResult = new EmailCodeAuthenticationToken(user, user.getAuthorities());
@@ -1245,6 +1305,8 @@ import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -1253,6 +1315,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
 
 /**
  * 拦截邮箱认证请求，校验邮箱认证码是否正确
@@ -1288,6 +1352,7 @@ public class EmailCodeFilter extends OncePerRequestFilter implements Initializin
      * (需要手动注入)
      */
     private SecurityProperties securityProperties;
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
     /**
      * 如果在Spring环境中，会在配置加载后执行
@@ -1311,16 +1376,20 @@ public class EmailCodeFilter extends OncePerRequestFilter implements Initializin
         // 循环判断是否执行过滤
         boolean action = false;
         for (String url : urls) {
-            if (pathMatcher.match(url, request.getRequestURI())) {
+            if (pathMatcher.match(url, request.getServletPath())) {
                 action = true;
                 break;
             }
         }
 
         // 如果是邮箱校验请求，执行邮箱校验逻辑
-        if (action) {
-            // 尝试校验
-            validate(new ServletWebRequest(request, response));
+        if (action && "POST".equals(request.getMethod())) {
+            try {
+                validate(new ServletWebRequest(request, response));
+            } catch (AuthenticationException e) {
+                authenticationFailureHandler.onAuthenticationFailure(request, response, e);
+                return;
+            }
         }
 
         // 校验通过or不是email校验请求
@@ -1330,7 +1399,7 @@ public class EmailCodeFilter extends OncePerRequestFilter implements Initializin
     /**
      * 邮箱校验码存储在session中对应的key
      */
-    private final static String SESSION_KEY_EMAIL = ValidateCodeProcessor.SESSION_KEY_PREFIX + "EMAIL";
+    private final static String SESSION_KEY_EMAIL = "SESSION_KEY_EMAIL_CODE"; // 与发送端保持一致
 
     /**
      * 校验的逻辑，emailCode
@@ -1338,8 +1407,18 @@ public class EmailCodeFilter extends OncePerRequestFilter implements Initializin
      * @param request
      */
     private void validate(ServletWebRequest request) throws ServletRequestBindingException {
-        // 从session中获取封装好的ValidateCode
-        ValidateCode codeInSession = (ValidateCode) sessionStrategy.getAttribute(request, SESSION_KEY_EMAIL);
+        // 仅演示具有稳定Session对象引用的单JVM流程；生产环境使用原子消费
+        HttpSession session = request.getRequest().getSession(false);
+        if (session == null) {
+            throw new ValidateCodeException("验证码不存在");
+        }
+        Map.Entry<String, ValidateCode> challenge;
+        synchronized (session) {
+            challenge = (Map.Entry<String, ValidateCode>) sessionStrategy.getAttribute(request, SESSION_KEY_EMAIL);
+            sessionStrategy.removeAttribute(request, SESSION_KEY_EMAIL);
+        }
+        ValidateCode codeInSession = challenge == null ? null : challenge.getValue();
+        String emailInRequest = StringUtils.trimToEmpty(request.getRequest().getParameter("email"));
         // 从request中获取请求参数ValidateCode
         String codeInRequest = ServletRequestUtils.getStringParameter(request.getRequest(), "emailCode");
         if (StringUtils.isBlank(codeInRequest)) {
@@ -1348,26 +1427,30 @@ public class EmailCodeFilter extends OncePerRequestFilter implements Initializin
         if (codeInSession == null) {
             throw new ValidateCodeException("验证码不存在");
         }
+        if (!StringUtils.equals(challenge.getKey(), emailInRequest)) {
+            throw new ValidateCodeException("验证码与邮箱不匹配");
+        }
         if (codeInSession.isExpired()) {
-            sessionStrategy.removeAttribute(request, SESSION_KEY_EMAIL);
             throw new ValidateCodeException("验证码已过期");
         }
         if (!StringUtils.equalsIgnoreCase(codeInSession.getCode(), codeInRequest)) {
             throw new ValidateCodeException("验证码不匹配");
         }
-        sessionStrategy.removeAttribute(request, SESSION_KEY_EMAIL);
     }
 }
 ```
 
+`ValidateCodeException`需要继承`AuthenticationException`，才能由这里的失败处理器处理。一次输入错误就会消费当前挑战，需要重新发送；这仍不能代替按账号/IP限流。上面的`synchronized`只适用于同一逻辑Session在本地具有相同对象引用的示例；Servlet容器不保证这一点，正式实现需要稳定的Session mutex或存储层原子消费。分布式部署必须使用共享存储的原子校验/消费，不能依赖本地锁。合并为统一Processor时也要同时保留邮箱绑定和原子消费。
+
 #### 编写配置类EmailCodeAuthenticationSecurityConfig
 
-专门进行EmailCode（邮箱验证码）的配置
+专门进行EmailCode（邮箱验证码）的配置。Provider在`init`阶段注册，`configure`阶段再取得已经构建的AuthenticationManager并安装过滤器；不要到`configure`中才补Provider。
 
 ```java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
+import cn.vshop.security.core.properties.SecurityProperties;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -1378,7 +1461,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.stereotype.Component;
 
 /**
- * 关于短信验证码的配置
+ * 关于邮箱验证码的配置
  * <p>
  * (因为既要在浏览器中用，也要在app中用，因此写在core内)
  *
@@ -1394,11 +1477,19 @@ public class EmailCodeAuthenticationSecurityConfig
         extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
     @Autowired
+    private SecurityProperties securityProperties;
+    @Autowired
     private AuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Override
+    public void init(HttpSecurity http) throws Exception {
+        // 在AuthenticationManager构建前注册Provider
+        http.authenticationProvider(emailCodeAuthenticationProvider());
+    }
 
     /**
      * 对FilterChain的配置
@@ -1409,9 +1500,13 @@ public class EmailCodeAuthenticationSecurityConfig
      */
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        EmailCodeFilter codeFilter = new EmailCodeFilter();
+        codeFilter.setSecurityProperties(securityProperties);
+        codeFilter.setAuthenticationFailureHandler(authenticationFailureHandler);
+        codeFilter.afterPropertiesSet();
+        // 必须先校验挑战，再进入只读取邮箱的认证过滤器；不要在别处重复注册
+        http.addFilterBefore(codeFilter, UsernamePasswordAuthenticationFilter.class);
         http
-                // 将我们自定义的provider添加到AuthenticationManager管理的provider集合内
-                .authenticationProvider(emailCodeAuthenticationProvider())
                 // 将我们自定义的filter添加到UsernamePasswordAuthenticationFilter的后面
                 // 为什么是后面？
                 // 因为其他配置均已UsernamePasswordAuthenticationFilter为基准，把校验码的校验如EmailCodeFilter配置在其之前，
@@ -1451,7 +1546,7 @@ public class EmailCodeAuthenticationSecurityConfig
 
 #### 修改BrowserSecurityConfig
 
-在应用配置中导入新加的配置
+在应用配置中导入新加的配置。下图是旧版截图，只参考`apply`的位置，不要复制图中的`csrf().disable()`；邮箱登录依赖Session，必须保留CSRF保护并使用上文的令牌提交方式。
 
 ![17.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringSecurity/17.png)
 
@@ -1493,7 +1588,7 @@ public class EmailCodeAuthenticationSecurityConfig
 
 ![27.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringSecurity/27.png)
 
-图形和短信校验码的校验过滤器（validateFilter）合并为一个。
+图形和邮箱校验码的校验过滤器（validateFilter）合并为一个。以下截图保留旧重构过程；合并时要同步加入上文的邮箱绑定、单次消费、失败处理和限流，不能直接照搬截图中的旧校验逻辑。
 
 ![28.png](/images/knowledge/%E5%90%8E%E7%AB%AF/SpringSecurity/28.png)
 

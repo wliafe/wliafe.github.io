@@ -17,7 +17,7 @@ categories:
 permalink: knowledge/开发工具/AI提示词/
 ---
 > **导航**
-> [返回工具索引](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+> [返回开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 
 ## 摘要
 
@@ -690,5 +690,5 @@ super().__init__(name=name)
 ## 相关笔记
 
 - [Codex](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Codex%20%E5%B7%A5%E5%85%B7/)
-- [Developer Tools](/knowledge/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
+- [开发工具分类](/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/)
 - [人工智能顶会顶刊](/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%A1%B6%E4%BC%9A%E9%A1%B6%E5%88%8A/)
