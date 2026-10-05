@@ -30,6 +30,6 @@
     "hexo-word-counter": "^0.2.2"
   },
   "devDependencies": {
-    "mdast-util-from-markdown": "2.0.2"
+    "mdast-util-from-markdown": "2.0.3"
   }
 }
